@@ -1,0 +1,29 @@
+{
+    "users" : [
+        {
+            "id" : 1,
+            "name" : "mks",
+            "type" : "ADMIN" 
+        },
+        {
+            "id" : 2,
+            "name" : "ath",
+            "type" : "ADMIN" 
+        },
+        {
+            "id" : 3,
+            "name" : "sitecar",
+            "type" : "ADMIN" 
+        },
+        {
+            "id" : 4,
+            "name" : "thaw",
+            "type" : "ADMIN" 
+        },
+        {
+            "id" : 5,
+            "name" : "nyan",
+            "type" : "ADMIN" 
+        }
+    ]
+}

@@ -22,20 +22,20 @@
         } 
     });
 
-    beforeUpdate(async()=>{
-        try {
-            loading = true
-            let result = await axios[method](url)
+    // beforeUpdate(async()=>{
+    //     try {
+    //         loading = true
+    //         let result = await axios[method](url)
             
-            data = result.data
-            loading = false
-        } catch (e) {
-            console.log(e)
-            data = null
-            loading = false
-            error = e
-        } 
-    });
+    //         data = result.data
+    //         loading = false
+    //     } catch (e) {
+    //         console.log(e)
+    //         data = null
+    //         loading = false
+    //         error = e
+    //     } 
+    // });
 </script>
 
 <slot {data} {loading} {error}/>

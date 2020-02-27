@@ -1,6 +1,6 @@
 <script>
 	// export let segment;
-	import Sidebar from '/mpm/Sidebar.svelte';
+	import Sidebar from '../layout/mpm/Sidebar.svelte';
 </script>
 
 <style>
@@ -13,10 +13,8 @@
 	ul {
 		margin: 0;
 		padding: 0;
-	} */
-
-	/* clearfix */
-	/* ul::after {
+	} 
+	 ul::after {
 		content: '';
 		display: block;
 		clear: both;

@@ -2,11 +2,9 @@
 import { createEventDispatcher } from 'svelte';
 const dispatch = createEventDispatcher();
 
-function CancelBtn () {
-    window.location="employee";
-}
 function CreateData() {
     dispatch('create', { emp : employee});
+
 }
 
 //export let employee;
@@ -32,26 +30,6 @@ function CreateData() {
             employeeStatus: "active"
         };
 
-// let married = 1;
-// let empStatus =0;
-//    export let name; 
-//    export let alias;
-//    export let phoneNo;
-//    export let nrcNo;
-//    export let personalEmail;
-//    export let officialEmail;
-//    export let township;
-//    export let city;
-//    export let address;
-//    export let postalCode;
-//    export let dob;
-//    export let gender;
-//    export let position;
-//    export let basicSalary;
-//    export let nationality;
-//    export let race;
-//    export let maritalStatus;
-//    export let employeeStatus;
 </script>
 <style>
 </style>
@@ -145,11 +123,9 @@ function CreateData() {
             </div>                      
                <div class="col-md-12 pt-3">
                   <button type="button" class="btn btn-outline-success" on:click={CreateData}>Create</button>
-                  <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>        
+                  <a href="employee" class="btn btn-outline-warning">Cancel</a>
+                  <!-- <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>         -->
                </div>   
          </div>                       
     </div>
- 
- 
- 
  </div>

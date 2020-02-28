@@ -17,7 +17,7 @@
     };
 </script>
 
- <h1>{$user.createMessage}</h1>
+<h1>{$user.createMessage}</h1>
 <Api url="http://localhost:5000/users" method="get" let:data let:loading let:error >
     {#if data}
         <UserList users={data} on:deleteUser={deleteUserData}></UserList>

@@ -12,7 +12,7 @@
 <form>
     <div class="form-group">
         <label for="title">Name</label>
-        <input class="form-control" bind:value={name} type="text">
+        <input class="form-control" bind:value={name} required type="text">
     </div>
     <div class="form-group">
         <label for="title">User Name</label>

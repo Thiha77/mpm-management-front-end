@@ -1,7 +1,7 @@
 <script>
 export let users;
 import {createEventDispatcher} from "svelte";
-import { userEdit } from "../../stores/user/store.js";
+import { userEdit,user } from "../../stores/user/store.js";
 const dispatch = createEventDispatcher();
 
 let editUser = (user) => {
@@ -24,6 +24,7 @@ let deleteUser = id => {
         <!-- <button class="btn btn-primary float-right" on:click={addUser}>New User</button> -->
         <a class="btn btn-success float-right" href='user/create'>Add New User</a>
     </div>
+    <h1>{$user.createMessage}</h1>
     <table class="table">
         <thead class="thead-light">
             <tr>

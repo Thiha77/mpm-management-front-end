@@ -4,5 +4,4 @@ const user = writable({
     name: "ATH"
 });
 
-
 export { user }

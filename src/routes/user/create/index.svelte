@@ -1,7 +1,7 @@
 <script>    
     import CreateUser from '../../../components/user/CreateUser.svelte';
     import ApiPost from '../../../util/api.js';
-    import { user } from '../../../store.js';
+    import { user } from '../../../stores/user/store.js';
     import * as sapper from '@sapper/app';
 
     let userData ={

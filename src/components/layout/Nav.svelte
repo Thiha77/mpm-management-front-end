@@ -58,5 +58,6 @@
 		<li><a rel=prefetch class:selected='{segment === "blog"}' href='blog'>blog</a></li>
 		<li><a href='admin' class:selected={segment === 'admin'}>Admin</a></li>
 		<li><a href='user' class:selected={segment === 'user'}>User</a></li>
+		<!-- <li><a href='employee' class:selected={segment === 'employee'}>Employee</a></li> -->
 	</ul>
 </nav>

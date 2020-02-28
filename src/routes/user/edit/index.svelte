@@ -1,7 +1,7 @@
 <script>    
     import EditUser from '../../../components/user/EditUser.svelte';
     import ApiPost from '../../../util/api.js';
-    import { userEdit } from '../../../store.js';
+    import { userEdit } from '../../../stores/user/store.js';
     import * as sapper from '@sapper/app';
 
     

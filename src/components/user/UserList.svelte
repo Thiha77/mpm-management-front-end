@@ -1,7 +1,7 @@
 <script>
 export let users;
 import {createEventDispatcher} from "svelte";
-import { userEdit } from "../../store.js";
+import { userEdit } from "../../stores/user/store.js";
 const dispatch = createEventDispatcher();
 
 let editUser = (user) => {

@@ -12,6 +12,7 @@
         {
             let url = "http://localhost:5000/users/delete";
             ApiPost(url,data);
+
         }
     };
 </script>

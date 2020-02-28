@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher();
-    import { userEdit } from '../../store.js';
+    import { userEdit } from '../../stores/user/store.js';
     
     function updateUser(){
         dispatch('update');

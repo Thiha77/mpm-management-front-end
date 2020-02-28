@@ -18,5 +18,5 @@
 <Nav {segment}/>
 
 <main>
-	<slot>zzz</slot>
+	<slot></slot>
 </main>

@@ -1,30 +1,9 @@
 <script>
 import Api from '../../../components/util/Api.svelte';
 import ApiPost from '../../../util/api.js';
-import { employee } from '../../../store.js';
+import { employee } from  "../../../stores/employee/store.js";
 import * as sapper from '@sapper/app';
 import EmpCreate from '../../../components/employees/CreateEmployee.svelte';
-
-        // let empData = {
-        //     name: "",
-        //     alias: "",
-        //     phoneNo: "",
-        //     nrcNo: "",
-        //     personalEmail: "",
-        //     officialEmail: "",
-        //     township: "",
-        //     city: "",
-        //     address: "",
-        //     postalCode: "",
-        //     dob: "",
-        //     gender: "male",
-        //     position: "",
-        //     basicSalary: "",
-        //     nationality: "",
-        //     race: "",
-        //     maritalStatus: "single",
-        //     employeeStatus: "m"
-        // };
 
         const CreateData = (event) => {
             let url = "http://localhost:5000/employees/create";

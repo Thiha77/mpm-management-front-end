@@ -1,7 +1,7 @@
 <script>
 export let employees;
 import ApiPost from '../../util/api.js';
-import { empEditemployee } from "../../store.js";
+import { empEditemployee } from "../../stores/employee/store.js";
 // import  CreatedEmp from '../../components/employees/CreateEmployee.svelte';
 import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher();

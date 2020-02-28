@@ -5,13 +5,4 @@ const user = writable({
     createMessage: ""
 });
 
-// const userEdit = writable({
-//     id: "",
-//     name: "",
-//     userName: "",
-//     password: "",
-//     employeeId: ""
-// });
-
-// export { user, userEdit }
 export { user }

@@ -1,11 +1,12 @@
 import { writable } from 'svelte/store';
 
 const user = writable({
-    name: "ATH"
+    createError: "",
+    createMessage: ""
 });
 
 const nav = writable({
-    showSideBar: false 
+    showSideBar: true 
 })
 
 export { user, nav }

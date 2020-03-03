@@ -14,7 +14,7 @@ import { nav } from '../../../store';
 
     <ul class="list-unstyled components">
         <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <a  href='.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-home"></i>
                 Home
             </a>
@@ -31,42 +31,44 @@ import { nav } from '../../../store';
             </ul>
         </li>
         <li>
-            <a href="#a">
-                <i class="fas fa-briefcase"></i>
-                About
+            <a href="user">
+                <i class="fas fa-users"></i>
+                User
             </a>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-copy"></i>
-                Pages
-            </a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
+            <ul class="collapse list-unstyled">
                 <li>
-                    <a href="#a">Page 1</a>
+                    <a href="#a">User 1</a>
                 </li>
                 <li>
-                    <a href="#a">Page 2</a>
+                    <a href="#a">User 2</a>
                 </li>
                 <li>
-                    <a href="#a">Page 3</a>
+                    <a href="#a">User 3</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="#a">
+            <a href="about">
+                <i class="fas fa-address-card"></i>
+                About
+            </a>
+        </li>
+        <li>
+            <a href="role">
+                <i class="fas fa-user-check"></i>
+                Role
+            </a>
+        </li>
+        <li>
+            <a href="permission">
+                <i class="fas user-secret"></i>
+                Permission
+            </a>
+        </li>
+        <li>
+            <a href="employee">
                 <i class="fas fa-image"></i>
-                Portfolio
-            </a>
-        </li>
-        <li>
-            <a href="#a">
-                <i class="fas fa-question"></i>
-                FAQ
-            </a>
-        </li>
-        <li>
-            <a href="#a">
-                <i class="fas fa-paper-plane"></i>
-                Contact
+                Employee
             </a>
         </li>
     </ul>

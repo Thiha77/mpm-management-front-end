@@ -5,7 +5,7 @@ const dispatch = createEventDispatcher();
     
     function updatebtn(){
         dispatch('update');
-    }
+    }  
 </script>
 <style>
 </style>
@@ -51,12 +51,12 @@ const dispatch = createEventDispatcher();
                <input type="text" class="form-control" id="text" placeholder="Enter Address"  bind:value={$empEditemployee.address} />
             </div>
             <div class="col-md-6">
-               <strong class="card-title">Postal Code: </strong>
+               <strong class="card-title">` Code: </strong>
                <input type="text" class="form-control" id="text" placeholder="Enter Township" bind:value={$empEditemployee.postalCode} />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 button-container">
                <strong class="card-title">Birthday : </strong>
-               <input type="date" class="form-control"  bind:value={$empEditemployee.dob}>
+               <input type="datetime" id='test' class="form-control"  bind:value={$empEditemployee.dob}>
             </div>
             <div class="col-md-6" >
                <strong class="card-title">Gender : </strong><br/>
@@ -100,7 +100,6 @@ const dispatch = createEventDispatcher();
                <div class="col-md-12 pt-3">
                   <button type="button" class="btn btn-outline-success" on:click|preventDefault={updatebtn} >Update</button>
                   <a href="employee" class="btn btn-outline-warning">Cancel</a>
-                  <!-- <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>         -->
                </div>   
          </div>                       
     </div>

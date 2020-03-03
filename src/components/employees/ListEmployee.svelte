@@ -20,7 +20,8 @@ let deletebtn = id => {
 //     dispatch('edit',employee);
 
 // }
-let editbtn = (employee) => {
+let editbtn = (employee) => {   
+
     $empEditemployee = {
         id: employee.id,
         name: employee.name,

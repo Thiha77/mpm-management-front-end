@@ -61,7 +61,7 @@ import { nav } from '../../../store';
         </li>
         <li>
             <a href="permission">
-                <i class="fas user-lock"></i>
+                <i class="fas fa-user-secret"></i>
                 Permission
             </a>
         </li>

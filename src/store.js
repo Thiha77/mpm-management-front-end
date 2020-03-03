@@ -5,4 +5,8 @@ const user = writable({
     createMessage: ""
 });
 
-export { user }
+const nav = writable({
+    showSideBar: true 
+})
+
+export { user, nav }

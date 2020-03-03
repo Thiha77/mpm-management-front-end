@@ -11,5 +11,5 @@
 
 <div id="content">
 	<Navbar></Navbar>
-	<!-- <slot>zzz</slot> -->
+	<slot>zzz</slot>
 </div>

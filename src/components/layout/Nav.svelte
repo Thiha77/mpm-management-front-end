@@ -1,6 +1,7 @@
 <script>
 	// export let segment;
 	import Sidebar from '../layout/mpm/Sidebar.svelte';
+	// let sidebar_show = true;
 </script>
 
 <style>

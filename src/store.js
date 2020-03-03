@@ -4,5 +4,8 @@ const user = writable({
     name: "ATH"
 });
 
+const nav = writable({
+    showSideBar: false 
+})
 
-export { user }
+export { user, nav }

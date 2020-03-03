@@ -57,6 +57,8 @@
 		     the blog data when we hover over the link or tap it on a touchscreen -->
 		<li><a rel=prefetch class:selected='{segment === "blog"}' href='blog'>blog</a></li>
 		<li><a href='admin' class:selected={segment === 'admin'}>Admin</a></li>
+		<li><a href='user' class:selected={segment === 'user'}>User</a></li>
+		<!-- <li><a href='employee' class:selected={segment === 'employee'}>Employee</a></li> -->
 		<li><a href='role' class:selected={segment === 'role'}>Role</a></li>
 		<li><a href='permission' class:selected={segment === 'permission'}>Permission</a></li>
 		<li><a href='rolepermission' class:selected={segment === 'rolepermission'}>RolePermission</a></li>

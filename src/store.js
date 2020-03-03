@@ -1,7 +1,8 @@
 import { writable } from 'svelte/store';
 
 const user = writable({
-    name: "ATH"
+    createError: "",
+    createMessage: ""
 });
 
 export { user }

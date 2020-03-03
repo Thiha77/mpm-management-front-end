@@ -1,6 +1,27 @@
 const axios = require('axios');
 
-module.exports = async(url, body) => {
+const get = async(url) => {
+    let data;
+    let error;
+    try {
+        let result = await axios.get(url)
+
+        data = result.data
+        return {
+            data: data,
+            error: null
+        }
+    } catch (e) {
+        data = null
+        error = e
+        return {
+            data: data,
+            error: error
+        }
+    }
+}
+
+const post = async(url, body) => {
     let data;
     let error;
     try {
@@ -19,4 +40,8 @@ module.exports = async(url, body) => {
             error: error
         }
     }
+}
+
+module.exports = {
+    get, post
 }

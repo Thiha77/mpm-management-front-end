@@ -23,6 +23,7 @@ const empEditemployee=writable({
     basicSalary: "",
     nationality: "",
     race: "",
+    photo:"",
     maritalStatus: "single",
     employeeStatus: "active"
 });

@@ -1,11 +1,25 @@
 <script>
 import { createEventDispatcher } from 'svelte';
 const dispatch = createEventDispatcher();
+const loaded =new Map();
+let visible = false;
 
 function CreateData() {
     dispatch('create', { emp : employee});
 
 }
+function preview_image(event) 
+{
+   alert("aaaaa");
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+
 
 //export let employee;
 //let gender ='male';
@@ -26,10 +40,17 @@ function CreateData() {
             basicSalary: "",
             nationality: "",
             race: "",
+            photo:"",
             maritalStatus: "single",
             employeeStatus: "active"
         };
+        
+	const uploadImage = function() { 
+      //   console.log("aaaaa");
+      
+	};
 
+	
 </script>
 <style>
 </style>
@@ -118,8 +139,18 @@ function CreateData() {
                <strong class="card-title">Race: </strong>
                <input type="text" class="form-control" id="text" placeholder="Enter Race" bind:value={employee.race} />
             </div>  
-             <div class="col-md-12 pt-3">
-              <input type="file" accept="image/*"> 
+             <div class="col-md-12 pt-3">  
+              <!-- Testing Image -->
+               <label>
+                  <input type="file" id="upload" accept="image/*" on:change={uploadImage}>
+                  <!-- <input type=file bind:value={visible}> -->
+            </label>
+         
+         <!-- {#if visible}
+         <img alt="random photo" src="/upload/images/65613.jpg"  style="width:100px;height:100px;">
+         {/if} -->
+              <!-- End Testing Image -->              
+
             </div>                      
                <div class="col-md-12 pt-3">
                   <button type="button" class="btn btn-outline-success" on:click={CreateData}>Create</button>

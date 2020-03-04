@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const get = async(url) => {
+const axiosGet = async(url) => {
     let data;
     let error;
     try {
@@ -21,7 +21,7 @@ const get = async(url) => {
     }
 }
 
-const post = async(url, body) => {
+const axiosPost = async(url, body) => {
     let data;
     let error;
     try {
@@ -43,5 +43,5 @@ const post = async(url, body) => {
 }
 
 module.exports = {
-    get, post
+    axiosGet, axiosPost
 }

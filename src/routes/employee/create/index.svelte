@@ -1,15 +1,15 @@
 <script>
 import Api from '../../../components/util/Api.svelte';
-import ApiPost from '../../../util/api.js';
+import {axiosPost} from '../../../util/api.js';
 import { employee } from  "../../../stores/employee/store.js";
 import * as sapper from '@sapper/app';
 import EmpCreate from '../../../components/employees/CreateEmployee.svelte';
 
         const CreateData = (event) => {
             let url = "http://localhost:5000/employees/create";
-            const body =event.detail.emp;
+            const body =event.detail.emp;            
             console.log("img",body);
-            ApiPost(url,body).then((data)=> {
+            axiosPost(url,body).then((data)=> {
                 if(data.error ==null){
                     $employee = {
                     createError: "",

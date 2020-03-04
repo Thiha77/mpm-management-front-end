@@ -1,24 +1,21 @@
 <script>
 import { createEventDispatcher } from 'svelte';
+import ImgEncoder from 'svelte-image-encoder';
 const dispatch = createEventDispatcher();
-const loaded =new Map();
-let visible = false;
+
+let src ;
+//let url;
 
 function CreateData() {
     dispatch('create', { emp : employee});
 
 }
-function preview_image(event) 
-{
-   alert("aaaaa");
- var reader = new FileReader();
- reader.onload = function()
- {
-  var output = document.getElementById('output_image');
-  output.src = reader.result;
+ function uploadImage (e){ 
+    src =URL.createObjectURL(e.target.files[0]);
+    employee.photo=e.target.files[0];
+    console.log("test",employee.photo);
  }
- reader.readAsDataURL(event.target.files[0]);
-}
+
 
 
 //export let employee;
@@ -45,10 +42,7 @@ function preview_image(event)
             employeeStatus: "active"
         };
         
-	const uploadImage = function() { 
-      //   console.log("aaaaa");
-      
-	};
+	
 
 	
 </script>
@@ -121,9 +115,6 @@ function preview_image(event)
             <strong class="card-title">Marital Status: </strong><br/>
                 <label><input type=radio bind:group={employee.maritalStatus} value="single" />single</label>
                 <label><input type=radio bind:group={employee.maritalStatus} value="married" />married</label>
-             <!-- <input type="text" class="form-control" id="text" placeholder="Enter EmpStatus" bind:value={employee.maritalStatus}  /> -->
-              <!-- <label><input type=radio bind:group={married} value={1}>single</label>
-              <label><input type=radio bind:group={married} value={2}>married</label> -->
             </div>
              <div class="col-md-6">
              <strong class="card-title">Employee Status: </strong><br/>
@@ -138,21 +129,15 @@ function preview_image(event)
              <div class="col-md-6">
                <strong class="card-title">Race: </strong>
                <input type="text" class="form-control" id="text" placeholder="Enter Race" bind:value={employee.race} />
-            </div>  
-             <div class="col-md-12 pt-3">  
-              <!-- Testing Image -->
-               <label>
-                  <input type="file" id="upload" accept="image/*" on:change={uploadImage}>
-                  <!-- <input type=file bind:value={visible}> -->
-            </label>
-         
-         <!-- {#if visible}
-         <img alt="random photo" src="/upload/images/65613.jpg"  style="width:100px;height:100px;">
-         {/if} -->
-              <!-- End Testing Image -->              
-
+            </div>
+            <div class="col-md-6 pt-3">
+               <input type="file" id="upload" accept="image/*" on:change={uploadImage}> 
+            </div>            
+             <div class="col-md-6 pt-3">                  
+                  <ImgEncoder {src} bind:value={employee.photo} width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
+                  <!-- <img src={url} alt=''> -->
             </div>                      
-               <div class="col-md-12 pt-3">
+               <div class="col-md-12 pt-5">
                   <button type="button" class="btn btn-outline-success" on:click={CreateData}>Create</button>
                   <a href="employee" class="btn btn-outline-warning">Cancel</a>
                   <!-- <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>         -->

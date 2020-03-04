@@ -71,6 +71,12 @@ import { nav } from '../../../store';
                 Employee
             </a>
         </li>
+        <li>
+            <a href="notice">
+                <i class="fas fa-image"></i>
+                Notice
+            </a>
+        </li>
     </ul>
 
     <!-- <ul class="list-unstyled CTAs">

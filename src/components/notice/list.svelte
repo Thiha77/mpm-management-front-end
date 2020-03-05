@@ -3,8 +3,10 @@
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
     const edit = (notice) => {
-
-    };
+        dispatch('edit', {
+            notice: notice
+        })
+    }
     const del = (id) => {
         dispatch('delete', {
             id: id
@@ -43,7 +45,7 @@
                     <td>{notice.summary}</td>
                     <td>{notice.Employee['name']}</td>
                     <td>
-                        <a class="btn btn-info" href="notice/edit" on:click={edit(notice)}>Edit</a>
+                        <button class="btn btn-info" href="notice/edit" on:click={edit(notice)}>Edit</button>
                         <button class="btn btn-danger" on:click={del(notice.id)}>Delete</button>
                     </td>
                     </tr>

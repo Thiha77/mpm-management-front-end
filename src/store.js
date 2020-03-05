@@ -8,9 +8,12 @@ const user = writable({
 const nav = writable({
     showSideBar: true 
 })
+const subNav = writable({
+    subNav: false 
+})
 
 const apiInfo = readable({
     basePath: "http://localhost:5000"
 })
 
-export { user, nav, apiInfo }
+export { user, nav, apiInfo, subNav }

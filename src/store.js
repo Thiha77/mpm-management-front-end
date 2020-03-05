@@ -8,5 +8,8 @@ const user = writable({
 const nav = writable({
     showSideBar: true 
 })
+const subNav = writable({
+    subNav: false 
+})
 
-export { user, nav }
+export { user, nav ,subNav}

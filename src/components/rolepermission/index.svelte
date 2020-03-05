@@ -39,7 +39,7 @@
                             <td>{rolePermission.Role['name']}</td>
                             <td>{rolePermission.Permission['name']}</td>
                             <td>
-                                <a href="rolepermission/edit" on:click={edit(rolePermission)} class="btn btn-info">Edit</a>
+                                <!-- <a href="rolepermission/edit" on:click={edit(rolePermission)} class="btn btn-info">Edit</a> -->
                                 <button on:click={destory(rolePermission.id)} class="btn btn-danger">Delete</button>
                             </td>
                         </tr>

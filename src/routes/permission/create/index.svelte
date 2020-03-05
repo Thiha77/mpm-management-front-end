@@ -1,35 +1,33 @@
 <script>
-    import PerCreate from '../../../components/permission/create.svelte';
-    import ApiPost from '../../../util/api.js'
-    import { permission } from '../../../stores/permission/store.js';
-    import * as sapper from '@sapper/app';
+    import PermissionCreate from '../../../components/permission/create.svelte';
+    import { axiosPost } from '../../../util/api.js'
+    import { permissionMessages } from '../../../stores/permission/store.js';
+    import { stores, goto } from '@sapper/app';
+    import { apiInfo } from '../../../store.js';
     
-    let perData = {
+    let permissionData = {
         name: "",
         specialPer: false
     };
 
-    const savePerData = () => {
-        let url = "http://localhost:5000/permissions/create";
-        ApiPost(url,perData).then( (data) => {
-            if(data.error == null)
-            {
-                $permission = {
-                    createError: "",
-                    createMessage: "Success"
-                };
-                sapper.goto("../permission");
-            }else
-            {
-                $permission = {
-                    createError: "Fail",
-                    createMessage: ""
-                };
-            }; 
-        });
+    const savePermissionData = async() => {
+        const url = $apiInfo.basePath + '/permissions/create';
+        let result = await axiosPost(url, permissionData);
+        if(result.error == null){
+            $permissionMessages = {
+                message: 'Create Success',
+                error: 'Error'
+            }
+            goto('../permission');
+        }else{
+            $permissionMessages = {
+                    message: '',
+                    error: result.error
+                }
+        }
     };
 </script>
 
 <div class="container">
-	<PerCreate bind:name={perData.name} bind:specialPer={perData.specialPer} on:savePer={savePerData}></PerCreate>
+	<PermissionCreate bind:name={permissionData.name} bind:specialPer={permissionData.specialPer} on:savePermission={savePermissionData}></PermissionCreate>
 </div>

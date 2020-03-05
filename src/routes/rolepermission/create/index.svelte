@@ -2,10 +2,12 @@
 	import { onMount } from 'svelte';
 	import RolePermissionCreate from '../../../components/rolepermission/create.svelte';
 	import { axiosGet, axiosPost} from '../../../util/api';
-	import * as sapper from '@sapper/app';
-
-	const roleUrl = "http://localhost:5000/roles";
-	const permissionUrl = "http://localhost:5000/permissions";
+	import { stores, goto } from '@sapper/app';
+	import { rolePermission } from '../../../stores/rolepermission/store';
+	import { apiInfo } from '../../../store.js';
+	
+	const roleUrl =  $apiInfo.basePath + "/roles";
+	const permissionUrl = $apiInfo.basePath + "/permissions";
 	let roles;
 	let permissions;
 
@@ -14,29 +16,35 @@
 		roles = roleResult.data;
 	});
 
-	let saveRolePermission = (event) => {
-		console.log(event.detail.rolePermission);
+	let saveRolePermission = async(event) => {
 		let data = event.detail.rolePermission;
-		const url = "http://localhost:5000/rolepermissions/create";
-		axiosPost(url,data).then( (data) => {
-            if(data.error == null)
-            {
-               sapper.goto("../rolepermission");
-            }else
-            {
-               
-            }; 
-        });
+		const url = $apiInfo.basePath + '/rolepermissions/create';
+        let result = await axiosPost(url, data);
+        if(result.error == null){
+            $rolePermission = {
+                message: 'Create Success',
+                error: 'Error'
+            }
+            goto('../rolepermission');
+        }else{
+            $rolePermission = {
+                    message: '',
+                    error: result.error
+                }
+        }
 	};
 
 	let permissionByRoleId = async(event) => {
 		let roleId = event.detail.selectedRole;
-		const url = "http://localhost:5000/permissions/byRoleId/"+roleId;
+		const url = $apiInfo.basePath +"/permissions/byRoleId/"+roleId;
 		let permissionResult = await axiosGet(url);
 		permissions = permissionResult.data;
 	};
 </script>
 
+{#if $rolePermission.error}
+    <h1>{ $rolePermission.error }</h1>
+{/if}
 <div class="container">
 	{#if roles}
 		<RolePermissionCreate {roles} {permissions} on:save={saveRolePermission} on:permissionByRoleId={permissionByRoleId}></RolePermissionCreate>

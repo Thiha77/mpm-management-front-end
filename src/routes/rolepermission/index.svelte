@@ -2,9 +2,11 @@
 	import { onMount } from 'svelte';
 	import RolePerIndex from '../../components/rolepermission/index.svelte';
 	import { axiosGet, axiosPost} from '../../util/api';
+	import { rolePermission } from '../../stores/rolepermission/store';
+	import { apiInfo } from '../../store.js';
 
 	let rolePermissions;
-	const url = "http://localhost:5000/rolepermissions";
+	const url = $apiInfo.basePath +"/rolepermissions";
 	onMount( async() => {
 		axiosGet(url)
 		.then((result) => {
@@ -25,7 +27,7 @@
 		};
 		if(confirm("Are you sure want to delete?"))
 		{
-			let url = "http://localhost:5000/rolepermissions/delete";
+			let url = $apiInfo.basePath +"/rolepermissions/delete";
 			axiosPost(url,data)
 			.then(
 				() => { updateTable() }
@@ -38,6 +40,9 @@
 	<title>RolePermission</title>
 </svelte:head>
 
+{#if $rolePermission.message}
+	<h1>{$rolePermission.message}</h1>
+{/if}
 {#if rolePermissions}
 <RolePerIndex {rolePermissions} on:deleteRolePermission={deleteRolePermission}></RolePerIndex>
 {/if}

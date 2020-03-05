@@ -1,23 +1,34 @@
 <script>
     import RoleEdit from '../../../components/role/edit.svelte';
-    import ApiPost from '../../../util/api.js'
-    import { editRoleData } from '../../../stores/role/store.js';
-    import * as sapper from '@sapper/app';
+    import { axiosPost } from '../../../util/api.js'
+    import { apiInfo } from '../../../store.js';
+    import { editRoleData, roleMessages } from '../../../stores/role/store.js';
+    import { goto } from '@sapper/app';
     
-   const updateRoleData = () => {
-       let editData = {
+   const updateRoleData = async() => {
+        let editData = {
            id: $editRoleData.id,
            name: $editRoleData.name,
            description: $editRoleData.description
            
-       };
-       let url = "http://localhost:5000/roles/update";
-       ApiPost(url,editData).then( (data) => {
-            if(data.error == null)
-            {
-               alert("Update Success");
-            } 
-        });
+        };
+
+        const url = $apiInfo.basePath + '/roles/update';
+        let result = await axiosPost(url, editData);
+        if(result.error == null)
+        {
+            $roleMessages = {
+                message: 'Update Success',
+                error: 'Error'
+            }
+            goto('../role');
+        }else
+        {
+            $roleMessages = {
+                message: '',
+                error: result.error
+            }
+        }
    };
 </script>
 

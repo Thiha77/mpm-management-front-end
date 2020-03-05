@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store';
 
-const role = writable({
-    createError: "",
-    createMessage: ""
+const roleMessages = writable({
+    message: '',
+    error: null
 });
 
 const editRoleData = writable({
@@ -11,4 +11,4 @@ const editRoleData = writable({
     description: ""
 });
 
-export { role, editRoleData }
+export { roleMessages, editRoleData }

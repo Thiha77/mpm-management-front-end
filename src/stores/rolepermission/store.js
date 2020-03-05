@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store';
 
 const rolePermission = writable({
-    createError: "",
-    createMessage: ""
+    message: '',
+    error: null
 });
 
 const editRolePermission = writable({

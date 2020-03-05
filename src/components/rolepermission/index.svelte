@@ -1,5 +1,19 @@
 <script>
+    import { editRolePermission } from '../../stores/rolepermission/store.js';
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
+    export let rolePermissions;
+    const destory = id => {
+        dispatch('deleteRolePermission',{id:id});
+    }
 
+    const edit = (rolePermission) => {
+        $editRolePermission = {
+            id: rolePermission.id,
+            roleId: rolePermission.roleId,
+            permissionId: rolePermission.permissionId
+        }
+    }
 </script>
 <style>
 	
@@ -18,6 +32,19 @@
             </tr>
             </thead>
             <tbody>
+                {#if rolePermissions}
+                    {#each rolePermissions as rolePermission}
+                        <tr>
+                            <td>{rolePermission.id}</td>
+                            <td>{rolePermission.Role['name']}</td>
+                            <td>{rolePermission.Permission['name']}</td>
+                            <td>
+                                <a href="rolepermission/edit" on:click={edit(rolePermission)} class="btn btn-info">Edit</a>
+                                <button on:click={destory(rolePermission.id)} class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    {/each}
+                {/if}
             </tbody>
         </table>
     </div>      

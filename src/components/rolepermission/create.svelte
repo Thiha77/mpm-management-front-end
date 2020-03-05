@@ -1,17 +1,34 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
-    import ApiGetRole from '../util/Api.svelte';
-    import ApiGetPermission from '../util/Api.svelte';
-    
+    import RoleView from './roleView.svelte';
+    import PermissionView from './permissionView.svelte';
+    export let roles;
+    export let permissions;
+
     let selectedRole;
     let selectedPermission;
-    function save()
-    {
-        // dispatchEvent('save');
-        // alert('${selectedRole.id}');
+    
+    let enabledPermission = 0;
+    let changedRole = (event) => {
+        enabledPermission = event.detail.selectedRole;
+        selectedRole = event.detail.selectedRole;
+        dispatch('permissionByRoleId',{selectedRole:selectedRole});
+    };
+
+    let changedPermission = (event) => {
+        selectedPermission = event.detail.selectedPermission;
+    };
+
+    const save = () => {
+        let selectedData = {
+        roleId : selectedRole,
+        permissionId : selectedPermission
+        };
+        dispatch("save",{
+            rolePermission: selectedData
+        });
     }
-    let roles = [ {id: 1, name: 'admin'}, {id: 2, name: 'emp'}]
 </script>
 <style>
 	
@@ -21,32 +38,16 @@
     <div class="card">
         <div class="card-body">
             <div class="form-group">
-                <label for="name">Role Name:</label>
-                <ApiGetRole url = "http://localhost:5000/roles" method="get" let:data let:loading let:error>
-                    {#if data}
-                        <select class="form-control" bind:value={selectedRole} on:change="{ () => { console.log(selectedRole) }}">
-                            {#each data as role}
-                                <option value={role.id}>{role.name}</option>
-                            {/each}
-                        </select>
-                    {/if}
-	            </ApiGetRole>
+                {#if roles}
+                    <RoleView {roles} on:changedRole={changedRole}></RoleView>
+                {/if}
             </div>
-            <!-- <div class="form-group">
-            <label for="desc">Permission Name:</label>
-                <ApiGetPermission url = "http://localhost:5000/permissions" method="get" let:data let:loading let:error>
-                    {#if data}
-                        <select class="form-control" bind:value={selectedPermission}>
-                            {#each data as permission}
-                                <option value={permission.id} selected={selectedPermission === permission.id}>{permission.name}</option>
-                            {/each}
-                        </select>
-                    {/if}
-	            </ApiGetPermission>
-            </div> -->
+            <div class="form-group">
+                <PermissionView {permissions} {enabledPermission} on:changedPermission={changedPermission}></PermissionView> 
+            </div>
         </div> 
         <div class="card-footer">
-            <button type="button" on:click{save} class="btn btn-primary">Save</button>
+            <button type="button" on:click={save} class="btn btn-primary">Save</button>
         </div>
     </div>
 </section>

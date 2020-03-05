@@ -1,13 +1,13 @@
 import { writable } from 'svelte/store';
 
-const permission = writable({
-    createError: "",
-    createMessage: ""
+const permissionMessages = writable({
+    message: '',
+    error: null
 });
 
-const editPerData = writable({
+const editPermissionData = writable({
     id: "",
     name: ""
 });
 
-export { permission, editPerData }
+export { permissionMessages, editPermissionData }

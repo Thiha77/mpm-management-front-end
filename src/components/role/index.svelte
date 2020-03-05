@@ -4,10 +4,6 @@
     export let roles;
     const dispatch = createEventDispatcher();
 
-    // let editRole = (role) => {
-    //     dispatch('editRole', role);
-    // };
-
     let deleteRole = id => {
         dispatch('deleteRole',{id:id});
     };

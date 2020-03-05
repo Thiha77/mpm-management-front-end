@@ -59,6 +59,7 @@
 		<!-- <li><a href='role' class:selected={segment === 'role'}>Role</a></li>
 		<li><a href='permission' class:selected={segment === 'permission'}>Permission</a></li>
 		<li><a href='employee' class:selected={segment === 'employee'}>Employee</a></li>
+		<li><a href="notice" class:selected={segment === 'notice'}>Notice</a></li>
 	</ul>
 </nav> -->
 <Sidebar></Sidebar>

@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { writable, readable } from 'svelte/store';
 
 const user = writable({
     createError: "",
@@ -12,4 +12,8 @@ const subNav = writable({
     subNav: false 
 })
 
-export { user, nav ,subNav}
+const apiInfo = readable({
+    basePath: "http://localhost:5000"
+})
+
+export { user, nav, apiInfo, subNav }

@@ -1,15 +1,15 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import { editPerData } from '../../stores/permission/store.js';
+    import { editPermissionData } from '../../stores/permission/store.js';
     const dispatch = createEventDispatcher();
     export let permissions;
 
-    let deletePer = id => {
-        dispatch('deletePer',{id:id});
+    let deletePermission = id => {
+        dispatch('deletePermission',{id:id});
     };
 
-    let editPer = (permission) => {
-        $editPerData = {
+    let editPermission = (permission) => {
+        $editPermissionData = {
             id: permission.id,
             name: permission.name
         };
@@ -40,8 +40,8 @@
                         <td>{permission.name}</td>
                         <td>
                             <!-- <button class="btn btn-info">Edit</button> -->
-                            <a href="permission/edit" on:click={editPer(permission)} class="btn btn-info">Edit</a>
-                            <button on:click={deletePer(permission.id)} class="btn btn-danger">Delete</button>
+                            <a href="permission/edit" on:click={editPermission(permission)} class="btn btn-info">Edit</a>
+                            <button on:click={deletePermission(permission.id)} class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                 {/each}

@@ -4,8 +4,8 @@
     export let name;
     export let specialPer;
 
-    let savePer = () => {
-        dispatch('savePer');
+    let savePermission = () => {
+        dispatch('savePermission');
     };
 </script>
 <style>
@@ -25,7 +25,7 @@
             </div>
         </div> 
         <div class="card-footer">
-            <button type="button" on:click|preventDefault={savePer} class="btn btn-primary">Save</button>
+            <button type="button" on:click|preventDefault={savePermission} class="btn btn-primary">Save</button>
         </div>
     </div>
 </section>

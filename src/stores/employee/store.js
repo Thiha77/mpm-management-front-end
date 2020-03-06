@@ -6,6 +6,7 @@ const employee =writable({
 });
 
 const empEditemployee=writable({
+    
     id:"",
     name: "",
     alias: "",
@@ -23,8 +24,14 @@ const empEditemployee=writable({
     basicSalary: "",
     nationality: "",
     race: "",
+    photo:"",
     maritalStatus: "single",
     employeeStatus: "active"
 });
+const employeeMessages = writable({
+    message: '',
+    error: null
+});
 
-export {employee,empEditemployee }
+
+export {employee,empEditemployee,employeeMessages }

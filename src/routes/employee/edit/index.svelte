@@ -1,35 +1,30 @@
 <script>
     import Api from '../../../components/util/Api.svelte';
-    import ApiPost from '../../../util/api.js';
+    import { axiosPost } from '../../../util/api';
     import EmpUpdate from '../../../components/employees/EditEmployee.svelte';
-    import { empEditemployee } from "../../../stores/employee/store.js";
+    import { empEditemployee,employeeMessages } from "../../../stores/employee/store";
+    import { apiInfo } from '../../../store.js';
+    import { goto } from '@sapper/app';
 
-     const UpdateData = (event) => {
-         let EmpEdit ={
-            id: $empEditemployee.id,
-            name:$empEditemployee.name,
-            alias: $empEditemployee.alias,
-            phoneNo: $empEditemployee.phoneNo,
-            nrcNo: $empEditemployee.nrcNo,
-            personalEmail: $empEditemployee.personalEmail,
-            officialEmail: $empEditemployee.officialEmail,
-            township: $empEditemployee.township,
-            city: $empEditemployee.city,
-            address: $empEditemployee.address,
-            postalCode: $empEditemployee.postalCode,
-            dob: $empEditemployee.dob,
-            gender: $empEditemployee.gender,
-            position:$empEditemployee.position,
-            basicSalary:$empEditemployee.basicSalary,
-            nationality: $empEditemployee.nationality,
-            race:$empEditemployee.race,
-            maritalStatus: $empEditemployee.maritalStatus,
-            employeeStatus: $empEditemployee.employeeStatus
-        };
-         let url = "http://localhost:5000/employees/update";
-        ApiPost(url,EmpEdit);
-     }
+    const UpdateData = async(event) => {
+        const url = $apiInfo.basePath + '/employees/update';
+        let employee = event.detail.emp;
+       
+        let result = await axiosPost(url, employee);
+        if(result.error == null){
+            $employeeMessages = {
+                message: 'Update Success',
+                error: 'Error'
+            }
+            goto('../employee');
+        }else{
+            $employeeMessages = {
+                    message: '',
+                    error: result.error
+                }
+        }
+    }
 </script>
 
 
-<EmpUpdate on:update={UpdateData}></EmpUpdate>
+<EmpUpdate employee={$empEditemployee} on:update={UpdateData}></EmpUpdate>

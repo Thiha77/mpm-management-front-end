@@ -25,37 +25,40 @@ let deleteUser = id => {
         <a class="btn btn-success float-right" href='user/create'>Add New User</a>
     </div>
     <h1>{$user.createMessage}</h1>
-    <table class="table">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">User ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">User Name</th>
-                <th scope="col">User Password</th>
-                <th scope="col">Employee Name</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {#if users.length === 0}
-                <tr>No Attendance Record Found!</tr>
-            {:else}
-            {#each users as user}
+    <div class="table-responsive-sm ">
+        <table class="table">
+            <thead class="thead-light">
                 <tr>
-                    <td>{user.id}</td>
-                    <td>{user.name}</td>
-                    <td>{user.userName}</td>
-                    <td>{user.password}</td>
-                    <td>{user.Employee['name']}</td>
-                    <td>
-                        <!-- <a class="btn btn-info" href='user/edit'>Edit</a> -->
-                        <a class="btn btn-info" href='user/edit' on:click={editUser(user)}>Edit</a>
-                        <button class="btn btn-danger" on:click={deleteUser(user.id)}>Delete</button>
-                    </td>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">User Password</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Action</th>
                 </tr>
-            {/each}
-            {/if}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {#if users.length === 0}
+                    <tr>No Attendance Record Found!</tr>
+                {:else}
+                {#each users as user}
+                    <tr>
+                        <td>{user.id}</td>
+                        <td>{user.name}</td>
+                        <td>{user.userName}</td>
+                        <td>{user.password}</td>
+                        <td>{user.Employee['name']}</td>
+                        <td>
+                            <!-- <a class="btn btn-info" href='user/edit'>Edit</a> -->
+                            <a class="btn btn-info" href='user/edit' on:click={editUser(user)}>Edit</a>
+                            <button class="btn btn-danger" on:click={deleteUser(user.id)}>Delete</button>
+                        </td>
+                    </tr>
+                {/each}
+                {/if}
+            </tbody>
+        </table>
+    </div><!-- .table-responsive-sm    -->
+    
         
 </section>

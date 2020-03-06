@@ -67,6 +67,12 @@ import { nav,subNav } from '../../../store';
                 </a>
             </li>
             <li>
+                <a href="rolepermission">
+                    <i class="fas fa-user-secret"></i>
+                    Role Permission
+                </a>
+            </li>
+            <li>
                 <a href="employee">
                     <i class="fas fa-image"></i>
                     Employee

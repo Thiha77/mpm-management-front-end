@@ -103,7 +103,7 @@ table.table td a {
                  {:else}
                  {#each employees as employee}   
                     <tr>
-                        <td><a href="test"><img src="great-success.png"  class="avatar img-thumbnail employee-photo" alt="background image"/>{employee.name}</td>
+                        <td><a href="employee/view" ><img src="great-success.png"  class="avatar img-thumbnail employee-photo" alt="background image"/>{employee.name}</td>
                         <td>{employee.phoneNo}</td>
                         <td>{employee.officialEmail}</td>
                         <td>{employee.address}</td>

@@ -4,7 +4,6 @@ import {axiosPost} from '../../../util/api.js';
 import { employee } from  "../../../stores/employee/store.js";
 import * as sapper from '@sapper/app';
 import EmpCreate from '../../../components/employees/CreateEmployee.svelte';
-
         const CreateData = (event) => {
             let url = "http://localhost:5000/employees/create";
             const body =event.detail.emp;            

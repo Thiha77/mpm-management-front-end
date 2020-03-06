@@ -1,6 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import { editRoleData } from '../../stores/role/store.js';
+    import RoleSearch from './search.svelte';
     export let roles;
     const dispatch = createEventDispatcher();
 
@@ -16,14 +17,20 @@
         };
     };
 
+    const searchRole = (event) => {
+        let search = event.detail.search;
+        dispatch('searchRoleData',{search});
+    };
+
 </script>
 <style>
 	
 </style>
 <section>
     <h2>Role List</h2>
-    <a class="btn btn-success" href='role/create' style="float:right;">Add New Role</a>
-    <div class="table-responsive" style="margin-top:60px;">
+    <a class="btn btn-success" href='role/create' style="float:right;margin-bottom: 15px;">Add New Role</a>
+    <RoleSearch on:searchRole={searchRole}></RoleSearch>
+    <div class="table-responsive" style="margin-top:30px;">
         <table class="table table-bordered">
             <thead>                                     
             <tr>

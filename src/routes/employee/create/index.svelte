@@ -1,14 +1,13 @@
 <script>
 import Api from '../../../components/util/Api.svelte';
-import ApiPost from '../../../util/api.js';
+import {axiosPost} from '../../../util/api.js';
 import { employee } from  "../../../stores/employee/store.js";
 import * as sapper from '@sapper/app';
 import EmpCreate from '../../../components/employees/CreateEmployee.svelte';
-
         const CreateData = (event) => {
             let url = "http://localhost:5000/employees/create";
-            const body =event.detail.emp;
-            ApiPost(url,body).then((data)=> {
+            const body =event.detail.emp;            
+            axiosPost(url,body).then((data)=> {
                 if(data.error ==null){
                     $employee = {
                     createError: "",
@@ -23,7 +22,8 @@ import EmpCreate from '../../../components/employees/CreateEmployee.svelte';
                 };
                 }
             });
-        };        
+        }; 
+             
 </script>
 <!-- <Api></Api> -->
 <!-- <EmpCreate on:create={CreateData} bind:name={empData.name} bind:alias={empData.alias} bind:phoneNo={empData.phoneNo} bind:nrcNo={empData.nrcNo} bind:personalEmail={empData.personalEmail} bind:officialEmail={empData.officialEmail} bind:township={empData.township} bind:city={empData.city} bind:address={empData.address} bind:postalCode={empData.postalCode} 

@@ -24,7 +24,7 @@ let deleteUser = id => {
         <!-- <button class="btn btn-primary float-right" on:click={addUser}>New User</button> -->
         <a class="btn btn-success float-right" href='user/create'>Add New User</a>
     </div>
-    <h1>{$user.createMessage}</h1>
+    <h1>{$user.message}</h1>
     <div class="table-responsive-sm ">
         <table class="table">
             <thead class="thead-light">
@@ -50,8 +50,8 @@ let deleteUser = id => {
                         <td>{user.Employee['name']}</td>
                         <td>
                             <!-- <a class="btn btn-info" href='user/edit'>Edit</a> -->
-                            <a class="btn btn-info" href='user/edit' on:click={editUser(user)}>Edit</a>
-                            <button class="btn btn-danger" on:click={deleteUser(user.id)}>Delete</button>
+                            <a class="btn btn-info" href='user/edit' on:click={editUser(user)} title="Edit"><i class="fas fa-pen"></i></a>
+                            <button class="btn btn-danger" on:click={deleteUser(user.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
                         </td>
                     </tr>
                 {/each}

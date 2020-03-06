@@ -6,6 +6,7 @@ const employee =writable({
 });
 
 const empEditemployee=writable({
+    
     id:"",
     name: "",
     alias: "",

@@ -53,7 +53,7 @@ const dispatch = createEventDispatcher();
                <strong class="card-title">Postal Code: </strong>
                <input type="text" class="form-control" id="text" placeholder="Enter Township" bind:value={employee.postalCode} />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 button-container">
                <strong class="card-title">Birthday : </strong>
                <input type="date" class="form-control"  bind:value={employee.dob}>
             </div>

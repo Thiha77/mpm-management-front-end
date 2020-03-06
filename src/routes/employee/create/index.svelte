@@ -7,7 +7,6 @@ import EmpCreate from '../../../components/employees/CreateEmployee.svelte';
         const CreateData = (event) => {
             let url = "http://localhost:5000/employees/create";
             const body =event.detail.emp;            
-            console.log("img",body);
             axiosPost(url,body).then((data)=> {
                 if(data.error ==null){
                     $employee = {

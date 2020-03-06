@@ -6,11 +6,11 @@ const dispatch = createEventDispatcher();
 let src ;
 //let url;
 
-function CreateData() {
+const CreateData = () =>{
     dispatch('create', { emp : employee});
 
 }
- function uploadImage (e){ 
+ const uploadImage= (e)=>{ 
     src =URL.createObjectURL(e.target.files[0]);
     employee.photo=e.target.files[0];
     console.log("test",employee.photo);
@@ -18,8 +18,7 @@ function CreateData() {
 
 
 
-//export let employee;
-//let gender ='male';
+
  let employee = {
             name: "",
             alias: "",

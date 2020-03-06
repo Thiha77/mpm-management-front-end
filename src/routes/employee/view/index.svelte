@@ -1,18 +1,9 @@
-<script>
-    import Api from '../../../components/util/Api.svelte';
-    import DetailEmpList from '../../../components/employees/DetailEmpList.svelte';
-    //import EmpCreate from '../../components/employees/CreateEmployee.svelte';
+<script>   
+    import DetailList from '../../../components/employees/DetailEmpList.svelte';
+    import { empEditemployee } from "../../../stores/employee/store"; 
+    
+   
 </script>
 
 
-
- 
-<Api url="http://localhost:5000/employees" method="get" let:data let:loading let:error >
-   {#if data}
-    <DetailEmpList employees={data}></DetailEmpList>
-   {/if}
-</Api>
-
-
-<style></style>
-
+<DetailList employee={$empEditemployee}></DetailList>

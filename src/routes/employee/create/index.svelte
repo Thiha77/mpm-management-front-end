@@ -23,7 +23,8 @@ import EmpCreate from '../../../components/employees/CreateEmployee.svelte';
                 };
                 }
             });
-        };        
+        }; 
+             
 </script>
 <!-- <Api></Api> -->
 <!-- <EmpCreate on:create={CreateData} bind:name={empData.name} bind:alias={empData.alias} bind:phoneNo={empData.phoneNo} bind:nrcNo={empData.nrcNo} bind:personalEmail={empData.personalEmail} bind:officialEmail={empData.officialEmail} bind:township={empData.township} bind:city={empData.city} bind:address={empData.address} bind:postalCode={empData.postalCode} 

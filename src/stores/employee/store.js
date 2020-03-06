@@ -27,5 +27,10 @@ const empEditemployee=writable({
     maritalStatus: "single",
     employeeStatus: "active"
 });
+const employeeMessages = writable({
+    message: '',
+    error: null
+});
 
-export {employee,empEditemployee }
+
+export {employee,empEditemployee,employeeMessages }

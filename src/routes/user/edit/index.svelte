@@ -1,9 +1,13 @@
-<script>    
+<script>   
+    import Api from '../../../components/util/Api.svelte';
     import EditUser from '../../../components/user/EditUser.svelte';
     import { apiInfo } from '../../../store.js';
     import { axiosPost }from '../../../util/api.js';
     import { user,userEdit } from '../../../stores/user/store.js';
     import { goto } from '@sapper/app';
+
+    let urlEmpData = $apiInfo.basePath + '/employees/'+$userEdit.employeeId;
+    const method = 'get';
 
     const editUserData = async() =>{
         let userEdit ={
@@ -39,4 +43,8 @@
 <UserList users={data}></UserList>
 {/if}
 </Api> -->
-<EditUser on:update={editUserData}></EditUser>
+<Api url={urlEmpData} {method} let:data let:loading let:error>
+{#if data}
+   <EditUser employees={data} on:update={editUserData}></EditUser>
+{/if}
+</Api>

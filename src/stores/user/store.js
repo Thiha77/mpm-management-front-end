@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store';
 
 const user = writable({
-    createError: "",
-    createMessage: ""
+    message: '',
+    error: null
 });
 
 const userEdit = writable({

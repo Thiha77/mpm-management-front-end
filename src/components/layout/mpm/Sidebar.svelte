@@ -74,7 +74,7 @@ import { nav,subNav } from '../../../store';
             </li>
             <li>
                 <a href="employee">
-                    <i class="fas fa-image"></i>
+                    <i class="fas fa-id-card"></i>
                     Employee
                 </a>
             </li>

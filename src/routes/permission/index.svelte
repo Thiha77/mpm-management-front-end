@@ -1,5 +1,5 @@
 <script>
-	import PerIndex from '../../components/permission/index.svelte';
+	import PermissionIndex from '../../components/permission/index.svelte';
 	import ApiGet from '../../components/util/Api.svelte';
 	import { permissionMessages } from '../../stores/permission/store.js';
 	import { axiosPost } from '../../util/api.js';
@@ -18,6 +18,12 @@
         }
 	};
 
+	const searchPermissionData = async(event) => {
+		let text = event.detail.search.text;
+		url = $apiInfo.basePath +"/permissions/search/"+text;
+		apiInstance.refresh();
+	};
+
 </script>
 
 <svelte:head>
@@ -28,7 +34,7 @@
 	<h1>{$permissionMessages.message}</h1>
     <ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
 		{#if data}
-			<PerIndex permissions={data} on:deletePermission={deletePermission}></PerIndex>
+			<PermissionIndex permissions={data} on:deletePermission={deletePermission} on:searchPermission={searchPermissionData}></PermissionIndex>
 		{/if}
 	</ApiGet>
 </div>

@@ -8,7 +8,6 @@
 	let url = $apiInfo.basePath + '/roles';
 	const method = 'get';
 	let apiInstance;
-	let searchRoleResult;
 	
 	const deleteRoleData = async(event) => {
 		let id = event.detail.id;

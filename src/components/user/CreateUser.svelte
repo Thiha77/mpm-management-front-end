@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group">
                     <label for="title">User Name</label>
-                    <input type="text" bind:value={userData.userName} class="form-control" placeholder="User Name" required/>
+                    <input type="text" bind:value={userData.userName} required class="form-control" placeholder="User Name" />
                 </div>
                 <div class="form-group">
                     <label for="title">Password</label>
-                    <input type="password" bind:value={userData.password} class="form-control" placeholder="Password" required/>
+                    <input type="password" bind:value={userData.password} required class="form-control" placeholder="Password"/>
                 </div>
                 <div class="form-group">
                     <label for="name">Employee Name:</label>

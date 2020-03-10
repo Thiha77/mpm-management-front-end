@@ -2,6 +2,17 @@
 import { nav } from '../../../store';
 // export let sidebar_show = false;
 // export let sidebarCollapse;
+import { stores, goto } from '@sapper/app';
+const { session } = stores();
+
+const logout = () => {
+    $session.user = null;
+    if(window && window.localStorage){
+        localStorage.clear();
+    }
+    goto('/login');
+}
+
 </script>
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -24,7 +35,7 @@ import { nav } from '../../../store';
                     <a class="nav-link" href="1">Page</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="1">Page</a>
+                    <button class="nav-link" on:click={logout}>Logout</button>
                 </li>
             </ul>
         </div><!-- .navbar-collapse -->

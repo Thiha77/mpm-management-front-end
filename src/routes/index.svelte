@@ -1,12 +1,16 @@
 <script>
-import { user } from '../store.js'
+import { stores } from '@sapper/app';
+const { session } = stores();
 </script>
 <svelte:head>
 	<title>Sapper project template</title>
 </svelte:head>
 
 <h1>Great success!</h1>
-<h2>{$user.name}</h2>
+{#if $session.user}
+	<h2>{$session.user.name}</h2>
+{/if}
+
 
 <figure>
 	<img alt='Borat' src='great-success.png'>

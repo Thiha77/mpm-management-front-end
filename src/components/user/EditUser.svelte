@@ -40,9 +40,9 @@
                             {/each}
                         </select>
                     {/if}
-                </div>
-                
-                <button type="submit" class="btn btn-primary" on:click|preventDefault={updateUser}>Update</button>     
+                </div>    
+                <button type="submit" class="btn btn-success" on:click|preventDefault={updateUser}>Update</button>
+                <a href="user" class="btn btn-outline-warning">Cancel</a>   
             </form>
         </div>
     </div>

@@ -1,12 +1,13 @@
 <script>
     import { createEventDispatcher } from "svelte";
+    import Api from '../../components/util/Api.svelte';
     const dispatch = createEventDispatcher();
     // export let name;
     // export let userName;
     // export let password;
     export let employees;
+    // export let roles;
     let selectedEmp;
-
      let userData ={
         name:"",
         userName:"",
@@ -45,7 +46,19 @@
                         </select>
                     {/if}
                 </div>
-                <button type="submit" class="btn btn-primary" on:click|preventDefault={addUser}>Add User</button>     
+                <!-- <div class="form-group">
+                    <label for="name">Role Name:</label>
+                    {#if roles}
+                        <select class="form-control">
+                            <option value="0">Please Select Roles</option>
+                            {#each roles as role}
+                                <option value={role.id}>{role.name}</option>
+                            {/each}
+                        </select>
+                    {/if}
+                </div> -->
+                <button type="submit" class="btn btn-primary" on:click|preventDefault={addUser}>Add User</button>
+                <a href="employee" class="btn btn-outline-warning">Cancel</a>     
             </form>
         </div>
     </div>

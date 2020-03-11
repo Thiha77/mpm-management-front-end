@@ -7,6 +7,7 @@
     import { apiInfo } from '../../../store.js';
     let url = $apiInfo.basePath + '/users';
     let urlEmpData = $apiInfo.basePath + '/users/getEmpData';
+    let urlRoleData = $apiInfo.basePath + '/roles/';
     const method = 'get';
 
     const addUserData = async(event) =>{

@@ -28,7 +28,7 @@ let deleteUser = id => {
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6"><h3 class="float-left">User List</h3></div>
-                                <div class="col-sm-6"><a class="btn btn-success float-right" href='user/create'><i class="fas fa-plus-circle"></i> Add New User</a></div>
+                                <div class="col-sm-6"><a class="btn btn-info float-right" href='user/create'><i class="fas fa-plus-circle"></i> Add New User</a></div>
                             </div>
                         </div>
                         <table class="table table-hover">

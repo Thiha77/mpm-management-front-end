@@ -15,7 +15,8 @@
             name: $userEdit.name,
             userName: $userEdit.userName,
             password: $userEdit.password,
-            employeeId: $userEdit.employeeId
+            employeeId: $userEdit.employeeId,
+            roleId: $userEdit.roleId
         };
 
         const url = $apiInfo.basePath + '/users/update';

@@ -1,10 +1,21 @@
 <script>
 import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher();
+
     export let employee;
     const updatebtn = () => {
         dispatch('update', { emp: employee})
     }
+    const fileSelected= (e)=>{ 
+      //   employee.photo = e.target.files[0];
+      //   console.log("testing",employee.photo)
+      src =URL.createObjectURL(e.target.files[0]);
+      console.log("testing",src);
+      //employee.photo=e.target.files[0]['name'];      
+ }
+ 
+ 
+let src;
 </script>
 <style>
 </style>
@@ -89,9 +100,18 @@ const dispatch = createEventDispatcher();
                <strong class="card-title">Race: </strong>
                <input type="text" class="form-control" id="text" placeholder="Enter Race" bind:value={employee.race} />
             </div>  
-             <div class="col-md-12 pt-3">
-              <input type="file" accept="image/*"> 
-            </div>                      
+             <!-- <div class="col-md-12 pt-3">
+              <input type="file" accept="image/*" bind:value={employee.photo}> 
+              <img  alt="image">
+            </div>                       -->
+             <form>           
+               <div class="col-md-6 pt-3">
+                  <input type="file" id="file" accept="image/*" on:change={fileSelected}> 
+               </div>            
+               <div class="col-md-6 pt-3">                
+                     <img   {src} alt="no image"  width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
+               </div> 
+            </form> 
                <div class="col-md-12 pt-3">
                   <button type="button" class="btn btn-outline-success" on:click|preventDefault={updatebtn} >Update</button>
                   <a href="employee" class="btn btn-outline-warning">Cancel</a>

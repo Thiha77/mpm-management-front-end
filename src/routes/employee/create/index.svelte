@@ -3,30 +3,24 @@ import Api from '../../../components/util/Api.svelte';
 import {axiosPost} from '../../../util/api.js';
 import { employee } from  "../../../stores/employee/store.js";
 import * as sapper from '@sapper/app';
-import EmpCreate from '../../../components/employees/CreateEmployee.svelte';
-        const CreateData = (event) => {
-            let url = "http://localhost:5000/employees/create";
-            const body =event.detail.emp;            
-            axiosPost(url,body).then((data)=> {
-                if(data.error ==null){
-                    $employee = {
-                    createError: "",
-                    createMessage: "Success"
-                };
-                sapper.goto("../employee");
-                }else 
-                {
-                    $employee = {
-                    createError: "Fail",
-                    createMessage: ""
-                };
-                }
-            });
+import { apiInfo } from '../../../store.js';
+import EmpCreate from '../../../components/employees/createEmployee.svelte';
+        const CreateData = async(event) => {
+            let myImage = event.detail.files[0];
+            const url = $apiInfo.basePath + '/employees/create';
+            const urlImage =$apiInfo.basePath + '/upload/save';
+            const body =event.detail.emp;
+            let dataImage = new FormData();
+            dataImage.append('path', 'employee/images');
+            dataImage.append('Image', myImage);            
+            const response = await Promise.all ([
+                axiosPost(url,body),
+                axiosPost(urlImage, dataImage)
+                
+            ]);
+            sapper.goto("../employee");
+                            
         }; 
              
 </script>
-<!-- <Api></Api> -->
-<!-- <EmpCreate on:create={CreateData} bind:name={empData.name} bind:alias={empData.alias} bind:phoneNo={empData.phoneNo} bind:nrcNo={empData.nrcNo} bind:personalEmail={empData.personalEmail} bind:officialEmail={empData.officialEmail} bind:township={empData.township} bind:city={empData.city} bind:address={empData.address} bind:postalCode={empData.postalCode} 
-    bind:dob={empData.dob} bind:gender={empData.gender} bind:position={empData.position} bind:basicSalary={empData.basicSalary} 
-    bind:nationality={empData.nationality} bind:race={empData.race} bind:maritalStatus={empData.maritalStatus} bind:employeeStatus={empData.employeeStatus}></EmpCreate> -->
 <EmpCreate on:create={CreateData}></EmpCreate>

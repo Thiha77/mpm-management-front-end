@@ -1,8 +1,8 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
-    import RoleView from './roleView.svelte';
-    import PermissionView from './permissionView.svelte';
+    import RoleSelect from '../role/roleSelect.svelte';
+    import PermissionSelect from './permissionView.svelte';
     export let roles;
     export let permissions;
 
@@ -39,11 +39,11 @@
         <div class="card-body">
             <div class="form-group">
                 {#if roles}
-                    <RoleView {roles} on:changedRole={changedRole}></RoleView>
+                    <RoleSelect {roles} on:changedRole={changedRole}></RoleSelect>
                 {/if}
             </div>
             <div class="form-group">
-                <PermissionView {permissions} {enabledPermission} on:changedPermission={changedPermission}></PermissionView> 
+                <PermissionSelect {permissions} {enabledPermission} on:changedPermission={changedPermission}></PermissionSelect> 
             </div>
         </div> 
         <div class="card-footer">

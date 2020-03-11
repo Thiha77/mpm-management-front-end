@@ -1,6 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import { editPermissionData } from '../../stores/permission/store.js';
+    import PermisisonSearch from './search.svelte';
     const dispatch = createEventDispatcher();
     export let permissions;
 
@@ -14,14 +15,20 @@
             name: permission.name
         };
     };
+
+    const searchPermission = (event) => {
+        let search = event.detail.search;
+        dispatch('searchPermission',{search});
+    };
 </script>
 <style>
 	
 </style>
 <section>
     <h2>Permission List</h2>
-    <a class="btn btn-success" href='permission/create' style="float:right;">Add New Permission</a>
-    <div class="table-responsive" style="margin-top:60px;">
+    <a class="btn btn-success" href='permission/create' style="float:right;margin-bottom: 15px;">Add New Permission</a>
+    <PermisisonSearch on:searchPermission={searchPermission}></PermisisonSearch>
+    <div class="table-responsive" style="margin-top:30px;">
         <table class="table table-bordered">
             <thead>                                     
             <tr>

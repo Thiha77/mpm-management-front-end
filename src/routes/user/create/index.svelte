@@ -1,41 +1,55 @@
 <script>    
+    import { onMount } from 'svelte';
+    import Api from '../../../components/util/Api.svelte';
     import CreateUser from '../../../components/user/CreateUser.svelte';
-    import ApiPost from '../../../util/api.js';
+    import { axiosGet,axiosPost } from '../../../util/api.js';
     import { user } from '../../../stores/user/store.js';
-    import * as sapper from '@sapper/app';
-
-    let userData ={
-        name:"",
-        userName:"",
-        password:"",
-        employeeId:""
-    };
-
-    const addUserData = () =>{
-        let url = "http://localhost:5000/users/create";
-        ApiPost(url,userData).then( (data) => {
-            if(data.error == null)
-            {
-                $user = {
-                    createError: "",
-                    createMessage: "Success"
-                };
-                sapper.goto("../user");
-            }else
-            {
-                $user = {
-                    createError: "Fail",
-                    createMessage: ""
-                };
-            }; 
-        });
-        
+    import { stores, goto } from '@sapper/app';
+    import { apiInfo } from '../../../store.js';
+    let url = $apiInfo.basePath + '/users';
+    let urlEmpData = $apiInfo.basePath + '/users/getEmpData';
+    let urlRoleData = $apiInfo.basePath + '/roles/';
+    const method = 'get';
+    let roles;
+    onMount( async() => {
+		let roleResult = await axiosGet(urlRoleData);
+		roles = roleResult.data;
+    });
+    
+    const addUserData = async(event) =>{
+        // console.log(event.detail.userData.selectedRoleId);
+        // let name = event.detail.userData.name;
+        // let userName = event.detail.userData.userName;
+        // let password = event.detail.userData.password;
+        // let employeeId = event.detail.userData.selectedEmp;
+        // let roleId = event.detail.userData.selectedRoleId;
+        // console.log("roleId"+roleId);
+        // let userData = {
+        //     name:name,
+        //     userName:userName,
+        //     password:password,
+        //     employeeId:employeeId,
+        //     roleId:roleId
+        // };
+        // console.log(event.detail.userData);
+        const url = $apiInfo.basePath + '/users/create';
+        let result = await axiosPost(url, event.detail.userData);
+        if(result.error == null){
+            $user = {
+                message: 'Create Success',
+                error: 'Error'
+            }
+            goto('../user');
+        }else{
+            $user = {
+                message: '',
+                error: result.error
+            }
+        }
     };
 </script>
-<!-- 
-<Api url="http://localhost:5000/users" method="get" let:data let:loading let:error >
+<Api url={urlEmpData} {method} let:data let:loading let:error>
 {#if data}
-<UserList users={data}></UserList>
+    <CreateUser {roles} employees={data} on:addUser={addUserData}></CreateUser>
 {/if}
-</Api> -->
-<CreateUser on:addUser={addUserData} bind:name={userData.name} bind:userName={userData.userName} bind:password={userData.password} bind:employeeId={userData.employeeId}></CreateUser>
+</Api>

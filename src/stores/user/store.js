@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store';
 
 const user = writable({
-    createError: "",
-    createMessage: ""
+    message: '',
+    error: null
 });
 
 const userEdit = writable({
@@ -10,7 +10,8 @@ const userEdit = writable({
     name: "",
     userName: "",
     password: "",
-    employeeId: ""
+    employeeId: "",
+    roleId: null
 });
 
 export { user, userEdit }

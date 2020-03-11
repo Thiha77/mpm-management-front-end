@@ -1,12 +1,16 @@
 <script>
 	import { onMount } from 'svelte';
-	import RolePerIndex from '../../components/rolepermission/index.svelte';
+	import RolePermissionIndex from '../../components/rolepermission/index.svelte';
 	import { axiosGet, axiosPost} from '../../util/api';
 	import { rolePermission } from '../../stores/rolepermission/store';
 	import { apiInfo } from '../../store.js';
 
+	let url = $apiInfo.basePath + '/rolepermissions';
+	const method = 'get';
+	let apiInstance;
+
 	let rolePermissions;
-	const url = $apiInfo.basePath +"/rolepermissions";
+
 	onMount( async() => {
 		axiosGet(url)
 		.then((result) => {
@@ -34,6 +38,15 @@
 			);	
 		}
 	};
+
+	const searchRolePermissionData = async(event) => {
+		let text = event.detail.search.text;
+		url = $apiInfo.basePath +"/rolepermissions/search/"+text;
+		axiosGet(url)
+		.then((result) => {
+			rolePermissions = result.data;
+		});
+	};
 </script>
 
 <svelte:head>
@@ -44,5 +57,5 @@
 	<h1>{$rolePermission.message}</h1>
 {/if}
 {#if rolePermissions}
-<RolePerIndex {rolePermissions} on:deleteRolePermission={deleteRolePermission}></RolePerIndex>
+<RolePermissionIndex {rolePermissions} on:deleteRolePermission={deleteRolePermission} on:searchRolePermissionData={searchRolePermissionData}></RolePermissionIndex>
 {/if}

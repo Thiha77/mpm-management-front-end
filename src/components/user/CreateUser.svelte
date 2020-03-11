@@ -1,30 +1,52 @@
 <script>
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher();
-    export let name;
-    export let userName;
-    export let password;
-    export let employeeId;
-     let addUser = () => {
-        dispatch('addUser');
+    // export let name;
+    // export let userName;
+    // export let password;
+    export let employees;
+    let selectedEmp;
+
+     let userData ={
+        name:"",
+        userName:"",
+        password:"",
+        selectedEmp:selectedEmp
+    };
+
+    const addUser = ()=> {
+        dispatch("addUser",{userData:userData});
     };
 </script>
-<form>
-    <div class="form-group">
-        <label for="title">Name</label>
-        <input class="form-control" bind:value={name} required type="text">
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form>
+                <div class="form-group">
+                    <label for="title">Name</label>
+                    <input class="form-control" bind:value={userData.name} required type="text" placeholder="Title" />
+                </div>
+                <div class="form-group">
+                    <label for="title">User Name</label>
+                    <input type="text" bind:value={userData.userName} required class="form-control" placeholder="User Name" />
+                </div>
+                <div class="form-group">
+                    <label for="title">Password</label>
+                    <input type="password" bind:value={userData.password} required class="form-control" placeholder="Password"/>
+                </div>
+                <div class="form-group">
+                    <label for="name">Employee Name:</label>
+                    {#if employees}
+                        <select class="form-control" bind:value={userData.selectedEmp}>
+                            <option value="0">Please Select Employee</option>
+                            {#each employees as employee}
+                                <option value={employee.id}>{employee.name}</option>
+                            {/each}
+                        </select>
+                    {/if}
+                </div>
+                <button type="submit" class="btn btn-primary" on:click|preventDefault={addUser}>Add User</button>     
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="title">User Name</label>
-        <input type="text" bind:value={userName} class="form-control" placeholder="Title" />
-    </div>
-    <div class="form-group">
-        <label for="title">Password</label>
-        <input type="password" bind:value={password} class="form-control" placeholder="Title" />
-    </div>
-    <div class="form-group">
-        <label for="title">Employee Id</label>
-        <input type="text" bind:value={employeeId} class="form-control" placeholder="Title" />
-    </div>
-    <button type="submit" class="btn btn-primary" on:click|preventDefault={addUser}>Add User</button>     
-</form>
+</div>

@@ -2,7 +2,7 @@
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
     import RoleSelect from '../role/roleSelect.svelte';
-    import PermissionSelect from './permissionView.svelte';
+    import PermissionSelect from '../permission/permissionSelect.svelte';
     export let roles;
     export let permissions;
 

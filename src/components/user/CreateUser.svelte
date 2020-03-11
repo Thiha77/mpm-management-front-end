@@ -1,22 +1,29 @@
 <script>
     import { createEventDispatcher } from "svelte";
-    import Api from '../../components/util/Api.svelte';
+    import RoleSelect from '../role/roleSelect.svelte';
     const dispatch = createEventDispatcher();
     // export let name;
     // export let userName;
     // export let password;
     export let employees;
-    // export let roles;
+    export let roles;
     let selectedEmp;
-     let userData ={
+    let selectedRoleId;
+    const getChangedRoleId = (event) => {
+        userData.roleId = event.detail.selectedRole;
+        console.log(event.detail.selectedRole);
+    };
+
+    let userData ={
         name:"",
         userName:"",
         password:"",
-        selectedEmp:selectedEmp
+        employeeId: null,
+        roleId:null
     };
 
     const addUser = ()=> {
-        dispatch("addUser",{userData:userData});
+        dispatch("addUser", {userData: userData});
     };
 </script>
 <div class="container">
@@ -38,7 +45,7 @@
                 <div class="form-group">
                     <label for="name">Employee Name:</label>
                     {#if employees}
-                        <select class="form-control" bind:value={userData.selectedEmp}>
+                        <select class="form-control" bind:value={userData.employeeId}>
                             <option value="0">Please Select Employee</option>
                             {#each employees as employee}
                                 <option value={employee.id}>{employee.name}</option>
@@ -46,17 +53,9 @@
                         </select>
                     {/if}
                 </div>
-                <!-- <div class="form-group">
-                    <label for="name">Role Name:</label>
-                    {#if roles}
-                        <select class="form-control">
-                            <option value="0">Please Select Roles</option>
-                            {#each roles as role}
-                                <option value={role.id}>{role.name}</option>
-                            {/each}
-                        </select>
-                    {/if}
-                </div> -->
+                <div class="form-group">
+                    <RoleSelect {roles} on:changedRole={getChangedRoleId}></RoleSelect>
+                </div>
                 <button type="submit" class="btn btn-primary" on:click|preventDefault={addUser}>Add User</button>
                 <a href="employee" class="btn btn-outline-warning">Cancel</a>     
             </form>

@@ -1,11 +1,17 @@
 <script>
     import { createEventDispatcher } from "svelte";
-    const dispatch = createEventDispatcher();
+    import Api from '../../components/util/Api.svelte';
     import { userEdit } from '../../stores/user/store.js';
-    
+    import RoleSelect from '../role/roleSelect.svelte';
+    import { apiInfo } from '../../store.js';
+    const dispatch = createEventDispatcher();
+    let urlRoleData = $apiInfo.basePath + '/roles/';
     export let employees;
     function updateUser(){
         dispatch('update');
+    }
+    const getChangedRoleId = (event) => {
+        $userEdit.roleId = event.detail.selectedRole;
     }
 </script>
 <div class="container">
@@ -40,7 +46,14 @@
                             {/each}
                         </select>
                     {/if}
-                </div>    
+                </div>
+                <div class="form-group">
+                <Api url={urlRoleData} method="get" let:data let:loading let:error>
+                    {#if data}
+                        <RoleSelect roles={data} selectedRoleId={$userEdit.roleId} on:changedRole={getChangedRoleId}></RoleSelect>
+                    {/if}
+                </Api>
+                </div>
                 <button type="submit" class="btn btn-success" on:click|preventDefault={updateUser}>Update</button>
                 <a href="user" class="btn btn-outline-warning">Cancel</a>   
             </form>

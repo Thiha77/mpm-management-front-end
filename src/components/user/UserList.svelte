@@ -1,8 +1,8 @@
 <script>
-export let users;
 import {createEventDispatcher} from "svelte";
 import { userEdit,user } from "../../stores/user/store.js";
 const dispatch = createEventDispatcher();
+export let users;
 let selectedEmp;
 let editUser = (user) => {
     $userEdit = {
@@ -10,7 +10,8 @@ let editUser = (user) => {
         name: user.name,
         userName: user.userName,
         password: user.password,
-        employeeId: user.employeeId
+        employeeId: user.employeeId,
+        roleId: user.roleId
     }
 };
 
@@ -39,6 +40,7 @@ let deleteUser = id => {
                                     <th scope="col">User Name</th>
                                     <!-- <th scope="col">User Password</th> -->
                                     <th scope="col">Employee Name</th>
+                                    <th scope="col">Role Name</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -53,6 +55,7 @@ let deleteUser = id => {
                                         <td>{user.userName}</td>
                                         <!-- <td>{user.password}</td> -->
                                         <td>{user.Employee['name']}</td>
+                                        <td>{user.Role['name']}</td>
                                         <td>
                                             <!-- <a class="btn btn-info" href='user/edit'>Edit</a> -->
                                             <a class="btn btn-info" href='user/edit' on:click={editUser(user)} title="Edit"><i class="fas fa-pen"></i></a>

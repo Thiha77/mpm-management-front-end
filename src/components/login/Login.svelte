@@ -76,7 +76,7 @@ axiosPost(url,data).then(result=>{
                         <span class="focus-input"></span>
                     </div>
                     <div class="mt-5 mb-5">
-                    <button class="btn btn-login" value="" id="submit" on:click={validate}>Login</button>
+                    <button type="submit" class="btn btn-login" value="" id="submit" on:click|preventDefault={validate}>Login</button>
                     </div>
                     <p><span class="text-secondary">Forgot</span> <span class="text-success">User Name / Password</span></p>
                     <p><span class="text-secondary">Don't have an account? </span><span class="text-success"> Sign Up</span></p>

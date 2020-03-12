@@ -45,7 +45,7 @@
                     <td>{notice.summary}</td>
                     <td>{notice.Employee['name']}</td>
                     <td>
-                        <button class="btn btn-info" href="notice/edit" on:click={edit(notice)}>Edit</button>
+                        <button class="btn btn-info" on:click={edit(notice)}>Edit</button>
                         <button class="btn btn-danger" on:click={del(notice.id)}>Delete</button>
                     </td>
                     </tr>

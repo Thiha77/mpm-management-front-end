@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <RoleSelect {roles} on:changedRole={getChangedRoleId}></RoleSelect>
                 </div>
-                <button type="submit" class="btn btn-primary" on:click|preventDefault={addUser}>Add User</button>
+                <button type="submit" class="btn btn-info" on:click|preventDefault={addUser}>Add User</button>
                 <a href="employee" class="btn btn-outline-warning">Cancel</a>     
             </form>
         </div>

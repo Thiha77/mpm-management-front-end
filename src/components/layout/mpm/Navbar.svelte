@@ -2,6 +2,17 @@
 import { nav } from '../../../store';
 // export let sidebar_show = false;
 // export let sidebarCollapse;
+import { stores, goto } from '@sapper/app';
+const { session } = stores();
+
+const logout = () => {
+    $session.user = null;
+    if(window && window.localStorage){
+        localStorage.clear();
+    }
+    goto('/login');
+}
+
 </script>
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -14,17 +25,19 @@ import { nav } from '../../../store';
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
+                <!-- <li class="nav-item active">
                     <a class="nav-link" href="1">Page</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="1">Page</a>
-                </li>
+                </li> -->
+                {#if $session.user}
+                    <li class="nav-item">
+                        <label class="nav-link" href="1">{$session.user.name}</label>
+                    </li>
+                {/if}
                 <li class="nav-item">
-                    <a class="nav-link" href="1">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="1">Page</a>
+                    <button class="nav-link" on:click={logout}>Logout</button>
                 </li>
             </ul>
         </div><!-- .navbar-collapse -->

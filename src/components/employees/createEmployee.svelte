@@ -1,23 +1,22 @@
 <script>
 import { createEventDispatcher } from 'svelte';
-import ImgEncoder from 'svelte-image-encoder';
+//import {axiosPost} from '../../../util/api.js';
+// import ImgEncoder from 'svelte-image-encoder';
+import axios from "axios";
+//const baseUrl = "http://localhost:5000/upload/save";
 const dispatch = createEventDispatcher();
 
 let src ;
-//let url;
-
 const CreateData = () =>{
-    dispatch('create', { emp : employee});
+   //  dispatch('create', { emp : employee});
+   dispatch('create', { files: files, emp:employee});
 
 }
  const uploadImage= (e)=>{ 
     src =URL.createObjectURL(e.target.files[0]);
-    employee.photo=e.target.files[0];
-    console.log("test",employee.photo);
+   employee.photo=e.target.files[0]['name'];      
  }
-
-
-
+ 
 
  let employee = {
             name: "",
@@ -40,7 +39,7 @@ const CreateData = () =>{
             maritalStatus: "single",
             employeeStatus: "active"
         };
-        
+   let files;
 	
 
 	
@@ -49,7 +48,7 @@ const CreateData = () =>{
 </style>
  <div class="card">
     <h3> EMPLOYEE APPLICATION FORM</h3>
-    <div class="card-body">         
+    <div class="card-body">   
          <div class="row ">
             <div class="col-md-6">
                <strong class="card-title">Employee Name :</strong>
@@ -128,14 +127,15 @@ const CreateData = () =>{
              <div class="col-md-6">
                <strong class="card-title">Race: </strong>
                <input type="text" class="form-control" id="text" placeholder="Enter Race" bind:value={employee.race} />
-            </div>
-            <div class="col-md-6 pt-3">
-               <input type="file" id="upload" accept="image/*" on:change={uploadImage}> 
-            </div>            
-             <div class="col-md-6 pt-3">                  
-                  <ImgEncoder {src} bind:value={employee.photo} width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
-                  <!-- <img src={url} alt=''> -->
-            </div>                      
+            </div> 
+            <form>           
+               <div class="col-md-6 pt-3">
+                  <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage}> 
+               </div>            
+               <div class="col-md-6 pt-3">                  
+                     <img {src} alt="no image"  width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
+               </div> 
+            </form>                               
                <div class="col-md-12 pt-5">
                   <button type="button" class="btn btn-outline-success" on:click={CreateData}>Create</button>
                   <a href="employee" class="btn btn-outline-warning">Cancel</a>

@@ -24,8 +24,8 @@
 
 	const searchRoleData = async(event) =>{
 		let text = event.detail.search.text;
-		url = $apiInfo.basePath +"/roles/search/"+text;
-		apiInstance.refresh();
+		let searchUrl = (text)? $apiInfo.basePath + '/roles/search/' + text : $apiInfo.basePath + '/roles';
+		apiInstance.loadExternal(searchUrl);
 	};
 
 	const editRoleData = (event) =>{

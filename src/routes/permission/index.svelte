@@ -21,8 +21,8 @@
 
 	const searchPermissionData = async(event) => {
 		let text = event.detail.search.text;
-		url = $apiInfo.basePath +"/permissions/search/"+text;
-		apiInstance.refresh();
+		let searchUrl = (text)? $apiInfo.basePath + '/permissions/search/' + text : $apiInfo.basePath + '/permissions';
+		apiInstance.loadExternal(searchUrl);
 	};
 
 	const editPermissionData = (event) => {

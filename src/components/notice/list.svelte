@@ -40,7 +40,7 @@
             {#if notices}
                 {#each notices as notice}   
                 <tr>
-                    <td>{notice.title}</td>
+                    <td><a href={'notice/detail/' + notice.id}>{notice.title}</a></td>
                     <td>{notice.description}</td>
                     <td>{notice.summary}</td>
                     <td>{notice.Employee['name']}</td>

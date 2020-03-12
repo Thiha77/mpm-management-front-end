@@ -25,35 +25,45 @@
 	
 </style>
 <section>
-    <h2>Permission List</h2>
-    <a class="btn btn-success" href='permission/create' style="float:right;margin-bottom: 15px;">Add New Permission</a>
-    <PermisisonSearch on:searchPermission={searchPermission}></PermisisonSearch>
-    <div class="table-responsive" style="margin-top:30px;">
-        <table class="table table-bordered">
-            <thead>                                     
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-               {#if permissions.length === 0}
-                    <tr>No Role Record Found!</tr>
-                {:else}
-                {#each permissions as permission}
-                    <tr>
-                        <td>{permission.id}</td>
-                        <td>{permission.name}</td>
-                        <td>
-                            <!-- <button class="btn btn-info">Edit</button> -->
-                            <a href="permission/edit" on:click={editPermission(permission)} class="btn btn-info">Edit</a>
-                            <button on:click={deletePermission(permission.id)} class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                {/each}
-                {/if}
-            </tbody>
-        </table>
-    </div>      
+    <div class="row">
+        <div class="col">
+            <PermisisonSearch on:searchPermission={searchPermission}></PermisisonSearch>
+            <div class="table-responsive-sm ">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                         <div class="row">
+                            <div class="col-sm-6"><h3 class="float-left">Permission List</h3></div>
+                            <div class="col-sm-6"><a class="btn btn-info float-right" href='permission/create'><i class="fas fa-plus-circle"></i> Add New Permission</a></div>
+                        </div>
+                    </div><!-- .table-title -->
+                    <table class="table table-hover">
+                        <thead>                                     
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {#if permissions.length === 0}
+                                    <tr>No Role Record Found!</tr>
+                                {:else}
+                                {#each permissions as permission}
+                                    <tr>
+                                        <td>{permission.id}</td>
+                                        <td>{permission.name}</td>
+                                        <td>
+                                            <!-- <button class="btn btn-info">Edit</button> -->
+                                            <a href="permission/edit" on:click={editPermission(permission)} class="btn btn-info" title="Edit"><i class="fas fa-pen"></i></a>
+                                            <button on:click={deletePermission(permission.id)} class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                {/each}
+                            {/if}
+                        </tbody>
+                    </table>
+                </div><!-- .table-wrapper -->
+            </div><!-- .table-responsive-sm -->
+        </div>
+    </div>
 </section>

@@ -78,8 +78,8 @@ axiosPost(url,data).then(result=>{
                     <div class="mt-5 mb-5">
                     <button type="submit" class="btn btn-login" value="" id="submit" on:click|preventDefault={validate}>Login</button>
                     </div>
-                    <p><span class="text-secondary">Forgot</span> <span class="text-success">User Name / Password</span></p>
-                    <p><span class="text-secondary">Don't have an account? </span><span class="text-success"> Sign Up</span></p>
+                    <p><span class="text-secondary">Forgot</span> <a href=".#" class="text-success">User Name / Password</a></p>
+                    <p><span class="text-secondary">Don't have an account? </span><a href="." class="text-success">Sign Up</a></p>
                 </form>
             </div>
         </div><!-- .mpm-login-form -->

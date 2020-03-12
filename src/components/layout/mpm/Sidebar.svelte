@@ -84,6 +84,12 @@ import { nav,subNav } from '../../../store';
                     Notice
                 </a>
             </li>
+            <li>
+                <a href="swipe">
+                    <i class="fas fa-image"></i>
+                    Swipe
+                </a>
+            </li>
         </ul><!-- .components -->
         <!-- <ul class="list-unstyled CTAs">
             <li>

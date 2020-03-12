@@ -3,48 +3,53 @@
     import moment from 'moment';
     import { stores,goto } from '@sapper/app';
     import { apiInfo } from '../../store.js';
+    import { onMount } from 'svelte';
     const { session } = stores();
     
     let urlbyemployeeId = $apiInfo.basePath + '/employees/searchByEmployeeId';
     let urlattendancecreate = $apiInfo.basePath + '/attendances/create';
     let employeeName;
-    let employeeId = $session.user[0]["employeeId"];
-    let userdata = {
-        employeeId : employeeId
-    }
+    let employeeId;
+
+    onMount( () => {
+        employeeId = $session.user.employeeId;
+        let userdata = {
+            employeeId : employeeId
+        }
         axiosPost(urlbyemployeeId,userdata).then(result=>{
             employeeName = result.data[0]["name"];
         })
+    })
 
-const TimeInOut=(event)=>{
-    const date = moment.utc().format('YYYY-MM-DD HH:mm:ss');
-    console.log("before moment"+date);
-    const dateformat  = moment.utc(date).toDate();
-    console.log("local Time"+dateformat);
-    const localTime = moment(dateformat).format('YYYY-MM-DD HH:mm:ss');
-    console.log("moment: " + localTime);
-    document.getElementById('submit').disabled = true;
-    document.getElementById("employeeName").value = employeeName;
-    document.getElementById("recordeddatetime").value = localTime;
+    const TimeInOut=(event)=>{
+        const date = moment.utc().format('YYYY-MM-DD HH:mm:ss');
+        console.log("before moment"+date);
+        const dateformat  = moment.utc(date).toDate();
+        console.log("local Time"+dateformat);
+        const localTime = moment(dateformat).format('YYYY-MM-DD HH:mm:ss');
+        console.log("moment: " + localTime);
+        document.getElementById('submit').disabled = true;
+        document.getElementById("employeeName").value = employeeName;
+        document.getElementById("recordeddatetime").value = localTime;
+        
+        const data={
+            employeeId:employeeId,
+            recordedDateTime:localTime
+        }
+        axiosPost(urlattendancecreate,data);
     
- const data={
-     employeeId:employeeId,
-     recordedDateTime:localTime
- }
- axiosPost(urlattendancecreate,data);
- 
- setTimeout(function() {
-        document.getElementById('submit').disabled = false;
-        document.getElementById("employeeName").value="";
-        document.getElementById("recordeddatetime").value="";
-        if($session.user[0]["roleId"] != 1){
-            goto("login");
-        }
-        else{
-            goto("/");
-        }
-    }, 3000);
-}
+        setTimeout( () => {
+            document.getElementById('submit').disabled = false;
+            document.getElementById("employeeName").value="";
+            document.getElementById("recordeddatetime").value="";
+            if($session.user["roleId"] != 1){
+                goto("login");
+            }
+            else{
+                goto("/");
+            }
+        }, 3000);
+    }
 </script>
 
 <head>

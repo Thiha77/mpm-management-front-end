@@ -40,11 +40,11 @@ if(username != "" && password != ""){
 axiosPost(url,data).then(result=>{
     if(result.data.length != 0)
     {
+        localStorage.setItem('user', JSON.stringify(result.data));
         $session.user = result.data;
-        alert("Login Successfully!");
-    if(result.data[0]["roleId"]==1)
+    if(result.data["roleId"]==1)
     {
-    goto("/")
+        goto("swipe")
     }
     else
     {

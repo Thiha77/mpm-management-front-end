@@ -9,7 +9,7 @@ import { nav,subNav } from '../../../store';
     <nav id="sidebar" in:fly="{{ x:-250 , duration: 500 }}" out:fly="{{ x:-250 , duration: 500 }}">
         <div class="sidebar-header">
         <!-- <a href="."><img class="img-fluid" src="favicon.png" alt="MPM Logo"></a> -->
-        <a href=".">MPM</a>
+        <a href=".">MPM LOGO</a>
         </div><!-- .sidebar-header -->
         <ul class="list-unstyled components">
             <li >

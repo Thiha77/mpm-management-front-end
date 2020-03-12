@@ -44,11 +44,11 @@ axiosPost(url,data).then(result=>{
         $session.user = result.data;
     if(result.data["roleId"]==1)
     {
-        goto("swipe")
+        goto("home")
     }
     else
     {
-        goto("about");
+        goto("swipe");
     }
     }
     else{
@@ -58,80 +58,32 @@ axiosPost(url,data).then(result=>{
 }
 }
 </script>
-
-<head>
-<title>Login</title>
-</head>
-<body>
 <div class="container">
-<div class="main">
-<h2>MPM Management System</h2>
-<form id="form_id" method="post" name="myform">
-<label>User Name :</label>
-<input type="text" id="username" bind:value={userName}/>
-<label>Password :</label>
-<input type="password" id="password" bind:value={password}/>
-<input type="button" value="Login" id="submit" on:click={validate}/>
-</form>
+   <div class="row">
+        <div class="mpm-login-form pt-mpm-20 ">
+            <!-- <h3 class="text-center mb-5">Welcome</h3> -->
+            <figure class="clearfix bg-login-img">
+                <img src="mpm_logo.png" class="img-fluid" alt="">
+            </figure>
+            <div class="col-12 pt-5">
+                <form id="form_id" method="post" name="myform">
+                    <div class="form-group mpm-login-input-group mpm-login-bdr">
+                        <input class="mpm-login-input" type="text" id="username" bind:value={userName} placeholder="User Name"/>
+                        <span class="focus-input" ></span>
+                    </div>
+                    <div class="form-group mpm-login-input-group mpm-login-bdr">
+                        <input class="mpm-login-input" type="password" id="password" bind:value={password}  placeholder="Password"/>
+                        <span class="focus-input"></span>
+                    </div>
+                    <div class="mt-5 mb-5">
+                    <button class="btn btn-login" value="" id="submit" on:click={validate}>Login</button>
+                    </div>
+                    <p><span class="text-secondary">Forgot</span> <span class="text-success">User Name / Password</span></p>
+                    <p><span class="text-secondary">Don't have an account? </span><span class="text-success"> Sign Up</span></p>
+                </form>
+            </div>
+        </div><!-- .mpm-login-form -->
+   </div>
 </div>
-</div>
-</body>
 
-<style>
-@import url(http://fonts.googleapis.com/css?family=Raleway);
-h2{
-background-color: #FEFFED;
-padding: 30px 35px;
-margin: -10px -50px;
-text-align:center;
-border-radius: 10px 10px 0 0;
-}
-div.container{
-width: 900px;
-height: 610px;
-margin:35px auto;
-font-family: 'Raleway', sans-serif;
-}
-div.main{
-width: 300px;
-padding: 10px 50px 25px;
-border: 2px solid gray;
-border-radius: 10px;
-font-family: raleway;
-float:left;
-margin-top:50px;
-}
-input[type=text],input[type=password]{
-width: 100%;
-height: 40px;
-padding: 5px;
-margin-bottom: 25px;
-margin-top: 5px;
-border: 2px solid #ccc;
-color: #4f4f4f;
-font-size: 16px;
-border-radius: 5px;
-}
-label{
-color: #464646;
-text-shadow: 0 1px 0 #fff;
-font-size: 14px;
-font-weight: bold;
-}
-input[type=button]{
-font-size: 16px;
-background: linear-gradient(#ffbc00 5%, #ffdd7f 100%);
-border: 1px solid #e5a900;
-color: #4E4D4B;
-font-weight: bold;
-cursor: pointer;
-width: 100%;
-border-radius: 5px;
-padding: 10px 0;
-outline:none;
-}
-input[type=button]:hover{
-background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
-}
-</style>
 

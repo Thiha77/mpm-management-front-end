@@ -250,10 +250,10 @@ a.article:hover {
     background: #57b846;
 }
 .focus-input::after {
-    font-family: Poppins-Medium;
+    /* font-family: Poppins-Medium;
     font-size: 18px;
     color: #999;
-    line-height: 1.2;
+    line-height: 1.2; */
     content: attr(data-placeholder);
     display: block;
     width: 100%;
@@ -275,6 +275,10 @@ a.article:hover {
 .btn-login:hover{
     background:#0d6ea2;
 }
+.mpm-login-input::placeholder {
+    color: #999;
+    font-size: 18px;
+  }
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

@@ -7,9 +7,14 @@
     import { goto } from '@sapper/app';
 
     const UpdateData = async(event) => {
+        let myImage = event.detail.files[0];
         const url = $apiInfo.basePath + '/employees/update';
+         const urlImage =$apiInfo.basePath + '/upload/save';
         let employee = event.detail.emp;
-       
+        let dataImage = new FormData();
+            dataImage.append('path', 'employee/images');
+            dataImage.append('Image', myImage);
+            axiosPost(urlImage,dataImage)  ;  
         let result = await axiosPost(url, employee);
         if(result.error == null){
             $employeeMessages = {

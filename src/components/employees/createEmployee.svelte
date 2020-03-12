@@ -13,7 +13,7 @@ const CreateData = () =>{
 
 }
  const uploadImage= (e)=>{ 
-    src =URL.createObjectURL(e.target.files[0]);
+   src =URL.createObjectURL(e.target.files[0]);
    employee.photo=e.target.files[0]['name'];      
  }
  
@@ -40,6 +40,7 @@ const CreateData = () =>{
             employeeStatus: "active"
         };
    let files;
+
 	
 
 	

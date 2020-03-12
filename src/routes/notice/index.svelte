@@ -20,8 +20,9 @@
     }
 
     const editNotice = (event) => {
-        $notice = event.detail.notice;
-        goto('notice/edit');
+        // $notice = event.detail.notice;
+        let id = event.detail.notice.id;
+        goto(`notice/edit/${id}`);
     }
 
     const search = async(event) => {

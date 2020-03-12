@@ -10,11 +10,7 @@
     };
 
     let editRole = (role) => {
-        $editRoleData = {
-            id: role.id,
-            name: role.name,
-            description: role.description
-        };
+        dispatch("editRole",{role:role});
     };
 
     const searchRole = (event) => {
@@ -58,8 +54,7 @@
                                             <td>{role.name}</td>
                                             <td>{role.description}</td>
                                             <td>
-                                                <!-- <button class="btn btn-info">Edit</button> -->
-                                                <a href="role/edit" class="btn btn-info" on:click={editRole(role)} title="Edit"><i class="fas fa-pen"></i></a>
+                                                <button class="btn btn-info" on:click={editRole(role)} title="Edit"><i class="fas fa-pen"></i></button>
                                                 <button class="btn btn-danger" on:click={deleteRole(role.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
                                             </td>
                                         </tr>

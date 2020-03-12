@@ -5,6 +5,8 @@
 	import { roleMessages } from '../../stores/role/store.js';
 	import { axiosGet,axiosPost } from '../../util/api.js'
 	import { apiInfo } from '../../store.js';
+	import { goto } from '@sapper/app';
+
 	let url = $apiInfo.basePath + '/roles';
 	const method = 'get';
 	let apiInstance;
@@ -24,7 +26,12 @@
 		let text = event.detail.search.text;
 		url = $apiInfo.basePath +"/roles/search/"+text;
 		apiInstance.refresh();
-	}
+	};
+
+	const editRoleData = (event) =>{
+		let id = event.detail.role.id;
+        goto(`role/edit/${id}`);
+	};
 
 </script>
 
@@ -35,7 +42,7 @@
 	<h1>{$roleMessages.message}</h1>
 	<ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
 		{#if data}
-			<RoleIndex roles={data} on:deleteRole={deleteRoleData} on:searchRoleData={searchRoleData}></RoleIndex>
+			<RoleIndex roles={data} on:deleteRole={deleteRoleData} on:searchRoleData={searchRoleData} on:editRole={editRoleData}></RoleIndex>
 		{/if}
 	</ApiGet>
 </div>

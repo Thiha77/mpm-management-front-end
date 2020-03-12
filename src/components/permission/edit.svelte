@@ -2,7 +2,8 @@
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
     import { editPermissionData } from '../../stores/permission/store.js';
-
+    export let permission;
+    console.log(permission);
     let updatePermission = () => {
         dispatch('updatePermission');
     };
@@ -16,7 +17,7 @@
         <div class="card-body">
             <div class="form-group">
             <label for="name">Model/Form Name:</label>
-            <input type="text" bind:value={$editPermissionData.name} class="form-control" placeholder="Enter name" name="name">
+            <input type="text" bind:value={permission.name} class="form-control" placeholder="Enter name" name="name">
             </div>
         </div> 
         <div class="card-footer">

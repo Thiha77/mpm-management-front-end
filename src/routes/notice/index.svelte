@@ -27,9 +27,9 @@
 
     const search = async(event) => {
         let textSearch = event.detail.textSearch;
-        url = (textSearch)? $apiInfo.basePath + '/notices/search/' + textSearch : $apiInfo.basePath + '/notices';
-        console.log(url);
-        apiInstance.refresh();
+        let exUrl = (textSearch)? $apiInfo.basePath + '/notices/search/' + textSearch : $apiInfo.basePath + '/notices';
+        // console.log(url);
+        apiInstance.loadExternal(exUrl);
         console.log('refreshed');
     }
 

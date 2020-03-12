@@ -34,6 +34,20 @@
             error = e
         }
     }
+    export const loadExternal = async(exUrl) => {
+        try {
+            loading = true
+            let result = await axios[method](exUrl)
+            
+            data = result.data
+            loading = false
+        } catch (e) {
+            console.log(e)
+            data = null
+            loading = false
+            error = e
+        }
+    }
 </script>
 
 <slot {data} {loading} {error}/>

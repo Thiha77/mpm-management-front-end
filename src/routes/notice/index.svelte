@@ -6,17 +6,55 @@
     import { noticeMessages, notice } from '../../stores/notice/store';
     import { apiInfo } from '../../store.js';
     import { goto } from '@sapper/app';
+    import Swal from 'sweetalert2';
     let url = $apiInfo.basePath + '/notices';
     const method = 'get';
     let apiInstance;
     
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
+
     const deleteNotice = async(event) => {
         let id = event.detail.id;
-        if(confirm("Are you sure you want to delete?")){
-            const urlDel = $apiInfo.basePath + '/notices/delete';
-            let result = await axiosPost(urlDel, { id : id});
-            apiInstance.refresh();
-        }
+        // if(confirm("Are you sure you want to delete?")){
+        //     const urlDel = $apiInfo.basePath + '/notices/delete';
+        //     let result = await axiosPost(urlDel, { id : id});
+        //     apiInstance.refresh();
+        // }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) { (async() => {
+                        const urlDel = $apiInfo.basePath + '/notices/delete';
+                        let res = await axiosPost(urlDel, { id : id});
+                        console.log('abc');
+                        if(res.data > 0){
+                            apiInstance.refresh();
+                            Toast.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                            );
+                        }
+                    })()
+                }
+            });
+
     }
 
     const editNotice = (event) => {

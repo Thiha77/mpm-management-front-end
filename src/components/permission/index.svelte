@@ -9,17 +9,22 @@
         dispatch('deletePermission',{id:id});
     };
 
-    let editPermission = (permission) => {
-        $editPermissionData = {
-            id: permission.id,
-            name: permission.name
-        };
-    };
+    // let editPermission = (permission) => {
+    //     $editPermissionData = {
+    //         id: permission.id,
+    //         name: permission.name
+    //     };
+    // };
 
     const searchPermission = (event) => {
         let search = event.detail.search;
         dispatch('searchPermission',{search});
     };
+
+    const editPermission = (permission) => {
+        dispatch('editPermission',{permission:permission});
+    };
+
 </script>
 <style>
 	
@@ -54,7 +59,7 @@
                                         <td>{permission.name}</td>
                                         <td>
                                             <!-- <button class="btn btn-info">Edit</button> -->
-                                            <a href="permission/edit" on:click={editPermission(permission)} class="btn btn-info" title="Edit"><i class="fas fa-pen"></i></a>
+                                            <button on:click={editPermission(permission)} class="btn btn-info" title="Edit"><i class="fas fa-pen"></i></button>
                                             <button on:click={deletePermission(permission.id)} class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>

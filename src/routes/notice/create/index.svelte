@@ -4,8 +4,8 @@
     import { stores, goto } from '@sapper/app';
     import { noticeMessages } from '../../../stores/notice/store';
     import { apiInfo } from '../../../store.js';
+    import { Toast } from '../../../util/salert.js';
     const { session } = stores();
-    $session.user = { employeeId: 1}; //must delete after merge
 
     const saveNotice = async(event) => {
         let notice = event.detail.notice;
@@ -14,10 +14,11 @@
         const url = $apiInfo.basePath + '/notices/save';
         let result = await axiosPost(url, notice);
         if(result.error == null){
-            $noticeMessages = {
-                message: 'Create Success',
-                error: 'Error'
-            }
+            Toast.fire(
+                'Success!',
+                'New notice is successfully created.',
+                'success'
+            )
             goto('../notice');
         }else{
             $noticeMessages = {

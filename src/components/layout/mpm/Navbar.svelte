@@ -32,12 +32,12 @@ const logout = () => {
                     <a class="nav-link" href="1">Page</a>
                 </li> -->
                 {#if $session.user}
-                    <li class="nav-item">
-                        <label class="nav-link" href="1">{$session.user.name}</label>
+                    <li class="nav-item pt-1">
+                        <label class="nav-link text-success text-bold" href="1">{$session.user.name}</label>
                     </li>
                 {/if}
-                <li class="nav-item">
-                    <button class="nav-link" on:click={logout}>Logout</button>
+                <li class="nav-item pt-1">
+                    <button class="btn btn-outline-secondary" on:click={logout}><i class="fas fa-sign-out-alt"></i> Logout</button>
                 </li>
             </ul>
         </div><!-- .navbar-collapse -->

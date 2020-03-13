@@ -19,7 +19,8 @@
     "moment": "^2.24.0",
     "polka": "next",
     "session-file-store": "^1.4.0",
-    "sirv": "^0.4.0"
+    "sirv": "^0.4.0",
+    "sweetalert2": "^9.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

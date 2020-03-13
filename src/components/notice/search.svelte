@@ -10,9 +10,11 @@ const search = () => {
 
 </script>
 
-<div class="input-group">
-    <input class="form-control" bind:value={textSearch} type="text" placeholder="Search" aria-label="Search" />
-    <!-- <div class="input-group-append"> -->
-        <button class="input-group-text" on:click={search}>Search</button>
-    <!-- </div> -->
-</div>
+<form>
+    <div class="input-group">
+        <input class="form-control" bind:value={textSearch} type="text" placeholder="Search" aria-label="Search" />
+        <div class="input-group-append">
+            <button type="submit" class="input-group-text" on:click|preventDefault={search}><i class="fas fa-search text-grey" aria-hidden="true"></i></button>
+        </div>
+    </div>
+</form>

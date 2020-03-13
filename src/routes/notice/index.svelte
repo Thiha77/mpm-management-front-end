@@ -6,6 +6,7 @@
     import { noticeMessages, notice } from '../../stores/notice/store';
     import { apiInfo } from '../../store.js';
     import { goto } from '@sapper/app';
+    
     let url = $apiInfo.basePath + '/notices';
     const method = 'get';
     let apiInstance;

@@ -4,6 +4,7 @@
 	import { permissionMessages } from '../../stores/permission/store.js';
 	import { axiosPost } from '../../util/api.js';
 	import { apiInfo } from '../../store.js';
+	import { goto } from '@sapper/app';
 
 	let url = $apiInfo.basePath + '/permissions';
     const method = 'get';
@@ -20,10 +21,14 @@
 
 	const searchPermissionData = async(event) => {
 		let text = event.detail.search.text;
-		url = $apiInfo.basePath +"/permissions/search/"+text;
-		apiInstance.refresh();
+		let searchUrl = (text)? $apiInfo.basePath + '/permissions/search/' + text : $apiInfo.basePath + '/permissions';
+		apiInstance.loadExternal(searchUrl);
 	};
 
+	const editPermissionData = (event) => {
+		let id = event.detail.permission.id;
+        goto(`permission/edit/${id}`);
+	};
 </script>
 
 <svelte:head>
@@ -34,7 +39,7 @@
 	<h1>{$permissionMessages.message}</h1>
     <ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
 		{#if data}
-			<PermissionIndex permissions={data} on:deletePermission={deletePermission} on:searchPermission={searchPermissionData}></PermissionIndex>
+			<PermissionIndex permissions={data} on:deletePermission={deletePermission} on:searchPermission={searchPermissionData} on:editPermission={editPermissionData}></PermissionIndex>
 		{/if}
 	</ApiGet>
 </div>

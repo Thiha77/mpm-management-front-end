@@ -3,20 +3,34 @@
     import { axiosPost } from '../../util/api';
     import List from '../../components/notice/list.svelte';
     import Search from '../../components/notice/search.svelte';
-    import { noticeMessages, notice } from '../../stores/notice/store';
     import { apiInfo } from '../../store.js';
     import { goto } from '@sapper/app';
-    
+    import Swal from 'sweetalert2';
+    import { Toast, CfmDelete } from '../../util/salert';
     let url = $apiInfo.basePath + '/notices';
     const method = 'get';
     let apiInstance;
     
     const deleteNotice = async(event) => {
         let id = event.detail.id;
-        if(confirm("Are you sure you want to delete?")){
-            const urlDel = $apiInfo.basePath + '/notices/delete';
-            let result = await axiosPost(urlDel, { id : id});
+        CfmDelete.fire().then((result) => {
+                if (result.value) {
+                    del(id);
+                }
+            });
+
+    }
+
+    const del = async(id) => {
+        const urlDel = $apiInfo.basePath + '/notices/delete';
+        let res = await axiosPost(urlDel, { id : id});
+        if(res.data > 0){
             apiInstance.refresh();
+            Toast.fire(
+            'Deleted!',
+            'Notice has been deleted.',
+            'success'
+            );
         }
     }
 
@@ -37,9 +51,6 @@
 </script>
 <svelte:head><title>Notice</title></svelte:head>
 <div class="container">
-    {#if $noticeMessages.message}
-        <h1>{$noticeMessages.message}</h1>
-    {/if}
     <Search on:search={search}></Search>
     <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
         {#if data}

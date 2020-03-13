@@ -7,11 +7,12 @@
     const dispatch = createEventDispatcher();
     let urlRoleData = $apiInfo.basePath + '/roles/';
     export let employees;
+    export let user;
     function updateUser(){
         dispatch('update');
     }
     const getChangedRoleId = (event) => {
-        $userEdit.roleId = event.detail.selectedRole;
+        user.roleId = event.detail.selectedRole;
     }
 </script>
 <div class="container">
@@ -20,27 +21,23 @@
             <form>
                 <div class="form-group">
                     <label for="title">Name</label>
-                    <input class="form-control" bind:value={$userEdit.name} type="text">
+                    <input class="form-control" bind:value={user.name} type="text">
                 </div>
                 <div class="form-group">
                     <label for="title">User Name</label>
-                    <input type="text" bind:value={$userEdit.userName} class="form-control" placeholder="Title" />
+                    <input type="text" bind:value={user.userName} class="form-control" placeholder="Title" />
                 </div>
                 <div class="form-group">
                     <label for="title">Password</label>
-                    <input type="password" bind:value={$userEdit.password} class="form-control" placeholder="Title" />
+                    <input type="password" bind:value={user.password} class="form-control" placeholder="Title" />
                 </div>
-                <!-- <div class="form-group">
-                    <label for="title">Employee Id</label>
-                    <input type="text" bind:value={$userEdit.employeeId} class="form-control" placeholder="Title" />
-                </div> -->
                 <div class="form-group">
                     <label for="name">Employee Name:</label>
                     {#if employees}
                         <select class="form-control" disabled>
                             <option value="0">Please Select Employee</option>
                             {#each employees as employee}
-                                {#if employee.id === $userEdit.employeeId}
+                                {#if employee.id === user.employeeId}
                                     <option value={employee.id} selected>{employee.name}</option>
                                 {/if}
                             {/each}
@@ -50,7 +47,7 @@
                 <div class="form-group">
                 <Api url={urlRoleData} method="get" let:data let:loading let:error>
                     {#if data}
-                        <RoleSelect roles={data} selectedRoleId={$userEdit.roleId} on:changedRole={getChangedRoleId}></RoleSelect>
+                        <RoleSelect roles={data} selectedRoleId={user.roleId} on:changedRole={getChangedRoleId}></RoleSelect>
                     {/if}
                 </Api>
                 </div>

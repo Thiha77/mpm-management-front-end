@@ -24,7 +24,7 @@
     }
 
     const detailEmployee =(event) => {
-        $empEditemployee = event.detail.employee;  
+        $empEditemployee = event.detail.employee;        
          goto('employee/view');    
     }
 </script>

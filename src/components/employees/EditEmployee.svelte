@@ -9,9 +9,10 @@ const dispatch = createEventDispatcher();
 
     const uploadImage= (e)=>{ 
       src =URL.createObjectURL(e.target.files[0]);
-      employee.photo=e.target.files[0]['name'];      
+      employee.photo=e.target.files[0]['name'];  
  }
-let src;
+let src='uploads/employee/images/' +employee.photo
+//let src;
 let files;
 </script>
 <style>
@@ -96,14 +97,19 @@ let files;
              <div class="col-md-6">
                <strong class="card-title">Race: </strong>
                <input type="text" class="form-control" id="text" placeholder="Enter Race" bind:value={employee.race} />
+
+               
             </div>            
              <form >           
                <div class="col-md-6 pt-3">
                   <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} > 
-               </div>            
+               </div>   
                <div class="col-md-6 pt-3">             
+                     <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image' />
+               </div>      
+               <!-- <div class="col-md-6 pt-3">             
                      <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image'/>
-               </div>                
+               </div>                 -->
             </form> 
                <div class="col-md-12 pt-3">
                   <button type="button" class="btn btn-outline-success" on:click|preventDefault={updatebtn} >Update</button>

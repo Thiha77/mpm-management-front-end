@@ -72,7 +72,7 @@ table.table td a {
                 {#if employees}  
                  {#each employees as employee}   
                     <tr>
-                        <td><a href="employee/view" on:click={detail(employee)} ><img src="great-success.png"  class="avatar img-thumbnail employee-photo" alt="background image"/>{employee.name}</td>
+                        <td><a href="employee/view" on:click={detail(employee)} ><img src={'uploads/employee/images/'+ employee.photo} class="avatar img-thumbnail employee-photo" alt="Image"/>{employee.name}</td>
                         <td>{employee.phoneNo}</td>
                         <td>{employee.officialEmail}</td>
                         <td>{employee.address}</td>

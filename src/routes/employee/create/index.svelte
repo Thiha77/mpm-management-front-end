@@ -7,6 +7,7 @@ import { apiInfo } from '../../../store.js';
 import EmpCreate from '../../../components/employees/createEmployee.svelte';
         const CreateData = async(event) => {
             let myImage = event.detail.files[0];
+            console.log("Image",myImage)
             const url = $apiInfo.basePath + '/employees/create';
             const urlImage =$apiInfo.basePath + '/upload/save';
             const body =event.detail.emp;

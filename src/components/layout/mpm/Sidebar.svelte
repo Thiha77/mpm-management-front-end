@@ -2,6 +2,7 @@
 import { fly,fade,slide  } from 'svelte/transition';
 import { quintOut,circIn } from 'svelte/easing';
 import { nav,subNav } from '../../../store';
+
 // import { quintOut } from 'svelte/easing';
 // let sidebarCollapse = "show";
 </script>
@@ -32,7 +33,7 @@ import { nav,subNav } from '../../../store';
                 {/if}
             </li>
             <li>
-                <a href="user">
+                <a href="user" class:selected='{segment === "user"}'>
                     <i class="fas fa-users"></i>
                     User
                 </a>

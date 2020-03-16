@@ -7,7 +7,6 @@
         let urlUserById = `${config.apiInfo.basePath}/users/${id}`;
         //console.log(urlUserById);
         let res = await axiosGet(urlUserById);
-        console.log(res);
 		if (res.data) {
 			return { user: res.data };
 		}else{

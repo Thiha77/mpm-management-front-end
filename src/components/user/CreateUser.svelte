@@ -28,37 +28,43 @@
 </script>
 <div class="container">
     <div class="row">
-        <div class="col">
-            <form>
-                <div class="form-group">
-                    <label for="title">Name</label>
-                    <input class="form-control" bind:value={userData.name} required type="text" placeholder="Title" />
-                </div>
-                <div class="form-group">
-                    <label for="title">User Name</label>
-                    <input type="text" bind:value={userData.userName} required class="form-control" placeholder="User Name" />
-                </div>
-                <div class="form-group">
-                    <label for="title">Password</label>
-                    <input type="password" bind:value={userData.password} required class="form-control" placeholder="Password"/>
-                </div>
-                <div class="form-group">
-                    <label for="name">Employee Name:</label>
-                    {#if employees}
-                        <select class="form-control" bind:value={userData.employeeId}>
-                            <option value="0">Please Select Employee</option>
-                            {#each employees as employee}
-                                <option value={employee.id}>{employee.name}</option>
-                            {/each}
-                        </select>
-                    {/if}
-                </div>
-                <div class="form-group">
-                    <RoleSelect {roles} on:changedRole={getChangedRoleId}></RoleSelect>
-                </div>
-                <button type="submit" class="btn btn-info" on:click|preventDefault={addUser}>Add User</button>
-                <a href="employee" class="btn btn-outline-warning">Cancel</a>     
-            </form>
+        <div class="col-8 mx-auto">
+            <div class="card card-1">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">User Register Information</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="title">Name</label>
+                            <input class="form-control" bind:value={userData.name} required type="text" placeholder="Title" />
+                        </div>
+                        <div class="form-group">
+                            <label for="title">User Name</label>
+                            <input type="text" bind:value={userData.userName} required class="form-control" placeholder="User Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Password</label>
+                            <input type="password" bind:value={userData.password} required class="form-control" placeholder="Password"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Employee Name:</label>
+                            {#if employees}
+                                <select class="form-control" bind:value={userData.employeeId}>
+                                    <option value="0">Please Select Employee</option>
+                                    {#each employees as employee}
+                                        <option value={employee.id}>{employee.name}</option>
+                                    {/each}
+                                </select>
+                            {/if}
+                        </div>
+                        <div class="form-group">
+                            <RoleSelect {roles} on:changedRole={getChangedRoleId}></RoleSelect>
+                        </div>
+                        <button type="submit" class="btn btn-info" on:click|preventDefault={addUser}>Add User</button>
+                        <a href="employee" class="btn btn-outline-warning">Cancel</a>     
+                    </form>
+                </div><!-- .card-body -->
+            </div><!-- .card -->
         </div>
     </div>
 </div>

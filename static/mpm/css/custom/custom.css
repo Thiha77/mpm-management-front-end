@@ -99,7 +99,7 @@ span {
 
 #sidebar .sidebar-header {
     padding: 23px 10px;
-    background: #0689CE;
+    background: #222D32;
 }
 
 #sidebar .sidebar-header strong {
@@ -336,6 +336,27 @@ a.article:hover {
 .btn-swipe:hover{
     background:#da580e;
 }
+/* ---------------------------------------------------
+    Input-group
+----------------------------------------------------- */
+/* .input-mpm-group{
+    position: relative;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ccc;
+}
+.input-mpm-01{
+    outline: none;
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    font-size: 14px;
+    padding: 9px 0;
+    color: #666;
+} */
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

@@ -68,7 +68,7 @@ import { nav,subNav } from '../../../store';
             </li>
             <li>
                 <a href="rolepermission">
-                    <i class="fas fa-user-secret"></i>
+                    <i class="fas fa-user-lock"></i>
                     Role Permission
                 </a>
             </li>
@@ -80,13 +80,13 @@ import { nav,subNav } from '../../../store';
             </li>
             <li>
                 <a href="notice">
-                    <i class="fas fa-image"></i>
+                    <i class="fas fa-bell"></i>
                     Notice
                 </a>
             </li>
             <li>
                 <a href="swipe">
-                    <i class="fas fa-image"></i>
+                    <i class="fas fa-calendar-check"></i>
                     Swipe
                 </a>
             </li>

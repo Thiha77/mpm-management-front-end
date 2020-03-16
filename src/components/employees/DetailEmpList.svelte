@@ -9,6 +9,9 @@ export let employee;
     <h3> Employee Detail List </h3>
     <div class="card-body">         
          <div class="row ">
+         <div class="col-md-12">
+          <img src={'uploads/employee/images/'+ employee.photo} width={200} height={200} class="avatar img-thumbnail employee-photo" alt="Image"/>
+         </div>       
             <div class="col-md-6">
                <strong class="card-title" >Employee Name :</strong>
                <!-- <input type="text" class="form-control" id="text" placeholder="Enter Name" bind:value={employee.name} /> -->

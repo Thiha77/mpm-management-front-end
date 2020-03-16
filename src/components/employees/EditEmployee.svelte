@@ -4,19 +4,17 @@ const dispatch = createEventDispatcher();
 
     export let employee;
     const updatebtn = () => {
-        dispatch('update', { emp: employee})
+        dispatch('update', { emp: employee,files: files})
     }
-    const fileSelected= (e)=>{ 
-      //   employee.photo = e.target.files[0];
-      //   console.log("testing",employee.photo)
+
+    const uploadImage= (e)=>{ 
       src =URL.createObjectURL(e.target.files[0]);
-      console.log("testing",src);
-      //employee.photo=e.target.files[0]['name'];      
+      //employee.photo=e.target.files;  
  }
- 
- 
-let src;
-</script>
+let src =employee.photo;
+let files;
+</script> 
+
 <style>
 </style>
  <div class="card">
@@ -99,18 +97,19 @@ let src;
              <div class="col-md-6">
                <strong class="card-title">Race: </strong>
                <input type="text" class="form-control" id="text" placeholder="Enter Race" bind:value={employee.race} />
-            </div>  
-             <!-- <div class="col-md-12 pt-3">
-              <input type="file" accept="image/*" bind:value={employee.photo}> 
-              <img  alt="image">
-            </div>                       -->
-             <form>           
+
+               
+            </div>            
+             <form >           
                <div class="col-md-6 pt-3">
-                  <input type="file" id="file" accept="image/*" on:change={fileSelected}> 
-               </div>            
-               <div class="col-md-6 pt-3">                
-                     <img   {src} alt="no image"  width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
-               </div> 
+                  <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} > 
+               </div>   
+               <div class="col-md-6 pt-3">             
+                     <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image' />
+               </div>      
+               <!-- <div class="col-md-6 pt-3">             
+                     <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image'/>
+               </div>                 -->
             </form> 
                <div class="col-md-12 pt-3">
                   <button type="button" class="btn btn-outline-success" on:click|preventDefault={updatebtn} >Update</button>
@@ -119,3 +118,6 @@ let src;
          </div>                       
     </div>
  </div>
+
+
+

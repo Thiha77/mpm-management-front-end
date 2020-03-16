@@ -17,7 +17,7 @@ let deleteUser = id => {
             <div class="col">
                 <h1>{$user.message}</h1>
                 <div class="table-responsive-sm ">
-                    <div class="table-wrapper">
+                    <div class="table-wrapper card-list-mpm1">
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6"><h3 class="float-left">User List</h3></div>
@@ -59,7 +59,6 @@ let deleteUser = id => {
                             </tbody>
                         </table>
                     </div>
-                    
                 </div><!-- .table-responsive-sm    -->
             </div>
         </div>

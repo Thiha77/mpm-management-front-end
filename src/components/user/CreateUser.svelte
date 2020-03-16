@@ -64,7 +64,7 @@
                             </div>
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-info" on:click|preventDefault={addUser}>Add User</button>
-                                <a href="employee" class="btn btn-outline-warning">Cancel</a>     
+                                <a href="user" class="btn btn-outline-warning">Cancel</a>     
                             </div>
                         </form>
                     </div>

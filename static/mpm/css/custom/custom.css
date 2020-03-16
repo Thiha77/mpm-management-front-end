@@ -196,6 +196,9 @@ a.article:hover {
 .bg-org-mpm{
     background: #F9762B;
 }
+.bg-blue-mpm{
+    background:#0689CE;
+}
 .txt-org{
     color:#F9762B;
 }
@@ -335,6 +338,14 @@ a.article:hover {
 }
 .btn-swipe:hover{
     background:#da580e;
+}
+/* ---------------------------------------------------
+    Card
+----------------------------------------------------- */
+.card-mpm1{
+    background: #fff;
+    box-shadow: 0px 0px 15px rgba(0,0,0,.33) !important;
+    border: unset !important;
 }
 /* ---------------------------------------------------
     Input-group

@@ -20,6 +20,7 @@
     import { apiInfo } from '../../../store.js';
     import { axiosPost }from '../../../util/api.js';
     // import { userEdit } from '../../../stores/user/store.js';
+    import { Toast } from '../../../util/salert.js';
     import { goto } from '@sapper/app';
     export let user;
     let urlEmpData = $apiInfo.basePath + '/employees/'+user.employeeId;
@@ -29,9 +30,13 @@
         let url = $apiInfo.basePath + '/users/update';
         let result = await axiosPost(url, user);
         if(result.error == null){
+             Toast.fire(
+                'Success!',
+                'Update User is successfully updated.',
+                'success'
+            )
             goto('../user');
         }
-        
     };
     
        

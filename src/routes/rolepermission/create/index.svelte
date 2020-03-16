@@ -5,6 +5,7 @@
 	import { stores, goto } from '@sapper/app';
 	import { rolePermission } from '../../../stores/rolepermission/store';
 	import { apiInfo } from '../../../store.js';
+	import { Toast } from '../../../util/salert.js';
 	
 	const roleUrl =  $apiInfo.basePath + "/roles";
 	const permissionUrl = $apiInfo.basePath + "/permissions";
@@ -21,10 +22,11 @@
 		const url = $apiInfo.basePath + '/rolepermissions/create';
         let result = await axiosPost(url, data);
         if(result.error == null){
-            $rolePermission = {
-                message: 'Create Success',
-                error: 'Error'
-            }
+            Toast.fire(
+                'Success!',
+                'New RolePermission is successfully created.',
+                'success'
+            )
             goto('../rolepermission');
         }else{
             $rolePermission = {

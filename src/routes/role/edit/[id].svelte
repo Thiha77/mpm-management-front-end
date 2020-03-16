@@ -19,6 +19,7 @@
     import { apiInfo } from '../../../store.js';
     import { editRoleData, roleMessages } from '../../../stores/role/store.js';
     import { goto } from '@sapper/app';
+    import { Toast } from '../../../util/salert.js';
     export let role;
     const updateRoleData = async() => {
         
@@ -26,10 +27,11 @@
         let result = await axiosPost(url, role);
         if(result.error == null)
         {
-            $roleMessages = {
-                message: 'Update Success',
-                error: 'Error'
-            }
+           Toast.fire(
+                'Success!',
+                'Role is successfully updated.',
+                'success'
+            )
             goto('../role');
         }else
         {

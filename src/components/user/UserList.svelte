@@ -3,18 +3,10 @@ import {createEventDispatcher} from "svelte";
 import { userEdit,user } from "../../stores/user/store.js";
 const dispatch = createEventDispatcher();
 export let users;
-let selectedEmp;
-let editUser = (user) => {
-    $userEdit = {
-        id: user.id,
-        name: user.name,
-        userName: user.userName,
-        password: user.password,
-        employeeId: user.employeeId,
-        roleId: user.roleId
-    }
-};
 
+let editUser = (user) => {
+        dispatch("editUser",{user:user});
+    };
 let deleteUser = id => {
         dispatch('deleteUser',{id:id});
     };
@@ -58,7 +50,7 @@ let deleteUser = id => {
                                         <td>{user.Role['name']}</td>
                                         <td>
                                             <!-- <a class="btn btn-info" href='user/edit'>Edit</a> -->
-                                            <a class="btn btn-info" href='user/edit' on:click={editUser(user)} title="Edit"><i class="fas fa-pen"></i></a>
+                                            <button  class="btn btn-info"on:click={editUser(user)} title="Edit"><i class="fas fa-pen"></i></button>
                                             <button class="btn btn-danger" on:click={deleteUser(user.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>

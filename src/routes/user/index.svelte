@@ -2,7 +2,7 @@
     import Api from '../../components/util/Api.svelte';
     import { axiosPost } from '../../util/api';
     import UserList from '../../components/user/UserList.svelte';
-    import { user} from '../../store.js';
+    // import { user} from '../../store.js';
     import { apiInfo } from '../../store.js';
     import { goto } from '@sapper/app';
     let url = $apiInfo.basePath + '/users';
@@ -17,11 +17,16 @@
             apiInstance.refresh();
         }
     };
+
+    const editUser = (event) => {
+        let id = event.detail.user.id;
+        goto(`user/edit/${id}`);
+    };
 </script>
 
-<h1>{$user.createMessage}</h1>
+<!-- <h1>{$user.createMessage}</h1> -->
 <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
     {#if data}
-        <UserList users={data} on:deleteUser={deleteUserData}></UserList>
+        <UserList users={data} on:deleteUser={deleteUserData} on:editUser={editUser}></UserList>
     {/if}
 </Api>

@@ -8,13 +8,11 @@ const dispatch = createEventDispatcher();
 
 let src ;
 const CreateData = () =>{
-   //  dispatch('create', { emp : employee});
    dispatch('create', { files: files, emp:employee});
 
 }
  const uploadImage= (e)=>{ 
-    src =URL.createObjectURL(e.target.files[0]);
-   employee.photo=e.target.files[0]['name'];      
+   src =URL.createObjectURL(e.target.files[0]);      
  }
  
 
@@ -40,6 +38,7 @@ const CreateData = () =>{
             employeeStatus: "active"
         };
    let files;
+
 	
 
 	
@@ -133,7 +132,7 @@ const CreateData = () =>{
                   <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage}> 
                </div>            
                <div class="col-md-6 pt-3">                  
-                     <img {src} alt="no image"  width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
+                     <img {src} alt=""  width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
                </div> 
             </form>                               
                <div class="col-md-12 pt-5">

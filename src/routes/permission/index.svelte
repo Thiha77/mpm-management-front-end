@@ -5,6 +5,7 @@
 	import { axiosPost } from '../../util/api.js';
 	import { apiInfo } from '../../store.js';
 	import { goto } from '@sapper/app';
+    import { Toast, CfmDelete } from '../../util/salert';
 
 	let url = $apiInfo.basePath + '/permissions';
     const method = 'get';
@@ -12,12 +13,25 @@
 
 	const deletePermission = async(event) => {
 		let id = event.detail.id;
-        if(confirm("Are you sure you want to delete?")){
-            const urlDel = $apiInfo.basePath + '/permissions/delete';
-            let result = await axiosPost(urlDel, { id : id})
-            apiInstance.refresh();
-        }
+		CfmDelete.fire().then((result) => {
+			if (result.value) {
+				del(id);
+			}
+		});
 	};
+
+	const del = async(id) => {
+		const urlDel = $apiInfo.basePath + '/permissions/delete';
+		let result = await axiosPost(urlDel, { id : id});
+        if(result.data > 0){
+            apiInstance.refresh();
+            Toast.fire(
+            'Deleted!',
+            'Permission has been deleted.',
+            'success'
+            );
+        }
+    };
 
 	const searchPermissionData = async(event) => {
 		let text = event.detail.search.text;

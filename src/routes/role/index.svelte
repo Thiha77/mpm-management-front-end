@@ -6,22 +6,34 @@
 	import { axiosGet,axiosPost } from '../../util/api.js'
 	import { apiInfo } from '../../store.js';
 	import { goto } from '@sapper/app';
-
+	import { Toast, CfmDelete } from '../../util/salert';
+	
 	let url = $apiInfo.basePath + '/roles';
 	const method = 'get';
 	let apiInstance;
 	
 	const deleteRoleData = async(event) => {
 		let id = event.detail.id;
-		if(confirm("Are you sure want to delete?"))
-		{
-			const urlDel = $apiInfo.basePath + '/roles/delete';
-			let result = await axiosPost(urlDel, { id : id})
-			console.log(result);
-            apiInstance.refresh();
-		}
+		CfmDelete.fire().then((result) => {
+			if (result.value) {
+				del(id);
+			}
+		});
 	};
 
+	 const del = async(id) => {
+		const urlDel = $apiInfo.basePath + '/roles/delete';
+		let result = await axiosPost(urlDel, { id : id});
+        if(result.data > 0){
+            apiInstance.refresh();
+            Toast.fire(
+            'Deleted!',
+            'Role has been deleted.',
+            'success'
+            );
+        }
+	};
+	
 	const searchRoleData = async(event) =>{
 		let text = event.detail.search.text;
 		let searchUrl = (text)? $apiInfo.basePath + '/roles/search/' + text : $apiInfo.basePath + '/roles';

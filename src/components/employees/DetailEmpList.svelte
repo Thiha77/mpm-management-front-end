@@ -10,7 +10,7 @@ export let employee;
     <div class="card-body">         
          <div class="row ">
          <div class="col-md-12">
-          <img src={'uploads/employee/images/'+ employee.photo} width={200} height={200} class="avatar img-thumbnail employee-photo" alt="Image"/>
+          <img src={employee.photo} width={200} height={200} class="avatar img-thumbnail employee-photo" alt="Image"/>
          </div>       
             <div class="col-md-6">
                <strong class="card-title" >Employee Name :</strong>
@@ -87,7 +87,7 @@ export let employee;
                 <span>{employee.race}</span>
             </div>              
             <div class="col-md-12 pt-3">
-                  <a href="employee" class="btn btn-outline-warning">Cancel</a>
+                  <a href="employee" class="btn btn-outline-warning">Back</a>
                </div>  
             
          </div>                       

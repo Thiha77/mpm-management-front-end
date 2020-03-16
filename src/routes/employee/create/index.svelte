@@ -1,10 +1,12 @@
 <script>
 import Api from '../../../components/util/Api.svelte';
 import {axiosPost} from '../../../util/api.js';
-import { employee } from  "../../../stores/employee/store.js";
+import { employee,employeeMessages } from  "../../../stores/employee/store.js";
 import * as sapper from '@sapper/app';
 import { apiInfo } from '../../../store.js';
 import EmpCreate from '../../../components/employees/createEmployee.svelte';
+import { Toast } from '../../../util/salert.js';
+
         const CreateData = async(event) => {
             let myImage = event.detail.files[0];
             const url = $apiInfo.basePath + '/employees/create';
@@ -17,18 +19,26 @@ import EmpCreate from '../../../components/employees/createEmployee.svelte';
             let saveResult = await axiosPost(url,body);
             let uploadResult = await axiosPost(urlImage, dataImage);
             let id = saveResult.data.id;
-            let photo = uploadResult.data.path;
-            // photo = photo.replace("\\","/");
-            // let split = photo.split("\\");
-            // photo = split[1]+'/'+split[2]+'/'+split[3];
-            // photo = "http://localhost:5000/"+photo;
-
+            let photo = uploadResult.data.path;            
             let updateEmpData = {
                 id: id,
                 photo: photo
             };
             let updateImageRes = await axiosPost(updateImageUrl,updateEmpData);
-            sapper.goto("../employee");
+            // sapper.goto("../employee");
+             if(saveResult.error == null && uploadResult.error==null){
+            Toast.fire(
+                'Success!',
+                'New Employee is successfully created.',
+                'success'
+            )
+           sapper.goto("../employee");
+        }else{
+            $employeeMessages = {
+                    message: '',
+                    error: saveResult.error
+                }
+        }
                             
         }; 
              

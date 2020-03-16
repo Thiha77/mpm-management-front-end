@@ -33,7 +33,7 @@ import { nav,subNav } from '../../../store';
                 {/if}
             </li>
             <li>
-                <a href="user" class:selected='{segment === "user"}'>
+                <a href="user">
                     <i class="fas fa-users"></i>
                     User
                 </a>

@@ -6,13 +6,13 @@
     export let roles;
     export let permissions;
 
-    let selectedRole;
-    let selectedPermission;
-    
+    let selectedRole = 0;
+    let selectedPermission = 0;
+
     let enabledPermission = 0;
     let changedRole = (event) => {
         enabledPermission = event.detail.selectedRole;
-        selectedRole = event.detail.selectedRole;
+        selectedRole = event.detail.selectedRole; 
         dispatch('permissionByRoleId',{selectedRole:selectedRole});
     };
 
@@ -47,7 +47,11 @@
             </div>
         </div> 
         <div class="card-footer">
-            <button type="button" on:click={save} class="btn btn-primary">Save</button>
+            {#if selectedRole == 0 || selectedPermission == 0}
+                <button type="button" on:click={save} class="btn btn-primary" disabled>Save</button>
+            {:else}
+                 <button type="button" on:click={save} class="btn btn-primary">Save</button>
+            {/if}
         </div>
     </div>
 </section>

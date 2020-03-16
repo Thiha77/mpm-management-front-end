@@ -4,7 +4,8 @@
     import { permissionMessages } from '../../../stores/permission/store.js';
     import { stores, goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
-    
+    import { Toast } from '../../../util/salert.js';
+
     let permissionData = {
         name: "",
         specialPer: false
@@ -14,10 +15,11 @@
         const url = $apiInfo.basePath + '/permissions/create';
         let result = await axiosPost(url, permissionData);
         if(result.error == null){
-            $permissionMessages = {
-                message: 'Create Success',
-                error: 'Error'
-            }
+            Toast.fire(
+                'Success!',
+                'New role is successfully created.',
+                'success'
+            )
             goto('../permission');
         }else{
             $permissionMessages = {

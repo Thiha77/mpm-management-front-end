@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Employee Name:</label>
-                            {#if employees}
+                            <!-- {#if employees}
                                 <select class="form-control" disabled>
                                     <option value="0">Please Select Employee</option>
                                     {#each employees as employee}
@@ -47,7 +47,10 @@
                                         {/if}
                                     {/each}
                                 </select>
-                            {/if}
+                            {/if} -->
+                            <select class="form-control" disabled>
+                                <option value={user.employeeId} selected>{user.Employee['name']}</option>
+                            </select>
                         </div>
                         <div class="form-group">
                         <Api url={urlRoleData} method="get" let:data let:loading let:error>

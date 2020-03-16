@@ -36,17 +36,6 @@ import { nav,subNav } from '../../../store';
                     <i class="fas fa-users"></i>
                     User
                 </a>
-                <ul class="collapse list-unstyled">
-                    <li>
-                        <a href="#a">User 1</a>
-                    </li>
-                    <li>
-                        <a href="#a">User 2</a>
-                    </li>
-                    <li>
-                        <a href="#a">User 3</a>
-                    </li>
-                </ul>
             </li>
             <li>
                 <a href="about">

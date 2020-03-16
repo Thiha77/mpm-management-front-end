@@ -41,7 +41,9 @@
         goto(`user/edit/${id}`);
     };
 </script>
-
+<svelte:head>
+    <title>User</title>
+</svelte:head>
 <!-- <h1>{$user.createMessage}</h1> -->
 <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
     {#if data}

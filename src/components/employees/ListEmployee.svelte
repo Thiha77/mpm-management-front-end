@@ -72,12 +72,12 @@ table.table td a {
                 {#if employees}  
                  {#each employees as employee}   
                     <tr>
-                        <td><a href="employee/view" on:click={detail(employee)} ><img src={'uploads/employee/images/'+ employee.photo} class="avatar img-thumbnail employee-photo" alt="Image"/>{employee.name}</td>
+                        <td><a href={'employee/view/' + employee.id} on:click={detail(employee)} ><img src={employee.photo} class="avatar img-thumbnail employee-photo" alt="Image"/>{employee.name}</td>
                         <td>{employee.phoneNo}</td>
                         <td>{employee.officialEmail}</td>
                         <td>{employee.address}</td>
 						<td>
-						    <a class="btn btn-info" href="employee/edit" on:click={editbtn(employee)}>Edit</a>
+						    <button class="btn btn-info"  on:click={editbtn(employee)}>Edit</button>
                             <button class="btn btn-danger" on:click={deletebtn(employee.id)}>Delete</button>
                         </td>
                         </tr>

@@ -19,13 +19,19 @@
         }
     }
     const editEmployee = (event) => {
-        $empEditemployee = event.detail.emp;
-        goto('employee/edit');
+
+// let id = event.detail.notice.id;
+//         goto(`notice/edit/${id}`);
+
+       let id = event.detail.emp.id;
+        goto(`employee/edit/${id}`);
+        //goto('employee/edit');
     }
 
     const detailEmployee =(event) => {
-        $empEditemployee = event.detail.employee;        
-         goto('employee/view');    
+        $empEditemployee = event.detail.employee;   
+         goto(`employee/view/${id}`);     
+         //goto('employee/view');    
     }
 </script>
 

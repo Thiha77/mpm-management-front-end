@@ -7,18 +7,27 @@ import { apiInfo } from '../../../store.js';
 import EmpCreate from '../../../components/employees/createEmployee.svelte';
         const CreateData = async(event) => {
             let myImage = event.detail.files[0];
-            console.log("Image",myImage)
             const url = $apiInfo.basePath + '/employees/create';
-            const urlImage =$apiInfo.basePath + '/upload/save';
+            const urlImage = $apiInfo.basePath + '/upload/save';
+            const updateImageUrl = $apiInfo.basePath + '/employees/updateImage';
             const body =event.detail.emp;
             let dataImage = new FormData();
             dataImage.append('path', 'employee/images');
             dataImage.append('Image', myImage);            
-            const response = await Promise.all ([
-                axiosPost(url,body),
-                axiosPost(urlImage, dataImage)
-                
-            ]);
+            let saveResult = await axiosPost(url,body);
+            let uploadResult = await axiosPost(urlImage, dataImage);
+            let id = saveResult.data.id;
+            let photo = uploadResult.data.path;
+            // photo = photo.replace("\\","/");
+            // let split = photo.split("\\");
+            // photo = split[1]+'/'+split[2]+'/'+split[3];
+            // photo = "http://localhost:5000/"+photo;
+
+            let updateEmpData = {
+                id: id,
+                photo: photo
+            };
+            let updateImageRes = await axiosPost(updateImageUrl,updateEmpData);
             sapper.goto("../employee");
                             
         }; 

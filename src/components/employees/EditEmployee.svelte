@@ -9,12 +9,12 @@ const dispatch = createEventDispatcher();
 
     const uploadImage= (e)=>{ 
       src =URL.createObjectURL(e.target.files[0]);
-      employee.photo=e.target.files[0]['name'];  
+      //employee.photo=e.target.files;  
  }
-let src='uploads/employee/images/' +employee.photo
-//let src;
+let src =employee.photo;
 let files;
-</script>
+</script> 
+
 <style>
 </style>
  <div class="card">

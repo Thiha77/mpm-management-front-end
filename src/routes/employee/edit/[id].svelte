@@ -22,6 +22,7 @@
     import { apiInfo } from '../../../store.js';
     import { goto } from '@sapper/app';
     import * as sapper from '@sapper/app';
+    import { Toast } from '../../../util/salert.js';
     export let employee;
     const UpdateData = async(event) => {
         let myImage = event.detail.files[0];
@@ -34,7 +35,6 @@
             dataImage.append('Image', myImage);
            
         let result = await axiosPost(url, employee);
-         console.log("ID",employee.id)
         let updateResult= await  axiosPost(urlImage,dataImage)  ; 
         let path =updateResult.data.path
          let updateEmpData = {
@@ -43,6 +43,20 @@
             };
             let updateImageRes = await axiosPost(updateImageUrl,updateEmpData);
             sapper.goto("../employee");
+
+             if(result.error == null && updateResult.error==null){
+            Toast.fire(
+                'Success!',
+                'Employee is successfully updated.',
+                'success'
+            )
+           sapper.goto("../employee");
+        }else{
+            $employeeMessages = {
+                    message: '',
+                    error: result.error
+                }
+        }
     }
 </script>
 

@@ -8,13 +8,11 @@ const dispatch = createEventDispatcher();
 
 let src ;
 const CreateData = () =>{
-   //  dispatch('create', { emp : employee});
    dispatch('create', { files: files, emp:employee});
 
 }
  const uploadImage= (e)=>{ 
-   src =URL.createObjectURL(e.target.files[0]);
-   //employee.photo=e.target.files[0]['name'];      
+   src =URL.createObjectURL(e.target.files[0]);      
  }
  
 

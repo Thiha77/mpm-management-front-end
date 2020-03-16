@@ -12,6 +12,7 @@ import { nav,subNav } from '../../../store';
         <!-- <a href="."><img class="img-fluid" src="favicon.png" alt="MPM Logo"></a> -->
         <a href=".">MPM LOGO</a>
         </div><!-- .sidebar-header -->
+        <h5>Admin</h5>
         <ul class="list-unstyled components">
             <li >
                 <a on:click={() => $subNav.subNav = !$subNav.subNav}  href='.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle " id="homeSubmenu">
@@ -74,12 +75,6 @@ import { nav,subNav } from '../../../store';
                     Notice
                 </a>
             </li>
-            <li>
-                <a href="swipe">
-                    <i class="fas fa-calendar-check"></i>
-                    Swipe
-                </a>
-            </li>
         </ul><!-- .components -->
         <!-- <ul class="list-unstyled CTAs">
             <li>
@@ -89,5 +84,14 @@ import { nav,subNav } from '../../../store';
                 <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
             </li>
         </ul> -->
+        <h5>Employees</h5>
+        <ul class="list-unstyled components">
+            <li>
+                <a href="swipe">
+                    <i class="fas fa-image"></i>
+                    Swipe
+                </a>
+            </li>
+        </ul>
     </nav>
 {/if}

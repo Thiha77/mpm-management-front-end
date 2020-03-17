@@ -104,19 +104,19 @@ let files;
                         <div class="col-4">
                            <label class="card-title">Gender : </label><br/>
                            <!-- <input type="text" class="form-control" id="text" placeholder="Enter Gender" bind:value={employee.gender} /> -->
-                           <label><input type=radio bind:group={employee.gender} value="male" /> Male</label>
-                           <label><input type=radio bind:group={employee.gender} value="female" /> Female</label>
+                           <label><input type=radio bind:group={employee.gender} value="Male" /> Male</label>
+                           <label><input type=radio bind:group={employee.gender} value="Female" /> Female</label>
                         </div>
                         <div class="col-4">
                            <label class="card-title">Marital Status: </label><br/>
-                           <label><input type=radio bind:group={employee.maritalStatus} value="single" /> Single</label>
-                           <label><input type=radio bind:group={employee.maritalStatus} value="married" /> Married</label>
+                           <label><input type=radio bind:group={employee.maritalStatus} value="Single" /> Single</label>
+                           <label><input type=radio bind:group={employee.maritalStatus} value="Married" /> Married</label>
                         </div>
                         <div class="col-4">
                            <label class="card-title">Employee Status: </label><br/>
                            <!-- <input type="text" class="form-control" id="text" placeholder="Enter EmpStatus" bind:value={employee.employeeStatus}  /> -->
-                           <label><input type=radio bind:group={employee.employeeStatus} value="active" /> Active</label>
-                           <label><input type=radio bind:group={employee.employeeStatus} value="inactive" /> Inactive</label>
+                           <label><input type=radio bind:group={employee.employeeStatus} value="Active" /> Active</label>
+                           <label><input type=radio bind:group={employee.employeeStatus} value="Inactive" /> Inactive</label>
                         </div>
                      </div>
                      <div class="form-group">
@@ -137,7 +137,7 @@ let files;
                               <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
                         </div> 
                      </form>  
-                     <button type="button" class="btn btn-outline-success" on:click={CreateData}>Create</button>
+                     <button type="button" class="btn btn-info" on:click={CreateData}>Create</button>
                      <a href="employee" class="btn btn-outline-warning">Cancel</a>
                      <!-- <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>         -->
                   </div>   

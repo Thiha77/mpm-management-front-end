@@ -10,9 +10,9 @@ import { nav,subNav } from '../../../store';
     <nav id="sidebar" in:fly="{{ x:-250 , duration: 500 }}" out:fly="{{ x:-250 , duration: 500 }}">
         <div class="sidebar-header">
         <!-- <a href="."><img class="img-fluid" src="favicon.png" alt="MPM Logo"></a> -->
-        <a href=".">MPM LOGO</a>
+        <a href="." class="font-weight-bold">Management Partners Myanmar</a>
         </div><!-- .sidebar-header -->
-        <h5>Admin</h5>
+        <span class="tag">Admin</span>
         <ul class="list-unstyled components">
             <li >
                 <a on:click={() => $subNav.subNav = !$subNav.subNav}  href='.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle " id="homeSubmenu">
@@ -84,7 +84,7 @@ import { nav,subNav } from '../../../store';
                 <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
             </li>
         </ul> -->
-        <h5>Employees</h5>
+        <span class="tag">Employee</span>
         <ul class="list-unstyled components">
             <li>
                 <a href="swipe">

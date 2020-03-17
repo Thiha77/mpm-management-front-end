@@ -27,7 +27,7 @@
             apiInstance.refresh();
             Toast.fire(
             'Deleted!',
-            'Notice has been deleted.',
+            'Employee has been deleted.',
             'success'
             );
         }

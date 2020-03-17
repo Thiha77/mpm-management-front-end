@@ -2,6 +2,7 @@
 import { fly,fade,slide  } from 'svelte/transition';
 import { quintOut,circIn } from 'svelte/easing';
 import { nav,subNav } from '../../../store';
+
 // import { quintOut } from 'svelte/easing';
 // let sidebarCollapse = "show";
 </script>
@@ -9,8 +10,9 @@ import { nav,subNav } from '../../../store';
     <nav id="sidebar" in:fly="{{ x:-250 , duration: 500 }}" out:fly="{{ x:-250 , duration: 500 }}">
         <div class="sidebar-header">
         <!-- <a href="."><img class="img-fluid" src="favicon.png" alt="MPM Logo"></a> -->
-        <a href=".">MPM LOGO</a>
+        <a href="." class="font-weight-bold">Management Partners Myanmar</a>
         </div><!-- .sidebar-header -->
+        <span class="tag">Admin</span>
         <ul class="list-unstyled components">
             <li >
                 <a on:click={() => $subNav.subNav = !$subNav.subNav}  href='.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle " id="homeSubmenu">
@@ -36,17 +38,6 @@ import { nav,subNav } from '../../../store';
                     <i class="fas fa-users"></i>
                     User
                 </a>
-                <ul class="collapse list-unstyled">
-                    <li>
-                        <a href="#a">User 1</a>
-                    </li>
-                    <li>
-                        <a href="#a">User 2</a>
-                    </li>
-                    <li>
-                        <a href="#a">User 3</a>
-                    </li>
-                </ul>
             </li>
             <li>
                 <a href="about">
@@ -68,7 +59,7 @@ import { nav,subNav } from '../../../store';
             </li>
             <li>
                 <a href="rolepermission">
-                    <i class="fas fa-user-secret"></i>
+                    <i class="fas fa-user-lock"></i>
                     Role Permission
                 </a>
             </li>
@@ -80,14 +71,8 @@ import { nav,subNav } from '../../../store';
             </li>
             <li>
                 <a href="notice">
-                    <i class="fas fa-image"></i>
+                    <i class="fas fa-bell"></i>
                     Notice
-                </a>
-            </li>
-            <li>
-                <a href="swipe">
-                    <i class="fas fa-image"></i>
-                    Swipe
                 </a>
             </li>
         </ul><!-- .components -->
@@ -99,5 +84,14 @@ import { nav,subNav } from '../../../store';
                 <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
             </li>
         </ul> -->
+        <span class="tag">Employee</span>
+        <ul class="list-unstyled components">
+            <li>
+                <a href="swipe">
+                    <i class="fas fa-image"></i>
+                    Swipe
+                </a>
+            </li>
+        </ul>
     </nav>
 {/if}

@@ -5,6 +5,7 @@
     import { roleMessages } from '../../../stores/role/store.js';
     import { stores, goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
+    import { Toast } from '../../../util/salert.js';
     
     let roleData = {
         id: null,
@@ -16,10 +17,11 @@
         const url = $apiInfo.basePath + '/roles/create';
         let result = await axiosPost(url, roleData);
         if(result.error == null){
-            $roleMessages = {
-                message: 'Create Success',
-                error: 'Error'
-            }
+            Toast.fire(
+                'Success!',
+                'New Role is successfully created.',
+                'success'
+            )
             goto('../role');
         }else{
             $roleMessages = {

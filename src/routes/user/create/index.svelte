@@ -6,6 +6,7 @@
     import { user } from '../../../stores/user/store.js';
     import { stores, goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
+    import { Toast } from '../../../util/salert.js';
     let url = $apiInfo.basePath + '/users';
     let urlEmpData = $apiInfo.basePath + '/users/getEmpData';
     let urlRoleData = $apiInfo.basePath + '/roles/';
@@ -35,10 +36,11 @@
         const url = $apiInfo.basePath + '/users/create';
         let result = await axiosPost(url, event.detail.userData);
         if(result.error == null){
-            $user = {
-                message: 'Create Success',
-                error: 'Error'
-            }
+             Toast.fire(
+                'Success!',
+                'New User is successfully created.',
+                'success'
+            )
             goto('../user');
         }else{
             $user = {

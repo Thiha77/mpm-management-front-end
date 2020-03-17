@@ -45,47 +45,48 @@ table.table td a {
     text-decoration: none;
 }
 </style>
-<div class="container">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-8">
-						<h2>Employee <b>Management</b></h2>
-					</div>
-					<div class="col-sm-4">
-                        <a class="btn btn-primary float-right" href="employee/create" >Add New Employee</a>
-						<!-- <button  class="btn btn-primary float-right" on:click={createForm}>Add New Employee</button>					 -->
-					</div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="table-wrapper card-list-mpm1">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6"><h3 class="float-left">Employee List</h3></div>
+                            <div class="col-sm-6"><a class="btn btn-info float-right" href='employee/create'><i class="fas fa-plus-circle"></i> Add New Employee</a></div>
+                        </div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>						
+                                <th>Phone</th>
+                                <th>Official Email</th>
+                                <th>Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {#if employees}  
+                            {#each employees as employee}   
+                                <tr>
+                                    <td><a href={'employee/view/' + employee.id} on:click={detail(employee)} ><img src={employee.photo} class="avatar img-thumbnail employee-photo" alt="Image"/>{employee.name}</td>
+                                    <td>{employee.phoneNo}</td>
+                                    <td>{employee.officialEmail}</td>
+                                    <td>{employee.address}</td>
+                                    <td>
+                                        <button class="btn btn-info"  on:click={editbtn(employee)} title="Edit"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-danger" on:click={deletebtn(employee.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
+                                    </td>
+                                    </tr>
+                                {/each}                       
+                            {:else}
+                            <tr>No  Record Found!</tr>
+                        {/if}   
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Photo</th>						
-						<th>Phone</th>
-                        <th>Official Email</th>
-						<th>Address</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {#if employees}  
-                 {#each employees as employee}   
-                    <tr>
-                        <td><a href={'employee/view/' + employee.id} on:click={detail(employee)} ><img src={employee.photo} class="avatar img-thumbnail employee-photo" alt="Image"/>{employee.name}</td>
-                        <td>{employee.phoneNo}</td>
-                        <td>{employee.officialEmail}</td>
-                        <td>{employee.address}</td>
-						<td>
-						    <button class="btn btn-info"  on:click={editbtn(employee)}>Edit</button>
-                            <button class="btn btn-danger" on:click={deletebtn(employee.id)}>Delete</button>
-                        </td>
-                        </tr>
-                     {/each}                       
-                {:else}
-                     <tr>No  Record Found!</tr>
-                    {/if}   
-                </tbody>
-            </table>
-        </div>
+        </div>   
     </div>  
+</section>

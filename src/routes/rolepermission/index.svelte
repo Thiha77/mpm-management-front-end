@@ -4,6 +4,7 @@
 	import { axiosGet, axiosPost} from '../../util/api';
 	import { rolePermission } from '../../stores/rolepermission/store';
 	import { apiInfo } from '../../store.js';
+	import { Toast, CfmDelete } from '../../util/salert';
 
 	let url = $apiInfo.basePath + '/rolepermissions';
 	const method = 'get';
@@ -29,14 +30,22 @@
 		let data = {
 			id: event.detail.id
 		};
-		if(confirm("Are you sure want to delete?"))
-		{
-			let url = $apiInfo.basePath +"/rolepermissions/delete";
-			axiosPost(url,data)
-			.then(
-				() => { updateTable() }
-			);	
-		}
+		 CfmDelete.fire().then((result) => {
+			if (result.value) {
+				let url = $apiInfo.basePath +"/rolepermissions/delete";
+				axiosPost(url,data)
+				.then(
+					() => {
+						updateTable();
+						Toast.fire(
+							'Deleted!',
+							'RolePermission has been deleted.',
+							'success'
+						);
+					}
+				);	
+			}
+		});
 	};
 
 	const searchRolePermissionData = async(event) => {

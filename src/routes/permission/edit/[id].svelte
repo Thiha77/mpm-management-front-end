@@ -20,6 +20,7 @@
     import { editPermissionData, permissionMessages } from '../../../stores/permission/store.js';
     import { goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
+    import { Toast } from '../../../util/salert.js';
     export let permission;
 
     const updatePermissionData = async() => {
@@ -27,10 +28,11 @@
         const url = $apiInfo.basePath + '/permissions/update';
         let result = await axiosPost(url, permission);
         if(result.error == null){
-            $permissionMessages = {
-                message: 'Update Success',
-                error: 'Error'
-            }
+            Toast.fire(
+                'Success!',
+                'Permission is successfully updated.',
+                'success'
+            )
             goto('../permission');
         }else{
             $permissionMessages = {

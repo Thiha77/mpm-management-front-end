@@ -2,6 +2,7 @@
     import Api from '../../components/util/Api.svelte';
     import { axiosPost } from '../../util/api';
     import EmpList from '../../components/employees/ListEmployee.svelte';
+     import SearchEmp from '../../components/employees/searchEmployee.svelte';
     import { empEditemployee,employeeMessages } from "../../stores/employee/store";
     import { apiInfo } from '../../store.js';
     import { goto } from '@sapper/app';
@@ -42,6 +43,14 @@
         $empEditemployee = event.detail.employee;   
          goto(`employee/view/${id}`);         
     }
+
+     const searchEmployee =async(event) => {
+         let searchEmp = event.detail.searchEmp;
+         let searchEmpUrl = (searchEmp)? $apiInfo.basePath + '/employees/search/' + searchEmp : $apiInfo.basePath + '/employees';
+		apiInstance.loadExternal(searchEmpUrl);
+         
+
+     }
 </script>
 
 <svelte:head>
@@ -51,10 +60,9 @@
 
 
 
-<div class="container">
-    {#if $employeeMessages.message}
-        <h1>{$employeeMessages.message}</h1>
-    {/if}
+<div class="container">   
+    <SearchEmp on:searchEmp={searchEmployee}></SearchEmp>
+    
     <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
         {#if data}
             <EmpList employees={data} on:delete={deleteEmployee} on:edit={editEmployee} on:list={detailEmployee}></EmpList>

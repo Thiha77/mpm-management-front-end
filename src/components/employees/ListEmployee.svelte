@@ -46,7 +46,7 @@ table.table td a {
 }
 </style>
 <section>
-    <div class="container">
+    <div class="">
         <div class="row">
             <div class="col">
                 <div class="table-wrapper card-list-mpm1">
@@ -67,7 +67,9 @@ table.table td a {
                             </tr>
                         </thead>
                         <tbody>
-                        {#if employees}  
+                        {#if employees.length===0}  
+                        <span> No Employee Record Data</span>
+                         {:else}
                             {#each employees as employee}   
                                 <tr>
                                     <td><a href={'employee/view/' + employee.id} on:click={detail(employee)} ><img src={employee.photo} class="avatar img-thumbnail employee-photo" alt="Image"/>{employee.name}</td>
@@ -79,9 +81,7 @@ table.table td a {
                                         <button class="btn btn-danger" on:click={deletebtn(employee.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
                                     </td>
                                     </tr>
-                                {/each}                       
-                            {:else}
-                            <tr>No  Record Found!</tr>
+                                {/each}                                                 
                         {/if}   
                         </tbody>
                     </table>

@@ -32,7 +32,7 @@
         if(result.error == null){
              Toast.fire(
                 'Success!',
-                'Update User is successfully updated.',
+                'User is successfully updated.',
                 'success'
             )
             goto('../user');

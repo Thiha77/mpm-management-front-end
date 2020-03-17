@@ -21,7 +21,7 @@ export let employee;
                   </div>
                </div>
                <div class="row p-3">
-                  <div class="col-6">
+                  <div class="col-md-6 col-sm-12">
                      <ul class="personal-list">
                         <li>
                            <strong class="personal-title">Employee Name</strong>
@@ -61,7 +61,7 @@ export let employee;
                         </li>
                      </ul>
                   </div>
-                  <div class="col-6">
+                  <div class="col-md-6 col-sm-12">
                      <ul class="personal-list">
                         <li>
                            <strong class="personal-title">Name</strong>
@@ -92,8 +92,8 @@ export let employee;
                            <span class="personal-cont">{employee.postalCode}</span>
                         </li>
                         <li>
-                           <strong class="personal-title">Marital Status</strong>
-                           <span class="personal-cont">{employee.maritalStatus}</span>
+                           <strong class="personal-title">Employee Status</strong>
+                           <span class="personal-cont">{employee.employeeStatus}</span>
                         </li>
                         <li>
                            <strong class="personal-title">Race</strong>

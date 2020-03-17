@@ -14,46 +14,48 @@
     }
 </script>
 
-<div class="table-wrapper">
-    <div class="table-title">
-        <div class="row">
-            <div class="col-sm-8">
-                <h2>Notice</h2>
-            </div>
-            <div class="col-sm-4">
-                <a class="btn btn-primary float-right" href="notice/create" >Add New Notice</a>
-            </div>
+<section>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive-sm ">
+                <div class="table-wrapper card-list-mpm1">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6"><h3 class="float-left">Notice List</h3></div>
+                            <div class="col-sm-6"><a class="btn btn-info float-right" href='notice/create'><i class="fas fa-plus-circle"></i> Add New User</a></div>
+                        </div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Title</th>						
+                                <th>Description</th>
+                                <th>Summary</th>
+                                <th>Author</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {#if notices}
+                                {#each notices as notice}   
+                                <tr>
+                                    <td><a href={'notice/detail/' + notice.id}>{notice.title}</a></td>
+                                    <td><span class="txt-limit">{notice.description}</span></td>
+                                    <td>{notice.summary}</td>
+                                    <td>{notice.Employee['name']}</td>                                                         
+                                    <td>
+                                        <button class="btn btn-info" on:click={edit(notice)} title="Edit"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-danger" on:click={del(notice.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
+                                    </td>
+                                    </tr>
+                                {/each} 
+                                {:else}
+                                <tr>No Record Found!</tr>
+                            {/if}    
+                        </tbody>
+                    </table>
+                </div><!-- .table-wrapper  -->
+            </div><!-- .table-responsive-sm  -->
         </div>
     </div>
-
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Title</th>						
-                <th>Description</th>
-                <th>Summary</th>
-                <th>Author</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {#if notices}
-                {#each notices as notice}   
-                <tr>
-                    <td><a href={'notice/detail/' + notice.id}>{notice.title}</a></td>
-                    <td>{notice.description}</td>
-                    <td>{notice.summary}</td>
-                    <td>{notice.Employee['name']}</td>                                                         
-                    <td>
-                        <button class="btn btn-info" on:click={edit(notice)}>Edit</button>
-                        <button class="btn btn-danger" on:click={del(notice.id)}>Delete</button>
-                    </td>
-                    </tr>
-                {/each} 
-                {:else}
-                <tr>No Record Found!</tr>
-            {/if}    
-        </tbody>
-    </table>
-
-</div>
+</section>

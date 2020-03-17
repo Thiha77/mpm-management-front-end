@@ -6,7 +6,7 @@
     import { apiInfo } from '../../store.js';
     const dispatch = createEventDispatcher();
     let urlRoleData = $apiInfo.basePath + '/roles/';
-    export let employees;
+    // export let employees;
     export let user;
     function updateUser(){
         dispatch('update');

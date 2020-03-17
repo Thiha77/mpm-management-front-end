@@ -4,12 +4,34 @@
     import { stores, goto } from '@sapper/app';
     import { noticeMessages } from '../../../stores/notice/store';
     import { apiInfo } from '../../../store.js';
-    import { Toast } from '../../../util/salert.js';
+    import { Toast, Err } from '../../../util/salert.js';
+    // import validate  from 'validate.js';
+    import { validate } from '../../../util/validator';
     const { session } = stores();
+
+    let constraints = {
+        title: {
+            presence: { allowEmpty: false }
+        },
+        description: {
+            datetime: true
+        }
+    };
 
     const saveNotice = async(event) => {
         let notice = event.detail.notice;
         notice = { ...notice, employeeId : $session.user.employeeId};
+        // console.log(notice);;
+        let vErrors = validate(notice, constraints);
+
+        if(vErrors){
+            Err.fire(
+                'Err',
+                JSON.stringify(vErrors),
+                'error'
+            );
+            return;
+        }  
 
         const url = $apiInfo.basePath + '/notices/save';
         let result = await axiosPost(url, notice);

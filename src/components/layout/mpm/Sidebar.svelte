@@ -12,8 +12,8 @@ import { nav,subNav } from '../../../store';
         <!-- <a href="."><img class="img-fluid" src="favicon.png" alt="MPM Logo"></a> -->
         <a href="." class="font-weight-bold">Management Partners Myanmar</a>
         </div><!-- .sidebar-header -->
+        <span class="tag">Admin</span>
         <ul class="list-unstyled components">
-            <li><span class="tag">Admin</span> </li>
             <li >
                 <a on:click={() => $subNav.subNav = !$subNav.subNav}  href='.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle " id="homeSubmenu">
                     <i class="fas fa-home"></i>

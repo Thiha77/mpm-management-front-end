@@ -46,15 +46,16 @@
     }
 
 </script>
-
-<div class="row">
-    <div class="col-lg-9">
-        <CreateNotice on:save={saveNotice}></CreateNotice>
-    </div>
-    <div class="col-lg-3" >
-        {#if vErrors}
-            <ValidationBox {vErrors}></ValidationBox>
-        {/if}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <CreateNotice on:save={saveNotice}></CreateNotice>
+        </div>
+        <div class="col-lg-3" >
+            {#if vErrors}
+                <ValidationBox {vErrors}></ValidationBox>
+            {/if}
+        </div>
     </div>
 </div>
 

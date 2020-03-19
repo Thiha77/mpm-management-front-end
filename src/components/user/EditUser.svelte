@@ -60,8 +60,8 @@
                         </Api>
                         </div>
                         <div class="mt-4">
-                            <button type="submit" class="btn btn-success" on:click|preventDefault={updateUser}>Update</button>
-                            <a href="user" class="btn btn-outline-warning">Cancel</a>   
+                            <button type="submit" class="btn btn-blue" on:click|preventDefault={updateUser}>Update</button>
+                            <a href="user" class="btn btn-outline-orange">Cancel</a>   
                         </div>
                     </form>
                 </div>

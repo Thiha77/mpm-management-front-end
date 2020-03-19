@@ -23,6 +23,9 @@
         userName: {
             presence: { allowEmpty: false }
         },
+        password: {
+            presence: { allowEmpty: false }
+        },
         employeeId: {
             presence: { allowEmpty: false }
         },

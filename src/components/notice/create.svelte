@@ -22,7 +22,7 @@
             <div class="card-body p-5">
                 <div>
                     <div class="form-group">
-                        <label for="title">Title:</label>
+                        <label for="title">Name:</label>
                         <input type="text" bind:value={notice.title} class="form-control" placeholder="Enter title" />
                     </div>
                     <div class="form-group">

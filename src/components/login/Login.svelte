@@ -3,6 +3,7 @@
     import { stores,goto } from '@sapper/app';
     import { onMount } from 'svelte';
     import { apiInfo } from '../../store.js';
+    import { Toast, Err } from '../../util/salert';
     const { session } = stores();
     let url = $apiInfo.basePath + '/users/searchuser';
     let userName = "";
@@ -38,18 +39,25 @@ if(password == "")
 }
 if(username != "" && password != ""){
 axiosPost(url,data).then(result=>{
-    if(result.data.length != 0)
+    if(result.data)
     {
         localStorage.setItem('user', JSON.stringify(result.data));
         $session.user = result.data;
     if(result.data["roleId"]==1)
     {
-        goto("home")
+        goto("/");
     }
     else
     {
         goto("swipe");
     }
+    if(result.error == null){
+            Toast.fire(
+                'Success!',
+                'Login Successfully.',
+                'success'
+            );
+        }
     }
     else{
         alert("User name or password is wrong!")

@@ -6,7 +6,7 @@ import axios from "axios";
 //const baseUrl = "http://localhost:5000/upload/save";
 const dispatch = createEventDispatcher();
 
-let src ;
+let src;
 const CreateData = () =>{
    dispatch('create', { files: files, emp:employee});
 }
@@ -52,7 +52,7 @@ let files;
                      </div> 
                      <div class="form-group">
                         <label class="card-title">Phone No: </label>
-                        <input type="phone" class="form-control" id="text" placeholder="Enter Phone Number" bind:value={employee.phoneNo}/>
+                        <input type="phone" pattern="^\d{4}-\d{3}-\d{4}$" class="form-control" id="text"   placeholder="Enter Phone Number" bind:value={employee.phoneNo}/>
                      </div>
                      <div class="form-group">
                         <label class="card-title">Personal Email : </label>
@@ -131,7 +131,7 @@ let files;
                   <div class="col-md-12">
                      <form>           
                         <div class="form-group">
-                           <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} required> 
+                           <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage}> 
                         </div>            
                         <div class="form-group" >                  
                               <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>

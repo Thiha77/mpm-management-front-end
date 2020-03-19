@@ -21,11 +21,27 @@
     import { goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
     import { Toast } from '../../../util/salert.js';
+    import { validate } from '../../../util/validator';
+    import ValidationBox from '../../../components/util/ValidationBox.svelte';
+
     export let permission;
+
+    let vErrors;
+    let constraints = {
+        name: {
+            presence: { allowEmpty: false }
+        },
+    };
 
     const updatePermissionData = async() => {
        
         const url = $apiInfo.basePath + '/permissions/update';
+
+        vErrors = validate(permission, constraints);
+        if(vErrors){
+            return;
+        } 
+
         let result = await axiosPost(url, permission);
         if(result.error == null){
             Toast.fire(
@@ -45,5 +61,8 @@
 </script>
 
 <div class="container">
+    {#if vErrors}
+        <ValidationBox {vErrors}></ValidationBox>
+    {/if}
 	<PermissionEdit {permission} on:updatePermission={updatePermissionData}></PermissionEdit>
 </div>

@@ -7,6 +7,8 @@
     import { stores, goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
     import { Toast } from '../../../util/salert.js';
+    import { validate } from '../../../util/validator';
+    import ValidationBox from '../../../components/util/ValidationBox.svelte';
     let url = $apiInfo.basePath + '/users';
     let urlEmpData = $apiInfo.basePath + '/users/getEmpData';
     let urlRoleData = $apiInfo.basePath + '/roles/';
@@ -16,7 +18,18 @@
 		let roleResult = await axiosGet(urlRoleData);
 		roles = roleResult.data;
     });
-    
+    let vErrors;
+    let constraints = {
+        userName: {
+            presence: { allowEmpty: false }
+        },
+        employeeId: {
+            presence: { allowEmpty: false }
+        },
+        roleId: {
+            presence: { allowEmpty: false }
+        }
+    };
     const addUserData = async(event) =>{
         // console.log(event.detail.userData.selectedRoleId);
         // let name = event.detail.userData.name;
@@ -33,6 +46,11 @@
         //     roleId:roleId
         // };
         // console.log(event.detail.userData);
+        let users = event.detail.userData;
+        vErrors = validate(users, constraints);
+        if(vErrors){
+            return;
+        }  
         const url = $apiInfo.basePath + '/users/create';
         let result = await axiosPost(url, event.detail.userData);
         if(result.error == null){
@@ -50,8 +68,20 @@
         }
     };
 </script>
-<Api url={urlEmpData} {method} let:data let:loading let:error>
-{#if data}
-    <CreateUser {roles} employees={data} on:addUser={addUserData}></CreateUser>
-{/if}
-</Api>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <Api url={urlEmpData} {method} let:data let:loading let:error>
+                {#if data}
+                    <CreateUser {roles} employees={data} on:addUser={addUserData}></CreateUser>
+                {/if}
+                </Api>
+        </div>
+        <div class="col-lg-3" >
+            {#if vErrors}
+                <ValidationBox {vErrors}></ValidationBox>
+            {/if}
+        </div>
+    </div>
+</div>

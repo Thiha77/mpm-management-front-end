@@ -26,6 +26,7 @@
     export let employee;
     const UpdateData = async(event) => {
         let myImage = event.detail.files[0];
+        console.log("myImage",myImage)
         const url = $apiInfo.basePath + '/employees/update';
          const urlImage =$apiInfo.basePath + '/upload/save';
          const updateImageUrl = $apiInfo.basePath + '/employees/updateImage';

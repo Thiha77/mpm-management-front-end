@@ -16,14 +16,50 @@ let vErrors;
         name: {
             presence: { allowEmpty: false }
         },
-        dob:{
-            date:true
+        phoneNo:{
+            presence:true,
+            numericality: { 
+            onlyInteger: true,
+            },
+            length:{
+                minimum:10,
+                maximum:14,
+                message:"must be at least 10 numerics and maximum 14 numerics"
+            }
+        },
+         nrcNo:{
+            presence:{allowEmpty:false}
+        },
+        officialEmail:{
+             presence:true,
+             email:{
+                 email:true,
+                 message:"must be mail address"
+             }
         },
         address: {
            presence: { allowEmpty: false }
-        }
-
-    };
+        },
+        dob:{
+            presence:true,
+            date :{
+                message:"You must be at least 18 years old to use "
+            }
+        },
+         postalCode:{
+            format :{
+                pattern:"\\d{5}",
+                message:"must be 5 numerics "
+            }
+        },
+       basicSalary:{
+            numericality: { 
+            onlyInteger: true,
+            greaterThanOrEqualTo: 100000
+        }         
+    }
+        
+};
 
         const CreateData = async(event) => {
 

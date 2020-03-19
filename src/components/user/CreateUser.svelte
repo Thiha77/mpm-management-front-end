@@ -37,33 +37,42 @@
                         <form>
                             <div class="form-group">
                                 <label for="title">Name</label>
-                                <input class="form-control" bind:value={userData.name} required type="text" placeholder="Title" />
+                                <input class="form-control" bind:value={userData.name} required type="text" placeholder="Name" />
                             </div>
                             <div class="form-group">
                                 <label for="title">User Name</label>
-                                <input type="text" bind:value={userData.userName} required class="form-control" placeholder="User Name" />
+                                <div class="mpm-require">
+                                    <input type="text" bind:value={userData.userName} required class="form-control" placeholder="User Name" />
+                                    <i class="fas fa-star-of-life req-icon"></i>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="title">Password</label>
-                                <input type="password" bind:value={userData.password} required class="form-control" placeholder="Password"/>
+                                <div class="mpm-require">
+                                    <input type="password" bind:value={userData.password} required class="form-control" placeholder="Password"/>
+                                    <i class="fas fa-star-of-life req-icon"></i>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="name">Employee Name:</label>
-                                {#if employees}
-                                    <select class="form-control" bind:value={userData.employeeId}>
-                                        <option value="0">Please Select Employee</option>
-                                        {#each employees as employee}
-                                            <option value={employee.id}>{employee.name}</option>
-                                        {/each}
-                                    </select>
-                                {/if}
+                                <div class="mpm-require">
+                                    {#if employees}
+                                        <select class="form-control" bind:value={userData.employeeId}>
+                                            <option value="0">Please Select Employee</option>
+                                            {#each employees as employee}
+                                                <option value={employee.id}>{employee.name}</option>
+                                            {/each}
+                                        </select>
+                                        <i class="fas fa-star-of-life req-icon"></i>
+                                    {/if}
+                                </div>
                             </div>
                             <div class="form-group">
                                 <RoleSelect {roles} on:changedRole={getChangedRoleId}></RoleSelect>
                             </div>
                             <div class="mt-4">
-                                <button type="submit" class="btn btn-info" on:click|preventDefault={addUser}>Add User</button>
-                                <a href="user" class="btn btn-outline-warning">Cancel</a>     
+                                <button type="submit" class="btn btn-blue" on:click|preventDefault={addUser}>Add User</button>
+                                <a href="user" class="btn btn-outline-orange">Cancel</a>     
                             </div>
                         </form>
                     </div>

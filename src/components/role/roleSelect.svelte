@@ -11,14 +11,15 @@
 <style>
 	
 </style>
-<section>
     <label for="name">Role Name:</label>
-    {#if roles}
-        <select class="form-control" bind:value={selectedRoleId} on:change={(changedRole(selectedRoleId))}>
-            <option value="0">Please Select Role</option>
-            {#each roles as role}
-                <option value={role.id}>{role.name}</option>
-            {/each}
-        </select>
-    {/if}
-</section>
+    <div class="mpm-require">
+        {#if roles}
+            <select class="form-control" bind:value={selectedRoleId} on:change={(changedRole(selectedRoleId))}>
+                <option value="0">Please Select Role</option>
+                {#each roles as role}
+                    <option value={role.id}>{role.name}</option>
+                {/each}
+            </select>
+        {/if}
+        <i class="fas fa-star-of-life req-icon"></i>
+    </div>

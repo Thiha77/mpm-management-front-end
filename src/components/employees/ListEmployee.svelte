@@ -11,10 +11,10 @@ const deletebtn=(id) => {
     dispatch('delete', { id : id});
 
 }
-const detail=(employee) => {
-    dispatch('list', { employee: employee});
+// const detail=(employee) => {
+//     dispatch('list', { employee: employee});
 
-}
+// }
 
 </script>
 <style>
@@ -72,7 +72,7 @@ table.table td a {
                          {:else}
                             {#each employees as employee}   
                                 <tr>
-                                    <td><a href={'employee/view/' + employee.id} on:click={detail(employee)} ><img src={employee.photo} class="avatar img-thumbnail employee-photo" alt="Image"/>{employee.name}</td>
+                                    <td><a href={'employee/view/' + employee.id} ><img src={employee.photo} class="avatar img-thumbnail employee-photo" alt="Image"/>{employee.name}</td>
                                     <td>{employee.phoneNo}</td>
                                     <td>{employee.officialEmail}</td>
                                     <td>{employee.address}</td>

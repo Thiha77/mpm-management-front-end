@@ -1,6 +1,6 @@
 <script>
     import Api from '../../components/util/Api.svelte';
-    import { axiosPost } from '../../util/api';
+    import { axiosGet, axiosPost } from '../../util/api';
     import EmpList from '../../components/employees/ListEmployee.svelte';
      import SearchEmp from '../../components/employees/searchEmployee.svelte';
     import { empEditemployee,employeeMessages } from "../../stores/employee/store";
@@ -12,8 +12,9 @@
     let url = $apiInfo.basePath + '/employees';
     const method = 'get';
     let apiInstance;
+    let empData;
 
-     const deleteEmployee = async(event) => {
+    const deleteEmployee = async(event) => {
         let id = event.detail.id;
         CfmDelete.fire().then((result)=> {
             if(result.value){
@@ -22,9 +23,14 @@
         })
     }
     const del = async(id) => {
-       const urlDel = $apiInfo.basePath + '/employees/delete';
-        let res = await axiosPost(urlDel, { id : id});
-        if(res.data > 0){
+            const urlEmpData = $apiInfo.basePath + '/employees/'+id;
+            let empData = await axiosGet(urlEmpData);
+            let photo = empData.data.photo;
+            const urlUploadDelete = $apiInfo.basePath + '/upload/delete';
+            let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo});
+            const urlDel = $apiInfo.basePath + '/employees/delete';
+            let res = await axiosPost(urlDel, { id : id});
+            if(res.data > 0){
             apiInstance.refresh();
             Toast.fire(
             'Deleted!',
@@ -38,12 +44,6 @@
        let id = event.detail.emp.id;
         goto(`employee/edit/${id}`);
     }
-
-    const detailEmployee =(event) => {
-        $empEditemployee = event.detail.employee;   
-         goto(`employee/view/${id}`);         
-    }
-
      const searchEmployee =async(event) => {
          let searchEmp = event.detail.searchEmp;
          let searchEmpUrl = (searchEmp)? $apiInfo.basePath + '/employees/search/' + searchEmp : $apiInfo.basePath + '/employees';
@@ -65,7 +65,7 @@
     
     <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
         {#if data}
-            <EmpList employees={data} on:delete={deleteEmployee} on:edit={editEmployee} on:list={detailEmployee}></EmpList>
+            <EmpList employees={data} on:delete={deleteEmployee} on:edit={editEmployee} ></EmpList>
         {/if}
     </Api>
 </div>

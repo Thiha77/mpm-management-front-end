@@ -6,7 +6,7 @@ import axios from "axios";
 //const baseUrl = "http://localhost:5000/upload/save";
 const dispatch = createEventDispatcher();
 
-let src=false;
+let src;
 const CreateData = () =>{
    dispatch('create', { files: files, emp:employee});
 }
@@ -34,7 +34,7 @@ let employee = {
    maritalStatus: "single",
    employeeStatus: "active"
 };
-let files;	
+let files;
 </script>
 <div class="container">
    <div class="row">
@@ -131,7 +131,7 @@ let files;
                   <div class="col-md-12">
                      <form>           
                         <div class="form-group">
-                           <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage}> 
+                           <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} required> 
                         </div>            
                         <div class="form-group" >                  
                               <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>

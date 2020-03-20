@@ -43,7 +43,7 @@ let vErrors;
         dob:{
             presence:true,
             date :{
-                message:"You must be at least 18 years old to use "
+                message:"Select DOB "
             }
         },
          postalCode:{
@@ -68,9 +68,6 @@ let vErrors;
             if(vErrors){
             return;
         }  
-
-
-
             let myImage = event.detail.files[0];
             const url = $apiInfo.basePath + '/employees/create';
             const urlImage = $apiInfo.basePath + '/upload/save';

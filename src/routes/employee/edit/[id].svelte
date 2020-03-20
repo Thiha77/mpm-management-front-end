@@ -23,14 +23,70 @@
     import { goto } from '@sapper/app';
     import * as sapper from '@sapper/app';
     import { Toast } from '../../../util/salert.js';
-    export let employee;
+    import { validate } from '../../../util/validator';
+import ValidationBox from '../../../components/util/ValidationBox.svelte';
+// const { session } = stores();
+export let employee;
+let vErrors;
+    let constraints = {
+        name: {
+            presence: { allowEmpty: false }
+        },
+        phoneNo:{
+            presence:true,
+            numericality: { 
+            onlyInteger: true,
+            },
+            length:{
+                minimum:10,
+                maximum:14,
+                message:"must be at least 10 numerics and maximum 14 numerics"
+            }
+        },
+         nrcNo:{
+            presence:{allowEmpty:false}
+        },
+        officialEmail:{
+             presence:true,
+             email:{
+                 email:true,
+                 message:"must be mail address"
+             }
+        },
+        address: {
+           presence: { allowEmpty: false }
+        },
+        dob:{
+            presence:true,
+            date :{
+                message:"Select DOB "
+            }
+        },
+         postalCode:{
+            format :{
+                pattern:"\\d{5}",
+                message:"must be 5 numerics "
+            }
+        },
+       basicSalary:{
+            numericality: { 
+            onlyInteger: true,
+            greaterThanOrEqualTo: 100000
+        }         
+    }
+        
+};
+    
     const UpdateData = async(event) => {
         let myImage = event.detail.files[0];
         console.log("myImage",myImage)
-        const url = $apiInfo.basePath + '/employees/update';
-         const urlImage =$apiInfo.basePath + '/upload/save';
+        const url = $apiInfo.basePath + '/employees/update';         
+        const urlImage =$apiInfo.basePath + '/upload/save';
          const updateImageUrl = $apiInfo.basePath + '/employees/updateImage';
         let employee = event.detail.emp;
+        let photo= employee.photo;
+        const urlUploadDelete = $apiInfo.basePath + '/upload/delete';
+        let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo});
         let dataImage = new FormData();
             dataImage.append('path', 'employee/images');
             dataImage.append('Image', myImage);          
@@ -61,4 +117,14 @@
 </script>
 
 
-<EmpUpdate {employee} on:update={UpdateData}></EmpUpdate>
+<!-- <EmpUpdate {employee} on:update={UpdateData}></EmpUpdate> -->
+<div class="row">
+    <div class="col-lg-9">
+      <EmpUpdate {employee} on:update={UpdateData}></EmpUpdate>
+    </div>
+    <div class="col-lg-3" >
+        {#if vErrors}
+            <ValidationBox {vErrors}></ValidationBox>
+        {/if}
+    </div>
+</div>

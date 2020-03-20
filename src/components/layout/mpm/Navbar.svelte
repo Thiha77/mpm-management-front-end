@@ -31,6 +31,7 @@ const logout = () => {
                 <li class="nav-item">
                     <a class="nav-link" href="1">Page</a>
                 </li> -->
+                
                 {#if $session.user}
                     <li class="nav-item pt-1">
                         <label class="nav-link text-success text-bold" href="1">{$session.user.name}</label>

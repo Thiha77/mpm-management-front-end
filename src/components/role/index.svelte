@@ -32,7 +32,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6"><h3 class="float-left">Role List</h3></div>
-                                <div class="col-sm-6"><a class="btn btn-orange float-right" href='role/create'><i class="fas fa-plus-circle"></i> Add New Role</a></div>
+                                <div class="col-sm-6"><a class="btn btn-white float-right" href='role/create'><i class="fas fa-plus-circle"></i> Add New Role</a></div>
                             </div>
                         </div>
                         <table class="table table-hover">

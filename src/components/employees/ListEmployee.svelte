@@ -53,7 +53,7 @@ table.table td a {
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6"><h3 class="float-left">Employee List</h3></div>
-                            <div class="col-sm-6"><a class="btn btn-info float-right" href='employee/create'><i class="fas fa-plus-circle"></i> Add New Employee</a></div>
+                            <div class="col-sm-6"><a class="btn btn-orange float-right" href='employee/create'><i class="fas fa-plus-circle"></i> Add New Employee</a></div>
                         </div>
                     </div>
                     <table class="table table-hover">
@@ -77,7 +77,7 @@ table.table td a {
                                     <td>{employee.officialEmail}</td>
                                     <td>{employee.address}</td>
                                     <td>
-                                        <button class="btn btn-info"  on:click={editbtn(employee)} title="Edit"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-blue"  on:click={editbtn(employee)} title="Edit"><i class="fas fa-pen"></i></button>
                                         <button class="btn btn-danger" on:click={deletebtn(employee.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
                                     </td>
                                     </tr>

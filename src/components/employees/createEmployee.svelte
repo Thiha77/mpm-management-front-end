@@ -34,7 +34,7 @@ let employee = {
    maritalStatus: "single",
    employeeStatus: "active"
 };
-let files;	
+let files;
 </script>
 <div class="container">
    <div class="row">
@@ -131,14 +131,14 @@ let files;
                   <div class="col-md-12">
                      <form>           
                         <div class="form-group">
-                           <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage}> 
+                           <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} required> 
                         </div>            
                         <div class="form-group" >                  
                               <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
                         </div> 
                      </form>  
-                     <button type="button" class="btn btn-info" on:click={CreateData}>Create</button>
-                     <a href="employee" class="btn btn-outline-warning">Cancel</a>
+                     <button type="button" class="btn btn-blue" on:click={CreateData}>Create</button>
+                     <a href="employee" class="btn btn-outline-orange">Cancel</a>
                      <!-- <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>         -->
                   </div>   
                </div>                       

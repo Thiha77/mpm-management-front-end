@@ -40,6 +40,12 @@ import { nav,subNav } from '../../../store';
                 </a>
             </li>
             <li>
+                <a href="attendance">
+                <i class="fas fa-list-alt"></i> 
+                Attendace
+                </a>
+            </li>
+            <li>
                 <a href="about">
                     <i class="fas fa-address-card"></i>
                     About

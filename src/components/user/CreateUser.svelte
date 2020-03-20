@@ -37,19 +37,19 @@
                         <form>
                             <div class="form-group">
                                 <label for="title">Name</label>
-                                <input class="form-control" bind:value={userData.name} required type="text" placeholder="Name" />
+                                <input class="form-control" bind:value={userData.name}  type="text" placeholder="Name" />
                             </div>
                             <div class="form-group">
                                 <label for="title">User Name</label>
                                 <div class="mpm-require">
-                                    <input type="text" bind:value={userData.userName} required class="form-control" placeholder="User Name" />
+                                    <input type="text" bind:value={userData.userName}  class="form-control" placeholder="User Name" />
                                     <i class="fas fa-star-of-life req-icon"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="title">Password</label>
                                 <div class="mpm-require">
-                                    <input type="password" bind:value={userData.password} required class="form-control" placeholder="Password"/>
+                                    <input type="password" bind:value={userData.password} class="form-control" placeholder="Password"/>
                                     <i class="fas fa-star-of-life req-icon"></i>
                                 </div>
                             </div>

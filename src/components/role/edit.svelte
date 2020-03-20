@@ -9,24 +9,28 @@
         dispatch('updateRole');
     };
 </script>
-<style>
-	
-</style>
-<section>
-    <h2>Edit New Role</h2>
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" bind:value={role.name} class="form-control" placeholder="Enter name" name="name">
-            </div>
-            <div class="form-group">
-            <label for="desc">Description:</label>
-            <input type="text" bind:value={role.description} class="form-control" placeholder="Enter description" name="desc">
-            </div>
-        </div> 
-        <div class="card-footer">
-            <button type="button" on:click={updateRole} class="btn btn-primary">Update</button>
+<div class="container">
+    <div class="row">
+        <div class="col mx-auto">
+            <div class="card card-mpm1">
+                <div class="card-heading bg-blue-mpm p-3">
+                    <h3 class="text-white text-uppercase text-center">Role Update Form</h3>
+                </div>
+                <div class="card-body p-5">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" bind:value={role.name} class="form-control" placeholder="Enter name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Description:</label>
+                        <textarea bind:value={role.description} class="form-control" placeholder="Enter description" name="desc"></textarea>
+                    </div>
+                    <div class="mt-4">
+                        <button type="button" on:click={updateRole} class="btn btn-blue">Update</button>
+                        <a href="role" class="btn btn-outline-orange">Cancel</a>     
+                    </div>
+                </div><!-- .card-body -->
+            </div><!-- .card -->
         </div>
     </div>
-</section>
+</div>

@@ -33,25 +33,32 @@
 <style>
 	
 </style>
-<section>
-    <h2>Create New Role Permission</h2>
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group">
-                {#if roles}
-                    <RoleSelect {roles} on:changedRole={changedRole}></RoleSelect>
-                {/if}
-            </div>
-            <div class="form-group">
-                <PermissionSelect {permissions} {enabledPermission} on:changedPermission={changedPermission}></PermissionSelect> 
-            </div>
-        </div> 
-        <div class="card-footer">
-            {#if selectedRole == 0 || selectedPermission == 0}
-                <button type="button" on:click={save} class="btn btn-primary" disabled>Save</button>
-            {:else}
-                 <button type="button" on:click={save} class="btn btn-primary">Save</button>
-            {/if}
+<div class="container">
+    <div class="row">
+        <div class="col mx-auto">
+            <div class="card card-mpm1">
+                <div class="card-heading bg-blue-mpm p-3">
+                    <h3 class="text-white text-uppercase text-center">Role Form</h3>
+                </div>
+                <div class="card-body p-5">
+                    <div class="form-group">
+                        {#if roles}
+                            <RoleSelect {roles} on:changedRole={changedRole}></RoleSelect>
+                        {/if}
+                    </div>
+                    <div class="form-group">
+                        <PermissionSelect {permissions} {enabledPermission} on:changedPermission={changedPermission}></PermissionSelect> 
+                    </div>
+                    <div class="mt-4">
+                         {#if selectedRole == 0 || selectedPermission == 0}
+                            <button type="button" on:click={save} class="btn btn-primary" disabled>Save</button>
+                        {:else}
+                            <button type="button" on:click={save} class="btn btn-primary">Save</button>
+                        {/if}
+                        <a href="rolepermission" class="btn btn-outline-orange">Cancel</a>     
+                    </div>
+                </div><!-- .card-body -->
+            </div><!-- .card -->
         </div>
     </div>
-</section>
+</div>

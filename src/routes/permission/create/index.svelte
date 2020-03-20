@@ -5,6 +5,15 @@
     import { stores, goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
     import { Toast } from '../../../util/salert.js';
+    import { validate } from '../../../util/validator';
+    import ValidationBox from '../../../components/util/ValidationBox.svelte';
+
+    let vErrors;
+    let constraints = {
+        name: {
+            presence: { allowEmpty: false }
+        },
+    };
 
     let permissionData = {
         name: "",
@@ -13,6 +22,12 @@
 
     const savePermissionData = async() => {
         const url = $apiInfo.basePath + '/permissions/create';
+
+        vErrors = validate(permissionData, constraints);
+        if(vErrors){
+            return;
+        }  
+
         let result = await axiosPost(url, permissionData);
         if(result.error == null){
             Toast.fire(
@@ -31,5 +46,8 @@
 </script>
 
 <div class="container">
+    {#if vErrors}
+        <ValidationBox {vErrors}></ValidationBox>
+    {/if}
 	<PermissionCreate bind:name={permissionData.name} bind:specialPer={permissionData.specialPer} on:savePermission={savePermissionData}></PermissionCreate>
 </div>

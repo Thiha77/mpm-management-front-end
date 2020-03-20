@@ -33,8 +33,7 @@
         let employee = event.detail.emp;
         let dataImage = new FormData();
             dataImage.append('path', 'employee/images');
-            dataImage.append('Image', myImage);
-           
+            dataImage.append('Image', myImage);          
         let result = await axiosPost(url, employee);
         let updateResult= await  axiosPost(urlImage,dataImage)  ; 
         let path =updateResult.data.path

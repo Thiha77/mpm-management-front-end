@@ -82,7 +82,7 @@ let vErrors;
             let saveResult = await axiosPost(url,body);
             let uploadResult = await axiosPost(urlImage, dataImage);
             let id = saveResult.data.id;
-            let photo = uploadResult.data.path;        
+            let photo = uploadResult.data.path;       
             let updateEmpData = {
                 id: id,
                 photo: photo

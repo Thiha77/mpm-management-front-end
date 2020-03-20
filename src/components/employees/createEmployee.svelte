@@ -6,7 +6,7 @@ import axios from "axios";
 //const baseUrl = "http://localhost:5000/upload/save";
 const dispatch = createEventDispatcher();
 
-let src;
+let src=false;
 const CreateData = () =>{
    dispatch('create', { files: files, emp:employee});
 }
@@ -137,8 +137,8 @@ let files;
                               <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
                         </div> 
                      </form>  
-                     <button type="button" class="btn btn-info" on:click={CreateData}>Create</button>
-                     <a href="employee" class="btn btn-outline-warning">Cancel</a>
+                     <button type="button" class="btn btn-blue" on:click={CreateData}>Create</button>
+                     <a href="employee" class="btn btn-outline-orange">Cancel</a>
                      <!-- <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>         -->
                   </div>   
                </div>                       

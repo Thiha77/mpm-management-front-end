@@ -25,7 +25,7 @@ export let segment;
         <span class="tag">Admin</span>
         <ul class="list-unstyled components">
             <li >
-                <a on:click={() => $subNav.subNav = !$subNav.subNav}  href='.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle " id="homeSubmenu"  class:selected={segment === 'user'}>
+                <a on:click={() => $subNav.subNav = !$subNav.subNav}  href='.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle " id="homeSubmenu"  class:selected={segment === undefined}>
                     <i class="fas fa-home"></i>
                     Home
                 </a>

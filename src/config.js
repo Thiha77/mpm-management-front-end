@@ -5,7 +5,7 @@ config.apiInfo = {
 };
 
 config.system = {
-    len : 'jp'
+    lan : 'jp'
 }
 
 module.exports = config;

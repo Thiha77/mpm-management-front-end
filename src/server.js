@@ -30,7 +30,7 @@ polka() // You can also use Express
 		sapper.middleware({
 			session: (req, res) => ({
 				user: req.session && req.session.user,
-				len: req.session && req.session.len
+				lan: req.session && req.session.lan
 			})
 		})
 	)

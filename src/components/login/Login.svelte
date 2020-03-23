@@ -43,9 +43,9 @@ axiosPost(url,data).then(result=>{
     if(result.data)
     {
         localStorage.setItem('user', JSON.stringify(result.data));
-        localStorage.setItem('len', config.system.len);
+        localStorage.setItem('lan', config.system.lan);
         $session.user = result.data;
-        $session.len = config.system.len;
+        $session.lan = config.system.lan;
     if(result.data["roleId"]==1)
     {
         goto("/");

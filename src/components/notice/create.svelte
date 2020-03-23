@@ -2,16 +2,7 @@
     import { createEventDispatcher, onMount} from 'svelte';
     import { stores,goto } from '@sapper/app';
 
-    export let len;
-    let fields;
-    onMount( async() => {
-        if(len == 'en'){
-            fields = await import('../../languages/en/notice.json');
-        }else{
-            fields = await import('../../languages/jp/notice.json');
-        }
-    });
-
+    export let fields;
     const dispatch = createEventDispatcher();
 
     let notice = {
@@ -29,7 +20,7 @@
     <div class="col mx-auto">
         <div class="card card-mpm1">
             <div class="card-heading bg-blue-mpm p-3">
-                <h3 class="text-white text-uppercase text-center">Notice Form</h3>
+                <h3 class="text-white text-uppercase text-center">{fields.form.title}</h3>
             </div>
             <div class="card-body p-5">
                 <div>
@@ -47,7 +38,7 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <button type="button" on:click={saveNotice} class="btn btn-info">Save</button>
+                    <button type="button" on:click={saveNotice} class="btn btn-info">{fields.form.save}</button>
                 </div>                
             </div>
         </div><!-- .card  -->

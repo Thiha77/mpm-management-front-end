@@ -8,15 +8,11 @@
     import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
     import { onMount } from 'svelte';
-    const { session } = stores();
-    // let len;
-    // onMount( () => {
-    //     setTimeout(() => {
-    //          len = $session.len;
-    //     }, 1000);
-       
-    // });
+    import enFields from '../../../languages/en/notice.json';
+    import jpFields from'../../../languages/jp/notice.json';
 
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
     
     let vErrors;
     let constraints = {
@@ -58,8 +54,8 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
-            {#if $session.len}
-            <CreateNotice on:save={saveNotice} len={$session.len}></CreateNotice>
+            {#if $session.lan && fields}
+            <CreateNotice on:save={saveNotice} {fields}></CreateNotice>
             {/if}
         </div>
         <div class="col-lg-3" >

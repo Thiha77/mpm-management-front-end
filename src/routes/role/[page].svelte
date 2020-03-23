@@ -37,7 +37,7 @@
 				del(id);
 			}
 		});
-	};
+	}
 
 	 const del = async(id) => {
 		const urlDel = $apiInfo.basePath + '/roles/delete';
@@ -50,18 +50,18 @@
             'success'
             );
         }
-	};
+	}
 	
 	const searchRoleData = async(event) =>{
 		let text = event.detail.search.text;
 		let searchUrl = (text)? $apiInfo.basePath + '/roles/search/' + text : $apiInfo.basePath + '/roles';
 		apiInstance.loadExternal(searchUrl);
-	};
+	}
 
 	const editRoleData = (event) =>{
 		let id = event.detail.role.id;
         goto(`role/edit/${id}`);
-	};
+	}
 
 </script>
 

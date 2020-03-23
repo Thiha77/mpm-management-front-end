@@ -1,0 +1,22 @@
+{
+    "permission" : {
+        "id": "承認番号",
+        "name" : "モデル/フォーム名",
+        "special" : "特別"
+    },
+    "form" : {
+        "listTitle": "承認一覧",
+        "createTitle" : "承認作成",
+        "updateTitle" : "承認編集",
+        "save" : "作成",
+        "update": "保存",
+        "cancel" : "キャンセル",
+        "back" : "承認一覧画面に戻る",
+        "addNew": "承認新規作成"
+    },
+    "placeholder" : {
+        "name" : "モデル/フォーム名を入力してください",
+        "search": "検索"
+    }
+
+}

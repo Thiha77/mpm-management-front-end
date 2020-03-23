@@ -18,11 +18,16 @@
     import PermissionEdit from '../../../components/permission/edit.svelte';
     import { axiosPost } from '../../../util/api.js'
     import { editPermissionData, permissionMessages } from '../../../stores/permission/store.js';
-    import { goto } from '@sapper/app';
+    import { stores,goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
     import { Toast } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
+    import enFields from '../../../languages/en/permission.json';
+    import jpFields from'../../../languages/jp/permission.json';
+
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
 
     export let permission;
 
@@ -56,7 +61,7 @@
                     error: result.error
                 }
         }
-    };
+    }
     
 </script>
 
@@ -64,5 +69,7 @@
     {#if vErrors}
         <ValidationBox {vErrors}></ValidationBox>
     {/if}
-	<PermissionEdit {permission} on:updatePermission={updatePermissionData}></PermissionEdit>
+    {#if $session.lan && fields}
+	    <PermissionEdit {permission} on:updatePermission={updatePermissionData} {fields}></PermissionEdit>
+    {/if}
 </div>

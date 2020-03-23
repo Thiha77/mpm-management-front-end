@@ -1,0 +1,23 @@
+{
+    "role" : {
+        "id": "権限番号",
+        "name" : "権限名",
+        "description" : "説明文"
+    },
+    "form" : {
+        "listTitle": "権限一覧",
+        "createTitle" : "権限作成",
+        "updateTitle" : "権限編集",
+        "save" : "作成",
+        "update": "保存",
+        "cancel" : "キャンセル",
+        "back" : "権限一覧画面に戻る",
+        "addNew": "権限新規作成"
+    },
+    "placeholder" : {
+        "name" : "権限名を入力してください",
+        "description" : "説明文を入力してください",
+        "search": "検索"
+    }
+
+}

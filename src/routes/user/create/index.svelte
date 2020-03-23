@@ -9,6 +9,8 @@
     import { Toast } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
+    import enFields from '../../../languages/en/user.json';
+    import jpFields from'../../../languages/jp/user.json';
     let url = $apiInfo.basePath + '/users';
     let urlEmpData = $apiInfo.basePath + '/users/getEmpData';
     let urlRoleData = $apiInfo.basePath + '/roles/';
@@ -18,6 +20,9 @@
 		let roleResult = await axiosGet(urlRoleData);
 		roles = roleResult.data;
     });
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    
     let vErrors;
     let constraints = {
         userName: {
@@ -81,7 +86,7 @@
         <div class="col-lg-9">
             <Api url={urlEmpData} {method} let:data let:loading let:error>
                 {#if data}
-                    <CreateUser {roles} employees={data} on:addUser={addUserData}></CreateUser>
+                    <CreateUser {roles} employees={data} on:addUser={addUserData} {fields}></CreateUser>
                 {/if}
                 </Api>
         </div>

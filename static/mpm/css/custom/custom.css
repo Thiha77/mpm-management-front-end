@@ -32,6 +32,7 @@ a:focus {
     margin-right: 10px;
     border: none;
     border-radius: 30px;
+    background:#dfdfdf;
 }
 .language-flag:focus,.language-flag:hover{
     background-color: #F0833F !important;

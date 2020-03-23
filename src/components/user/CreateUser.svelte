@@ -1,4 +1,5 @@
 <script>
+    export let fields;
     import { createEventDispatcher } from "svelte";
     import RoleSelect from '../role/roleSelect.svelte';
     const dispatch = createEventDispatcher();
@@ -30,31 +31,31 @@
         <div class="col mx-auto">
             <div class="card card-mpm1">
                 <div class="card-heading bg-blue-mpm p-3">
-                    <h3 class="text-white text-uppercase text-center">User Register Form</h3>
+                    <h3 class="text-white text-uppercase text-center">{fields.form.title}</h3>
                 </div>
                 <div class="card-body p-5">
                     <div class="">
                         <form>
                             <div class="form-group">
-                                <label for="title">Name</label>
+                                <label for="title">{fields.user.name}</label>
                                 <input class="form-control" bind:value={userData.name}  type="text" placeholder="Name" />
                             </div>
                             <div class="form-group">
-                                <label for="title">User Name</label>
+                                <label for="title">{fields.user.userName}</label>
                                 <div class="mpm-require">
                                     <input type="text" bind:value={userData.userName}  class="form-control" placeholder="User Name" />
                                     <i class="fas fa-star-of-life req-icon"></i>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="title">Password</label>
+                                <label for="title">{fields.user.password}</label>
                                 <div class="mpm-require">
                                     <input type="password" bind:value={userData.password} class="form-control" placeholder="Password"/>
                                     <i class="fas fa-star-of-life req-icon"></i>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="name">Employee Name:</label>
+                                <label for="name">{fields.user.empId}</label>
                                 <div class="mpm-require">
                                     {#if employees}
                                         <select class="form-control" bind:value={userData.employeeId}>

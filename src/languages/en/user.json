@@ -1,0 +1,16 @@
+{
+    "user" : {
+        "name" : "Name",
+        "userName" : "User Name",
+        "password":"Password",
+        "empId" : "Employee Name",
+        "roleId" : "Role Name"
+    },
+    "form" : {
+        "title" : "User",
+        "save" : "Save",
+        "cancel" : "Cancel",
+        "back" : "Back"
+    }
+
+}

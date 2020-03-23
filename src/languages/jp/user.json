@@ -1,0 +1,16 @@
+{
+    "user" : {
+        "name" : "名前",
+        "userName" : "ユーザー名前",
+        "password":"パスワード",
+        "empId" : "社員名",
+        "roleId" : "ロール名"
+    },
+    "form" : {
+        "title" : "ユーザーフォーム",
+        "save" : "保存",
+        "cancel" : "取消",
+        "back" : "帰る"
+    }
+
+}

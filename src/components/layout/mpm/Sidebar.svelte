@@ -25,26 +25,26 @@ export let segment;
         <span class="tag">Admin</span>
         <ul class="list-unstyled components">
             <li >
-                <a on:click={() => $subNav.subNav = !$subNav.subNav}  href='.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle " id="homeSubmenu">
+                <a on:click={() => $subNav.subNav = !$subNav.subNav}  href='.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle " id="homeSubmenu"  class:selected={segment === undefined}>
                     <i class="fas fa-home"></i>
                     Home
                 </a>
                 {#if $subNav.subNav}
                     <ul class="collapse list-unstyled {$subNav.subNav === $subNav.subNav ? 'show' : ''}" id="homeSubmenu" in:slide="{{ y:-20 , duration: 500 }}" out:slide="{{ y:-20 , duration: 500 }}">
                         <li>
-                            <a href="#a">Home 1</a>
+                            <a href="#a"><i class="fas fa-circle-notch"></i>Home 1</a>
                         </li>
                         <li>
-                            <a href="#a">Home 2</a>
+                            <a href="#a"><i class="fas fa-circle-notch"></i>Home 2</a>
                         </li>
                         <li>
-                            <a href="#a">Home 3</a>
+                            <a href="#a"><i class="fas fa-circle-notch"></i>Home 3</a>
                         </li>
                     </ul><!-- .list-unstyled -->
                 {/if}
             </li>
             <li>
-                <a href="user"  class:selected={segment === 'user'}>
+                <a href="user" class:selected={segment === 'user'}>
                     <i class="fas fa-users"></i>
                     User
                 </a>
@@ -104,7 +104,7 @@ export let segment;
             <ul class="list-unstyled components">
                 <li>
                     <a href="swipe"  class:selected={segment === 'swipe'}>
-                        <i class="fas fa-image"></i>
+                        <i class="fas fa-fingerprint"></i>
                         Swipe
                     </a>
                 </li>

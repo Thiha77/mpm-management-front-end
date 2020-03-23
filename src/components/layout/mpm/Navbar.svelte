@@ -36,23 +36,26 @@ const changeLan = (lan) => {
                 <li class="nav-item">
                     <a class="nav-link" href="1">Page</a>
                 </li> -->
-                <li class="nav-item pt-1">
-                    <span on:click={() => changeLan('jp')}>
-                        <img src="flags/japan-flag-icon-16.png" alt="" />
-                    </span>
+                <li>
                 </li>
-                <li class="nav-item pt-1">
-                    <span on:click={() => changeLan('en')}>
-                        <img src="flags/uk-flag-icon-16.png" alt="" />
-                    </span>
+                <li class="nav-item mt-2 language-change">
+                    <button class="language-flag" on:click={() => changeLan('jp')}>
+                        <img src="flags/japan-flag-icon-16.png" class="img-fluid" alt="JP" />
+                    </button>
+                </li>
+                <li class="nav-item mt-2 ">
+                    <button class="language-flag" on:click={() => changeLan('en')}>
+                        <img src="flags/uk-flag-icon-16.png" class="img-fluid" alt="EN" />
+                    </button>
                 </li>
                 {#if $session.user}
                     <li class="nav-item pt-1">
-                        <label class="nav-link text-success text-bold" href="1">{$session.user.name}</label>
+                        <label class="nav-link txt-org text-bold pr-1" href="1">{$session.user.name} </label>
                     </li>
                 {/if}
                 <li class="nav-item pt-1">
-                    <button class="btn btn-outline-secondary" on:click={logout}><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    <button class="btn btn-outline-orange d-none d-lg-block d-sm-none" on:click={logout}><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    <button class="btn btn-outline-orange d-sm-block d-lg-none" on:click={logout} title="Logout"><i class="fas fa-sign-out-alt"></i></button>
                 </li>
             </ul>
         </div><!-- .navbar-collapse -->

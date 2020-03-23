@@ -17,7 +17,7 @@
 <section>
     <div class="row">
         <div class="col">
-            <div class="table-responsive-sm ">
+            <div class="">
                 <div class="table-wrapper card-list-mpm1">
                     <div class="table-title">
                         <div class="row">
@@ -25,7 +25,7 @@
                             <div class="col-sm-6"><a class="btn btn-white float-right" href='notice/create'><i class="fas fa-plus-circle"></i> Add New Notice</a></div>
                         </div>
                     </div>
-                    <table class="table table-hover">
+                    <table class="table table-hover table-responsive-sm ">
                         <thead>
                             <tr>
                                 <th>Title</th>						
@@ -44,7 +44,7 @@
                                     <td>{notice.summary}</td>
                                     <td>{notice.Employee['name']}</td>                                                         
                                     <td>
-                                        <button class="btn btn-info" on:click={edit(notice)} title="Edit"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-blue" on:click={edit(notice)} title="Edit"><i class="fas fa-pen"></i></button>
                                         <button class="btn btn-danger" on:click={del(notice.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
                                     </td>
                                     </tr>

@@ -32,7 +32,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6"><h3 class="float-left">Role List</h3></div>
-                                <div class="col-sm-6"><a class="btn btn-info float-right" href='role/create'><i class="fas fa-plus-circle"></i> Add New Role</a></div>
+                                <div class="col-sm-6"><a class="btn btn-white float-right" href='role/create'><i class="fas fa-plus-circle"></i> Add New Role</a></div>
                             </div>
                         </div>
                         <table class="table table-hover">
@@ -54,7 +54,7 @@
                                             <td>{role.name}</td>
                                             <td>{role.description}</td>
                                             <td>
-                                                <button class="btn btn-info" on:click={editRole(role)} title="Edit"><i class="fas fa-pen"></i></button>
+                                                <button class="btn btn-blue" on:click={editRole(role)} title="Edit"><i class="fas fa-pen"></i></button>
                                                 <button class="btn btn-danger" on:click={deleteRole(role.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
                                             </td>
                                         </tr>

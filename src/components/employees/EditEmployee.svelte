@@ -116,8 +116,8 @@ let files;
                               <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image'/>
                         </div>                 -->
                      </form> 
-                     <button type="button" class="btn btn-outline-success" on:click|preventDefault={updatebtn} >Update</button>
-                     <a href="employee" class="btn btn-outline-warning">Cancel</a>
+                     <button type="button" class="btn btn-blue" on:click|preventDefault={updatebtn} >Update</button>
+                     <a href="employee" class="btn btn-outline-orange">Cancel</a>
                   </div> 
                </div>
             </div>

@@ -7,8 +7,13 @@
     import { Toast, Err } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
-    const { session } = stores();
+    import { onMount } from 'svelte';
+    import enFields from '../../../languages/en/notice.json';
+    import jpFields from'../../../languages/jp/notice.json';
 
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    
     let vErrors;
     let constraints = {
         title: {
@@ -22,7 +27,7 @@
     const saveNotice = async(event) => {
         let notice = event.detail.notice;
         notice = { ...notice, employeeId : $session.user.employeeId};
-        // console.log(notice);;
+
         vErrors = validate(notice, constraints);
         if(vErrors){
             return;
@@ -49,7 +54,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
-            <CreateNotice on:save={saveNotice}></CreateNotice>
+            {#if $session.lan && fields}
+            <CreateNotice on:save={saveNotice} {fields}></CreateNotice>
+            {/if}
         </div>
         <div class="col-lg-3" >
             {#if vErrors}

@@ -1,0 +1,14 @@
+{
+    "notice" : {
+        "title" : "Title",
+        "description" : "Description",
+        "summary" : "Summary"
+    },
+    "form" : {
+        "title" : "Notice",
+        "save" : "Save",
+        "cancel" : "Cancel",
+        "back" : "Back"
+    }
+
+}

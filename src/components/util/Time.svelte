@@ -23,37 +23,47 @@ time = {
 
 </script>
 {#if mhr,mmin}
-<label>Hour:</label>
-<select value= {optionshr[time.selectedhr-1]} bind:value={time.selectedhr}>
-	{#each optionshr as option}
-		<option value={option}>{option}</option>
-	{/each}
-</select>
-<label>Minutes:</label>
-<select value = {optionsmin[time.selectedmin]} bind:value={time.selectedmin}>
-	{#each optionsmin as option}
-		<option value={option}>{option.toString().length == 1 ? `0${option}` : option}</option>
-	{/each}
-</select>
-<span>{time.selectedhr}:{time.selectedmin.toString().length == 1 ? `0${time.selectedmin}` : time.selectedmin}</span>
+    <label>Hour:</label>
+    <div class="dropdown">
+        <select class="dropdown-select" value= {optionshr[time.selectedhr-1]} bind:value={time.selectedhr}>
+            {#each optionshr as option}
+                <option value={option}>{option}</option>
+            {/each}
+        </select>
+    </div>
+    <label>Minutes:</label>
+    <div class="dropdown">
+        <select class="dropdown-select"  value = {optionsmin[time.selectedmin]} bind:value={time.selectedmin}>
+            {#each optionsmin as option}
+                <option value={option}>{option.toString().length == 1 ? `0${option}` : option}</option>
+            {/each}
+        </select>
+    </div>
+    <span>{time.selectedhr}:{time.selectedmin.toString().length == 1 ? `0${time.selectedmin}` : time.selectedmin}</span>
 {:else}
-<label>Hour:</label>
-<select bind:value={time.selectedhr}>
-	{#each optionshr as option}
-		<option value={option}>{option}</option>
-	{/each}
-</select>
-<label>Minutes:</label>
-<select bind:value={time.selectedmin}>
-	{#each optionsmin as option}
-		<option value={option}>{option.toString().length == 1 ? `0${option}` : option}</option>
-	{/each}
-</select>
-<span>{time.selectedhr}:{time.selectedmin.toString().length == 1 ? `0${time.selectedmin}` : time.selectedmin}</span>
+    
+        <label>Hour</label>
+        <div class="dropdown">
+            <select bind:value={time.selectedhr} class="dropdown-select">
+                {#each optionshr as option}
+                    <option value={option}>{option}</option>
+                {/each}
+            </select>
+        </div>
+    <label>Minutes</label>
+    <div class="dropdown">
+        <select class="dropdown-select"  bind:value={time.selectedmin}>
+            {#each optionsmin as option}
+                <option value={option}>{option.toString().length == 1 ? `0${option}` : option}</option>
+            {/each}
+        </select>
+    </div>
+    <span>{time.selectedhr}:{time.selectedmin.toString().length == 1 ? `0${time.selectedmin}` : time.selectedmin}</span>
+    
 {/if}
 
 <style>
-    span{
+    /* span{
         border-style: inset;
         width: 80px;
         text-align: center;
@@ -62,5 +72,5 @@ time = {
     select{
         width:  50px;
         border-radius: 10px;
-    }
+    } */
 </style>

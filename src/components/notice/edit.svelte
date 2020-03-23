@@ -30,7 +30,8 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <button type="button" on:click={saveNotice} class="btn btn-success">Save</button>  
+                        <button type="button" on:click={saveNotice} class="btn btn-blue">Save</button>
+                        <a href="notice" class="btn btn-outline-orange">Cancel</a>       
                     </div>
                 </div><!-- .card-body -->
             </div><!-- .card -->

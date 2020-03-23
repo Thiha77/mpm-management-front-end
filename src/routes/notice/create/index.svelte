@@ -7,8 +7,17 @@
     import { Toast, Err } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
+    import { onMount } from 'svelte';
     const { session } = stores();
+    // let len;
+    // onMount( () => {
+    //     setTimeout(() => {
+    //          len = $session.len;
+    //     }, 1000);
+       
+    // });
 
+    
     let vErrors;
     let constraints = {
         title: {
@@ -22,7 +31,7 @@
     const saveNotice = async(event) => {
         let notice = event.detail.notice;
         notice = { ...notice, employeeId : $session.user.employeeId};
-        // console.log(notice);;
+
         vErrors = validate(notice, constraints);
         if(vErrors){
             return;
@@ -49,7 +58,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
-            <CreateNotice on:save={saveNotice}></CreateNotice>
+            {#if $session.len}
+            <CreateNotice on:save={saveNotice} len={$session.len}></CreateNotice>
+            {/if}
         </div>
         <div class="col-lg-3" >
             {#if vErrors}

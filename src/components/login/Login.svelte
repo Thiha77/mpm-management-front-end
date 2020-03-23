@@ -3,11 +3,8 @@
     import { stores,goto } from '@sapper/app';
     import { onMount } from 'svelte';
     import { apiInfo } from '../../store.js';
-<<<<<<< HEAD
     import config from '../../config';
-=======
     import { Toast, Err } from '../../util/salert';
->>>>>>> 10dfb863d454342f208dc05286f532bb09986fe5
     const { session } = stores();
     let url = $apiInfo.basePath + '/users/searchuser';
     let userName = "";
@@ -48,6 +45,7 @@ axiosPost(url,data).then(result=>{
         localStorage.setItem('user', JSON.stringify(result.data));
         localStorage.setItem('len', config.system.len);
         $session.user = result.data;
+        $session.len = config.system.len;
     if(result.data["roleId"]==1)
     {
         goto("/");

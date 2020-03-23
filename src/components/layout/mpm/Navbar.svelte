@@ -50,7 +50,7 @@ const changeLan = (lan) => {
                 </li>
                 {#if $session.user}
                     <li class="nav-item pt-1">
-                        <label class="nav-link txt-org text-bold" href="1">{$session.user.name}</label>
+                        <label class="nav-link txt-org text-bold pr-1" href="1">{$session.user.name} </label>
                     </li>
                 {/if}
                 <li class="nav-item pt-1">

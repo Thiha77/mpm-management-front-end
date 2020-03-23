@@ -728,6 +728,20 @@ a.article:hover {
     }
 }
 /*Sidebar End*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .collapse:not(.show) {
+        display: block !important;
+    }
+    .navbar-expand-lg .navbar-collapse{
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    }
+    .navbar-nav{
+        flex-direction: row !important;
+    }
+}
 @media (min-width: 481px) and (max-width: 767px) {
     .collapse:not(.show) {
         display: block !important;
@@ -739,7 +753,7 @@ a.article:hover {
         flex-basis: auto;
     }
     .navbar-nav{
-        flex-direction: row;
+        flex-direction: row !important;
     }
 }
 @media (min-width: 320px) and (max-width: 480px) {
@@ -751,5 +765,8 @@ a.article:hover {
         display: flex!important;
         -ms-flex-preferred-size: auto;
         flex-basis: auto;
+    }
+    .navbar-nav{
+        flex-direction: row !important;
     }
 }

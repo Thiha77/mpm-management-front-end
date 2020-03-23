@@ -82,13 +82,6 @@ let vErrors;
         if(vErrors) {
             return;
         }
-        if(employee.photo == employee.photo || employee.photo==''){
-            const url = $apiInfo.basePath + '/employees/update'; 
-            let result = await axiosPost(url, employee); 
-        }else {
-            
-        }
-
         let myImage = event.detail.files[0];
         const url = $apiInfo.basePath + '/employees/update';       
         const urlImage =$apiInfo.basePath + '/upload/save';

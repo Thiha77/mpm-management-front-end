@@ -1,6 +1,6 @@
 <script> import Api from '../../../components/util/Api.svelte';
 import {axiosPost}from '../../../util/api.js';
-//  import { stores, goto } from '@sapper/app';
+import { stores, goto } from '@sapper/app';
 import {employee,employeeMessages}from "../../../stores/employee/store.js";
 import * as sapper from '@sapper/app';
 import {apiInfo}from '../../../store.js';
@@ -8,7 +8,10 @@ import EmpCreate from '../../../components/employees/createEmployee.svelte';
 import {Toast}from '../../../util/salert.js';
 import {validate}from '../../../util/validator';
 import ValidationBox from '../../../components/util/ValidationBox.svelte';
-// const { session } = stores();
+import enFields from '../../../languages/en/employee.json';
+import jpFields from'../../../languages/jp/employee.json';
+const { session } = stores();
+$: fields =$session.lan =='en' ? enFields :jpFields; 
 let vErrors;
 let constraints= {
     name: {
@@ -120,11 +123,12 @@ const CreateData=async(event)=> {
 </script> 
 <div class="row"> 
     <div class="col-lg-9"> 
-        <EmpCreate on:create= {CreateData}></EmpCreate> 
+    {#if $session.lan && fields}
+        <EmpCreate on:create= {CreateData} {fields}></EmpCreate> 
+    {/if}
     </div> 
     <div class="col-lg-3" >
     {#if vErrors}
-
         <ValidationBox {vErrors}></ValidationBox> 
     {/if}
 

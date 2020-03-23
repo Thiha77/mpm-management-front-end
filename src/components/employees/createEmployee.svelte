@@ -1,12 +1,11 @@
 <script>
 import { createEventDispatcher } from 'svelte';
-//import {axiosPost} from '../../../util/api.js';
-// import ImgEncoder from 'svelte-image-encoder';
-import axios from "axios";
-//const baseUrl = "http://localhost:5000/upload/save";
+import { stores,goto } from '@sapper/app';
 const dispatch = createEventDispatcher();
 
+export let fields;
 let src;
+let files;
 const CreateData = () =>{
    dispatch('create', { files: files, emp:employee});
 }
@@ -34,102 +33,103 @@ let employee = {
    maritalStatus: "single",
    employeeStatus: "active"
 };
-let files;
+
 </script>
 <div class="container">
    <div class="row">
       <div class="col mx-auto">
          <div class="card card-mpm1 mb-5">
             <div class="card-heading bg-blue-mpm p-3">
-               <h3 class="text-white text-uppercase text-center">Employee Register Form</h3>
+               <h3 class="text-white text-uppercase text-center">{fields.form.title}</h3>
             </div>
             <div class="card-body p-5">
                <div class="row">
                   <div class="col-6">
                      <div class="form-group">
-                        <label class="card-title">Employee Name :</label>
+                        <label class="card-title">{fields.employee.name}</label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Name" bind:value={employee.name} />
                      </div> 
                      <div class="form-group">
-                        <label class="card-title">Phone No: </label>
-                        <input type="phone" pattern="^\d{4}-\d{3}-\d{4}$" class="form-control" id="text"   placeholder="Enter Phone Number" bind:value={employee.phoneNo}/>
+                        <label class="card-title">{fields.employee.phoneNo} </label>
+                        <input type="phone"  class="form-control" id="text"   placeholder="Enter Phone Number" bind:value={employee.phoneNo}/>
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Personal Email : </label>
+                        <label class="card-title">{fields.employee.personalEmail} </label>
                         <input type="email" class="form-control" id="text" placeholder="Enter personal email"  bind:value={employee.personalEmail} />
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Township : </label>
+                        <label class="card-title">{fields.employee.township} </label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Township" bind:value={employee.township}   />
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Address: </label>
+                        <label class="card-title">{fields.employee.address} </label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Address"  bind:value={employee.address} />
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Birthday : </label>
+                        <label class="card-title">{fields.employee.dob} </label>
                         <input type="date" class="form-control"  bind:value={employee.dob}>
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Position: </label>
+                        <label class="card-title">{fields.employee.position} </label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Position" bind:value={employee.position} />
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Nationality: </label>
+                        <label class="card-title">{fields.employee.nationality} </label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Nationality"  bind:value={employee.nationality} />
                      </div>
                   </div>
                   <div class="col-6">
                      <div class="form-group">
-                        <label class="card-title">Name  :</label>
+                        <label class="card-title">{fields.employee.alias}</label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Alias" bind:value={employee.alias}/>
                      </div>
                      <div class="form-group">
-                        <label class="card-title">NRC No : </label>
+                        <label class="card-title">{fields.employee.nrcNo} </label>
                         <input type="text" class="form-control" id="text" placeholder="Enter NRC No" bind:value={employee.nrcNo} />
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Official Mail : </label>
+                        <label class="card-title">{fields.employee.officialEmail} </label>
                         <input type="email" class="form-control" id="text" placeholder="Enter official mail" bind:value={employee.officialEmail}  />
                      </div>
                      <div class="form-group">
-                        <label class="card-title">City: </label>
+                        <label class="card-title">{fields.employee.city} </label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Township" bind:value={employee.city} />
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Postal Code: </label>
+                        <label class="card-title">{fields.employee.postalCode} </label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Township" bind:value={employee.postalCode} />
                      </div>
                      <div class="row form-group clearfix mt-4">
                         <div class="col-4">
-                           <label class="card-title">Gender : </label><br/>
+                           <label class="card-title">{fields.employee.gender} </label><br/>
                            <!-- <input type="text" class="form-control" id="text" placeholder="Enter Gender" bind:value={employee.gender} /> -->
                            <label><input type=radio bind:group={employee.gender} value="Male" /> Male</label>
                            <label><input type=radio bind:group={employee.gender} value="Female" /> Female</label>
                         </div>
                         <div class="col-4">
-                           <label class="card-title">Marital Status: </label><br/>
+                           <label class="card-title">{fields.employee.maritalStatus} </label><br/>
                            <label><input type=radio bind:group={employee.maritalStatus} value="Single" /> Single</label>
                            <label><input type=radio bind:group={employee.maritalStatus} value="Married" /> Married</label>
                         </div>
                         <div class="col-4">
-                           <label class="card-title">Employee Status: </label><br/>
+                           <label class="card-title">{fields.employee.employeeStatus} </label><br/>
                            <!-- <input type="text" class="form-control" id="text" placeholder="Enter EmpStatus" bind:value={employee.employeeStatus}  /> -->
                            <label><input type=radio bind:group={employee.employeeStatus} value="Active" /> Active</label>
                            <label><input type=radio bind:group={employee.employeeStatus} value="Inactive" /> Inactive</label>
                         </div>
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Salary: </label>
+                        <label class="card-title">{fields.employee.basicSalary} </label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Salary" bind:value={employee.basicSalary}  />
                      </div>
                      <div class="form-group">
-                        <label class="card-title">Race: </label>
+                        <label class="card-title">{fields.employee.race} </label>
                         <input type="text" class="form-control" id="text" placeholder="Enter Race" bind:value={employee.race} />
                      </div> 
                   </div>
                   <div class="col-md-12">
-                     <form>           
+                     <form>      
+                     <label  class="card-title">{fields.employee.photo}</label>     
                         <div class="form-group">
                            <input type="file" id="file" accept="image/*" bind:value={employee.photo} bind:files on:change={uploadImage} required> 
                         </div>            
@@ -137,8 +137,8 @@ let files;
                               <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
                         </div> 
                      </form>  
-                     <button type="button" class="btn btn-blue" on:click={CreateData}>Create</button>
-                     <a href="employee" class="btn btn-outline-orange">Cancel</a>
+                     <button type="button" class="btn btn-blue" on:click={CreateData}>{fields.form.save}</button>
+                     <a href="employee" class="btn btn-outline-orange">{fields.form.cancel}</a>
                      <!-- <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>         -->
                   </div>   
                </div>                       

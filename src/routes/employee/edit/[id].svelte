@@ -75,21 +75,31 @@ let vErrors;
         }         
     }
         
-};
-    
+};   
     const UpdateData = async(event) => {
-        let myImage = event.detail.files[0];
-        const url = $apiInfo.basePath + '/employees/update';         
-        const urlImage =$apiInfo.basePath + '/upload/save';
-         const updateImageUrl = $apiInfo.basePath + '/employees/updateImage';
         let employee = event.detail.emp;
+        vErrors= validate(employee,constraints);
+        if(vErrors) {
+            return;
+        }
+        if(employee.photo == employee.photo || employee.photo==''){
+            const url = $apiInfo.basePath + '/employees/update'; 
+            let result = await axiosPost(url, employee); 
+        }else {
+            
+        }
+
+        let myImage = event.detail.files[0];
+        const url = $apiInfo.basePath + '/employees/update';       
+        const urlImage =$apiInfo.basePath + '/upload/save';
+        const updateImageUrl = $apiInfo.basePath + '/employees/updateImage';
         let photo= employee.photo;
         const urlUploadDelete = $apiInfo.basePath + '/upload/delete';
         let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo});
         let dataImage = new FormData();
             dataImage.append('path', 'employee/images');
             dataImage.append('Image', myImage);          
-        let result = await axiosPost(url, employee);
+        let result = await axiosPost(url, employee); 
         let updateResult= await  axiosPost(urlImage,dataImage)  ; 
         let path =updateResult.data.path
          let updateEmpData = {

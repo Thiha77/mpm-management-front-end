@@ -53,7 +53,7 @@ table.table td a {
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6"><h3 class="float-left">Employee List</h3></div>
-                            <div class="col-sm-6"><a class="btn btn-orange float-right" href='employee/create'><i class="fas fa-plus-circle"></i> Add New Employee</a></div>
+                            <div class="col-sm-6"><a class="btn btn-white float-right" href='employee/create'><i class="fas fa-plus-circle"></i> Add New Employee</a></div>
                         </div>
                     </div>
                     <table class="table table-hover">

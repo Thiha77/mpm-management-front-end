@@ -131,7 +131,7 @@ let files;
                   <div class="col-md-12">
                      <form>           
                         <div class="form-group">
-                           <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} required> 
+                           <input type="file" id="file" accept="image/*" bind:value={employee.photo} bind:files on:change={uploadImage} required> 
                         </div>            
                         <div class="form-group" >                  
                               <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>

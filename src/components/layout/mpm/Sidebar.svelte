@@ -104,7 +104,7 @@ export let segment;
             <ul class="list-unstyled components">
                 <li>
                     <a href="swipe"  class:selected={segment === 'swipe'}>
-                        <i class="fas fa-image"></i>
+                        <i class="fas fa-fingerprint"></i>
                         Swipe
                     </a>
                 </li>

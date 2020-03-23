@@ -8,8 +8,7 @@
 	onMount( () => {
 		if(window && window.localStorage){
 			$session.user = JSON.parse(localStorage.getItem('user'));
-			// console.log(JSON.parse(localStorage.getItem('user')));
-			// console.log($session.user);
+			$session.lan = localStorage.getItem('lan');
 		}
 	})
 	

@@ -13,6 +13,11 @@ const logout = () => {
     goto('/login');
 }
 
+const changeLan = (lan) => {
+    $session.lan = lan;
+    localStorage.setItem('lan', lan);
+}
+
 </script>
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -31,7 +36,16 @@ const logout = () => {
                 <li class="nav-item">
                     <a class="nav-link" href="1">Page</a>
                 </li> -->
-                
+                <li class="nav-item pt-1">
+                    <span on:click={() => changeLan('jp')}>
+                        <img src="flags/japan-flag-icon-16.png" alt="" />
+                    </span>
+                </li>
+                <li class="nav-item pt-1">
+                    <span on:click={() => changeLan('en')}>
+                        <img src="flags/uk-flag-icon-16.png" alt="" />
+                    </span>
+                </li>
                 {#if $session.user}
                     <li class="nav-item pt-1">
                         <label class="nav-link text-success text-bold" href="1">{$session.user.name}</label>

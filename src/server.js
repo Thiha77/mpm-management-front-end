@@ -29,7 +29,8 @@ polka() // You can also use Express
 		sirv('static', { dev }),
 		sapper.middleware({
 			session: (req, res) => ({
-				user: req.session && req.session.user
+				user: req.session && req.session.user,
+				lan: req.session && req.session.lan
 			})
 		})
 	)

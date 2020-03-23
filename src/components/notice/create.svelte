@@ -35,7 +35,8 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <button type="button" on:click={saveNotice} class="btn btn-info">Save</button>
+                    <button type="button" on:click={saveNotice} class="btn btn-blue">Save</button>
+                    <a href="notice" class="btn btn-outline-orange">Cancel</a>     
                 </div>
             </div>
         </div><!-- .card  -->

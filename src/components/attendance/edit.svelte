@@ -73,36 +73,41 @@
 
 </script>
 
-<section>
-    <h2>Edit Attendance</h2>
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group">
-                <label for="title">Employee Id:</label>
-                <input type="text" bind:value={attendance.employeeId} id="employeeid" class="form-control" placeholder="Enter title" />
-            </div>
-            <div class="form-group">
-                <label for="desc">Recorded Date:</label>
-                <Flatpickr id="flat" options="{ flatpickrOptions }" element="#my-picker" bind:value={attendance.recordedDateTime}> 
-                    <div class="flatpickr" id="my-picker" data-date-format="d-m-Y">
-                        <input type="text" id="recordeddate" placeholder="Select Date.." data-input>
-                    </div>
-                </Flatpickr>
-                <br>
-            </div>
-                <div class="form-group">
-                <label for="appt">Recorded time:</label><br>
-                    <Time {mhr} {mmin} bind:time></Time>
+<div class="container">
+    <div class="row">
+        <div class="col-9 mx-auto">
+            <div class="card card-mpm1">
+                <div class="card-heading bg-blue-mpm p-3">
+                    <h3 class="text-white text-uppercase text-center">Attendance Update Form</h3>
                 </div>
-                 <div>
+                <div class="card-body p-5">
+                    <div class="form-group">
+                        <label for="title">Employee Id:</label>
+                        <input type="text" bind:value={attendance.employeeId} id="employeeid" class="form-control" placeholder="Enter title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Recorded Date:</label>
+                        <Flatpickr id="flat" options="{ flatpickrOptions }" element="#my-picker" bind:value={attendance.recordedDateTime}> 
+                            <div class="flatpickr" id="my-picker" data-date-format="d-m-Y">
+                                <input type="text" id="recordeddate" class="form-control"  placeholder="Select Date.." data-input>
+                            </div>
+                        </Flatpickr>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label for="appt">Recorded time:</label><br>
+                        <Time {mhr} {mmin} bind:time></Time>
+                    </div>
+                    <div class="mt-4">
+                        <button type="button" on:click={updateAttendance} class="btn btn-blue">Update</button>
+                        <a href="attendance" class="btn btn-outline-orange">Cancel</a>     
+                    </div>
+                </div>
             </div>
-        </div> 
-        <div class="card-footer">
-            <button type="button" on:click={updateAttendance} class="btn btn-primary">Update</button>
         </div>
-    </div> 
-</section>
-
+    </div>
+</div>
+<!-- 
 <style>
 input {
   border: 2px solid whitesmoke;
@@ -111,4 +116,4 @@ input {
   text-align: center;
   width: 250px;
 }
-</style>
+</style> -->

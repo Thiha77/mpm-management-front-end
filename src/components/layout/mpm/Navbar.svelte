@@ -16,7 +16,7 @@ const logout = () => {
 </script>
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <button on:click={() => $nav.showSideBar = !$nav.showSideBar} id="sidebarCollapse" class="btn btn-info">
+        <button on:click={() => $nav.showSideBar = !$nav.showSideBar} id="sidebarCollapse" class="btn btn-blue">
             <i class="fas fa-align-left"></i>
             <span></span>
         </button>
@@ -31,6 +31,7 @@ const logout = () => {
                 <li class="nav-item">
                     <a class="nav-link" href="1">Page</a>
                 </li> -->
+                
                 {#if $session.user}
                     <li class="nav-item pt-1">
                         <label class="nav-link text-success text-bold" href="1">{$session.user.name}</label>

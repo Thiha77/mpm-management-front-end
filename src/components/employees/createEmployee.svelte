@@ -6,7 +6,7 @@ import axios from "axios";
 //const baseUrl = "http://localhost:5000/upload/save";
 const dispatch = createEventDispatcher();
 
-let src ;
+let src;
 const CreateData = () =>{
    dispatch('create', { files: files, emp:employee});
 }
@@ -34,7 +34,7 @@ let employee = {
    maritalStatus: "single",
    employeeStatus: "active"
 };
-let files;	
+let files;
 </script>
 <div class="container">
    <div class="row">
@@ -52,7 +52,7 @@ let files;
                      </div> 
                      <div class="form-group">
                         <label class="card-title">Phone No: </label>
-                        <input type="phone" class="form-control" id="text" placeholder="Enter Phone Number" bind:value={employee.phoneNo}/>
+                        <input type="phone" pattern="^\d{4}-\d{3}-\d{4}$" class="form-control" id="text"   placeholder="Enter Phone Number" bind:value={employee.phoneNo}/>
                      </div>
                      <div class="form-group">
                         <label class="card-title">Personal Email : </label>
@@ -137,8 +137,8 @@ let files;
                               <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
                         </div> 
                      </form>  
-                     <button type="button" class="btn btn-info" on:click={CreateData}>Create</button>
-                     <a href="employee" class="btn btn-outline-warning">Cancel</a>
+                     <button type="button" class="btn btn-blue" on:click={CreateData}>Create</button>
+                     <a href="employee" class="btn btn-outline-orange">Cancel</a>
                      <!-- <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>         -->
                   </div>   
                </div>                       

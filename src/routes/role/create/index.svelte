@@ -6,7 +6,19 @@
     import { stores, goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
     import { Toast } from '../../../util/salert.js';
+    import { validate } from '../../../util/validator';
+    import ValidationBox from '../../../components/util/ValidationBox.svelte';
     
+    let vErrors;
+    let constraints = {
+        name: {
+            presence: { allowEmpty: false }
+        },
+        description: {
+            presence: { allowEmpty: false }
+        }
+    };
+
     let roleData = {
         id: null,
         name: "",
@@ -15,6 +27,12 @@
 
     const saveRoleData = async() => {
         const url = $apiInfo.basePath + '/roles/create';
+
+        vErrors = validate(roleData, constraints);
+        if(vErrors){
+            return;
+        }  
+
         let result = await axiosPost(url, roleData);
         if(result.error == null){
             Toast.fire(
@@ -35,6 +53,9 @@
 <div class="container">
     {#if $roleMessages.error}
         <h1>{ $roleMessages.error }</h1>
+    {/if}
+    {#if vErrors}
+        <ValidationBox {vErrors}></ValidationBox>
     {/if}
 	<RoleCreate bind:name = {roleData.name} bind:description = {roleData.description} on:saveRole={saveRoleData}></RoleCreate>
 </div>

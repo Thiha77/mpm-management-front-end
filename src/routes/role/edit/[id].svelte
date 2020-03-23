@@ -20,10 +20,30 @@
     import { editRoleData, roleMessages } from '../../../stores/role/store.js';
     import { goto } from '@sapper/app';
     import { Toast } from '../../../util/salert.js';
+    import { validate } from '../../../util/validator';
+    import ValidationBox from '../../../components/util/ValidationBox.svelte';
+
     export let role;
+
+    let vErrors;
+    let constraints = {
+        name: {
+            presence: { allowEmpty: false }
+        },
+        description: {
+            presence: { allowEmpty: false }
+        }
+    };
+
     const updateRoleData = async() => {
         
         const url = $apiInfo.basePath + '/roles/update';
+
+        vErrors = validate(role, constraints);
+        if(vErrors){
+            return;
+        }
+
         let result = await axiosPost(url, role);
         if(result.error == null)
         {
@@ -44,5 +64,8 @@
 </script>
 
 <div class="container">
+    {#if vErrors}
+        <ValidationBox {vErrors}></ValidationBox>
+    {/if}
 	<RoleEdit {role} on:updateRole={updateRoleData}></RoleEdit>
 </div>

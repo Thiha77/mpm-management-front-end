@@ -25,9 +25,6 @@
     const del = async(id) => {
             const urlEmpData = $apiInfo.basePath + '/employees/'+id;
             let empData = await axiosGet(urlEmpData);
-            let photo = empData.data.photo;
-            const urlUploadDelete = $apiInfo.basePath + '/upload/delete';
-            let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo});
             const urlDel = $apiInfo.basePath + '/employees/delete';
             let res = await axiosPost(urlDel, { id : id});
             if(res.data > 0){
@@ -37,6 +34,10 @@
             'Employee has been deleted.',
             'success'
             );
+            let photo = empData.data.photo;
+            const urlUploadDelete = $apiInfo.basePath + '/upload/delete';
+            let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo});
+           
         }
     }
 

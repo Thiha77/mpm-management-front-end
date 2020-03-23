@@ -16,14 +16,50 @@ let vErrors;
         name: {
             presence: { allowEmpty: false }
         },
-        dob:{
-            date:true
+        phoneNo:{
+            presence:true,
+            numericality: { 
+            onlyInteger: true,
+            },
+            length:{
+                minimum:10,
+                maximum:14,
+                message:"must be at least 10 numerics and maximum 14 numerics"
+            }
+        },
+         nrcNo:{
+            presence:{allowEmpty:false}
+        },
+        officialEmail:{
+             presence:true,
+             email:{
+                 email:true,
+                 message:"must be mail address"
+             }
         },
         address: {
            presence: { allowEmpty: false }
-        }
-
-    };
+        },
+        dob:{
+            presence:true,
+            date :{
+                message:"Select DOB "
+            }
+        },
+         postalCode:{
+            format :{
+                pattern:"\\d{5}",
+                message:"must be 5 numerics "
+            }
+        },
+       basicSalary:{
+            numericality: { 
+            onlyInteger: true,
+            greaterThanOrEqualTo: 100000
+        }         
+    }
+        
+};
 
         const CreateData = async(event) => {
 
@@ -32,9 +68,6 @@ let vErrors;
             if(vErrors){
             return;
         }  
-
-
-
             let myImage = event.detail.files[0];
             const url = $apiInfo.basePath + '/employees/create';
             const urlImage = $apiInfo.basePath + '/upload/save';
@@ -46,7 +79,7 @@ let vErrors;
             let saveResult = await axiosPost(url,body);
             let uploadResult = await axiosPost(urlImage, dataImage);
             let id = saveResult.data.id;
-            let photo = uploadResult.data.path;        
+            let photo = uploadResult.data.path;       
             let updateEmpData = {
                 id: id,
                 photo: photo

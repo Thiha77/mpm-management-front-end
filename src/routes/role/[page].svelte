@@ -1,19 +1,36 @@
+<script context="module">
+    import { axiosGet } from '../../util/api';
+    import config from '../../config';
+	export async function preload({ params }) {
+        
+        let page = params.page;
+        let url = `${config.apiInfo.basePath}/roles/list/${page}`;
+        let res = await axiosGet(url);
+		if (res.data) {
+			return { roles: res.data };
+		}else{
+            this.error(404, 'Not Found!');
+        }
+	}
+</script>
 <script>
-	import RoleIndex from '../../components/role/index.svelte';
+    import RoleIndex from '../../components/role/index.svelte';
 	import RoleSearch from '../../components/role/search.svelte';
 	// import Pagination from '../../components/role/pagination.svelte';
 	import ApiGet from '../../components/util/Api.svelte';
 	import { roleMessages } from '../../stores/role/store.js';
-	import { axiosGet,axiosPost } from '../../util/api.js'
+	import { axiosPost } from '../../util/api.js'
 	import { apiInfo } from '../../store.js';
 	import { goto } from '@sapper/app';
 	import { Toast, CfmDelete } from '../../util/salert';
-	
-	let url = $apiInfo.basePath + '/roles';
-	const method = 'get';
-	let apiInstance;
-	
-	const deleteRoleData = async(event) => {
+
+    let url = $apiInfo.basePath + '/roles/';
+    const method = 'get';
+    let apiInstance;
+    
+    export let roles;
+
+    const deleteRoleData = async(event) => {
 		let id = event.detail.id;
 		CfmDelete.fire().then((result) => {
 			if (result.value) {
@@ -54,9 +71,9 @@
 <div class="container">
 	<h1>{$roleMessages.message}</h1>
 	<ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-		{#if data}
-			<RoleIndex roles={data} on:deleteRole={deleteRoleData} on:searchRoleData={searchRoleData} on:editRole={editRoleData}></RoleIndex>
-			<!-- <Pagination roles={data}></Pagination> -->
+		{#if roles}
+			<RoleIndex {roles}></RoleIndex>
+			<!-- <Pagination roles={data}  {current_page}></Pagination> -->
 		{/if}
 	</ApiGet>
 </div>

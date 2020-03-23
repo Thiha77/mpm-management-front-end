@@ -2,10 +2,20 @@
 import { fly,fade,slide  } from 'svelte/transition';
 import { quintOut,circIn } from 'svelte/easing';
 import { nav,subNav } from '../../../store';
-
 // import { quintOut } from 'svelte/easing';
 // let sidebarCollapse = "show";
+export let segment;
 </script>
+
+<style>
+.selected {
+    background:#0689CE;
+    border-left:3px solid #EF7F43;
+    -webkit-box-shadow: inset 0 -2px rgba(255,255,255,0.1), inset 0 -3px rgba(0,0,0,0.1), 0 1px rgba(0,0,0,0.05);
+    box-shadow: inset 0 -2px rgba(255,255,255,0.1), inset 0 -3px rgba(0,0,0,0.1), 0 1px rgba(0,0,0,0.05);
+    color:#fff;
+	}
+</style>
 {#if $nav.showSideBar}
     <nav id="sidebar" in:fly="{{ x:-250 , duration: 500 }}" out:fly="{{ x:-250 , duration: 500 }}">
         <div class="sidebar-header">
@@ -34,43 +44,49 @@ import { nav,subNav } from '../../../store';
                 {/if}
             </li>
             <li>
-                <a href="user">
+                <a href="user"  class:selected={segment === 'user'}>
                     <i class="fas fa-users"></i>
                     User
                 </a>
             </li>
             <li>
-                <a href="about">
+                <a href="attendance"  class:selected={segment === 'attendance'}>
+                <i class="fas fa-list-alt"></i> 
+                Attendace
+                </a>
+            </li>
+            <li>
+                <a href="about"  class:selected={segment === 'about'}>
                     <i class="fas fa-address-card"></i>
                     About
                 </a>
             </li>
             <li>
-                <a href="role">
+                <a href="role" class:selected={segment === 'role'}>
                     <i class="fas fa-user-check"></i>
                     Role
                 </a>
             </li>
             <li>
-                <a href="permission">
+                <a href="permission" class:selected={segment === 'permission'}>
                     <i class="fas fa-user-secret"></i>
                     Permission
                 </a>
             </li>
             <li>
-                <a href="rolepermission">
+                <a href="rolepermission" class:selected={segment === 'rolepermission'}>
                     <i class="fas fa-user-lock"></i>
                     Role Permission
                 </a>
             </li>
             <li>
-                <a href="employee">
+                <a href="employee" class:selected={segment === 'employee'}>
                     <i class="fas fa-id-card"></i>
                     Employee
                 </a>
             </li>
             <li>
-                <a href="notice">
+                <a href="notice" class:selected={segment === 'notice'}>
                     <i class="fas fa-bell"></i>
                     Notice
                 </a>
@@ -85,13 +101,13 @@ import { nav,subNav } from '../../../store';
             </li>
         </ul> -->
         <span class="tag">Employee</span>
-        <ul class="list-unstyled components">
-            <li>
-                <a href="swipe">
-                    <i class="fas fa-image"></i>
-                    Swipe
-                </a>
-            </li>
-        </ul>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="swipe"  class:selected={segment === 'swipe'}>
+                        <i class="fas fa-image"></i>
+                        Swipe
+                    </a>
+                </li>
+            </ul>
     </nav>
 {/if}

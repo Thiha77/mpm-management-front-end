@@ -1,5 +1,5 @@
 <script>
-	// export let segment;
+	export let segment;
 	import Sidebar from '../layout/mpm/Sidebar.svelte';
 	// let sidebar_show = true;
 </script>
@@ -63,4 +63,4 @@
 		<li><a href="notice" class:selected={segment === 'notice'}>Notice</a></li>
 	</ul>
 </nav> -->
-<Sidebar></Sidebar>
+<Sidebar {segment}></Sidebar>

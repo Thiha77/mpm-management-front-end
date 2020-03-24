@@ -1,0 +1,22 @@
+{
+    "permission" : {
+        "id": "Id",
+        "name" : "Model/Form Name",
+        "special" : "Special"
+    },
+    "form" : {
+        "listTitle": "Permission List",
+        "createTitle" : "Permission Create",
+        "updateTitle" : "Permission Update",
+        "save" : "Save",
+        "update": "Update",
+        "cancel" : "Cancel",
+        "back" : "Back",
+        "addNew": "Add New Permission"
+    },
+    "placeholder" : {
+        "name" : "Enter Model/Form Name",
+        "search": "Search"
+    }
+
+}

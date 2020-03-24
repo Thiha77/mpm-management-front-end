@@ -1,0 +1,23 @@
+{
+    "role" : {
+        "id": "Id",
+        "name" : "Name",
+        "description" : "Description"
+    },
+    "form" : {
+        "listTitle": "Role List",
+        "createTitle" : "Role Create",
+        "updateTitle" : "Role Update",
+        "save" : "Save",
+        "update": "Update",
+        "cancel" : "Cancel",
+        "back" : "Back",
+        "addNew": "Add New Role"
+    },
+    "placeholder" : {
+        "name" : "Enter Role Name",
+        "description" : "Enter Description",
+        "search": "Search"
+    }
+
+}

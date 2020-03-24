@@ -4,9 +4,14 @@
 	import { permissionMessages } from '../../stores/permission/store.js';
 	import { axiosPost } from '../../util/api.js';
 	import { apiInfo } from '../../store.js';
-	import { goto } from '@sapper/app';
+	import { stores,goto } from '@sapper/app';
     import { Toast, CfmDelete } from '../../util/salert';
+	import enFields from '../../languages/en/permission.json';
+    import jpFields from'../../languages/jp/permission.json';
 
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
+	
 	let url = $apiInfo.basePath + '/permissions';
     const method = 'get';
     let apiInstance;
@@ -18,7 +23,7 @@
 				del(id);
 			}
 		});
-	};
+	}
 
 	const del = async(id) => {
 		const urlDel = $apiInfo.basePath + '/permissions/delete';
@@ -31,18 +36,18 @@
             'success'
             );
         }
-    };
+    }
 
 	const searchPermissionData = async(event) => {
 		let text = event.detail.search.text;
 		let searchUrl = (text)? $apiInfo.basePath + '/permissions/search/' + text : $apiInfo.basePath + '/permissions';
 		apiInstance.loadExternal(searchUrl);
-	};
+	}
 
 	const editPermissionData = (event) => {
 		let id = event.detail.permission.id;
         goto(`permission/edit/${id}`);
-	};
+	}
 </script>
 
 <svelte:head>
@@ -53,7 +58,9 @@
 	<h1>{$permissionMessages.message}</h1>
     <ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
 		{#if data}
-			<PermissionIndex permissions={data} on:deletePermission={deletePermission} on:searchPermission={searchPermissionData} on:editPermission={editPermissionData}></PermissionIndex>
+			{#if $session.lan && fields}
+				<PermissionIndex permissions={data} on:deletePermission={deletePermission} on:searchPermission={searchPermissionData} on:editPermission={editPermissionData} {fields}></PermissionIndex>
+			{/if}
 		{/if}
 	</ApiGet>
 </div>

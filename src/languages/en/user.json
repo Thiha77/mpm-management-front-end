@@ -1,5 +1,6 @@
 {
     "user" : {
+        "userId":"User ID",
         "name" : "Name",
         "userName" : "User Name",
         "password":"Password",
@@ -9,6 +10,9 @@
     "form" : {
         "title" : "User Form",
         "updateTitle" : "User Update Form",
+        "listTitle":"User List",
+        "action":"Action",
+        "addUser":"Add User",
         "save" : "Save",
         "cancel" : "Cancel",
         "back" : "Back"
@@ -19,6 +23,10 @@
         "password":"Password",
         "empName" : "Employee Name",
         "roleName" : "Role Name"
+    },
+    "title":{
+        "editBtnTitle":"Edit",
+        "deleteBtnTitle":"Delete"
     }
 
 }

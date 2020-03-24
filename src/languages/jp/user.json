@@ -1,5 +1,6 @@
 {
     "user" : {
+        "userId":"ユーザID",
         "name" : "名前",
         "userName" : "ユーザー名前",
         "password":"パスワード",
@@ -9,6 +10,9 @@
     "form" : {
         "title" : "ユーザーフォーム",
         "updateTitle":"ユーザー更新フォーム",
+        "listTitle":"ユーザーリスト",
+        "action":"アクション",
+        "addUser":"作成ユーザー",
         "save" : "保存",
         "cancel" : "取消",
         "back" : "帰る"
@@ -19,6 +23,10 @@
         "password":"パスワード",
         "empName" : "社員名",
         "roleName" : "ロール名"
+    },
+    "title":{
+        "editBtnTitle":"編集",
+        "deleteBtnTitle":"削除"
     }
 
 }

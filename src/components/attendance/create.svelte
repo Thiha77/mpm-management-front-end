@@ -44,7 +44,7 @@
 </script>
 <div class="container">
     <div class="row">
-        <div class="col-9 mx-auto">
+        <div class="col mx-auto">
             <div class="card card-mpm1">
                 <div class="card-heading bg-blue-mpm p-3">
                     <h3 class="text-white text-uppercase text-center">Attendance Form</h3>

@@ -1,0 +1,30 @@
+{
+    "employee" : {
+        "name" : "Name :",
+        "alias" : "Alias :",
+        "phoneNo" : "PhoneNo :",
+        "nrcNo" :"NRC No :",
+        "personalEmail":"Personal Email :",
+        "officialEmail" :"Official Email :",
+        "township":"Township :",
+        "city" :"City :" ,
+        "address" : "Address :",
+        "postalCode" : "Postal Code :",
+        "dob" :"Birthday :",
+        "gender":"Gender :",
+        "position":"Position :",
+        "basicSalary":"Salary :" ,
+        "nationality" :"Nationality :",
+        "race" :"Race :",
+        "maritalStatus" :"Marital Status :",
+        "employeeStatus" : "Employee Status :",
+        "photo" :"Photo :"
+    },
+    "form" : {
+        "title" : "Employee Register Form",
+        "save" : "Save",
+        "cancel" : "Cancel",
+        "back" : "Back"
+    }
+
+}

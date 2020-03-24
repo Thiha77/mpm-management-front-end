@@ -111,7 +111,7 @@ let files;
                         </div>   
                         <div class="form-group pt-3">             
                               <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image' />
-                        </div>      
+                        </div>       
                         <!-- <div class="form-group pt-3">             
                               <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image'/>
                         </div>                 -->

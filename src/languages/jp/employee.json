@@ -1,0 +1,30 @@
+{
+    "employee" : {
+        "name" : "名前 :",
+        "alias" : "略語 :",
+        "phoneNo" : "電話番号 :",
+        "nrcNo" :"NRC番号 :",
+        "personalEmail":"パーソナル メールアドレス :",
+        "officialEmail" :"公式 メールアドレス :",
+        "township":"Township :",
+        "city" :"City :" ,
+        "address" : "アドレス :",
+        "postalCode" : "Postal Code :",
+        "dob" :"Birthday :",
+        "gender":"Gender :",
+        "position":"Position :",
+        "basicSalary":"Salary :" ,
+        "nationality" :"Nationality :",
+        "race" :"Race :",
+        "maritalStatus" :"Marital Status :",
+        "employeeStatus" : "Employee Status :",
+        "photo" :"写真 :"
+    },
+    "form" : {
+        "title" : "従業員登録フォーム",
+        "save" : "保存",
+        "cancel" :"取消",
+        "back" : "帰る"
+    }
+
+}

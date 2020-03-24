@@ -2,21 +2,23 @@
     import { createEventDispatcher } from 'svelte';
     import { editRoleData } from '../../stores/role/store.js';
     import RoleSearch from './search.svelte';
+
+    export let fields;
     export let roles;
     const dispatch = createEventDispatcher();
 
     let deleteRole = id => {
         dispatch('deleteRole',{id:id});
-    };
+    }
 
     let editRole = (role) => {
         dispatch("editRole",{role:role});
-    };
+    }
 
     const searchRole = (event) => {
         let search = event.detail.search;
         dispatch('searchRoleData',{search});
-    };
+    }
 
 </script>
 <style>
@@ -26,21 +28,21 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <RoleSearch on:searchRole={searchRole}></RoleSearch>
+                <RoleSearch on:searchRole={searchRole} {fields}></RoleSearch>
                 <div class="table-responsive-sm ">
                     <div class="table-wrapper">
                         <div class="table-title">
                             <div class="row">
-                                <div class="col-sm-6"><h3 class="float-left">Role List</h3></div>
-                                <div class="col-sm-6"><a class="btn btn-white float-right" href='role/create'><i class="fas fa-plus-circle"></i> Add New Role</a></div>
+                                <div class="col-sm-6"><h3 class="float-left">{fields.form.listTitle}</h3></div>
+                                <div class="col-sm-6"><a class="btn btn-white float-right" href='role/create'><i class="fas fa-plus-circle"></i> {fields.form.addNew}</a></div>
                             </div>
                         </div>
                         <table class="table table-hover">
                             <thead>                                     
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
+                                    <th>{fields.role.id}</th>
+                                    <th>{fields.role.name}</th>
+                                    <th>{fields.role.description}</th>
                                     <th></th>
                                 </tr>
                             </thead>

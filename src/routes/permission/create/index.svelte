@@ -7,6 +7,11 @@
     import { Toast } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
+    import enFields from '../../../languages/en/permission.json';
+    import jpFields from'../../../languages/jp/permission.json';
+
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
 
     let vErrors;
     let constraints = {
@@ -17,7 +22,7 @@
 
     let permissionData = {
         name: "",
-        specialPer: false
+        specialPermission: false
     };
 
     const savePermissionData = async() => {
@@ -42,12 +47,14 @@
                     error: result.error
                 }
         }
-    };
+    }
 </script>
 
 <div class="container">
     {#if vErrors}
         <ValidationBox {vErrors}></ValidationBox>
     {/if}
-	<PermissionCreate bind:name={permissionData.name} bind:specialPer={permissionData.specialPer} on:savePermission={savePermissionData}></PermissionCreate>
+    {#if $session.lan && fields}
+	    <PermissionCreate bind:name={permissionData.name} bind:specialPermission={permissionData.specialPermission} on:savePermission={savePermissionData} {fields}></PermissionCreate>
+    {/if}
 </div>

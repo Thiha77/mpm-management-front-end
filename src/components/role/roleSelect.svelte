@@ -6,7 +6,7 @@
 
     const changedRole = selectedRoleId => {
         dispatch("changedRole",{selectedRole:selectedRoleId});
-    };
+    }
 </script>
 <style>
 	

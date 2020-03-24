@@ -20,11 +20,15 @@
     import EmpUpdate from '../../../components/employees/EditEmployee.svelte';
     import { empEditemployee,employeeMessages } from "../../../stores/employee/store";
     import { apiInfo } from '../../../store.js';
-    import { goto } from '@sapper/app';
+    import { stores,goto } from '@sapper/app';
     import * as sapper from '@sapper/app';
     import { Toast } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
-import ValidationBox from '../../../components/util/ValidationBox.svelte';
+    import ValidationBox from '../../../components/util/ValidationBox.svelte';
+    import enFields from '../../../languages/en/employee.json';
+    import jpFields from'../../../languages/jp/employee.json';
+    const { session } = stores();
+    $: fields =$session.lan =='en' ? enFields :jpFields; 
 // const { session } = stores();
 export let employee;
 let vErrors;
@@ -75,21 +79,24 @@ let vErrors;
         }         
     }
         
-};
-    
+};   
     const UpdateData = async(event) => {
-        let myImage = event.detail.files[0];
-        const url = $apiInfo.basePath + '/employees/update';         
-        const urlImage =$apiInfo.basePath + '/upload/save';
-         const updateImageUrl = $apiInfo.basePath + '/employees/updateImage';
         let employee = event.detail.emp;
+        vErrors= validate(employee,constraints);
+        if(vErrors) {
+            return;
+        }
+        const url = $apiInfo.basePath + '/employees/update';       
+        const urlImage =$apiInfo.basePath + '/upload/save';
+        const updateImageUrl = $apiInfo.basePath + '/employees/updateImage';
+        let myImage = event.detail.files[0];
         let photo= employee.photo;
         const urlUploadDelete = $apiInfo.basePath + '/upload/delete';
         let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo});
         let dataImage = new FormData();
             dataImage.append('path', 'employee/images');
             dataImage.append('Image', myImage);          
-        let result = await axiosPost(url, employee);
+        let result = await axiosPost(url, employee); 
         let updateResult= await  axiosPost(urlImage,dataImage)  ; 
         let path =updateResult.data.path
          let updateEmpData = {
@@ -119,7 +126,10 @@ let vErrors;
 <!-- <EmpUpdate {employee} on:update={UpdateData}></EmpUpdate> -->
 <div class="row">
     <div class="col-lg-9">
-      <EmpUpdate {employee} on:update={UpdateData}></EmpUpdate>
+    {#if $session.lan && fields}
+      <EmpUpdate {employee} on:update={UpdateData} {fields}></EmpUpdate>
+    {/if}
+
     </div>
     <div class="col-lg-3" >
         {#if vErrors}

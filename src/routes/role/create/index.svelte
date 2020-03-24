@@ -8,6 +8,11 @@
     import { Toast } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
+    import enFields from '../../../languages/en/role.json';
+    import jpFields from'../../../languages/jp/role.json';
+
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
     
     let vErrors;
     let constraints = {
@@ -47,7 +52,7 @@
                     error: result.error
                 }
         }
-    };
+    }
 </script>
 
 <div class="container">
@@ -57,5 +62,7 @@
     {#if vErrors}
         <ValidationBox {vErrors}></ValidationBox>
     {/if}
-	<RoleCreate bind:name = {roleData.name} bind:description = {roleData.description} on:saveRole={saveRoleData}></RoleCreate>
+    {#if $session.lan && fields}
+	    <RoleCreate bind:name = {roleData.name} bind:description = {roleData.description} on:saveRole={saveRoleData} {fields}></RoleCreate>
+    {/if}
 </div>

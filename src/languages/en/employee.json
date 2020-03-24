@@ -1,0 +1,66 @@
+{
+    "employee" : {
+        "name" : "Name ",
+        "alias" : "Alias ",
+        "phoneNo" : "PhoneNo ",
+        "nrcNo" :"NRC No ",
+        "personalEmail":"Personal Email ",
+        "officialEmail" :"Official Email ",
+        "township":"Township ",
+        "city" :"City " ,
+        "address" : "Address ",
+        "postalCode" : "Postal Code ",
+        "dob" :"Birthday ",
+        "gender":"Gender ",
+        "position":"Position ",
+        "basicSalary":"Salary " ,
+        "nationality" :"Nationality ",
+        "race" :"Race ",
+        "maritalStatus" :"Marital Status ",
+        "employeeStatus" : "Employee Status",
+        "photo" :"Photo "
+    },
+    "form" : {
+        "hello":"Hello",
+        "intro":"I'm",
+        "listbtn":"Add New Employee",
+        "action":"Action",
+        "createTitle" : "Employee Register Form",
+        "editTitle" :"Employee Update",
+        "listTitle" :"Employee List",
+        "save" : "Save",
+        "cancel" : "Cancel",
+        "back" : "Back"
+    },
+    "placeholder" :{
+        "name" :"Please Enter Name",
+        "alias" : "Please Enter Alias ",
+        "phoneNo" :"Please Enter PhoneNo ",
+        "nrcNo" :" Please Enter NRC No ",
+        "personalEmail":"Please Enter Personal Email ",
+        "officialEmail" :"Please Enter Official Email ",
+        "township":" Please EnterTownship ",
+        "city" :" Please Enter City " ,
+        "address" : " Please Enter Address ",
+        "postalCode" : "Please Enter Postal Code ",
+        "dob" :"Please Enter Birthday ",
+        "gender":"Please Enter Gender ",
+        "position":"Please Enter Position ",
+        "basicSalary":"Please Enter Salary " ,
+        "nationality" :"Please Enter Nationality ",
+        "race" :" Please Enter Race ",
+        "maritalStatus" :"Please Enter Marital Status ",
+        "employeeStatus" : "Please Enter Employee Status ",
+        "photo" :"Please Enter Photo "
+    },
+    "radiobtn": {
+        "male":"Male",
+        "female":"Female",
+        "single":"Single",
+        "married":"Married",
+        "active":"Active",
+        "inactive":"Inactive"
+
+    }
+
+}

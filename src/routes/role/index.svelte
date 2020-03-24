@@ -6,8 +6,13 @@
 	import { roleMessages } from '../../stores/role/store.js';
 	import { axiosGet,axiosPost } from '../../util/api.js'
 	import { apiInfo } from '../../store.js';
-	import { goto } from '@sapper/app';
+	import { stores,goto } from '@sapper/app';
 	import { Toast, CfmDelete } from '../../util/salert';
+	import enFields from '../../languages/en/role.json';
+    import jpFields from'../../languages/jp/role.json';
+
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
 	
 	let url = $apiInfo.basePath + '/roles';
 	const method = 'get';
@@ -20,7 +25,7 @@
 				del(id);
 			}
 		});
-	};
+	}
 
 	 const del = async(id) => {
 		const urlDel = $apiInfo.basePath + '/roles/delete';
@@ -33,18 +38,18 @@
             'success'
             );
         }
-	};
+	}
 	
 	const searchRoleData = async(event) =>{
 		let text = event.detail.search.text;
 		let searchUrl = (text)? $apiInfo.basePath + '/roles/search/' + text : $apiInfo.basePath + '/roles';
 		apiInstance.loadExternal(searchUrl);
-	};
+	}
 
 	const editRoleData = (event) =>{
 		let id = event.detail.role.id;
         goto(`role/edit/${id}`);
-	};
+	}
 
 </script>
 
@@ -55,8 +60,10 @@
 	<h1>{$roleMessages.message}</h1>
 	<ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
 		{#if data}
-			<RoleIndex roles={data} on:deleteRole={deleteRoleData} on:searchRoleData={searchRoleData} on:editRole={editRoleData}></RoleIndex>
-			<!-- <Pagination roles={data}></Pagination> -->
+			{#if $session.lan && fields}
+				<RoleIndex roles={data} on:deleteRole={deleteRoleData} on:searchRoleData={searchRoleData} on:editRole={editRoleData} {fields}></RoleIndex>
+				<!-- <Pagination roles={data}></Pagination> -->
+			{/if}
 		{/if}
 	</ApiGet>
 </div>

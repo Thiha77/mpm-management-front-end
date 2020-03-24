@@ -1,0 +1,66 @@
+{
+    "employee" : {
+        "name" : "名前 ",
+        "alias" : "略語 ",
+        "phoneNo" : "電話番号 ",
+        "nrcNo" :"NRC番号 ",
+        "personalEmail":"パーソナル メールアドレス ",
+        "officialEmail" :"公式 メールアドレス ",
+        "township":"地域 ",
+        "city" :"市 " ,
+        "address" : "アドレス ",
+        "postalCode" : "郵便番号 ",
+        "dob" :"誕生日 ",
+        "gender":"性別 ",
+        "position":"ポジション ",
+        "basicSalary":"給料 " ,
+        "nationality" :"国籍 ",
+        "race" :"人種 ",
+        "maritalStatus" :"配偶者の有無",
+        "employeeStatus" : "従業員のステータス",
+        "photo" :"写真 "
+    },
+    "form" : {
+        "hello":"こんにちは",
+        "intro":"わ た し わ",
+        "listbtn":"新しい従業員を追加",
+        "action":"アクション",
+        "createTitle" : "従業員登録フォーム",
+        "editTitle" :"従業員の更新",
+        "listTitle" :"従業員リスト",
+        "save" : "保存",
+        "cancel" :"取消",
+        "back" : "帰る"
+    },
+    "placeholder" :{
+        "name" : "入ってください 名前 ",
+        "alias" : "入ってください 略語 ",
+        "phoneNo" : "入ってください 電話番号 ",
+        "nrcNo" :"入ってください NRC番号 ",
+        "personalEmail":"入ってください パーソナル メールアドレス ",
+        "officialEmail" :"入ってください 公式 メールアドレス ",
+        "township":"入ってください 地域 ",
+        "city" :"入ってください 市 " ,
+        "address" : "入ってください アドレス ",
+        "postalCode" : "入ってください 郵便番号 ",
+        "dob" :"入ってください 誕生日 ",
+        "gender":"入ってください 性別 ",
+        "position":" 入ってください ポジション ",
+        "basicSalary":"入ってください 給料 " ,
+        "nationality" :"入ってください 国籍 ",
+        "race" :"入ってください 人種 ",
+        "maritalStatus" :"入ってください 配偶者の有無 ",
+        "employeeStatus" : "入ってください 従業員のステータス ",
+        "photo" :"入ってください 写真 "
+    },
+    "radiobtn": {
+        "male":"紳士用",
+        "female":"女性",
+        "single":"独身",
+        "married":"既婚",
+        "active":"アクティブ",
+        "inactive":"低調"
+
+    }
+
+}

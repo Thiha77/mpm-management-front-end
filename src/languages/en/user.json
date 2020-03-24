@@ -3,14 +3,22 @@
         "name" : "Name",
         "userName" : "User Name",
         "password":"Password",
-        "empId" : "Employee Name",
-        "roleId" : "Role Name"
+        "empName" : "Employee Name",
+        "roleName" : "Role Name"
     },
     "form" : {
-        "title" : "User",
+        "title" : "User Form",
+        "updateTitle" : "User Update Form",
         "save" : "Save",
         "cancel" : "Cancel",
         "back" : "Back"
+    },
+    "placeholder":{
+        "name" : "Name",
+        "userName" : "User Name",
+        "password":"Password",
+        "empName" : "Employee Name",
+        "roleName" : "Role Name"
     }
 
 }

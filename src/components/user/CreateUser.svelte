@@ -38,24 +38,24 @@
                         <form>
                             <div class="form-group">
                                 <label for="title">{fields.user.name}</label>
-                                <input class="form-control" bind:value={userData.name}  type="text" placeholder="Name" />
+                                <input class="form-control" bind:value={userData.name}  type="text" placeholder={fields.user.name} />
                             </div>
                             <div class="form-group">
                                 <label for="title">{fields.user.userName}</label>
                                 <div class="mpm-require">
-                                    <input type="text" bind:value={userData.userName}  class="form-control" placeholder="User Name" />
+                                    <input type="text" bind:value={userData.userName}  class="form-control" placeholder={fields.user.userName}  />
                                     <i class="fas fa-star-of-life req-icon"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="title">{fields.user.password}</label>
                                 <div class="mpm-require">
-                                    <input type="password" bind:value={userData.password} class="form-control" placeholder="Password"/>
+                                    <input type="password" bind:value={userData.password} class="form-control" placeholder={fields.user.password} />
                                     <i class="fas fa-star-of-life req-icon"></i>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="name">{fields.user.empId}</label>
+                                <label for="name">{fields.user.empName}</label>
                                 <div class="mpm-require">
                                     {#if employees}
                                         <select class="form-control" bind:value={userData.employeeId}>

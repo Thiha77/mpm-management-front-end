@@ -6,10 +6,14 @@
     
     // import { user} from '../../store.js';
     import { apiInfo } from '../../store.js';
-    import { goto } from '@sapper/app';
+    import {stores, goto } from '@sapper/app';
+    import enFields from '../../languages/en/user.json';
+    import jpFields from'../../languages/jp/user.json';
     let url = $apiInfo.basePath + '/users';
     import axios from 'axios';
     const method = 'get';
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
     let apiInstance;
     const deleteUserData = async(event) => {
         let id = event.detail.id;
@@ -48,6 +52,6 @@
 <!-- <h1>{$user.createMessage}</h1> -->
 <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
     {#if data}
-        <UserList users={data} on:deleteUser={deleteUserData} on:editUser={editUser}></UserList>
+        <UserList users={data} on:deleteUser={deleteUserData} on:editUser={editUser} {fields}></UserList>
     {/if}
 </Api>

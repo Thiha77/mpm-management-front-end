@@ -40,12 +40,12 @@ const changeLan = (lan) => {
                 </li>
                 <li class="nav-item mt-2 language-change">
                     <button class="language-flag" on:click={() => changeLan('jp')}>
-                        <img src="flags/japan-flag-icon-16.png" class="img-fluid" alt="JP" />
+                        <img src="flags/japan-flag-icon-32.png" class="img-fluid" alt="JP" />
                     </button>
                 </li>
                 <li class="nav-item mt-2 ">
                     <button class="language-flag" on:click={() => changeLan('en')}>
-                        <img src="flags/uk-flag-icon-16.png" class="img-fluid" alt="EN" />
+                        <img src="flags/uk-flag-icon-32.png" class="img-fluid" alt="EN" />
                     </button>
                 </li>
                 {#if $session.user}

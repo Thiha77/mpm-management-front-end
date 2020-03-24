@@ -23,9 +23,15 @@
 <script>   
     import DetailList from '../../../components/employees/DetailEmpList.svelte';
     import { empEditemployee } from "../../../stores/employee/store"; 
+    import { stores, goto } from '@sapper/app';
+    import enFields from '../../../languages/en/employee.json';
+    import jpFields from'../../../languages/jp/employee.json';
+    const { session } = stores();
+    $: fields =$session.lan =='en' ? enFields :jpFields; 
     export let employee;
    
 </script>
 
-
-<DetailList {employee}></DetailList>
+  {#if $session.lan && fields}
+    <DetailList {employee} {fields}> </DetailList>
+ {/if}

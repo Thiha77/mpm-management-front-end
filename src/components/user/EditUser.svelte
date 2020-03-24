@@ -1,4 +1,5 @@
 <script>
+    export let fields;
     import { createEventDispatcher } from "svelte";
     import Api from '../../components/util/Api.svelte';
     import { userEdit } from '../../stores/user/store.js';
@@ -20,24 +21,24 @@
         <div class="col mx-auto">
             <div class="card card-mpm1">
                 <div class="card-heading bg-blue-mpm p-3">
-                    <h3 class="text-white text-uppercase text-center">User Update Form</h3>
+                    <h3 class="text-white text-uppercase text-center">{fields.form.updateTitle}</h3>
                 </div>
                 <div class="card-body p-5">
                     <form>
                         <div class="form-group">
-                            <label for="title">Name</label>
+                            <label for="title">{fields.user.name}</label>
                             <input class="form-control" bind:value={user.name} type="text">
                         </div>
                         <div class="form-group">
-                            <label for="title">User Name</label>
+                            <label for="title">{fields.user.userName}</label>
                             <input type="text" bind:value={user.userName} class="form-control" placeholder="Title" />
                         </div>
                         <div class="form-group">
-                            <label for="title">Password</label>
+                            <label for="title">{fields.user.password}</label>
                             <input type="password" bind:value={user.password} class="form-control" placeholder="Title" />
                         </div>
                         <div class="form-group">
-                            <label for="name">Employee Name:</label>
+                            <label for="name">{fields.user.empName}</label>
                             <!-- {#if employees}
                                 <select class="form-control" disabled>
                                     <option value="0">Please Select Employee</option>

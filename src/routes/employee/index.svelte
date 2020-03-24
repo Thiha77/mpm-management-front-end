@@ -2,12 +2,16 @@
     import Api from '../../components/util/Api.svelte';
     import { axiosGet, axiosPost } from '../../util/api';
     import EmpList from '../../components/employees/ListEmployee.svelte';
-     import SearchEmp from '../../components/employees/searchEmployee.svelte';
+    import SearchEmp from '../../components/employees/searchEmployee.svelte';
     import { empEditemployee,employeeMessages } from "../../stores/employee/store";
     import { apiInfo } from '../../store.js';
-    import { goto } from '@sapper/app';
+    import { stores,goto } from '@sapper/app';
     import Swal from 'sweetalert2';
     import { Toast, CfmDelete } from '../../util/salert';
+    import enFields from '../../languages/en/employee.json';
+    import jpFields from'../../languages/jp/employee.json';
+        const { session } = stores();
+    $: fields =$session.lan =='en' ? enFields :jpFields; 
 
     let url = $apiInfo.basePath + '/employees';
     const method = 'get';
@@ -54,7 +58,7 @@
      }
 </script>
 
-<svelte:head>
+<svelte:head>   
     <title>Employee</title>
 </svelte:head>
 
@@ -65,10 +69,11 @@
     <SearchEmp on:searchEmp={searchEmployee}></SearchEmp>
     
     <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-        {#if data}
-            <EmpList employees={data} on:delete={deleteEmployee} on:edit={editEmployee} ></EmpList>
+        {#if data && $session.lan && fields }
+            <EmpList employees={data} on:delete={deleteEmployee} on:edit={editEmployee} {fields}></EmpList>
         {/if}
     </Api>
 </div>
 
 
+  

@@ -21,11 +21,15 @@
     import { axiosPost }from '../../../util/api.js';
     // import { userEdit } from '../../../stores/user/store.js';
     import { Toast } from '../../../util/salert.js';
-    import { goto } from '@sapper/app';
+    import { stores,goto } from '@sapper/app';
+    import enFields from '../../../languages/en/user.json';
+    import jpFields from'../../../languages/jp/user.json';
     export let user;
     let urlEmpData = $apiInfo.basePath + '/employees/'+user.employeeId;
     const method = 'get';
-
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    
     const editUserData = async() =>{
         let url = $apiInfo.basePath + '/users/update';
         let result = await axiosPost(url, user);
@@ -44,6 +48,6 @@
 
 <Api url={urlEmpData} {method} let:data let:loading let:error>
 {#if data}
-   <EditUser {user} employees={data} on:update={editUserData}></EditUser>
+   <EditUser {user} employees={data} on:update={editUserData}  {fields}></EditUser>
 {/if}
 </Api>

@@ -2,13 +2,25 @@
     "notice" : {
         "title" : "Title",
         "description" : "Description",
-        "summary" : "Summary"
+        "summary" : "Summary",
+        "author" : "Author"
     },
     "form" : {
         "title" : "Notice",
+        "createTitle" : "Create Notice",
+        "editTitle" : "Edit Notice",
         "save" : "Save",
         "cancel" : "Cancel",
-        "back" : "Back"
+        "back" : "Back",
+        "new" : "Add New Notice",
+        "action" : "Action",
+        "search" : "Search"
+    },
+    "placeholder" : {
+        "enterTitle" : "Enter title",
+        "enterDescription" : "Enter description",
+        "enterSummary" : "Enter summary",
+        "search" : "Search"
     }
 
 }

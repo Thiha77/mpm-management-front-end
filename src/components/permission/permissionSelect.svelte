@@ -7,7 +7,7 @@
 
     const changedPermission = selectedPermission => {
         dispatch("changedPermission",{selectedPermission:selectedPermission});
-    };
+    }
 </script>
 <style>
 	

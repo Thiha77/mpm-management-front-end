@@ -18,10 +18,15 @@
     import { axiosPost } from '../../../util/api.js'
     import { apiInfo } from '../../../store.js';
     import { editRoleData, roleMessages } from '../../../stores/role/store.js';
-    import { goto } from '@sapper/app';
+    import { stores,goto } from '@sapper/app';
     import { Toast } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
+    import enFields from '../../../languages/en/role.json';
+    import jpFields from'../../../languages/jp/role.json';
+
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
 
     export let role;
 
@@ -60,12 +65,14 @@
                 error: result.error
             }
         }
-   };
+    }
 </script>
 
 <div class="container">
     {#if vErrors}
         <ValidationBox {vErrors}></ValidationBox>
     {/if}
-	<RoleEdit {role} on:updateRole={updateRoleData}></RoleEdit>
+    {#if $session.lan && fields}
+	    <RoleEdit {role} on:updateRole={updateRoleData} {fields}></RoleEdit>
+    {/if}
 </div>

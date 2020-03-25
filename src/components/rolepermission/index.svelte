@@ -2,6 +2,7 @@
     import { editRolePermission } from '../../stores/rolepermission/store.js';
     import RolePermissionSearch from './search.svelte';
     import Grouper from './grouper.svelte';
+    import Collapse from './collapse.svelte';
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
     export let rolePermissions;
@@ -53,6 +54,7 @@
                         </Grouper>
                     </div>
                 </div>
+                <Collapse></Collapse>
                 <!-- <div class="card" style="margin-top:20px;">
                     <div class="card-header" style="background:#0689CE;">
                          <div class="row">

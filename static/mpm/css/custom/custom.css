@@ -34,7 +34,7 @@ a:focus {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     outline: none;
 }
-.language-flag:active{
+.language-active{
     background-color: #F0833F !important;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     outline: none;

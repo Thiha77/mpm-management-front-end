@@ -12,7 +12,7 @@ const subNav = writable({
     subNav: false 
 })
 const collapse = writable({
-    collapse: false 
+    collapse: false
 })
 const apiInfo = readable({
     basePath: "http://localhost:5000"

@@ -27,7 +27,6 @@
 					rolePermissions: []
                 }
                 groupedItems.push(group)
-                console.log(groupedItems);
 			}
 			group.rolePermissions.push(rolePermission)
 		})
@@ -37,8 +36,10 @@
 </script>
 
 {#each groupedItems as groupedItem}
-    <slot name='group' group={groupedItem.group}/>
-    {#each groupedItem.rolePermissions as rolePermission}
-        <slot name='rolePermission' rolePermission={rolePermission.Permission['name']}/>
-    {/each}
+	<div class="card">
+		<slot name='group' group={groupedItem.group}/>
+		{#each groupedItem.rolePermissions as rolePermission}
+			<slot name='rolePermission' rolePermission={rolePermission.Permission['name']}/>
+		{/each}
+	</div>
 {/each}

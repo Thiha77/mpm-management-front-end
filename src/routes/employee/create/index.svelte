@@ -69,46 +69,34 @@ let constraints= {
             onlyInteger: true, greaterThanOrEqualTo: 100000
         }
     }
-}
-
-;
+};
+let saveResult;
+let uploadResult;
 const CreateData=async(event)=> {
     const body=event.detail.emp;
     vErrors=validate(body, constraints);
     if(vErrors) {
         return;
-    }
-    if(body.photo=='' || body.photo==null) {
-        const url=$apiInfo.basePath + '/employees/create';
-        let createResult=await axiosPost(url, body);
-        if(createResult.error==null) {
-            Toast.fire( 'Success!', 'New Employee is successfully created.', 'success') 
-            sapper.goto("../employee");
-        }
-        else {
-            $employeeMessages= {
-                message: '', 
-                error: createResult.error
-            }
-        }
-    }
-    else {
-        let myImage=event.detail.files[0];
+    }        
         const url=$apiInfo.basePath + '/employees/create';
         const urlImage=$apiInfo.basePath + '/upload/save';
         const updateImageUrl=$apiInfo.basePath + '/employees/updateImage';
-        let dataImage=new FormData();
-        dataImage.append('path', 'employee/images');
-        dataImage.append('Image', myImage);
-        let saveResult=await axiosPost(url, body);
-        let uploadResult=await axiosPost(urlImage, dataImage);
-        let id=saveResult.data.id;
-        let photo=uploadResult.data.path;
-        let updateEmpData= {
-            id: id, photo: photo
-        };
-        let updateImageRes=await axiosPost(updateImageUrl, updateEmpData);
-        if(saveResult.error==null && uploadResult.error==null) {
+        saveResult=await axiosPost(url, body);
+        if(event.detail.files =='' || event.detail.files!=undefined) {
+            let myImage=event.detail.files[0];
+            let dataImage=new FormData();
+            dataImage.append('path', 'employee/images');
+            dataImage.append('Image', myImage);
+
+             uploadResult=await axiosPost(urlImage, dataImage);
+            let id=saveResult.data.id;
+            let photo=uploadResult.data.path;
+            let updateEmpData= {
+                id: id, photo: photo
+            };
+            let updateImageRes=await axiosPost(updateImageUrl, updateEmpData);
+        } 
+        if(saveResult.error==null || uploadResult.error==null) {
             Toast.fire( 'Success!', 'New Employee is successfully created.', 'success') 
             sapper.goto("../employee");
         }
@@ -118,7 +106,6 @@ const CreateData=async(event)=> {
                 error: saveResult.error
             }
         }
-    }
 };
 </script> 
 <div class="row"> 

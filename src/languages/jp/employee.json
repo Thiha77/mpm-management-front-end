@@ -51,7 +51,8 @@
         "race" :"入ってください 人種 ",
         "maritalStatus" :"入ってください 配偶者の有無 ",
         "employeeStatus" : "入ってください 従業員のステータス ",
-        "photo" :"入ってください 写真 "
+        "photo" :"入ってください 写真 ",
+        "search":"検索"
     },
     "radiobtn": {
         "male":"紳士用",

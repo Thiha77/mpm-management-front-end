@@ -12,8 +12,9 @@ const dispatch = createEventDispatcher();
       src =URL.createObjectURL(e.target.files[0]);
       //employee.photo=e.target.files;  
  }
-let src =employee.photo;
-let files;
+ let files;
+ let src =employee.photo;
+ 
 </script> 
 <div class="container">
    <div class="row">
@@ -105,21 +106,18 @@ let files;
                         <input type="text" class="form-control" id="text" placeholder="{fields.placeholder.race}" bind:value={employee.race} />
                      </div>      
                   </div>
-                  <div class="col-md-12 pt-3">
-                     <form >           
+                  <div class="col-md-12 pt-3">          
                       <label  class="card-title">{fields.employee.photo}</label>  
                         <div class="form-group pt-3">
                            <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} > 
                         </div>   
                         <div class="form-group pt-3">             
                               <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image' />
-                        </div>       
-                        <!-- <div class="form-group pt-3">             
-                              <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image'/>
-                        </div>                 -->
-                     </form> 
-                     <button type="button" class="btn btn-blue" on:click|preventDefault={updatebtn} >{fields.form.save}</button>
-                     <a href="employee" class="btn btn-outline-orange">{fields.form.cancel}</a>
+                        </div>                                                   
+                  </div> 
+                   <div class="col-md-12">
+                      <button type="button" class="btn btn-blue" on:click|preventDefault={updatebtn} >{fields.form.save}</button>
+                     <a href="employee" class="btn btn-outline-orange">{fields.form.cancel}</a> 
                   </div> 
                </div>
             </div>

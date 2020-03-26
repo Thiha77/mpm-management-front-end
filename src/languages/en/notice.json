@@ -21,6 +21,15 @@
         "enterDescription" : "Enter description",
         "enterSummary" : "Enter summary",
         "search" : "Search"
+    },
+    "message" : {
+        "success" : "Success",
+        "fail" : "Fail",
+        "saveSuccess" : "Notice is successfully created.",
+        "updateSuccess" : "Notice is successfully updated.",
+        "deleteSuccess" : "Notice is deleted successfully.",
+        "saveFail" : "Fail to create notice.",
+        "updateFail" : "Fail to update notice.",
+        "deleteFail" : "Fail to delete notice."
     }
-
 }

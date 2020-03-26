@@ -38,7 +38,7 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                'New notice is successfully created.',
+                fields.message.saveSuccess,
                 'success'
             )
             goto('../notice');

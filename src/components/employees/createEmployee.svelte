@@ -2,10 +2,8 @@
 import { createEventDispatcher } from 'svelte';
 import { stores,goto } from '@sapper/app';
 const dispatch = createEventDispatcher();
-
 export let fields;
-let src;
-let files;
+
 const CreateData = () =>{
    dispatch('create', { files: files, emp:employee});
 }
@@ -33,6 +31,8 @@ let employee = {
    maritalStatus: "single",
    employeeStatus: "active"
 };
+let src;
+let files;
 
 </script>
 <div class="container">
@@ -128,19 +128,20 @@ let employee = {
                      </div> 
                   </div>
                   <div class="col-md-12">
-                     <form>      
-                     <label  class="card-title">{fields.employee.photo}</label>     
+                    <label  class="card-title">{fields.employee.photo}</label>                                               
                         <div class="form-group">
-                           <input type="file" id="file" accept="image/*" bind:value={employee.photo} bind:files on:change={uploadImage} required> 
-                        </div>            
-                        <div class="form-group" >                  
-                              <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
+                           <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} > 
                         </div> 
-                     </form>  
+                        {#if src !=undefined}           
+                           <div class="form-group">                  
+                              <img {src} alt="" width={150} height={150} crossOrigin='anonymous' classes='profile-image'/>
+                           </div> 
+                        {/if}                           
+                  </div> 
+                  <div class="col-md-12">
                      <button type="button" class="btn btn-blue" on:click={CreateData}>{fields.form.save}</button>
-                     <a href="employee" class="btn btn-outline-orange">{fields.form.cancel}</a>
-                     <!-- <button type="submit" class="btn btn-outline-warning" on:click={CancelBtn}>Cancel</button>         -->
-                  </div>   
+                     <a href="employee" class="btn btn-outline-orange">{fields.form.cancel}</a>  
+                  </div>  
                </div>                       
          </div>
          </div>

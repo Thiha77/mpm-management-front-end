@@ -2,13 +2,34 @@
     "notice" : {
         "title" : "題名",
         "description" : "説明",
-        "summary" : "概要"
+        "summary" : "概要",
+        "author" : "著者"
     },
     "form" : {
-        "title" : "掲示板",
+        "title" : "題名",
+        "createTitle" : "掲示板",
+        "editTitle" : "通知を編集",
         "save" : "保存",
         "cancel" : "取消",
-        "back" : "帰る"
+        "back" : "帰る",
+        "new" : "新しく追加する",
+        "action" : "作用",
+        "search" : "探す"
+    },
+    "placeholder" : {
+        "enterTitle" : "タイトルを入力してください",
+        "enterDescription" : "説明を入力してください",
+        "enterSummary" : "概要を入力",
+        "search" : "探す"
+    },
+    "message" : {
+        "success" : "成功",
+        "fail" : "不合格",
+        "saveSuccess" : "新しい通知が作成されました.",
+        "updateSuccess" : "通知が正常に更新されました.",
+        "deleteSuccess" : "通知が正常に削除されました.",
+        "saveFail" : "通知を作成できませんでした.",
+        "updateFail" : "通知を更新できませんでした.",
+        "deleteFail" : "通知を削除できませんでした."
     }
-
 }

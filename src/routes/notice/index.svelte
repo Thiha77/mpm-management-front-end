@@ -4,9 +4,14 @@
     import List from '../../components/notice/list.svelte';
     import Search from '../../components/notice/search.svelte';
     import { apiInfo } from '../../store.js';
-    import { goto } from '@sapper/app';
+    import { stores, goto } from '@sapper/app';
     import Swal from 'sweetalert2';
     import { Toast, CfmDelete } from '../../util/salert';
+    import enFields from '../../languages/en/notice.json';
+    import jpFields from'../../languages/jp/notice.json';
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
+
     let url = $apiInfo.basePath + '/notices';
     const method = 'get';
     let apiInstance;
@@ -51,10 +56,10 @@
 </script>
 <svelte:head><title>Notice</title></svelte:head>
 <div class="container">
-    <Search on:search={search}></Search>
+    <Search on:search={search} {fields}></Search>
     <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
         {#if data}
-            <List notices={data} on:delete={deleteNotice} on:edit={editNotice}></List>
+            <List notices={data} on:delete={deleteNotice} on:edit={editNotice} {fields}></List>
         {/if}
     </Api>
 </div>

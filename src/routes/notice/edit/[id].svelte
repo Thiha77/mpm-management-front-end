@@ -17,8 +17,13 @@
     import EditNotice from '../../../components/notice/edit.svelte';
     import { apiInfo } from '../../../store.js';
     import { axiosPost }from '../../../util/api.js';
-    import { goto } from '@sapper/app';
+    import { stores, goto } from '@sapper/app';
     import { Toast, Err } from '../../../util/salert';
+    import enFields from '../../../languages/en/notice.json';
+    import jpFields from'../../../languages/jp/notice.json';
+
+    const { session } = stores();
+    $: fields = $session.lan == 'en' ? enFields : jpFields;
     export let notice;
 
     const saveNotice = async(event) => {
@@ -43,6 +48,6 @@
 </script>
 
 {#if notice}
-<EditNotice {notice} on:save={saveNotice}></EditNotice>
+<EditNotice {notice} on:save={saveNotice} {fields}></EditNotice>
 {/if}
 <style></style>

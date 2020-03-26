@@ -55,14 +55,14 @@
 
 </script>
 <svelte:head><title>Notice</title></svelte:head>
-<div class="container">
-    <Search on:search={search} {fields}></Search>
-    <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-        {#if data}
-            <List notices={data} on:delete={deleteNotice} on:edit={editNotice} {fields}></List>
-        {/if}
-    </Api>
-</div>
 
-<style>
-</style>
+<section class="pr-2 pl-2">
+    <div class="container-fluid">
+        <Search on:search={search} {fields}></Search>
+        <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+            {#if data}
+                <List notices={data} on:delete={deleteNotice} on:edit={editNotice} {fields}></List>
+            {/if}
+        </Api>
+    </div>
+</section>

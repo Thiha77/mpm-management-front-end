@@ -3,7 +3,7 @@
     import { axiosPost } from '../../util/api';
     import UserList from '../../components/user/UserList.svelte';
     import { Toast, CfmDelete } from '../../util/salert';
-    
+    import SearchUser from '../../components/user/SearchUser.svelte';
     // import { user} from '../../store.js';
     import { apiInfo } from '../../store.js';
     import {stores, goto } from '@sapper/app';
@@ -40,7 +40,11 @@
             );
         }
     }
-
+    const searchUserData = async(event) =>{
+        let search = event.detail.search;
+		let searchUrl = (search)? $apiInfo.basePath + '/users/search/' + search : $apiInfo.basePath + '/users';
+		apiInstance.loadExternal(searchUrl);
+	}
     const editUser = (event) => {
         let id = event.detail.user.id;
         goto(`user/edit/${id}`);
@@ -49,9 +53,13 @@
 <svelte:head>
     <title>User</title>
 </svelte:head>
-<!-- <h1>{$user.createMessage}</h1> -->
-<Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-    {#if data}
-        <UserList users={data} on:deleteUser={deleteUserData} on:editUser={editUser} {fields}></UserList>
-    {/if}
-</Api>
+<section class="pr-2 pl-2">
+    <div class="container-fluid">
+        <SearchUser on:searchUserData={searchUserData} {fields}></SearchUser>
+        <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+            {#if data}
+                <UserList users={data} on:deleteUser={deleteUserData} on:editUser={editUser} {fields}></UserList>
+            {/if}
+        </Api>
+    </div>
+</section>

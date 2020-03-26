@@ -22,7 +22,8 @@
         "userName" : "ユーザー名前",
         "password":"パスワード",
         "empName" : "社員名",
-        "roleName" : "ロール名"
+        "roleName" : "ロール名",
+        "search":"検索"
     },
     "title":{
         "editBtnTitle":"編集",

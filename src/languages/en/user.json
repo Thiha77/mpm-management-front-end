@@ -22,7 +22,8 @@
         "userName" : "User Name",
         "password":"Password",
         "empName" : "Employee Name",
-        "roleName" : "Role Name"
+        "roleName" : "Role Name",
+        "search":"Search"
     },
     "title":{
         "editBtnTitle":"Edit",

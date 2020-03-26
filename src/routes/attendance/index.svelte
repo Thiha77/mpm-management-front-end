@@ -35,14 +35,15 @@
         goto(`attendance/edit/${id}`);
     }
 </script>
-
-<div class="container">
-    {#if $attendanceMessages.message}
-        <h1>{$attendanceMessages.message}</h1>
-    {/if}
-    <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-        {#if data}
-            <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
+<section class="pr-2 pl-2">
+    <div class="container-fluid">
+        {#if $attendanceMessages.message}
+            <h1>{$attendanceMessages.message}</h1>
         {/if}
-    </Api>
-</div>
+        <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+            {#if data}
+                <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
+            {/if}
+        </Api>
+    </div>
+</section>

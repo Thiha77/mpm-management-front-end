@@ -50,12 +50,12 @@ const changeLan = (lan) => {
                 </li>
                 {#if $session.user}
                     <li class="nav-item pt-1">
-                        <label class="nav-link txt-org text-bold pr-1" href="1">{$session.user.name} </label>
+                        <label class="nav-link txt-blue text-bold pr-1" href="1">{$session.user.name} </label>
                     </li>
                 {/if}
                 <li class="nav-item pt-1">
-                    <button class="btn btn-outline-orange d-none d-lg-block d-sm-none" on:click={logout}><i class="fas fa-sign-out-alt"></i> Logout</button>
-                    <button class="btn btn-outline-orange d-sm-block d-lg-none" on:click={logout} title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                    <button class="btn btn-outline-blue d-none d-lg-block d-sm-none" on:click={logout}><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    <button class="btn btn-outline-blue d-sm-block d-lg-none" on:click={logout} title="Logout"><i class="fas fa-sign-out-alt"></i></button>
                 </li>
             </ul>
         </div><!-- .navbar-collapse -->

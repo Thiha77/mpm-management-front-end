@@ -230,6 +230,17 @@ a.article:hover {
     background-color: #F9762B;
     border-color: #F9762B;
 }
+.btn-outline-blue {
+    color: #035d8c;
+    background-color: transparent;
+    background-image: none;
+    border-color: #035d8c;
+}
+.btn-outline-blue:hover {
+    color: #fff;
+    background-color: #035d8c;
+    border-color: #035d8c;
+}
 .txt-org{
     color:#F9762B !important;
 }

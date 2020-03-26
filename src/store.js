@@ -11,7 +11,9 @@ const nav = writable({
 const subNav = writable({
     subNav: false 
 })
-
+const collapse = writable({
+    collapse: false 
+})
 const apiInfo = readable({
     basePath: "http://localhost:5000"
 })
@@ -26,4 +28,4 @@ const system = writable({
     len : (typeof window !== "undefined")? writable(localStorage.getItem('len') || 'en') : writable(null)
 })
 
-export { user, nav, apiInfo, subNav, system }
+export { user, nav, apiInfo, subNav, system,collapse }

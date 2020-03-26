@@ -1,5 +1,6 @@
 <script>
     export let notices;
+    export let fields;
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
     const edit = (notice) => {
@@ -21,18 +22,18 @@
                 <div class="table-wrapper card-list-mpm1">
                     <div class="table-title">
                         <div class="row">
-                            <div class="col-sm-6"><h3 class="float-left">Notice List</h3></div>
-                            <div class="col-sm-6"><a class="btn btn-white float-right" href='notice/create'><i class="fas fa-plus-circle"></i> Add New Notice</a></div>
+                            <div class="col-sm-6"><h3 class="float-left">{fields.form.title}</h3></div>
+                            <div class="col-sm-6"><a class="btn btn-white float-right" href='notice/create'><i class="fas fa-plus-circle"></i>{fields.form.new}</a></div>
                         </div>
                     </div>
                     <table class="table table-hover table-responsive-sm ">
                         <thead>
                             <tr>
-                                <th>Title</th>						
-                                <th>Description</th>
-                                <th>Summary</th>
-                                <th>Author</th>
-                                <th>Action</th>
+                                <th>{fields.notice.title}</th>						
+                                <th>{fields.notice.description}</th>
+                                <th>{fields.notice.summary}</th>
+                                <th>{fields.notice.author}</th>
+                                <th>{fields.form.action}</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -12,8 +12,8 @@ let deleteUser = id => {
         dispatch('deleteUser',{id:id});
     };
 </script>
-<section>
-   <div class="container">
+<section class="pr-2 pl-2">
+   <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <h1>{$user.message}</h1>

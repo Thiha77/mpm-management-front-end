@@ -51,7 +51,8 @@
         "race" :" Please Enter Race ",
         "maritalStatus" :"Please Enter Marital Status ",
         "employeeStatus" : "Please Enter Employee Status ",
-        "photo" :"Please Enter Photo "
+        "photo" :"Please Enter Photo ",
+        "search":"Search"
     },
     "radiobtn": {
         "male":"Male",

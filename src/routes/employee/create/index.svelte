@@ -77,23 +77,7 @@ const CreateData=async(event)=> {
     vErrors=validate(body, constraints);
     if(vErrors) {
         return;
-    }
-    // if(body.photo=='' || body.photo==null) {
-    //     const url=$apiInfo.basePath + '/employees/create';
-    //     let createResult=await axiosPost(url, body);
-    //     if(createResult.error==null) {
-    //         Toast.fire( 'Success!', 'New Employee is successfully created.', 'success') 
-    //         sapper.goto("../employee");
-    //     }
-    //     else {
-    //         $employeeMessages= {
-    //             message: '', 
-    //             error: createResult.error
-    //         }
-    //     }
-    // }
-    // else {
-        
+    }        
         const url=$apiInfo.basePath + '/employees/create';
         const urlImage=$apiInfo.basePath + '/upload/save';
         const updateImageUrl=$apiInfo.basePath + '/employees/updateImage';
@@ -122,7 +106,6 @@ const CreateData=async(event)=> {
                 error: saveResult.error
             }
         }
-    //}
 };
 </script> 
 <div class="row"> 

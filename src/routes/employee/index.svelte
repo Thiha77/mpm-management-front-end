@@ -66,7 +66,7 @@
 
 
 <div class="container">   
-    <SearchEmp on:searchEmp={searchEmployee}></SearchEmp>
+    <SearchEmp on:searchEmp={searchEmployee} {fields}></SearchEmp>
     
     <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
         {#if data && $session.lan && fields }

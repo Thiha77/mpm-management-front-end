@@ -101,7 +101,6 @@ let updateResult;
             dataImage.append('Image', myImage);                     
             updateResult= await  axiosPost(urlImage,dataImage)  ; 
         let path =updateResult.data.path;
-
         let updateEmpData = {
                 id: employee.id,
                 photo: path
@@ -109,7 +108,6 @@ let updateResult;
             let updateImageRes = await axiosPost(updateImageUrl,updateEmpData);
             let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo})
         };
-        //sapper.goto("../employee")
         if(result.error == null || updateResult.error==null){
             Toast.fire(
                 'Success!',

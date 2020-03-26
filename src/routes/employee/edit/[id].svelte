@@ -32,6 +32,7 @@
 // const { session } = stores();
 export let employee;
 let vErrors;
+let updateResult;
     let constraints = {
         name: {
             presence: { allowEmpty: false }
@@ -80,6 +81,7 @@ let vErrors;
     }
         
 };   
+
     const UpdateData = async(event) => {
         let employee = event.detail.emp;
         vErrors= validate(employee,constraints);
@@ -89,30 +91,32 @@ let vErrors;
         const url = $apiInfo.basePath + '/employees/update';       
         const urlImage =$apiInfo.basePath + '/upload/save';
         const updateImageUrl = $apiInfo.basePath + '/employees/updateImage';
-        let myImage = event.detail.files[0];
+        let result = await axiosPost(url, employee);
         let photo= employee.photo;
-        const urlUploadDelete = $apiInfo.basePath + '/upload/delete';
-        let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo});
+        const urlUploadDelete = $apiInfo.basePath + '/upload/delete';               
+        if(event.detail.files != undefined){
+        let myImage = event.detail.files[0];        
         let dataImage = new FormData();
             dataImage.append('path', 'employee/images');
-            dataImage.append('Image', myImage);          
-        let result = await axiosPost(url, employee); 
-        let updateResult= await  axiosPost(urlImage,dataImage)  ; 
-        let path =updateResult.data.path
-         let updateEmpData = {
+            dataImage.append('Image', myImage);                     
+            updateResult= await  axiosPost(urlImage,dataImage)  ; 
+        let path =updateResult.data.path;
+
+        let updateEmpData = {
                 id: employee.id,
                 photo: path
             };
             let updateImageRes = await axiosPost(updateImageUrl,updateEmpData);
-            sapper.goto("../employee");
-
-             if(result.error == null && updateResult.error==null){
+            let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo})
+        };
+        //sapper.goto("../employee")
+        if(result.error == null || updateResult.error==null){
             Toast.fire(
                 'Success!',
                 'Employee is successfully updated.',
                 'success'
             )
-           sapper.goto("../employee");
+        sapper.goto("../employee");
         }else{
             $employeeMessages = {
                     message: '',

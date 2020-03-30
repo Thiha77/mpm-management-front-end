@@ -15,7 +15,8 @@
         "addUser":"Add User",
         "save" : "Save",
         "cancel" : "Cancel",
-        "back" : "Back"
+        "back" : "Back",
+        "addNew":"Add New"
     },
     "placeholder":{
         "name" : "Name",
@@ -28,6 +29,9 @@
     "title":{
         "editBtnTitle":"Edit",
         "deleteBtnTitle":"Delete"
+    },
+    "option":{
+        "selectName":"Please Select Employee"
     }
 
 }

@@ -14,8 +14,9 @@
         "action":"アクション",
         "addUser":"作成ユーザー",
         "save" : "保存",
-        "cancel" : "取消",
-        "back" : "帰る"
+        "cancel" : "キャンセル",
+        "back" : "権限一覧画面に戻る",
+        "addNew": "権限新規作成"
     },
     "placeholder":{
         "name" : "名前",
@@ -28,6 +29,9 @@
     "title":{
         "editBtnTitle":"編集",
         "deleteBtnTitle":"削除"
+    },
+    "option":{
+        "selectName":"従業員を選択してください"
     }
 
 }

@@ -59,7 +59,7 @@
                                 <div class="mpm-require">
                                     {#if employees}
                                         <select class="form-control" bind:value={userData.employeeId}>
-                                            <option value="0">Please Select Employee</option>
+                                            <option value="0">{fields.option.selectName}</option>
                                             {#each employees as employee}
                                                 <option value={employee.id}>{employee.name}</option>
                                             {/each}
@@ -72,8 +72,8 @@
                                 <RoleSelect {roles} on:changedRole={getChangedRoleId}></RoleSelect>
                             </div>
                             <div class="mt-4">
-                                <button type="submit" class="btn btn-blue" on:click|preventDefault={addUser}>Add User</button>
-                                <a href="user" class="btn btn-outline-orange">Cancel</a>     
+                                <button type="submit" class="btn btn-blue" on:click|preventDefault={addUser}>{fields.form.addNew}</button>
+                                <a href="user" class="btn btn-outline-orange">{fields.form.back}</a>     
                             </div>
                         </form>
                     </div>

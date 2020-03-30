@@ -18,12 +18,13 @@
     import { apiInfo } from '../../../store.js';
     import { axiosPost }from '../../../util/api.js';
     import { stores, goto } from '@sapper/app';
+    import { fields } from '../../../stores/notice/store';
     import { Toast, Err } from '../../../util/salert';
     import enFields from '../../../languages/en/notice.json';
     import jpFields from'../../../languages/jp/notice.json';
 
     const { session } = stores();
-    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
     export let notice;
 
     const saveNotice = async(event) => {
@@ -48,6 +49,6 @@
 </script>
 
 {#if notice}
-<EditNotice {notice} on:save={saveNotice} {fields}></EditNotice>
+<EditNotice {notice} on:save={saveNotice}></EditNotice>
 {/if}
 <style></style>

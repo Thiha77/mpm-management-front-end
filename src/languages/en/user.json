@@ -33,6 +33,14 @@
     },
     "option":{
         "selectName":"Please Select Employee"
+    },
+    "languageTitle":{
+        "eng":"EN",
+        "jp":"JP"
+    },
+    "navButton":{
+        "logout":"Logout"
     }
+
 
 }

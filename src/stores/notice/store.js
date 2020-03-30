@@ -17,4 +17,8 @@ const noticeMessages = writable({
     error: null
 });
 
-export { notice, notices, noticeMessages }
+const fields = writable({
+
+});
+
+export { notice, notices, noticeMessages, fields }

@@ -3,7 +3,7 @@
     import Api from '../../../components/util/Api.svelte';
     import CreateUser from '../../../components/user/CreateUser.svelte';
     import { axiosGet,axiosPost } from '../../../util/api.js';
-    import { user } from '../../../stores/user/store.js';
+    import { user ,fields} from '../../../stores/user/store.js';
     import { stores, goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
     import { Toast } from '../../../util/salert.js';
@@ -21,7 +21,7 @@
 		roles = roleResult.data;
     });
     const { session } = stores();
-    $: fields = $session.lan == 'en' ? enFields : jpFields;
+     $: $fields = $session.lan == 'en' ? enFields : jpFields;
     
     let vErrors;
     let constraints = {
@@ -85,8 +85,10 @@
     <div class="row">
         <div class="col-lg-9">
             <Api url={urlEmpData} {method} let:data let:loading let:error>
-                {#if data}
-                    <CreateUser {roles} employees={data} on:addUser={addUserData} {fields}></CreateUser>
+                {#if data }
+                    {#if $session.lan && $fields}
+                        <CreateUser {roles} employees={data} on:addUser={addUserData} {fields}></CreateUser>
+                    {/if}
                 {/if}
                 </Api>
         </div>

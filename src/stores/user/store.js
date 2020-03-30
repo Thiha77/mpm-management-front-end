@@ -13,6 +13,9 @@ const userEdit = writable({
     employeeId: "",
     roleId: null
 });
+const fields = writable({
 
-export { user, userEdit }
+});
+
+export { user, userEdit ,fields}
 // export { user }

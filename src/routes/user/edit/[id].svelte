@@ -18,6 +18,7 @@
     import Api from '../../../components/util/Api.svelte';
     import EditUser from '../../../components/user/EditUser.svelte';
     import { apiInfo } from '../../../store.js';
+    import { fields } from '../../../stores/user/store';
     import { axiosPost }from '../../../util/api.js';
     // import { userEdit } from '../../../stores/user/store.js';
     import { Toast } from '../../../util/salert.js';
@@ -28,7 +29,7 @@
     let urlEmpData = $apiInfo.basePath + '/employees/'+user.employeeId;
     const method = 'get';
     const { session } = stores();
-    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
     
     const editUserData = async() =>{
         let url = $apiInfo.basePath + '/users/update';
@@ -48,6 +49,8 @@
 
 <Api url={urlEmpData} {method} let:data let:loading let:error>
 {#if data}
-   <EditUser {user} employees={data} on:update={editUserData}  {fields}></EditUser>
+    {#if $session.lan && $fields}
+        <EditUser {user} employees={data} on:update={editUserData}  {$fields}></EditUser>
+    {/if}
 {/if}
 </Api>

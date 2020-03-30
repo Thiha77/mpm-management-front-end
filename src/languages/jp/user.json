@@ -33,6 +33,13 @@
     },
     "option":{
         "selectName":"従業員を選択してください"
+    },
+    "languageTitle":{
+        "eng":"英語",
+        "jp":"日本"
+    },
+    "navButton":{
+        "logout":"ログアウト"
     }
 
 }

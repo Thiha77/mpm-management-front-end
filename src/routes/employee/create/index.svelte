@@ -1,7 +1,7 @@
 <script> import Api from '../../../components/util/Api.svelte';
 import {axiosPost}from '../../../util/api.js';
 import { stores, goto } from '@sapper/app';
-import {employee,employeeMessages}from "../../../stores/employee/store.js";
+import {employee,employeeMessages,fields}from "../../../stores/employee/store.js";
 import * as sapper from '@sapper/app';
 import {apiInfo}from '../../../store.js';
 import EmpCreate from '../../../components/employees/createEmployee.svelte';
@@ -11,7 +11,7 @@ import ValidationBox from '../../../components/util/ValidationBox.svelte';
 import enFields from '../../../languages/en/employee.json';
 import jpFields from'../../../languages/jp/employee.json';
 const { session } = stores();
-$: fields =$session.lan =='en' ? enFields :jpFields; 
+$: $fields =$session.lan =='en' ? enFields :jpFields; 
 let vErrors;
 let constraints= {
     name: {
@@ -97,7 +97,7 @@ const CreateData=async(event)=> {
             let updateImageRes=await axiosPost(updateImageUrl, updateEmpData);
         } 
         if(saveResult.error==null || uploadResult.error==null) {
-            Toast.fire( 'Success!', 'New Employee is successfully created.', 'success') 
+            Toast.fire( $fields.message.success, $fields.message.saveSuccess, 'success') 
             sapper.goto("../employee");
         }
         else {
@@ -110,8 +110,8 @@ const CreateData=async(event)=> {
 </script> 
 <div class="row"> 
     <div class="col-lg-9"> 
-    {#if $session.lan && fields}
-        <EmpCreate on:create= {CreateData} {fields}></EmpCreate> 
+    {#if $session.lan && $fields}
+        <EmpCreate on:create= {CreateData}></EmpCreate> 
     {/if}
     </div> 
     <div class="col-lg-3" >

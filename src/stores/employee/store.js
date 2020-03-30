@@ -32,6 +32,9 @@ const employeeMessages = writable({
     message: '',
     error: null
 });
+const fields = writable({
+
+});
 
 
-export {employee,empEditemployee,employeeMessages }
+export {employee,empEditemployee,employeeMessages,fields }

@@ -61,7 +61,16 @@
         "married":"Married",
         "active":"Active",
         "inactive":"Inactive"
-
+    },
+    "message" : {
+        "success" : "Success",
+        "fail" : "Fail",
+        "saveSuccess" : "Employee is successfully created.",
+        "updateSuccess" : "Employee is successfully updated.",
+        "deleteSuccess" : "Employee is deleted successfully.",
+        "saveFail" : "Fail to create Employee.",
+        "updateFail" : "Fail to update Employee.",
+        "deleteFail" : "Fail to delete Employee."
     }
 
 }

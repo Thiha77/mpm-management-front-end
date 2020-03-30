@@ -17,6 +17,16 @@
     "placeholder" : {
         "name" : "モデル/フォーム名を入力してください",
         "search": "検索"
+    },
+    "message" : {
+        "success" : "成功",
+        "fail" : "失敗",
+        "saveSuccess" : "新しい承認が作成されました.",
+        "updateSuccess" : "承認が正常に更新されました.",
+        "deleteSuccess" : "承認が正常に削除されました.",
+        "saveFail" : "承認を作成できませんでした.",
+        "updateFail" : "承認を更新できませんでした.",
+        "deleteFail" : "承認を削除できませんでした."
     }
 
 }

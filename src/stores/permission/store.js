@@ -10,4 +10,8 @@ const editPermissionData = writable({
     name: ""
 });
 
-export { permissionMessages, editPermissionData }
+const fields = writable({
+
+});
+
+export { permissionMessages, editPermissionData, fields }

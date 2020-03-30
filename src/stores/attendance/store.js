@@ -14,5 +14,7 @@ const attendanceMessages = writable({
     message: '',
     error: null
 });
+const fields = writable({
 
-export { attendance, attendances, attendanceMessages }
+});
+export { attendance, attendances, attendanceMessages, fields }

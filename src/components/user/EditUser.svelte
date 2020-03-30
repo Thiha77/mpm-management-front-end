@@ -62,7 +62,7 @@
                         </div>
                         <div class="mt-4">
                             <button type="submit" class="btn btn-blue" on:click|preventDefault={updateUser}>{$fields.form.update}</button>
-                            <a href="user" class="btn btn-outline-orange">{$fields.form.back}</a>   
+                            <a href="user" class="btn btn-outline-orange">{$fields.form.cancel}</a>   
                         </div>
                     </form>
                 </div>

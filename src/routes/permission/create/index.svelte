@@ -1,7 +1,7 @@
 <script>
     import PermissionCreate from '../../../components/permission/create.svelte';
     import { axiosPost } from '../../../util/api.js'
-    import { permissionMessages } from '../../../stores/permission/store.js';
+    import { permissionMessages, fields } from '../../../stores/permission/store';
     import { stores, goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
     import { Toast } from '../../../util/salert.js';
@@ -11,7 +11,7 @@
     import jpFields from'../../../languages/jp/permission.json';
 
     const { session } = stores();
-    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 
     let vErrors;
     let constraints = {
@@ -37,7 +37,7 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                'New role is successfully created.',
+                $fields.message.saveSuccess,
                 'success'
             )
             goto('../permission');
@@ -54,7 +54,7 @@
     {#if vErrors}
         <ValidationBox {vErrors}></ValidationBox>
     {/if}
-    {#if $session.lan && fields}
-	    <PermissionCreate bind:name={permissionData.name} bind:specialPermission={permissionData.specialPermission} on:savePermission={savePermissionData} {fields}></PermissionCreate>
+    {#if $session.lan && $fields}
+	    <PermissionCreate bind:name={permissionData.name} bind:specialPermission={permissionData.specialPermission} on:savePermission={savePermissionData}></PermissionCreate>
     {/if}
 </div>

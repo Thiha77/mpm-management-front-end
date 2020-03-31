@@ -17,7 +17,7 @@
 <script>
     import PermissionEdit from '../../../components/permission/edit.svelte';
     import { axiosPost } from '../../../util/api.js'
-    import { editPermissionData, permissionMessages } from '../../../stores/permission/store.js';
+    import { editPermissionData, permissionMessages, fields } from '../../../stores/permission/store';
     import { stores,goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
     import { Toast } from '../../../util/salert.js';
@@ -27,7 +27,7 @@
     import jpFields from'../../../languages/jp/permission.json';
 
     const { session } = stores();
-    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 
     export let permission;
 
@@ -51,15 +51,15 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                'Permission is successfully updated.',
+                $fields.message.updateSuccess,
                 'success'
             )
             goto('../permission');
         }else{
             $permissionMessages = {
-                    message: '',
-                    error: result.error
-                }
+                message: '',
+                error: result.error
+            }
         }
     }
     
@@ -69,7 +69,7 @@
     {#if vErrors}
         <ValidationBox {vErrors}></ValidationBox>
     {/if}
-    {#if $session.lan && fields}
-	    <PermissionEdit {permission} on:updatePermission={updatePermissionData} {fields}></PermissionEdit>
+    {#if $session.lan && $fields}
+	    <PermissionEdit {permission} on:updatePermission={updatePermissionData}></PermissionEdit>
     {/if}
 </div>

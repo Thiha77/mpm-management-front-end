@@ -2,7 +2,8 @@
     "role" : {
         "id": "Id",
         "name" : "Name",
-        "description" : "Description"
+        "description" : "Description",
+        "roleName" : "Role Name"
     },
     "form" : {
         "listTitle": "Role List",
@@ -12,12 +13,23 @@
         "update": "Update",
         "cancel" : "Cancel",
         "back" : "Back",
-        "addNew": "Add New Role"
+        "addNew": "Add New Role",
+        "selectRole": "Please Select Role"
     },
     "placeholder" : {
         "name" : "Enter Role Name",
         "description" : "Enter Description",
         "search": "Search"
+    },
+    "message" : {
+        "success" : "Success",
+        "fail" : "Fail",
+        "saveSuccess" : "Role is successfully created.",
+        "updateSuccess" : "Role is successfully updated.",
+        "deleteSuccess" : "Role is deleted successfully.",
+        "saveFail" : "Fail to create role.",
+        "updateFail" : "Fail to update role.",
+        "deleteFail" : "Fail to delete role."
     }
 
 }

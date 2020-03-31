@@ -17,6 +17,16 @@
     "placeholder" : {
         "name" : "Enter Model/Form Name",
         "search": "Search"
+    },
+    "message" : {
+        "success" : "Success",
+        "fail" : "Fail",
+        "saveSuccess" : "Permission is successfully created.",
+        "updateSuccess" : "Permission is successfully updated.",
+        "deleteSuccess" : "Permission is deleted successfully.",
+        "saveFail" : "Fail to create permission.",
+        "updateFail" : "Fail to update permission.",
+        "deleteFail" : "Fail to delete permission."
     }
 
 }

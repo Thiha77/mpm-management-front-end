@@ -6,7 +6,7 @@
         "recordeddatetime" : "記録日時",
         "recordeddate" : "記録日",
         "recordedtime" : "記録時間",
-        "hours" : "時間",
+        "hours" : "時",
         "minutes" : "議事録"
     },
     "form" : {
@@ -21,13 +21,16 @@
         "search" : "探す"
     },
     "placeholder" : {
-        "employeeid" : "社員承認番号を入力してください",
+        "employeename" : "従業員名を入力してください",
         "recordeddate" : "記録日を入力してください"
     },
     "message" : {
         "success" : "成功",
         "saveSuccess" : "新しい出席が作成されました.",
         "updateSuccess" : "出席が正常に更新されました.",
-        "deleteSuccess" : "出席が正常に削除されました."
+        "deleteSuccess" : "出席が正常に削除されました.",
+        "valEmpIDRecDate" : "社員承認番号と記録日を入力してください！",
+        "valEmpID" : "社員承認番号を入力してください！",
+        "valRecDate" : "記録日を記入してください！"
     }
 }

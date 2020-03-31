@@ -1,6 +1,7 @@
 <script>
+    import { onMount } from 'svelte';
     import CreateAttendance from '../../../components/attendance/create.svelte';
-    import { axiosPost } from '../../../util/api';
+    import { axiosGet,axiosPost } from '../../../util/api';
     import { stores, goto } from '@sapper/app';
     import { attendanceMessages, fields } from '../../../stores/attendance/store';
     import { apiInfo } from '../../../store.js';
@@ -8,6 +9,13 @@
     import enFields from '../../../languages/en/attendance.json';
     import jpFields from'../../../languages/jp/attendance.json';
     import moment from 'moment';
+    let urlEmpData = $apiInfo.basePath + '/employees';
+    let employees;
+    onMount( async() => {
+		let employeeResult = await axiosGet(urlEmpData);
+        employees = employeeResult.data;
+        console.log("employees",employees);
+    });
     const { session } = stores();
     $: $fields = $session.lan == 'en' ? enFields : jpFields;
 
@@ -52,7 +60,7 @@
     <div class="row">
         <div class="col-lg-9">
             {#if $session.lan && $fields}
-            <CreateAttendance on:save={saveAttendance} {fields}></CreateAttendance>
+            <CreateAttendance {employees} on:save={saveAttendance} {fields}></CreateAttendance>
             {/if}
         </div>
     </div>

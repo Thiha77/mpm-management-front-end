@@ -21,13 +21,16 @@
         "search" : "Search"
     },
     "placeholder" : {
-        "employeeid" : "Enter employee ID",
+        "employeename" : "Enter employee name",
         "recordeddate" : "Enter recorded date"
     },
     "message" : {
         "success" : "Success",
         "saveSuccess" : "Attendance is successfully created.",
         "updateSuccess" : "Attendance is successfully updated.",
-        "deleteSuccess" : "Attendance is deleted successfully."
+        "deleteSuccess" : "Attendance is deleted successfully.",
+        "valEmpIDRecDate" : "Please fill up employee Id and recorded date!",
+        "valEmpID" : "Please fill up employee Id!",
+        "valRecDate" : "Please fill up recorded date!"
     }
 }

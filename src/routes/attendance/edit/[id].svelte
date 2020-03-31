@@ -49,7 +49,6 @@
         }
     }
 </script>
-
 {#if attendance}
 <EditAttendance {attendance} on:update={updateAttendance}></EditAttendance>
 {/if}

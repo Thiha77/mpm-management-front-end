@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import EmployeeSelect from '../employees/employeeSelect.svelte';
     import { fields } from '../../stores/attendance/store';
     import Flatpickr from 'svelte-flatpickr'
     import 'flatpickr/dist/flatpickr.css'
@@ -12,26 +13,29 @@
     }
 
     let attendance = {
-        employeeId: '',
+        employeeId: null,
         recordedDateTime: ''
     }
+    export let employees;
+    const getChangedEmployeeId = (event) => {
+        attendance.employeeId = event.detail.selectedEmployee;
+        console.log(event.detail.selectedEmployee);
+    };
     const saveAttendance = () => {
-        if(attendance.employeeId == "" && attendance.recordedDateTime == "")
+        if(attendance.employeeId == null && attendance.recordedDateTime == "" || attendance.employeeId == 0 && attendance.recordedDateTime == "")
         {
-            alert("Please fill up employee Id and recorded date!");
-            document.getElementById("employeeid").focus();
+            alert($fields.message.valEmpIDRecDate);
             return false;
             
         }
-        if(attendance.employeeId == "")
+        if(attendance.employeeId == 0 || attendance.employeeId == null)
         {
-            alert("Please fill up employee Id!");
-            document.getElementById("employeeid").focus();
+            alert($fields.message.valEmpID);
             return false;
-        }
+        } 
         if(attendance.recordedDateTime == "")
         {
-            alert("Please fill up recorded date!");
+            alert($fields.message.valRecDate);
             return false;
         }
         dispatch('save', { attendance: attendance, time : time})
@@ -52,8 +56,7 @@
                 </div>
                 <div class="card-body p-5">
                     <div class="form-group">
-                        <label for="title">{$fields.attendance.employeeid}:</label>
-                        <input type="text" bind:value={attendance.employeeId} id="employeeid" class="form-control" placeholder={$fields.placeholder.employeeid} />
+                                <EmployeeSelect {employees} on:changedEmployee={getChangedEmployeeId}></EmployeeSelect>
                     </div>
                     <div class="form-group">
                         <label for="desc">{$fields.attendance.recordeddate}:</label>

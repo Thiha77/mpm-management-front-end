@@ -45,7 +45,7 @@
                         <div class="col col-sm-6"><a class="btn btn-white float-right" href='permission/create'><i class="fas fa-plus-circle"></i> {$fields.form.addNew}</a></div>
                     </div>
                 </div><!-- .table-title -->
-                <table class="table table-hover table-responsive-sm ">
+                <table class="table table-hover table-responsive-sm">
                     <thead>                                     
                         <tr>
                             <th>{$fields.permission.id}</th>

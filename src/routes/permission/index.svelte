@@ -51,13 +51,15 @@
 	<title>Permission</title>
 </svelte:head>
 
-<div class="container">
-	<h1>{$permissionMessages.message}</h1>
-    <ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-		{#if data}
-			{#if $session.lan && $fields}
-				<PermissionIndex permissions={data} on:deletePermission={deletePermission} on:searchPermission={searchPermissionData} on:editPermission={editPermissionData}></PermissionIndex>
+<section class="pr-2 pl-2">
+	<div class="container-fluid">
+		<h1>{$permissionMessages.message}</h1>
+		<ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+			{#if data}
+				{#if $session.lan && $fields}
+					<PermissionIndex permissions={data} on:deletePermission={deletePermission} on:searchPermission={searchPermissionData} on:editPermission={editPermissionData}></PermissionIndex>
+				{/if}
 			{/if}
-		{/if}
-	</ApiGet>
-</div>
+		</ApiGet>
+	</div>
+</section>

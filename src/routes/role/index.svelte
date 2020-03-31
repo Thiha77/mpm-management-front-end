@@ -53,14 +53,17 @@
 <svelte:head>
 	<title>Role</title>
 </svelte:head>
-<div class="container">
-	<h1>{$roleMessages.message}</h1>
-	<ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-		{#if data}
-			{#if $session.lan && $fields}
-				<RoleIndex roles={data} on:deleteRole={deleteRoleData} on:searchRoleData={searchRoleData} on:editRole={editRoleData}></RoleIndex>
-				<!-- <Pagination roles={data}></Pagination> -->
+
+<section class="pr-2 pl-2">
+	<div class="container-fluid">
+		<h1>{$roleMessages.message}</h1>
+		<ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+			{#if data}
+				{#if $session.lan && $fields}
+					<RoleIndex roles={data} on:deleteRole={deleteRoleData} on:searchRoleData={searchRoleData} on:editRole={editRoleData}></RoleIndex>
+					<!-- <Pagination roles={data}></Pagination> -->
+				{/if}
 			{/if}
-		{/if}
-	</ApiGet>
-</div>
+		</ApiGet>
+	</div>
+</section>

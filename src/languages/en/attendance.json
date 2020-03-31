@@ -1,0 +1,33 @@
+{
+    "attendance" : {
+        "id" : "ID",
+        "employeeid" : "Employee ID",
+        "employeename" : "Employee Name",
+        "recordeddatetime" : "Recorded Datetime",
+        "recordeddate" : "Recorded Date",
+        "recordedtime" : "Recorded Time",
+        "hours" : "Hours",
+        "minutes" : "Minutes"
+    },
+    "form" : {
+        "title" : "Attendance List",
+        "createTitle" : "Create Attendance",
+        "editTitle" : "Edit Attendance",
+        "save" : "Save",
+        "update" : "Update",
+        "cancel" : "Cancel",
+        "new" : "Add New Attendance",
+        "action" : "Action",
+        "search" : "Search"
+    },
+    "placeholder" : {
+        "employeeid" : "Enter employee ID",
+        "recordeddate" : "Enter recorded date"
+    },
+    "message" : {
+        "success" : "Success",
+        "saveSuccess" : "Attendance is successfully created.",
+        "updateSuccess" : "Attendance is successfully updated.",
+        "deleteSuccess" : "Attendance is deleted successfully."
+    }
+}

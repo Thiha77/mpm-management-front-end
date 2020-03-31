@@ -1,8 +1,9 @@
 <script context="module">
     import { axiosGet } from '../../../util/api';
     import config from '../../../config';
+    
 	export async function preload({ params }) {
-        
+       
         let id = params.id;
         let urlAttendanceById = `${config.apiInfo.basePath}/attendances/${id}`;
         let res = await axiosGet(urlAttendanceById);
@@ -19,8 +20,13 @@
     import { attendanceMessages } from '../../../stores/attendance/store';
     import { apiInfo } from '../../../store.js';
     import { axiosPost }from '../../../util/api.js';
-    import { goto } from '@sapper/app';
+    import { stores, goto } from '@sapper/app';
     import { Toast, Err } from '../../../util/salert';
+    import { fields } from '../../../stores/attendance/store';
+    import enFields from '../../../languages/en/attendance.json';
+    import jpFields from'../../../languages/jp/attendance.json';
+    const { session } = stores();
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
     export let attendance;
 
     const updateAttendance = async(event) => {
@@ -31,7 +37,7 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                'Attendance is successfully updated.',
+                $fields.message.updateSuccess,
                 'success'
             );
             goto('../attendance');

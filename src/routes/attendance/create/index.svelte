@@ -2,11 +2,14 @@
     import CreateAttendance from '../../../components/attendance/create.svelte';
     import { axiosPost } from '../../../util/api';
     import { stores, goto } from '@sapper/app';
-    import { attendanceMessages } from '../../../stores/attendance/store';
+    import { attendanceMessages, fields } from '../../../stores/attendance/store';
     import { apiInfo } from '../../../store.js';
     import { Toast, Err } from '../../../util/salert.js';
+    import enFields from '../../../languages/en/attendance.json';
+    import jpFields from'../../../languages/jp/attendance.json';
     import moment from 'moment';
     const { session } = stores();
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 
     const saveAttendance = async(event) => {
         let attendance = event.detail.attendance;
@@ -31,7 +34,7 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                'New attendance is successfully created.',
+                $fields.message.saveSuccess,
                 'success'
             )
             goto('../attendance');
@@ -45,10 +48,12 @@
 
 </script>
 
-{#if $attendanceMessages.error}
-    <h1>{ $attendanceMessages.error }</h1>
-{/if}
-<CreateAttendance on:save={saveAttendance}></CreateAttendance>
-
-<style>
-</style>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            {#if $session.lan && $fields}
+            <CreateAttendance on:save={saveAttendance} {fields}></CreateAttendance>
+            {/if}
+        </div>
+    </div>
+</div>

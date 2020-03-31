@@ -1,0 +1,33 @@
+{
+    "attendance" : {
+        "id" : "承認番号",
+        "employeeid" : "社員承認番号",
+        "employeename" : "従業員名",
+        "recordeddatetime" : "記録日時",
+        "recordeddate" : "記録日",
+        "recordedtime" : "記録時間",
+        "hours" : "時間",
+        "minutes" : "議事録"
+    },
+    "form" : {
+        "title" : "出席リスト",
+        "createTitle" : "出席を作成",
+        "editTitle" : "通知を編集",
+        "save" : "保存",
+        "update" : "更新",
+        "cancel" : "取消",
+        "new" : "出席を追加",
+        "action" : "作用",
+        "search" : "探す"
+    },
+    "placeholder" : {
+        "employeeid" : "社員承認番号を入力してください",
+        "recordeddate" : "記録日を入力してください"
+    },
+    "message" : {
+        "success" : "成功",
+        "saveSuccess" : "新しい出席が作成されました.",
+        "updateSuccess" : "出席が正常に更新されました.",
+        "deleteSuccess" : "出席が正常に削除されました."
+    }
+}

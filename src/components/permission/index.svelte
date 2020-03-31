@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import { editPermissionData, fields } from '../../stores/permission/store';
+    import { fields } from '../../store';
     import PermisisonSearch from './search.svelte';
     const dispatch = createEventDispatcher();
 
@@ -9,13 +9,6 @@
     let deletePermission = id => {
         dispatch('deletePermission',{id:id});
     }
-
-    // let editPermission = (permission) => {
-    //     $editPermissionData = {
-    //         id: permission.id,
-    //         name: permission.name
-    //     };
-    // };
 
     const searchPermission = (event) => {
         let search = event.detail.search;
@@ -38,15 +31,15 @@
                 <div class="table-wrapper">
                     <div class="table-title">
                          <div class="row">
-                            <div class="col-sm-6"><h3 class="float-left">{$fields.form.listTitle}</h3></div>
-                            <div class="col-sm-6"><a class="btn btn-orange float-right" href='permission/create'><i class="fas fa-plus-circle"></i> {$fields.form.addNew}</a></div>
+                            <div class="col-sm-6"><h3 class="float-left">{$fields.permission.form.listTitle}</h3></div>
+                            <div class="col-sm-6"><a class="btn btn-orange float-right" href='permission/create'><i class="fas fa-plus-circle"></i> {$fields.permission.form.addNew}</a></div>
                         </div>
                     </div><!-- .table-title -->
                     <table class="table table-hover">
                         <thead>                                     
                             <tr>
-                                <th>{$fields.permission.id}</th>
-                                <th>{$fields.permission.name}</th>
+                                <th>{$fields.permission.permission.id}</th>
+                                <th>{$fields.permission.permission.name}</th>
                                 <th></th>
                             </tr>
                         </thead>

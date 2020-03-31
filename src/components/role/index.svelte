@@ -2,7 +2,7 @@
     import { createEventDispatcher } from 'svelte';
     import { editRoleData } from '../../stores/role/store.js';
     import RoleSearch from './search.svelte';
-    import { fields } from '../../stores/role/store';
+    import { fields } from '../../store';
 
     export let roles;
     const dispatch = createEventDispatcher();
@@ -33,16 +33,16 @@
                     <div class="table-wrapper">
                         <div class="table-title">
                             <div class="row">
-                                <div class="col-sm-6"><h3 class="float-left">{$fields.form.listTitle}</h3></div>
-                                <div class="col-sm-6"><a class="btn btn-white float-right" href='role/create'><i class="fas fa-plus-circle"></i> {$fields.form.addNew}</a></div>
+                                <div class="col-sm-6"><h3 class="float-left">{$fields.role.form.listTitle}</h3></div>
+                                <div class="col-sm-6"><a class="btn btn-white float-right" href='role/create'><i class="fas fa-plus-circle"></i> {$fields.role.form.addNew}</a></div>
                             </div>
                         </div>
                         <table class="table table-hover">
                             <thead>                                     
                                 <tr>
-                                    <th>{$fields.role.id}</th>
-                                    <th>{$fields.role.name}</th>
-                                    <th>{$fields.role.description}</th>
+                                    <th>{$fields.role.role.id}</th>
+                                    <th>{$fields.role.role.name}</th>
+                                    <th>{$fields.role.role.description}</th>
                                     <th></th>
                                 </tr>
                             </thead>

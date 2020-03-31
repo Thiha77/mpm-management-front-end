@@ -1,5 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import { fields } from '../../store';
+    
     const dispatch = createEventDispatcher();
     export let enabledPermission;
     export let permissions;
@@ -13,9 +15,9 @@
 	
 </style>
 <section>
-    <label for="name">Permission Name:</label>
+    <label for="name">{$fields.permission.form.permissionName}:</label>
         <select class="form-control" disabled={enabledPermission == 0} bind:value={selectedPermission} on:change={(changedPermission(selectedPermission))}>
-            <option value="0">Please Select Permission</option>
+            <option value="0">{$fields.permission.form.selectPermission}</option>
             {#if permissions}
                 {#each permissions as permission}
                     <option value={permission.id}>{permission.name}</option>

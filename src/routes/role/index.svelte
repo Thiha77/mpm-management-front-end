@@ -3,17 +3,13 @@
 	import RoleSearch from '../../components/role/search.svelte';
 	// import Pagination from '../../components/role/pagination.svelte';
 	import ApiGet from '../../components/util/Api.svelte';
-	import { roleMessages } from '../../stores/role/store.js';
-	import { fields } from '../../stores/role/store';
+	import { roleMessages } from '../../stores/role/store';
 	import { axiosGet,axiosPost } from '../../util/api.js'
-	import { apiInfo } from '../../store.js';
+	import { apiInfo, fields } from '../../store.js';
 	import { stores,goto } from '@sapper/app';
 	import { Toast, CfmDelete } from '../../util/salert';
-	import enFields from '../../languages/en/role.json';
-    import jpFields from'../../languages/jp/role.json';
 
     const { session } = stores();
-    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 	
 	let url = $apiInfo.basePath + '/roles';
 	const method = 'get';
@@ -35,7 +31,7 @@
             apiInstance.refresh();
             Toast.fire(
             'Deleted!',
-            $fields.message.deleteSuccess,
+            $fields.role.message.deleteSuccess,
             'success'
             );
         }

@@ -57,7 +57,12 @@
 <section class="pr-2 pl-2">
     <div class="container-fluid">
     {#if $session.lan && $fields}
-        <SearchUser on:searchUserData={searchUserData} {$fields}></SearchUser>
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 float-right">
+                <SearchUser on:searchUserData={searchUserData} {$fields}></SearchUser>
+            </div>
+        </div>
         <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
             {#if data}
                 <UserList users={data} on:deleteUser={deleteUserData} on:editUser={editUser} {$fields}></UserList>

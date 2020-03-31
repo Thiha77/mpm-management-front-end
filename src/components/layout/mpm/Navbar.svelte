@@ -49,9 +49,9 @@ $: $fields = ($session.lan == 'en') ? enFields : jpFields;
                 {/if}
                 <li class="nav-item pt-1">
                     {#if $fields}
-                        <button class="btn btn-outline-blue d-none d-lg-block d-sm-none" on:click={logout}><i class="fas fa-sign-out-alt"></i>{$fields.system.navButton.logout}</button>
+                        <button class="btn btn-outline-blue d-none d-lg-block d-sm-none btn-wd" on:click={logout}><i class="fas fa-sign-out-alt"></i> {$fields.system.navButton.logout}</button>
                     {/if}
-                    <button class="btn btn-outline-blue d-sm-block d-lg-none" on:click={logout} title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                    <button class="btn btn-outline-blue d-sm-block d-lg-none " on:click={logout} title="Logout"><i class="fas fa-sign-out-alt"></i></button>
                 </li>
             </ul>
         </div><!-- .navbar-collapse -->

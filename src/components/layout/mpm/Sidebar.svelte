@@ -52,7 +52,7 @@ export let segment;
             <li>
                 <a href="attendance"  class:selected={segment === 'attendance'}>
                 <i class="fas fa-list-alt"></i> 
-                Attendace
+                Attendance
                 </a>
             </li>
             <li>

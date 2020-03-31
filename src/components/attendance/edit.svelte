@@ -1,12 +1,17 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import EmployeeSelect from '../employees/employeeSelect.svelte';
     import { fields } from '../../stores/attendance/store';
     import Flatpickr from 'svelte-flatpickr'
     import 'flatpickr/dist/flatpickr.css'
     import 'flatpickr/dist/themes/light.css'
     import Time from '../../components/util/Time.svelte';
+    import Api from '../../components/util/Api.svelte';
+    import { apiInfo } from '../../store.js';
     import moment from 'moment';
     export let attendance;
+    let urlEmpData = $apiInfo.basePath + '/employees';
+    
 
     let empid = attendance.employeeId;
     console.log("empid",empid);
@@ -14,11 +19,18 @@
      console.log("rdatetime",rdatetime);
     let momenttime = moment.utc(rdatetime).toDate();
     console.log("momentTime",momenttime);
+
     attendance = {
         id : attendance.id,
         employeeId: attendance.employeeId,
         recordedDateTime: momenttime
     }
+    
+    const getChangedEmployeeId = (event) => {
+        attendance.employeeId = event.detail.selectedEmployee;
+        console.log(event.detail.selectedEmployee);
+    };  
+
     let mhr = moment(rdatetime).format('HH');
     let mmin = moment(rdatetime).format('mm');
 
@@ -29,23 +41,21 @@
     const dispatch = createEventDispatcher();
     
     const updateAttendance = () => {
-        if(attendance.employeeId == "" && document.getElementById("recordeddate").value == "")
+        if(attendance.employeeId == 0 && document.getElementById("recordeddate").value == "")
         {
-            alert("Please fill up employee Id and recorded date!");
-            document.getElementById("employeeid").focus();
+            alert($fields.message.valEmpIDRecDate);
             document.getElementById("recordeddate").text = "";  
             return false;
                       
         }
-        if(attendance.employeeId == "")
+        if(attendance.employeeId == 0)
         {
-            alert("Please fill up employee Id!");
-            document.getElementById("employeeid").focus();
+            alert($fields.message.valEmpID);
             return false;
         }
         if(document.getElementById("recordeddate").value == "")
         {
-            alert("Please fill up recorded date!");
+            alert($fields.message.valRecDate);
             document.getElementById("recordeddate").text = "";
             return false;
             
@@ -83,8 +93,11 @@
                 </div>
                 <div class="card-body p-5">
                     <div class="form-group">
-                        <label for="title">{$fields.attendance.employeeid}:</label>
-                        <input type="text" bind:value={attendance.employeeId} id="employeeid" class="form-control" placeholder={$fields.placeholder.employeeid} />
+                    <Api url={urlEmpData} method="get" let:data let:loading let:error>
+                            {#if data}
+                                <EmployeeSelect employees={data} selectedEmployeeId={attendance.employeeId} on:changedEmployee={getChangedEmployeeId}></EmployeeSelect>
+                            {/if}
+                            </Api>
                     </div>
                     <div class="form-group">
                         <label for="desc">{$fields.attendance.recordeddate}:</label>

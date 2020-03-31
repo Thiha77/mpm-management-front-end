@@ -31,11 +31,11 @@
                         </div>
                         <div class="form-group">
                             <label for="title">{$fields.user.userName}</label>
-                            <input type="text" bind:value={user.userName} class="form-control" placeholder="Title" />
+                            <input type="text" bind:value={user.userName} class="form-control" placeholder="User Name" />
                         </div>
                         <div class="form-group">
                             <label for="title">{$fields.user.password}</label>
-                            <input type="password" bind:value={user.password} class="form-control" placeholder="Title" />
+                            <input type="password" bind:value={user.password} class="form-control" placeholder="Password" />
                         </div>
                         <div class="form-group">
                             <label for="name">{$fields.user.empName}</label>

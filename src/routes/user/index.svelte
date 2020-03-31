@@ -3,9 +3,10 @@
     import { axiosPost } from '../../util/api';
     import UserList from '../../components/user/UserList.svelte';
     import { Toast, CfmDelete } from '../../util/salert';
-    
+    import SearchUser from '../../components/user/SearchUser.svelte';
     // import { user} from '../../store.js';
     import { apiInfo } from '../../store.js';
+    import { fields } from '../../stores/user/store';
     import {stores, goto } from '@sapper/app';
     import enFields from '../../languages/en/user.json';
     import jpFields from'../../languages/jp/user.json';
@@ -13,7 +14,7 @@
     import axios from 'axios';
     const method = 'get';
     const { session } = stores();
-    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
     let apiInstance;
     const deleteUserData = async(event) => {
         let id = event.detail.id;
@@ -40,7 +41,11 @@
             );
         }
     }
-
+    const searchUserData = async(event) =>{
+        let search = event.detail.search;
+		let searchUrl = (search)? $apiInfo.basePath + '/users/search/' + search : $apiInfo.basePath + '/users';
+		apiInstance.loadExternal(searchUrl);
+	}
     const editUser = (event) => {
         let id = event.detail.user.id;
         goto(`user/edit/${id}`);
@@ -49,9 +54,15 @@
 <svelte:head>
     <title>User</title>
 </svelte:head>
-<!-- <h1>{$user.createMessage}</h1> -->
-<Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-    {#if data}
-        <UserList users={data} on:deleteUser={deleteUserData} on:editUser={editUser} {fields}></UserList>
+<section class="pr-2 pl-2">
+    <div class="container-fluid">
+    {#if $session.lan && $fields}
+        <SearchUser on:searchUserData={searchUserData} {$fields}></SearchUser>
+        <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+            {#if data}
+                <UserList users={data} on:deleteUser={deleteUserData} on:editUser={editUser} {$fields}></UserList>
+            {/if}
+        </Api>
     {/if}
-</Api>
+    </div>
+</section>

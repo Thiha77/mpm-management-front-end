@@ -14,19 +14,32 @@
         "action":"アクション",
         "addUser":"作成ユーザー",
         "save" : "保存",
-        "cancel" : "取消",
-        "back" : "帰る"
+        "update": "更新",
+        "cancel" : "キャンセル",
+        "back" : "権限一覧画面に戻る",
+        "addNew": "権限新規作成"
     },
     "placeholder":{
         "name" : "名前",
         "userName" : "ユーザー名前",
         "password":"パスワード",
         "empName" : "社員名",
-        "roleName" : "ロール名"
+        "roleName" : "ロール名",
+        "search":"検索"
     },
     "title":{
         "editBtnTitle":"編集",
         "deleteBtnTitle":"削除"
+    },
+    "option":{
+        "selectName":"従業員を選択してください"
+    },
+    "languageTitle":{
+        "eng":"英語",
+        "jp":"日本"
+    },
+    "navButton":{
+        "logout":"ログアウト"
     }
 
 }

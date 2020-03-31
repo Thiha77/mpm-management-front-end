@@ -14,19 +14,33 @@
         "action":"Action",
         "addUser":"Add User",
         "save" : "Save",
+        "update": "Update",
         "cancel" : "Cancel",
-        "back" : "Back"
+        "back" : "Back",
+        "addNew":"Add New"
     },
     "placeholder":{
         "name" : "Name",
         "userName" : "User Name",
         "password":"Password",
         "empName" : "Employee Name",
-        "roleName" : "Role Name"
+        "roleName" : "Role Name",
+        "search":"Search"
     },
     "title":{
         "editBtnTitle":"Edit",
         "deleteBtnTitle":"Delete"
+    },
+    "option":{
+        "selectName":"Please Select Employee"
+    },
+    "languageTitle":{
+        "eng":"EN",
+        "jp":"JP"
+    },
+    "navButton":{
+        "logout":"Logout"
     }
+
 
 }

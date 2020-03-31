@@ -9,7 +9,7 @@ const CreateData = () =>{
    dispatch('create', { files: files, emp:employee});
 }
  const uploadImage= (e)=>{ 
-   src =URL.createObjectURL(e.target.files[0]);      
+   src =URL.createObjectURL(e.target.files[0]);    
  }
 let employee = {
    name: "",
@@ -130,8 +130,12 @@ let files;
                   </div>
                   <div class="col-md-12">
                     <label  class="card-title">{$fields.employee.photo}</label>                                               
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                            <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} > 
+                        </div>  -->
+                        <div class="form-group">
+                           <label for="profile-image" class="employee-file-upload"><i class="fas fa-cloud-upload-alt"></i>選択
+                           <input type="file" id="profile-image" accept="image/*"  bind:files on:change={uploadImage} ></label>                           
                         </div> 
                         {#if src !=undefined}           
                            <div class="form-group">                  

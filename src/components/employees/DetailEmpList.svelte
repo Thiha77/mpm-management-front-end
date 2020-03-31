@@ -13,7 +13,11 @@ export let employee;
             <div class="card-body">
                <div class="row p-3">
                   <div class="col-2">
+                     {#if employee.photo}
                      <img src={employee.photo}  width={150} height={150} class="avatar img-fluid employee-photo" alt="Image"/>
+                     {:else}
+                     <img src="noimage.jpg"  width={150} height={150} class="avatar img-fluid employee-photo" alt="Image"/>
+                     {/if}
                   </div>
                   <div class="col-10">
                      <div class="profile-info">

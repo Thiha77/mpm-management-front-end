@@ -74,8 +74,8 @@ table.table td a {
                          {:else}
                             {#each employees as employee}   
                                 <tr>
-                                {#if employee.photo}
-                                    <td><a href={'employee/view/' + employee.id} ><img src={employee.photo} class="avatar img-thumbnail employee-photo" alt=""/>{employee.name}</td>
+                                    {#if employee.photo}
+                                        <td><a href={'employee/view/' + employee.id} ><img src={employee.photo} class="avatar img-thumbnail employee-photo" alt=""/>{employee.name}</td>
                                     {:else}
                                          <td><a href={'employee/view/' + employee.id} ><img src="noimage.jpg" class="avatar img-thumbnail employee-photo" alt=""/>{employee.name}</td>
                                     {/if}

@@ -9,15 +9,14 @@ const dispatch = createEventDispatcher();
     const updatebtn = () => {
         dispatch('update', { emp: employee,files: files})
     }
-
-    const uploadImage= (e)=>{ 
-      src =URL.createObjectURL(e.target.files[0]);
-      //employee.photo=e.target.files;  
-   }
+  
   const deleteImage = (src) => {
-     var image_x = document.getElementById('x_image');
+     var image_x = document.getElementById('x_image');    
       image_x.parentNode.removeChild(image_x);
   }
+  const uploadImage= (e)=>{ 
+      src =URL.createObjectURL(e.target.files[0]);
+   }
  
 
 </script> 
@@ -113,20 +112,24 @@ const dispatch = createEventDispatcher();
                   </div>
                   <div class="col-md-12 pt-3">          
                       <label  class="card-title">{$fields.employee.photo}</label> 
-                        <div class="form-group pt-3">                        
+                        <!-- <div class="form-group pt-3">                        
                            <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} > 
+                        </div>  -->
+                        <div class="form-group">
+                           <label for="profile-image" class="employee-file-upload"><i class="fas fa-cloud-upload-alt"></i>選択
+                           <input type="file" id="profile-image" accept="image/*"   bind:files on:change={uploadImage} ></label>                           
                         </div> 
                      {#if src ==''}                      
                        <div class="form-group pt-3">               
                            <img  src="noimage.jpg" alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image' />
                         </div>
                      {:else}
-                        <div class="form-group pt-3" id="x_image">   
-                            <span class='img-close-btn' on:click={deleteImage(employee.photo)} >X</span>          
+                        <div class="form-group pt-3" id="x_image">                                       
                             <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image' />
+                             <span class='btn btn-danger hide' on:click={deleteImage(employee.photo)}>X</span>
                         </div>
                      {/if}                                                                  
-                  </div> 
+                  </div>
                    <div class="col-md-12">
                       <button type="button" class="btn btn-blue" on:click|preventDefault={updatebtn} >{$fields.form.save}</button>
                      <a href="employee" class="btn btn-outline-orange">{$fields.form.cancel}</a> 

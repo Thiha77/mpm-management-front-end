@@ -38,7 +38,7 @@
 </div>
 <div class="row">
     <div class="col">
-            <div class="table-wrapper">
+            <div class="table-wrapper card-list-mpm1">
                 <div class="table-title">
                         <div class="row">
                         <div class="col col-sm-6"><h3 class="float-left">{$fields.form.listTitle}</h3></div>

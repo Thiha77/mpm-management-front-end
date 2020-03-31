@@ -2,7 +2,7 @@
     import RoleCreate from '../../../components/role/create.svelte';
     import { axiosPost } from '../../../util/api';
     import RoleIndex from '../../../components/role/index.svelte';
-    import { roleMessages } from '../../../stores/role/store.js';
+    import { roleMessages, fields } from '../../../stores/role/store';
     import { stores, goto } from '@sapper/app';
     import { apiInfo } from '../../../store.js';
     import { Toast } from '../../../util/salert.js';
@@ -12,7 +12,7 @@
     import jpFields from'../../../languages/jp/role.json';
 
     const { session } = stores();
-    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
     
     let vErrors;
     let constraints = {
@@ -42,15 +42,15 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                'New Role is successfully created.',
+                $fields.message.saveSuccess,
                 'success'
             )
             goto('../role');
         }else{
             $roleMessages = {
-                    message: '',
-                    error: result.error
-                }
+                message: '',
+                error: result.error
+            }
         }
     }
 </script>
@@ -62,7 +62,7 @@
     {#if vErrors}
         <ValidationBox {vErrors}></ValidationBox>
     {/if}
-    {#if $session.lan && fields}
-	    <RoleCreate bind:name = {roleData.name} bind:description = {roleData.description} on:saveRole={saveRoleData} {fields}></RoleCreate>
+    {#if $session.lan && $fields}
+	    <RoleCreate bind:name = {roleData.name} bind:description = {roleData.description} on:saveRole={saveRoleData}></RoleCreate>
     {/if}
 </div>

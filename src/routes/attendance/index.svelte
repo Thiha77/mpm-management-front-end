@@ -5,10 +5,15 @@
     import { attendanceMessages, attendance } from '../../stores/attendance/store';
     import { apiInfo } from '../../store.js';
     import { Toast, CfmDelete } from '../../util/salert';
-    import { goto } from '@sapper/app';
+    import { stores,goto } from '@sapper/app';
+    import { fields } from '../../stores/attendance/store';
+    import enFields from '../../languages/en/attendance.json';
+    import jpFields from'../../languages/jp/attendance.json';
     let apiInstance;
     let url = $apiInfo.basePath + '/attendances';
     const method = 'get';
+    const { session } = stores();
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 
     const deleteAttendance = async(event) => {
         let id = event.detail.id;
@@ -25,7 +30,7 @@
             apiInstance.refresh();
             Toast.fire(
             'Deleted!',
-            'Attendance has been deleted.',
+            $fields.message.deleteSuccess,
             'success'
             );
         }
@@ -35,15 +40,16 @@
         goto(`attendance/edit/${id}`);
     }
 </script>
-<section class="pr-2 pl-2">
-    <div class="container-fluid">
-        {#if $attendanceMessages.message}
-            <h1>{$attendanceMessages.message}</h1>
+
+<div class="container">
+{#if $session.lan && $fields}
+    <!-- {#if $attendanceMessages.message}
+        <h1>{$attendanceMessages.message}</h1>
+    {/if} -->
+    <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+        {#if data}
+            <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance} {fields}></List>
         {/if}
-        <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-            {#if data}
-                <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
-            {/if}
-        </Api>
-    </div>
-</section>
+    </Api>
+    {/if}
+</div>

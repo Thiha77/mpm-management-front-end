@@ -2,7 +2,8 @@
     "role" : {
         "id": "権限番号",
         "name" : "権限名",
-        "description" : "説明文"
+        "description" : "説明文",
+        "roleName" : "権限名"
     },
     "form" : {
         "listTitle": "権限一覧",
@@ -12,12 +13,23 @@
         "update": "保存",
         "cancel" : "キャンセル",
         "back" : "権限一覧画面に戻る",
-        "addNew": "権限新規作成"
+        "addNew": "権限新規作成",
+        "selectRole": "権限名を選択してください。"
     },
     "placeholder" : {
         "name" : "権限名を入力してください",
         "description" : "説明文を入力してください",
         "search": "検索"
+    },
+    "message" : {
+        "success" : "成功",
+        "fail" : "失敗",
+        "saveSuccess" : "新しい権限名が作成されました.",
+        "updateSuccess" : "権限名が正常に更新されました.",
+        "deleteSuccess" : "権限名が正常に削除されました.",
+        "saveFail" : "権限名を作成できませんでした.",
+        "updateFail" : "権限名を更新できませんでした.",
+        "deleteFail" : "権限名を削除できませんでした."
     }
 
 }

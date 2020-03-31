@@ -11,4 +11,8 @@ const editRoleData = writable({
     description: ""
 });
 
-export { roleMessages, editRoleData }
+const fields = writable({
+
+});
+
+export { roleMessages, editRoleData, fields }

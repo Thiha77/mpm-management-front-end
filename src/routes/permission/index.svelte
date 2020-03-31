@@ -1,7 +1,7 @@
 <script>
 	import PermissionIndex from '../../components/permission/index.svelte';
 	import ApiGet from '../../components/util/Api.svelte';
-	import { permissionMessages } from '../../stores/permission/store.js';
+	import { permissionMessages, fields } from '../../stores/permission/store';
 	import { axiosPost } from '../../util/api.js';
 	import { apiInfo } from '../../store.js';
 	import { stores,goto } from '@sapper/app';
@@ -10,7 +10,7 @@
     import jpFields from'../../languages/jp/permission.json';
 
     const { session } = stores();
-    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 	
 	let url = $apiInfo.basePath + '/permissions';
     const method = 'get';
@@ -32,7 +32,7 @@
             apiInstance.refresh();
             Toast.fire(
             'Deleted!',
-            'Permission has been deleted.',
+            $fields.message.deleteSuccess,
             'success'
             );
         }
@@ -54,6 +54,7 @@
 	<title>Permission</title>
 </svelte:head>
 
+<<<<<<< HEAD
 <section class="pr-2 pl-2">
 	<div class="container-fluid">
 		<h1>{$permissionMessages.message}</h1>
@@ -62,6 +63,14 @@
 				{#if $session.lan && fields}
 					<PermissionIndex permissions={data} on:deletePermission={deletePermission} on:searchPermission={searchPermissionData} on:editPermission={editPermissionData} {fields}></PermissionIndex>
 				{/if}
+=======
+<div class="container">
+	<h1>{$permissionMessages.message}</h1>
+    <ApiGet {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+		{#if data}
+			{#if $session.lan && $fields}
+				<PermissionIndex permissions={data} on:deletePermission={deletePermission} on:searchPermission={searchPermissionData} on:editPermission={editPermissionData}></PermissionIndex>
+>>>>>>> 1007b4176512a9e32e186147fc52bd19959e70df
 			{/if}
 		</ApiGet>
 	</div>

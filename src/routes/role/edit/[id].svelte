@@ -17,7 +17,7 @@
     import RoleEdit from '../../../components/role/edit.svelte';
     import { axiosPost } from '../../../util/api.js'
     import { apiInfo } from '../../../store.js';
-    import { editRoleData, roleMessages } from '../../../stores/role/store.js';
+    import { editRoleData, roleMessages,fields } from '../../../stores/role/store';
     import { stores,goto } from '@sapper/app';
     import { Toast } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
@@ -26,7 +26,7 @@
     import jpFields from'../../../languages/jp/role.json';
 
     const { session } = stores();
-    $: fields = $session.lan == 'en' ? enFields : jpFields;
+    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 
     export let role;
 
@@ -54,7 +54,7 @@
         {
            Toast.fire(
                 'Success!',
-                'Role is successfully updated.',
+                $fields.message.updateSuccess,
                 'success'
             )
             goto('../role');
@@ -72,7 +72,7 @@
     {#if vErrors}
         <ValidationBox {vErrors}></ValidationBox>
     {/if}
-    {#if $session.lan && fields}
-	    <RoleEdit {role} on:updateRole={updateRoleData} {fields}></RoleEdit>
+    {#if $session.lan && $fields}
+	    <RoleEdit {role} on:updateRole={updateRoleData}></RoleEdit>
     {/if}
 </div>

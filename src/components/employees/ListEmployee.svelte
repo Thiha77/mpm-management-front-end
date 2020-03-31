@@ -2,7 +2,7 @@
 //export let fields;
 export let employees;
 import { createEventDispatcher } from "svelte";
- import { fields } from '../../stores/employee/store';
+import { fields } from '../../store';
 const dispatch = createEventDispatcher();
 
 const editbtn=(employee) => {
@@ -54,18 +54,18 @@ table.table td a {
                 <div class="table-wrapper card-list-mpm1">
                     <div class="table-title">
                         <div class="row">
-                            <div class="col-sm-6"><h3 class="float-left">{$fields.form.listTitle}</h3></div>
-                            <div class="col-sm-6"><a class="btn btn-white float-right" href='employee/create'><i class="fas fa-plus-circle"></i> {$fields.form.listbtn}</a></div>
+                            <div class="col-sm-6"><h3 class="float-left">{$fields.employee.form.listTitle}</h3></div>
+                            <div class="col-sm-6"><a class="btn btn-white float-right" href='employee/create'><i class="fas fa-plus-circle"></i> {$fields.employee.form.listbtn}</a></div>
                         </div>
                     </div>
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>{$fields.employee.photo}</th>						
-                                <th>{$fields.employee.phoneNo}</th>
-                                <th>{$fields.employee.officialEmail}</th>
-                                <th>{$fields.employee.address}</th>
-                                <th>{$fields.form.action}</th>
+                                <th>{$fields.employee.employee.photo}</th>						
+                                <th>{$fields.employee.employee.phoneNo}</th>
+                                <th>{$fields.employee.employee.officialEmail}</th>
+                                <th>{$fields.employee.employee.address}</th>
+                                <th>{$fields.employee.form.action}</th>
                             </tr>
                         </thead>
                         <tbody>

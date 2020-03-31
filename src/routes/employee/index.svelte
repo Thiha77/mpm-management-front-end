@@ -3,15 +3,15 @@
     import { axiosGet, axiosPost } from '../../util/api';
     import EmpList from '../../components/employees/ListEmployee.svelte';
     import SearchEmp from '../../components/employees/searchEmployee.svelte';
-    import { empEditemployee,employeeMessages,fields } from "../../stores/employee/store";
-    import { apiInfo } from '../../store.js';
+    import { empEditemployee,employeeMessages } from "../../stores/employee/store";
+    import { apiInfo,fields } from '../../store.js';
     import { stores,goto } from '@sapper/app';
     import Swal from 'sweetalert2';
     import { Toast, CfmDelete } from '../../util/salert';
     import enFields from '../../languages/en/employee.json';
     import jpFields from'../../languages/jp/employee.json';
         const { session } = stores();
-    $: $fields =$session.lan =='en' ? enFields :jpFields; 
+    //$: $fields =$session.lan =='en' ? enFields :jpFields; 
 
     let url = $apiInfo.basePath + '/employees';
     const method = 'get';
@@ -35,7 +35,7 @@
             apiInstance.refresh();
             Toast.fire(
             'Deleted!',
-            $fields.message.deleteSuccess,
+            $fields.employee.message.deleteSuccess,
             'success'
             );
             let photo = empData.data.photo;

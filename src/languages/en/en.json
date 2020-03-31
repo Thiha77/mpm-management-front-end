@@ -1,0 +1,257 @@
+{
+    "attendance" : {
+        "attendance" : {
+            "id" : "ID",
+            "employeeid" : "Employee ID",
+            "employeename" : "Employee Name",
+            "recordeddatetime" : "Recorded Datetime",
+            "recordeddate" : "Recorded Date",
+            "recordedtime" : "Recorded Time",
+            "hours" : "Hours",
+            "minutes" : "Minutes"
+        },
+        "form" : {
+            "title" : "Attendance List",
+            "createTitle" : "Create Attendance",
+            "editTitle" : "Edit Attendance",
+            "save" : "Save",
+            "update" : "Update",
+            "cancel" : "Cancel",
+            "new" : "Add New Attendance",
+            "action" : "Action",
+            "search" : "Search"
+        },
+        "placeholder" : {
+            "employeeid" : "Enter employee ID",
+            "recordeddate" : "Enter recorded date"
+        },
+        "message" : {
+            "success" : "Success",
+            "saveSuccess" : "Attendance is successfully created.",
+            "updateSuccess" : "Attendance is successfully updated.",
+            "deleteSuccess" : "Attendance is deleted successfully."
+        }
+    },
+    "employee" : {
+        "employee" : {
+            "name" : "Name ",
+            "alias" : "Alias ",
+            "phoneNo" : "PhoneNo ",
+            "nrcNo" :"NRC No ",
+            "personalEmail":"Personal Email ",
+            "officialEmail" :"Official Email ",
+            "township":"Township ",
+            "city" :"City " ,
+            "address" : "Address ",
+            "postalCode" : "Postal Code ",
+            "dob" :"Birthday ",
+            "gender":"Gender ",
+            "position":"Position ",
+            "basicSalary":"Salary " ,
+            "nationality" :"Nationality ",
+            "race" :"Race ",
+            "maritalStatus" :"Marital Status ",
+            "employeeStatus" : "Employee Status",
+            "photo" :"Photo "
+        },
+        "form" : {
+            "hello":"Hello",
+            "intro":"I'm",
+            "listbtn":"Add New Employee",
+            "action":"Action",
+            "createTitle" : "Employee Register Form",
+            "editTitle" :"Employee Update",
+            "listTitle" :"Employee List",
+            "save" : "Save",
+            "cancel" : "Cancel",
+            "back" : "Back"
+        },
+        "placeholder" :{
+            "name" :"Please Enter Name",
+            "alias" : "Please Enter Alias ",
+            "phoneNo" :"Please Enter PhoneNo ",
+            "nrcNo" :" Please Enter NRC No ",
+            "personalEmail":"Please Enter Personal Email ",
+            "officialEmail" :"Please Enter Official Email ",
+            "township":" Please EnterTownship ",
+            "city" :" Please Enter City " ,
+            "address" : " Please Enter Address ",
+            "postalCode" : "Please Enter Postal Code ",
+            "dob" :"Please Enter Birthday ",
+            "gender":"Please Enter Gender ",
+            "position":"Please Enter Position ",
+            "basicSalary":"Please Enter Salary " ,
+            "nationality" :"Please Enter Nationality ",
+            "race" :" Please Enter Race ",
+            "maritalStatus" :"Please Enter Marital Status ",
+            "employeeStatus" : "Please Enter Employee Status ",
+            "photo" :"Please Enter Photo ",
+            "search":"Search"
+        },
+        "radiobtn": {
+            "male":"Male",
+            "female":"Female",
+            "single":"Single",
+            "married":"Married",
+            "active":"Active",
+            "inactive":"Inactive"
+        },
+        "message" : {
+            "success" : "Success",
+            "fail" : "Fail",
+            "saveSuccess" : "Employee is successfully created.",
+            "updateSuccess" : "Employee is successfully updated.",
+            "deleteSuccess" : "Employee is deleted successfully.",
+            "saveFail" : "Fail to create Employee.",
+            "updateFail" : "Fail to update Employee.",
+            "deleteFail" : "Fail to delete Employee."
+        }
+    },
+    "notice" : {
+        "notice" : {
+            "title" : "Title",
+            "description" : "Description",
+            "summary" : "Summary",
+            "author" : "Author"
+        },
+        "form" : {
+            "title" : "Notice",
+            "createTitle" : "Create Notice",
+            "editTitle" : "Edit Notice",
+            "save" : "Save",
+            "cancel" : "Cancel",
+            "back" : "Back",
+            "new" : "Add New Notice",
+            "action" : "Action",
+            "search" : "Search"
+        },
+        "placeholder" : {
+            "enterTitle" : "Enter title",
+            "enterDescription" : "Enter description",
+            "enterSummary" : "Enter summary",
+            "search" : "Search"
+        },
+        "message" : {
+            "success" : "Success",
+            "fail" : "Fail",
+            "saveSuccess" : "Notice is successfully created.",
+            "updateSuccess" : "Notice is successfully updated.",
+            "deleteSuccess" : "Notice is deleted successfully.",
+            "saveFail" : "Fail to create notice.",
+            "updateFail" : "Fail to update notice.",
+            "deleteFail" : "Fail to delete notice."
+        }
+    },
+    "permission" : {
+        "permission" : {
+            "id": "Id",
+            "name" : "Model/Form Name",
+            "special" : "Special"
+        },
+        "form" : {
+            "listTitle": "Permission List",
+            "createTitle" : "Permission Create",
+            "updateTitle" : "Permission Update",
+            "save" : "Save",
+            "update": "Update",
+            "cancel" : "Cancel",
+            "back" : "Back",
+            "addNew": "Add New Permission"
+        },
+        "placeholder" : {
+            "name" : "Enter Model/Form Name",
+            "search": "Search"
+        },
+        "message" : {
+            "success" : "Success",
+            "fail" : "Fail",
+            "saveSuccess" : "Permission is successfully created.",
+            "updateSuccess" : "Permission is successfully updated.",
+            "deleteSuccess" : "Permission is deleted successfully.",
+            "saveFail" : "Fail to create permission.",
+            "updateFail" : "Fail to update permission.",
+            "deleteFail" : "Fail to delete permission."
+        }
+    },
+    "role" : {
+        "role" : {
+            "id": "Id",
+            "name" : "Name",
+            "description" : "Description",
+            "roleName" : "Role Name"
+        },
+        "form" : {
+            "listTitle": "Role List",
+            "createTitle" : "Role Create",
+            "updateTitle" : "Role Update",
+            "save" : "Save",
+            "update": "Update",
+            "cancel" : "Cancel",
+            "back" : "Back",
+            "addNew": "Add New Role",
+            "selectRole": "Please Select Role"
+        },
+        "placeholder" : {
+            "name" : "Enter Role Name",
+            "description" : "Enter Description",
+            "search": "Search"
+        },
+        "message" : {
+            "success" : "Success",
+            "fail" : "Fail",
+            "saveSuccess" : "Role is successfully created.",
+            "updateSuccess" : "Role is successfully updated.",
+            "deleteSuccess" : "Role is deleted successfully.",
+            "saveFail" : "Fail to create role.",
+            "updateFail" : "Fail to update role.",
+            "deleteFail" : "Fail to delete role."
+        }
+    },
+    "user" : {
+        "user" : {
+            "userId":"User ID",
+            "name" : "Name",
+            "userName" : "User Name",
+            "password":"Password",
+            "empName" : "Employee Name",
+            "roleName" : "Role Name"
+        },
+        "form" : {
+            "title" : "User Form",
+            "updateTitle" : "User Update Form",
+            "listTitle":"User List",
+            "action":"Action",
+            "addUser":"Add User",
+            "save" : "Save",
+            "update": "Update",
+            "cancel" : "Cancel",
+            "back" : "Back",
+            "addNew":"Add New"
+        },
+        "placeholder":{
+            "name" : "Name",
+            "userName" : "User Name",
+            "password":"Password",
+            "empName" : "Employee Name",
+            "roleName" : "Role Name",
+            "search":"Search"
+        },
+        "title":{
+            "editBtnTitle":"Edit",
+            "deleteBtnTitle":"Delete"
+        },
+        "option":{
+            "selectName":"Please Select Employee"
+        }
+    },
+    "system" : {
+        "languageTitle":{
+            "eng":"EN",
+            "jp":"JP"
+        },
+        "navButton":{
+            "logout":"Logout"
+        }
+    }
+    
+}

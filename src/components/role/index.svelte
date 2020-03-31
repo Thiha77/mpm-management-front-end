@@ -2,7 +2,7 @@
     import { createEventDispatcher } from 'svelte';
     import { editRoleData } from '../../stores/role/store.js';
     import RoleSearch from './search.svelte';
-    import { fields } from '../../stores/role/store';
+    import { fields } from '../../store';
 
     export let roles;
     const dispatch = createEventDispatcher();
@@ -24,6 +24,7 @@
 <style>
 	
 </style>
+
 <div class="row">
     <div class="col-md-8"></div>
     <div class="col-md-4 float-right">

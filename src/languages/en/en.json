@@ -156,7 +156,9 @@
             "update": "Update",
             "cancel" : "Cancel",
             "back" : "Back",
-            "addNew": "Add New Permission"
+            "addNew": "Add New Permission",
+            "permissionName" : "Permission Name",
+            "selectPermission": "Please Select Permission"
         },
         "placeholder" : {
             "name" : "Enter Model/Form Name",
@@ -177,8 +179,7 @@
         "role" : {
             "id": "Id",
             "name" : "Name",
-            "description" : "Description",
-            "roleName" : "Role Name"
+            "description" : "Description"
         },
         "form" : {
             "listTitle": "Role List",
@@ -189,6 +190,7 @@
             "cancel" : "Cancel",
             "back" : "Back",
             "addNew": "Add New Role",
+            "roleName" : "Role Name",
             "selectRole": "Please Select Role"
         },
         "placeholder" : {

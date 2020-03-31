@@ -38,15 +38,14 @@
 </div>
 <div class="row">
     <div class="col">
-        <div class="table-responsive-sm ">
             <div class="table-wrapper">
                 <div class="table-title">
                         <div class="row">
-                        <div class="col-sm-6"><h3 class="float-left">{$fields.form.listTitle}</h3></div>
-                        <div class="col-sm-6"><a class="btn btn-orange float-right" href='permission/create'><i class="fas fa-plus-circle"></i> {$fields.form.addNew}</a></div>
+                        <div class="col col-sm-6"><h3 class="float-left">{$fields.form.listTitle}</h3></div>
+                        <div class="col col-sm-6"><a class="btn btn-white float-right" href='permission/create'><i class="fas fa-plus-circle"></i> {$fields.form.addNew}</a></div>
                     </div>
                 </div><!-- .table-title -->
-                <table class="table table-hover">
+                <table class="table table-hover table-responsive-sm ">
                     <thead>                                     
                         <tr>
                             <th>{$fields.permission.id}</th>
@@ -73,6 +72,5 @@
                     </tbody>
                 </table>
             </div><!-- .table-wrapper -->
-        </div><!-- .table-responsive-sm -->
     </div>
 </div>

@@ -61,7 +61,16 @@
         "married":"既婚",
         "active":"アクティブ",
         "inactive":"低調"
-
+    },
+    "message" : {
+        "success" : "成功",
+        "fail" : "不合格",
+        "saveSuccess" : "新しい通知が作成されました.",
+        "updateSuccess" : "通知が正常に更新されました.",
+        "deleteSuccess" : "通知が正常に削除されました.",
+        "saveFail" : "通知を作成できませんでした.",
+        "updateFail" : "通知を更新できませんでした.",
+        "deleteFail" : "通知を削除できませんでした."
     }
 
 }

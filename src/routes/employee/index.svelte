@@ -3,7 +3,7 @@
     import { axiosGet, axiosPost } from '../../util/api';
     import EmpList from '../../components/employees/ListEmployee.svelte';
     import SearchEmp from '../../components/employees/searchEmployee.svelte';
-    import { empEditemployee,employeeMessages } from "../../stores/employee/store";
+    import { empEditemployee,employeeMessages,fields } from "../../stores/employee/store";
     import { apiInfo } from '../../store.js';
     import { stores,goto } from '@sapper/app';
     import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@
     import enFields from '../../languages/en/employee.json';
     import jpFields from'../../languages/jp/employee.json';
         const { session } = stores();
-    $: fields =$session.lan =='en' ? enFields :jpFields; 
+    $: $fields =$session.lan =='en' ? enFields :jpFields; 
 
     let url = $apiInfo.basePath + '/employees';
     const method = 'get';
@@ -35,7 +35,7 @@
             apiInstance.refresh();
             Toast.fire(
             'Deleted!',
-            'Employee has been deleted.',
+            $fields.message.deleteSuccess,
             'success'
             );
             let photo = empData.data.photo;
@@ -66,13 +66,15 @@
 
 
 <div class="container">   
-    <SearchEmp on:searchEmp={searchEmployee} {fields}></SearchEmp>
-    
+   
+    {#if $session.lan && $fields}
+     <SearchEmp on:searchEmp={searchEmployee}></SearchEmp>
     <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-        {#if data && $session.lan && fields }
-            <EmpList employees={data} on:delete={deleteEmployee} on:edit={editEmployee} {fields}></EmpList>
+        {#if data}
+           <EmpList employees={data} on:delete={deleteEmployee} on:edit={editEmployee}></EmpList>
         {/if}
     </Api>
+    {/if}
 </div>
 
 

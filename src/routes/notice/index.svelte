@@ -3,15 +3,11 @@
     import { axiosPost } from '../../util/api';
     import List from '../../components/notice/list.svelte';
     import Search from '../../components/notice/search.svelte';
-    import { apiInfo } from '../../store.js';
-    import { fields } from '../../stores/notice/store';
+    import { apiInfo, fields } from '../../store';
     import { stores, goto } from '@sapper/app';
     import Swal from 'sweetalert2';
     import { Toast, CfmDelete } from '../../util/salert';
-    import enFields from '../../languages/en/notice.json';
-    import jpFields from'../../languages/jp/notice.json';
     const { session } = stores();
-    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 
     let url = $apiInfo.basePath + '/notices';
     const method = 'get';

@@ -1,0 +1,256 @@
+{
+    "attendance" : {
+        "attendance" : {
+            "id" : "承認番号",
+            "employeeid" : "社員承認番号",
+            "employeename" : "従業員名",
+            "recordeddatetime" : "記録日時",
+            "recordeddate" : "記録日",
+            "recordedtime" : "記録時間",
+            "hours" : "時間",
+            "minutes" : "議事録"
+        },
+        "form" : {
+            "title" : "出席リスト",
+            "createTitle" : "出席を作成",
+            "editTitle" : "通知を編集",
+            "save" : "保存",
+            "update" : "更新",
+            "cancel" : "取消",
+            "new" : "出席を追加",
+            "action" : "作用",
+            "search" : "探す"
+        },
+        "placeholder" : {
+            "employeeid" : "社員承認番号を入力してください",
+            "recordeddate" : "記録日を入力してください"
+        },
+        "message" : {
+            "success" : "成功",
+            "saveSuccess" : "新しい出席が作成されました.",
+            "updateSuccess" : "出席が正常に更新されました.",
+            "deleteSuccess" : "出席が正常に削除されました."
+        }
+    },
+    "employee" : {
+        "employee" : {
+            "name" : "名前 ",
+            "alias" : "略語 ",
+            "phoneNo" : "電話番号 ",
+            "nrcNo" :"NRC番号 ",
+            "personalEmail":"パーソナル メールアドレス ",
+            "officialEmail" :"公式 メールアドレス ",
+            "township":"地域 ",
+            "city" :"市 " ,
+            "address" : "アドレス ",
+            "postalCode" : "郵便番号 ",
+            "dob" :"誕生日 ",
+            "gender":"性別 ",
+            "position":"ポジション ",
+            "basicSalary":"給料 " ,
+            "nationality" :"国籍 ",
+            "race" :"人種 ",
+            "maritalStatus" :"配偶者の有無",
+            "employeeStatus" : "従業員のステータス",
+            "photo" :"写真 "
+        },
+        "form" : {
+            "hello":"こんにちは",
+            "intro":"わ た し わ",
+            "listbtn":"新しい従業員を追加",
+            "action":"アクション",
+            "createTitle" : "従業員登録フォーム",
+            "editTitle" :"従業員の更新",
+            "listTitle" :"従業員リスト",
+            "save" : "保存",
+            "cancel" :"取消",
+            "back" : "帰る"
+        },
+        "placeholder" :{
+            "name" : "入ってください 名前 ",
+            "alias" : "入ってください 略語 ",
+            "phoneNo" : "入ってください 電話番号 ",
+            "nrcNo" :"入ってください NRC番号 ",
+            "personalEmail":"入ってください パーソナル メールアドレス ",
+            "officialEmail" :"入ってください 公式 メールアドレス ",
+            "township":"入ってください 地域 ",
+            "city" :"入ってください 市 " ,
+            "address" : "入ってください アドレス ",
+            "postalCode" : "入ってください 郵便番号 ",
+            "dob" :"入ってください 誕生日 ",
+            "gender":"入ってください 性別 ",
+            "position":" 入ってください ポジション ",
+            "basicSalary":"入ってください 給料 " ,
+            "nationality" :"入ってください 国籍 ",
+            "race" :"入ってください 人種 ",
+            "maritalStatus" :"入ってください 配偶者の有無 ",
+            "employeeStatus" : "入ってください 従業員のステータス ",
+            "photo" :"入ってください 写真 ",
+            "search":"検索"
+        },
+        "radiobtn": {
+            "male":"紳士用",
+            "female":"女性",
+            "single":"独身",
+            "married":"既婚",
+            "active":"アクティブ",
+            "inactive":"低調"
+        },
+        "message" : {
+            "success" : "成功",
+            "fail" : "不合格",
+            "saveSuccess" : "新しい通知が作成されました.",
+            "updateSuccess" : "通知が正常に更新されました.",
+            "deleteSuccess" : "通知が正常に削除されました.",
+            "saveFail" : "通知を作成できませんでした.",
+            "updateFail" : "通知を更新できませんでした.",
+            "deleteFail" : "通知を削除できませんでした."
+        }
+    },
+    "notice" : {
+        "notice" : {
+            "title" : "題名",
+            "description" : "説明",
+            "summary" : "概要",
+            "author" : "著者"
+        },
+        "form" : {
+            "title" : "題名",
+            "createTitle" : "掲示板",
+            "editTitle" : "通知を編集",
+            "save" : "保存",
+            "cancel" : "取消",
+            "back" : "帰る",
+            "new" : "新しく追加する",
+            "action" : "作用",
+            "search" : "探す"
+        },
+        "placeholder" : {
+            "enterTitle" : "タイトルを入力してください",
+            "enterDescription" : "説明を入力してください",
+            "enterSummary" : "概要を入力",
+            "search" : "探す"
+        },
+        "message" : {
+            "success" : "成功",
+            "fail" : "不合格",
+            "saveSuccess" : "新しい通知が作成されました.",
+            "updateSuccess" : "通知が正常に更新されました.",
+            "deleteSuccess" : "通知が正常に削除されました.",
+            "saveFail" : "通知を作成できませんでした.",
+            "updateFail" : "通知を更新できませんでした.",
+            "deleteFail" : "通知を削除できませんでした."
+        }
+    },
+    "permission" : {
+        "permission" : {
+            "id": "承認番号",
+            "name" : "モデル/フォーム名",
+            "special" : "特別"
+        },
+        "form" : {
+            "listTitle": "承認一覧",
+            "createTitle" : "承認作成",
+            "updateTitle" : "承認編集",
+            "save" : "作成",
+            "update": "保存",
+            "cancel" : "キャンセル",
+            "back" : "承認一覧画面に戻る",
+            "addNew": "承認新規作成"
+        },
+        "placeholder" : {
+            "name" : "モデル/フォーム名を入力してください",
+            "search": "検索"
+        },
+        "message" : {
+            "success" : "成功",
+            "fail" : "失敗",
+            "saveSuccess" : "新しい承認が作成されました.",
+            "updateSuccess" : "承認が正常に更新されました.",
+            "deleteSuccess" : "承認が正常に削除されました.",
+            "saveFail" : "承認を作成できませんでした.",
+            "updateFail" : "承認を更新できませんでした.",
+            "deleteFail" : "承認を削除できませんでした."
+        }
+    },
+    "role" : {
+        "role" : {
+            "id": "権限番号",
+            "name" : "権限名",
+            "description" : "説明文",
+            "roleName" : "権限名"
+        },
+        "form" : {
+            "listTitle": "権限一覧",
+            "createTitle" : "権限作成",
+            "updateTitle" : "権限編集",
+            "save" : "作成",
+            "update": "保存",
+            "cancel" : "キャンセル",
+            "back" : "権限一覧画面に戻る",
+            "addNew": "権限新規作成",
+            "selectRole": "権限名を選択してください。"
+        },
+        "placeholder" : {
+            "name" : "権限名を入力してください",
+            "description" : "説明文を入力してください",
+            "search": "検索"
+        },
+        "message" : {
+            "success" : "成功",
+            "fail" : "失敗",
+            "saveSuccess" : "新しい権限名が作成されました.",
+            "updateSuccess" : "権限名が正常に更新されました.",
+            "deleteSuccess" : "権限名が正常に削除されました.",
+            "saveFail" : "権限名を作成できませんでした.",
+            "updateFail" : "権限名を更新できませんでした.",
+            "deleteFail" : "権限名を削除できませんでした."
+        }
+    },
+    "user" : {
+        "user" : {
+            "userId":"ユーザID",
+            "name" : "名前",
+            "userName" : "ユーザー名前",
+            "password":"パスワード",
+            "empName" : "社員名",
+            "roleName" : "ロール名"
+        },
+        "form" : {
+            "title" : "ユーザーフォーム",
+            "updateTitle":"ユーザー更新フォーム",
+            "listTitle":"ユーザーリスト",
+            "action":"アクション",
+            "addUser":"作成ユーザー",
+            "save" : "保存",
+            "update": "更新",
+            "cancel" : "キャンセル",
+            "back" : "権限一覧画面に戻る",
+            "addNew": "権限新規作成"
+        },
+        "placeholder":{
+            "name" : "名前",
+            "userName" : "ユーザー名前",
+            "password":"パスワード",
+            "empName" : "社員名",
+            "roleName" : "ロール名",
+            "search":"検索"
+        },
+        "title":{
+            "editBtnTitle":"編集",
+            "deleteBtnTitle":"削除"
+        },
+        "option":{
+            "selectName":"従業員を選択してください"
+        }
+    },
+    "system" : {
+        "languageTitle":{
+            "eng":"英語",
+            "jp":"日本"
+        },
+        "navButton":{
+            "logout":"ログアウト"
+        }
+    }
+}

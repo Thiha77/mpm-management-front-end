@@ -1,8 +1,7 @@
 <script>
-import { nav } from '../../../store';
-// import { fields } from '../../../stores/user/store';
-// export let sidebar_show = false;
-// export let sidebarCollapse;
+import { nav, fields } from '../../../store';
+import enFields from '../../../languages/en/en.json';
+import jpFields from '../../../languages/jp/jp.json';
 import { stores, goto } from '@sapper/app';
 const { session } = stores();
 
@@ -18,6 +17,8 @@ const changeLan = (lan) => {
     $session.lan = lan;
     localStorage.setItem('lan', lan);
 }
+
+$: $fields = ($session.lan == 'en') ? enFields : jpFields;
 
 </script>
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -47,7 +48,9 @@ const changeLan = (lan) => {
                     </li>
                 {/if}
                 <li class="nav-item pt-1">
-                    <button class="btn btn-outline-blue d-none d-lg-block d-sm-none" on:click={logout}><i class="fas fa-sign-out-alt"></i>Logout</button>
+                    {#if $fields}
+                        <button class="btn btn-outline-blue d-none d-lg-block d-sm-none" on:click={logout}><i class="fas fa-sign-out-alt"></i>{$fields.system.navButton.logout}</button>
+                    {/if}
                     <button class="btn btn-outline-blue d-sm-block d-lg-none" on:click={logout} title="Logout"><i class="fas fa-sign-out-alt"></i></button>
                 </li>
             </ul>

@@ -18,8 +18,8 @@
     import Api from '../../../components/util/Api.svelte';
     import { axiosPost } from '../../../util/api';
     import EmpUpdate from '../../../components/employees/EditEmployee.svelte';
-    import { empEditemployee,employeeMessages,fields } from "../../../stores/employee/store";
-    import { apiInfo } from '../../../store.js';
+    import { empEditemployee,employeeMessages } from "../../../stores/employee/store";
+    import { apiInfo,fields } from '../../../store.js';
     import { stores,goto } from '@sapper/app';
     import * as sapper from '@sapper/app';
     import { Toast } from '../../../util/salert.js';
@@ -28,8 +28,8 @@
     import enFields from '../../../languages/en/employee.json';
     import jpFields from'../../../languages/jp/employee.json';
     const { session } = stores();
-    $: $fields =$session.lan =='en' ? enFields :jpFields; 
-// const { session } = stores();
+    //$: $fields =$session.lan =='en' ? enFields :jpFields; 
+//const { session } = stores();
 export let employee;
 let vErrors;
 let updateResult;
@@ -110,8 +110,8 @@ let updateResult;
         };
         if(result.error == null || updateResult.error==null){
             Toast.fire(
-                'Success!',
-                'Employee is successfully updated.',
+                $fields.employee.message.success,
+                 $fields.employee.message.updateSuccess,
                 'success'
             )
         sapper.goto("../employee");

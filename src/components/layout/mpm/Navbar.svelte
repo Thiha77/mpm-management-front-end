@@ -1,6 +1,6 @@
 <script>
 import { nav } from '../../../store';
-import { fields } from '../../../stores/user/store';
+// import { fields } from '../../../stores/user/store';
 // export let sidebar_show = false;
 // export let sidebarCollapse;
 import { stores, goto } from '@sapper/app';
@@ -32,12 +32,12 @@ const changeLan = (lan) => {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item mt-2 language-change">
-                    <button class={$session.lan === "jp" ? 'language-active language-flag' : 'language-flag'} on:click={() => changeLan('jp')} title={$fields.languageTitle.jp}>
+                    <button class={$session.lan === "jp" ? 'language-active language-flag' : 'language-flag'} on:click={() => changeLan('jp')} title="JP">
                         <img src="flags/japan-flag-icon-32.png" class="img-fluid" alt="JP" />
                     </button>
                 </li>
                 <li class="nav-item mt-2 ">
-                    <button class={$session.lan === "en" ? 'language-active language-flag' : 'language-flag'} on:click={() => changeLan('en')} title={$fields.languageTitle.eng}>
+                    <button class={$session.lan === "en" ? 'language-active language-flag' : 'language-flag'} on:click={() => changeLan('en')} title="EN">
                         <img src="flags/uk-flag-icon-32.png" class="img-fluid" alt="EN" />
                     </button>
                 </li>
@@ -47,8 +47,8 @@ const changeLan = (lan) => {
                     </li>
                 {/if}
                 <li class="nav-item pt-1">
-                    <button class="btn btn-outline-blue d-none d-lg-block d-sm-none" on:click={logout}><i class="fas fa-sign-out-alt"></i> {$fields.navButton.logout}</button>
-                    <button class="btn btn-outline-blue d-sm-block d-lg-none" on:click={logout} title={$fields.navButton.logout}><i class="fas fa-sign-out-alt"></i></button>
+                    <button class="btn btn-outline-blue d-none d-lg-block d-sm-none" on:click={logout}><i class="fas fa-sign-out-alt"></i>Logout</button>
+                    <button class="btn btn-outline-blue d-sm-block d-lg-none" on:click={logout} title="Logout"><i class="fas fa-sign-out-alt"></i></button>
                 </li>
             </ul>
         </div><!-- .navbar-collapse -->

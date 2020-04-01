@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import { fields } from '../../stores/attendance/store';
+    import { fields } from '../../store';
     const dispatch = createEventDispatcher();
     export let employees;
     export let selectedEmployeeId;
@@ -12,11 +12,11 @@
 <style>
 	
 </style>
-    <label for="name">{$fields.attendance.employeename}:</label>
+    <label for="name">{$fields.attendance.attendance.employeename}:</label>
     <div>
         {#if employees}
             <select class="form-control" bind:value={selectedEmployeeId} on:change={(changedEmployee(selectedEmployeeId))}>
-                <option value="0">{$fields.placeholder.employeename}</option>
+                <option value="0">{$fields.attendance.placeholder.employeename}</option>
                 {#each employees as employee}
                     <option value={employee.id}>{employee.name}</option>
                 {/each}

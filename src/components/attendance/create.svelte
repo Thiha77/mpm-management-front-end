@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import EmployeeSelect from '../employees/employeeSelect.svelte';
-    import { fields } from '../../stores/attendance/store';
+    import { fields } from '../../store';
     import Flatpickr from 'svelte-flatpickr'
     import 'flatpickr/dist/flatpickr.css'
     import 'flatpickr/dist/themes/light.css'
@@ -24,18 +24,18 @@
     const saveAttendance = () => {
         if(attendance.employeeId == null && attendance.recordedDateTime == "" || attendance.employeeId == 0 && attendance.recordedDateTime == "")
         {
-            alert($fields.message.valEmpIDRecDate);
+            alert($fields.attendance.message.valEmpIDRecDate);
             return false;
             
         }
         if(attendance.employeeId == 0 || attendance.employeeId == null)
         {
-            alert($fields.message.valEmpID);
+            alert($fields.attendance.message.valEmpID);
             return false;
         } 
         if(attendance.recordedDateTime == "")
         {
-            alert($fields.message.valRecDate);
+            alert($fields.attendance.message.valRecDate);
             return false;
         }
         dispatch('save', { attendance: attendance, time : time})
@@ -52,27 +52,27 @@
         <div class="col mx-auto">
             <div class="card card-mpm1">
                 <div class="card-heading bg-blue-mpm p-3">
-                    <h3 class="text-white text-uppercase text-center">{$fields.form.createTitle}</h3>
+                    <h3 class="text-white text-uppercase text-center">{$fields.attendance.form.createTitle}</h3>
                 </div>
                 <div class="card-body p-5">
                     <div class="form-group">
                                 <EmployeeSelect {employees} on:changedEmployee={getChangedEmployeeId}></EmployeeSelect>
                     </div>
                     <div class="form-group">
-                        <label for="desc">{$fields.attendance.recordeddate}:</label>
+                        <label for="desc">{$fields.attendance.attendance.recordeddate}:</label>
                         <Flatpickr id="flat" options="{ flatpickrOptions }" bind:value={attendance.recordedDateTime} element="#my-picker"> 
                             <div class="flatpickr" id="my-picker" data-date-format="d/m/Y">
-                                <input type="text"  class="form-control enabled" placeholder={$fields.placeholder.recordeddate} data-input >
+                                <input type="text"  class="form-control enabled" placeholder={$fields.attendance.placeholder.recordeddate} data-input >
                             </div>
                         </Flatpickr>
                     </div>
                     <div class="form-group">
-                        <label for="appt">{$fields.attendance.recordedtime}:</label><br>
+                        <label for="appt">{$fields.attendance.attendance.recordedtime}:</label><br>
                         <Time bind:time></Time>
                     </div>
                     <div class="mt-4">
-                        <button type="button" on:click={saveAttendance} class="btn btn-blue">{$fields.form.save}</button>
-                        <a href="attendance" class="btn btn-outline-orange">{$fields.form.cancel}</a>     
+                        <button type="button" on:click={saveAttendance} class="btn btn-blue">{$fields.attendance.form.save}</button>
+                        <a href="attendance" class="btn btn-outline-orange">{$fields.attendance.form.cancel}</a>     
                     </div>
                 </div>
             </div>

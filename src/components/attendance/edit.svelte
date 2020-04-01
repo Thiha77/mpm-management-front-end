@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import EmployeeSelect from '../employees/employeeSelect.svelte';
-    import { fields } from '../../stores/attendance/store';
+    import { fields } from '../../store';
     import Flatpickr from 'svelte-flatpickr'
     import 'flatpickr/dist/flatpickr.css'
     import 'flatpickr/dist/themes/light.css'
@@ -43,19 +43,19 @@
     const updateAttendance = () => {
         if(attendance.employeeId == 0 && document.getElementById("recordeddate").value == "")
         {
-            alert($fields.message.valEmpIDRecDate);
+            alert($fields.attendance.message.valEmpIDRecDate);
             document.getElementById("recordeddate").text = "";  
             return false;
                       
         }
         if(attendance.employeeId == 0)
         {
-            alert($fields.message.valEmpID);
+            alert($fields.attendance.message.valEmpID);
             return false;
         }
         if(document.getElementById("recordeddate").value == "")
         {
-            alert($fields.message.valRecDate);
+            alert($fields.attendance.message.valRecDate);
             document.getElementById("recordeddate").text = "";
             return false;
             
@@ -89,7 +89,7 @@
         <div class="col mx-auto">
             <div class="card card-mpm1">
                 <div class="card-heading bg-blue-mpm p-3">
-                    <h3 class="text-white text-uppercase text-center">{$fields.form.editTitle}</h3>
+                    <h3 class="text-white text-uppercase text-center">{$fields.attendance.form.editTitle}</h3>
                 </div>
                 <div class="card-body p-5">
                     <div class="form-group">
@@ -100,21 +100,21 @@
                             </Api>
                     </div>
                     <div class="form-group">
-                        <label for="desc">{$fields.attendance.recordeddate}:</label>
+                        <label for="desc">{$fields.attendance.attendance.recordeddate}:</label>
                         <Flatpickr id="flat" options="{ flatpickrOptions }" element="#my-picker" bind:value={attendance.recordedDateTime}> 
                             <div class="flatpickr" id="my-picker" data-date-format="d-m-Y">
-                                <input type="text" id="recordeddate" class="form-control"  placeholder={$fields.placeholder.recordeddate} data-input>
+                                <input type="text" id="recordeddate" class="form-control"  placeholder={$fields.attendance.placeholder.recordeddate} data-input>
                             </div>
                         </Flatpickr>
                         <br>
                     </div>
                     <div class="form-group">
-                        <label for="appt">{$fields.attendance.recordedtime}:</label><br>
+                        <label for="appt">{$fields.attendance.attendance.recordedtime}:</label><br>
                         <Time {mhr} {mmin} bind:time></Time>
                     </div>
                     <div class="mt-4">
-                        <button type="button" on:click={updateAttendance} class="btn btn-blue">{$fields.form.update}</button>
-                        <a href="attendance" class="btn btn-outline-orange">{$fields.form.cancel}</a>     
+                        <button type="button" on:click={updateAttendance} class="btn btn-blue">{$fields.attendance.form.update}</button>
+                        <a href="attendance" class="btn btn-outline-orange">{$fields.attendance.form.cancel}</a>     
                     </div>
                 </div>
             </div>
@@ -122,13 +122,3 @@
     </div>
 </div>
 {/if}
-<!-- 
-<style>
-input {
-  border: 2px solid whitesmoke;
-  border-radius: 20px;
-  padding: 12px 10px;
-  text-align: center;
-  width: 250px;
-}
-</style> -->

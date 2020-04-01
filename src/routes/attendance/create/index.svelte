@@ -3,11 +3,9 @@
     import CreateAttendance from '../../../components/attendance/create.svelte';
     import { axiosGet,axiosPost } from '../../../util/api';
     import { stores, goto } from '@sapper/app';
-    import { attendanceMessages, fields } from '../../../stores/attendance/store';
-    import { apiInfo } from '../../../store.js';
+    import { attendanceMessages } from '../../../stores/attendance/store';
+    import { apiInfo,fields } from '../../../store.js';
     import { Toast, Err } from '../../../util/salert.js';
-    import enFields from '../../../languages/en/attendance.json';
-    import jpFields from'../../../languages/jp/attendance.json';
     import moment from 'moment';
     let urlEmpData = $apiInfo.basePath + '/employees';
     let employees;
@@ -17,7 +15,6 @@
         console.log("employees",employees);
     });
     const { session } = stores();
-    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 
     const saveAttendance = async(event) => {
         let attendance = event.detail.attendance;
@@ -42,7 +39,7 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                $fields.message.saveSuccess,
+                $fields.attendance.message.saveSuccess,
                 'success'
             )
             goto('../attendance');

@@ -2,7 +2,8 @@
     // export let fields;
     import { createEventDispatcher } from "svelte";
     import Api from '../../components/util/Api.svelte';
-    import { userEdit , fields} from '../../stores/user/store.js';
+    import { userEdit} from '../../stores/user/store.js';
+    import { fields } from '../../store';
     import RoleSelect from '../role/roleSelect.svelte';
     import { apiInfo } from '../../store.js';
     const dispatch = createEventDispatcher();
@@ -21,24 +22,24 @@
         <div class="col mx-auto">
             <div class="card card-mpm1">
                 <div class="card-heading bg-blue-mpm p-3">
-                    <h3 class="text-white text-uppercase text-center">{$fields.form.updateTitle}</h3>
+                    <h3 class="text-white text-uppercase text-center">{$fields.user.form.updateTitle}</h3>
                 </div>
                 <div class="card-body p-5">
                     <form>
                         <div class="form-group">
-                            <label for="title">{$fields.user.name}</label>
+                            <label for="title">{$fields.user.user.name}</label>
                             <input class="form-control" bind:value={user.name} type="text">
                         </div>
                         <div class="form-group">
-                            <label for="title">{$fields.user.userName}</label>
+                            <label for="title">{$fields.user.user.userName}</label>
                             <input type="text" bind:value={user.userName} class="form-control" placeholder="User Name" />
                         </div>
                         <div class="form-group">
-                            <label for="title">{$fields.user.password}</label>
+                            <label for="title">{$fields.user.user.password}</label>
                             <input type="password" bind:value={user.password} class="form-control" placeholder="Password" />
                         </div>
                         <div class="form-group">
-                            <label for="name">{$fields.user.empName}</label>
+                            <label for="name">{$fields.user.user.empName}</label>
                             <!-- {#if employees}
                                 <select class="form-control" disabled>
                                     <option value="0">Please Select Employee</option>
@@ -61,8 +62,8 @@
                         </Api>
                         </div>
                         <div class="mt-4">
-                            <button type="submit" class="btn btn-blue" on:click|preventDefault={updateUser}>{$fields.form.update}</button>
-                            <a href="user" class="btn btn-outline-orange">{$fields.form.cancel}</a>   
+                            <button type="submit" class="btn btn-blue" on:click|preventDefault={updateUser}>{$fields.user.form.update}</button>
+                            <a href="user" class="btn btn-outline-orange">{$fields.user.form.cancel}</a>   
                         </div>
                     </form>
                 </div>

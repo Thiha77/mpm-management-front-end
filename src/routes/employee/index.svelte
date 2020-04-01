@@ -62,20 +62,23 @@
     <title>Employee</title>
 </svelte:head>
 
-
-
-
-<div class="container">   
-   
-    {#if $session.lan && $fields}
-     <SearchEmp on:searchEmp={searchEmployee}></SearchEmp>
-    <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-        {#if data}
-           <EmpList employees={data} on:delete={deleteEmployee} on:edit={editEmployee}></EmpList>
+<section class="pr-2 pl-2">
+    <div class="container-fluid">   
+        {#if $session.lan && $fields}
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <SearchEmp on:searchEmp={searchEmployee}></SearchEmp>
+            </div>
+        </div>
+        <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+            {#if data}
+            <EmpList employees={data} on:delete={deleteEmployee} on:edit={editEmployee}></EmpList>
+            {/if}
+        </Api>
         {/if}
-    </Api>
-    {/if}
-</div>
+    </div>
+</section>
 
 
   

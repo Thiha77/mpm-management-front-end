@@ -108,16 +108,20 @@ const CreateData=async(event)=> {
         }
 };
 </script> 
-<div class="row"> 
-    <div class="col-lg-9"> 
-    {#if $session.lan && $fields}
-        <EmpCreate on:create= {CreateData}></EmpCreate> 
-    {/if}
-    </div> 
-    <div class="col-lg-3" >
-    {#if vErrors}
-        <ValidationBox {vErrors}></ValidationBox> 
-    {/if}
+<section class="pr-2 pl-2">
+    <div class="container-fluid">
+        <div class="row"> 
+            <div class="col-lg-9"> 
+            {#if $session.lan && $fields}
+                <EmpCreate on:create= {CreateData}></EmpCreate> 
+            {/if}
+            </div> 
+            <div class="col-lg-3" >
+            {#if vErrors}
+                <ValidationBox {vErrors}></ValidationBox> 
+            {/if}
 
-    </div> 
-</div>
+            </div> 
+        </div>
+    </div>
+</section>

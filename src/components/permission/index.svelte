@@ -35,15 +35,15 @@
             <div class="table-wrapper card-list-mpm1">
                 <div class="table-title">
                         <div class="row">
-                        <div class="col col-sm-6"><h3 class="float-left">{$fields.form.listTitle}</h3></div>
-                        <div class="col col-sm-6"><a class="btn btn-white float-right" href='permission/create'><i class="fas fa-plus-circle"></i> {$fields.form.addNew}</a></div>
+                        <div class="col col-sm-6"><h3 class="float-left">{$fields.permission.form.listTitle}</h3></div>
+                        <div class="col col-sm-6"><a class="btn btn-white float-right" href='permission/create'><i class="fas fa-plus-circle"></i> {$fields.permission.form.addNew}</a></div>
                     </div>
                 </div><!-- .table-title -->
                 <table class="table table-hover table-responsive-sm">
                     <thead>                                     
                         <tr>
-                            <th>{$fields.permission.id}</th>
-                            <th>{$fields.permission.name}</th>
+                            <th>{$fields.permission.permission.id}</th>
+                            <th>{$fields.permission.permission.name}</th>
                             <th></th>
                         </tr>
                     </thead>

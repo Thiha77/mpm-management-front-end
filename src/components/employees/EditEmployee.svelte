@@ -11,9 +11,11 @@ const dispatch = createEventDispatcher();
         dispatch('update', { emp: employee,files: files})
     }
   
-  const deleteImage = (src) => {
-     var image_x = document.getElementById('x_image');    
-      image_x.parentNode.removeChild(image_x);
+  const deleteImage = (src) => {    
+      // var image_x = document.getElementById('x_image');    
+      // image_x.parentNode.removeChild(image_x);
+      document.getElementById("imgPreview").src = "";
+
   }
   const uploadImage= (e)=>{ 
       src =URL.createObjectURL(e.target.files[0]);
@@ -88,18 +90,51 @@ const dispatch = createEventDispatcher();
                      <div class="row form-group clearfix mt-4">
                         <div class="col-4">
                            <label class="card-title">{$fields.employee.employee.gender} </label><br/>
-                           <label><input type=radio bind:group={employee.gender} value="male" />{$fields.employee.radiobtn.male}</label>
-                           <label><input type=radio bind:group={employee.gender} value="female" />{$fields.employee.radiobtn.female}</label>
+
+                           <label class="customradio">
+                              <span class="radiotext">{$fields.employee.radiobtn.male}</span>
+                              <input type=radio bind:group={employee.gender} value="male" />
+                              <span class="checkmark"></span>
+                           </label>
+                           <label class="customradio">
+                              <span class="radiotext">{$fields.employee.radiobtn.female}</span>
+                              <input type=radio bind:group={employee.gender} value="female" />
+                              <span class="checkmark"></span>
+                           </label>
+                           <!-- <label><input type=radio bind:group={employee.gender} value="male" />{$fields.employee.radiobtn.male}</label> -->
+                           <!-- <label><input type=radio bind:group={employee.gender} value="female" />{$fields.employee.radiobtn.female}</label> -->
                         </div>
                         <div class="col-4">
                               <label class="card-title">{$fields.employee.employee.maritalStatus} </label><br/>
-                              <label><input type=radio bind:group={employee.maritalStatus} value="single" />{$fields.employee.radiobtn.single}</label>
-                              <label><input type=radio bind:group={employee.maritalStatus} value="married" />{$fields.employee.radiobtn.married}</label>
+                              <label class="customradio">
+                                 <span class="radiotext">{$fields.employee.radiobtn.single}</span>
+                                 <input type=radio bind:group={employee.maritalStatus} value="single" />
+                                 <span class="checkmark"></span>
+                              </label>
+                              <label class="customradio">
+                                 <span class="radiotext">{$fields.employee.radiobtn.married}</span>
+                                 <input type=radio bind:group={employee.maritalStatus} value="married" />
+                                 <span class="checkmark"></span>
+                              </label>
+
+                              <!-- <label><input type=radio bind:group={employee.maritalStatus} value="single" />{$fields.employee.radiobtn.single}</label> -->
+                              <!-- <label><input type=radio bind:group={employee.maritalStatus} value="married" />{$fields.employee.radiobtn.married}</label> -->
                         </div>
                         <div class="col-4">
                               <label class="card-title">{$fields.employee.employee.employeeStatus} </label><br/>
-                              <label><input type=radio bind:group={employee.employeeStatus} value="active" />{$fields.employee.radiobtn.active}</label>
-                              <label><input type=radio bind:group={employee.employeeStatus} value="inactive" />{$fields.employee.radiobtn.inactive}</label>
+                            <label class="customradio">
+                              <span class="radiotext">{$fields.employee.radiobtn.active}</span>
+                              <input type=radio bind:group={employee.employeeStatus} value="active" />
+                              <span class="checkmark"></span>
+                            </label>
+                              
+                              <label class="customradio">
+                                 <span class="radiotext">{$fields.employee.radiobtn.inactive}</span>
+                                 <input type=radio bind:group={employee.employeeStatus}  value="inactive" />
+                                 <span class="checkmark"></span>
+                              </label>
+
+                              <!-- <label><input type=radio bind:group={employee.employeeStatus} value="inactive" />{$fields.employee.radiobtn.inactive}</label> -->
                         </div>
                      </div>
                      <div class="form-group">
@@ -113,9 +148,6 @@ const dispatch = createEventDispatcher();
                   </div>
                   <div class="col-md-12 pt-3">          
                       <label  class="card-title">{$fields.employee.employee.photo}</label> 
-                        <!-- <div class="form-group pt-3">                        
-                           <input type="file" id="file" accept="image/*" bind:files on:change={uploadImage} > 
-                        </div>  -->
                         <div class="form-group">
                            <label for="profile-image" class="employee-file-upload"><i class="fas fa-cloud-upload-alt"></i>選択
                            <input type="file" id="profile-image" accept="image/*"   bind:files on:change={uploadImage} ></label>                           
@@ -125,11 +157,16 @@ const dispatch = createEventDispatcher();
                            <img  src="noimage.jpg" alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image' />
                         </div>
                      {:else}
-                        <div class="form-group pt-3" id="x_image">                                       
+                     <div class="form-group pt-3" id="x_image">                                       
+                        <img {src} alt="" id="imgPreview" width={150} height={150} crossOrigin='anonymous' class='profile-image' />
+                        <span class='btn btn-danger hide' on:click={deleteImage(employee.photo)}>X</span>
+                     </div>
+                        <!-- <div class="form-group pt-3" id="x_image">                                       
                             <img  {src} alt=""  width={150} height={150} crossOrigin='anonymous' class='profile-image' />
-                             <span class='btn btn-danger hide' on:click={deleteImage(employee.photo)}>X</span>
-                        </div>
-                     {/if}                                                                  
+                             <span class='btn btn-danger ' on:click={deleteImage(employee.photo)}>X</span>
+                        </div> -->
+                     {/if}
+                     
                   </div>
                    <div class="col-md-12">
                       <button type="button" class="btn btn-blue" on:click|preventDefault={updatebtn} >{$fields.employee.form.save}</button>

@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import { editPermissionData, fields } from '../../stores/permission/store';
+    import { fields } from '../../store';
     import PermisisonSearch from './search.svelte';
     const dispatch = createEventDispatcher();
 
@@ -9,13 +9,6 @@
     let deletePermission = id => {
         dispatch('deletePermission',{id:id});
     }
-
-    // let editPermission = (permission) => {
-    //     $editPermissionData = {
-    //         id: permission.id,
-    //         name: permission.name
-    //     };
-    // };
 
     const searchPermission = (event) => {
         let search = event.detail.search;
@@ -30,6 +23,7 @@
 <style>
 	
 </style>
+
 <div class="row">
     <div class="col-md-8"></div>
     <div class="col-md-4">

@@ -1,7 +1,7 @@
 <script>
 import { createEventDispatcher } from 'svelte';
 const dispatch = createEventDispatcher();
-import { fields } from '../../stores/role/store';
+import { fields } from '../../store';
 
 let search = {
     text: ""
@@ -14,7 +14,7 @@ const searchRole = () => {
 </script>
 
 <div class="input-group">
-    <input class="form-control" bind:value={search.text} type="text" placeholder={$fields.placeholder.search} aria-label="Search">
+    <input class="form-control" bind:value={search.text} type="text" placeholder={$fields.role.placeholder.search} aria-label="Search">
     <div class="input-group-append">
         <button class="input-group-text" on:click={searchRole}><i class="fas fa-search text-grey" aria-hidden="true"></i></button>
     </div>

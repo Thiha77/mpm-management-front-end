@@ -1,16 +1,13 @@
 <script>
 	import PermissionIndex from '../../components/permission/index.svelte';
 	import ApiGet from '../../components/util/Api.svelte';
-	import { permissionMessages, fields } from '../../stores/permission/store';
+	import { permissionMessages } from '../../stores/permission/store';
 	import { axiosPost } from '../../util/api.js';
-	import { apiInfo } from '../../store.js';
+	import { apiInfo, fields } from '../../store.js';
 	import { stores,goto } from '@sapper/app';
     import { Toast, CfmDelete } from '../../util/salert';
-	import enFields from '../../languages/en/permission.json';
-    import jpFields from'../../languages/jp/permission.json';
 
     const { session } = stores();
-    $: $fields = $session.lan == 'en' ? enFields : jpFields;
 	
 	let url = $apiInfo.basePath + '/permissions';
     const method = 'get';
@@ -32,7 +29,7 @@
             apiInstance.refresh();
             Toast.fire(
             'Deleted!',
-            $fields.message.deleteSuccess,
+            $fields.permission.message.deleteSuccess,
             'success'
             );
         }

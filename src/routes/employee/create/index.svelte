@@ -1,9 +1,9 @@
 <script> import Api from '../../../components/util/Api.svelte';
 import {axiosPost}from '../../../util/api.js';
 import { stores, goto } from '@sapper/app';
-import {employee,employeeMessages,fields}from "../../../stores/employee/store.js";
+import {employee,employeeMessages}from "../../../stores/employee/store.js";
 import * as sapper from '@sapper/app';
-import {apiInfo}from '../../../store.js';
+import {apiInfo ,fields}from '../../../store.js';
 import EmpCreate from '../../../components/employees/createEmployee.svelte';
 import {Toast}from '../../../util/salert.js';
 import {validate}from '../../../util/validator';
@@ -11,7 +11,7 @@ import ValidationBox from '../../../components/util/ValidationBox.svelte';
 import enFields from '../../../languages/en/employee.json';
 import jpFields from'../../../languages/jp/employee.json';
 const { session } = stores();
-$: $fields =$session.lan =='en' ? enFields :jpFields; 
+//$: $fields =$session.lan =='en' ? enFields :jpFields; 
 let vErrors;
 let constraints= {
     name: {
@@ -97,7 +97,7 @@ const CreateData=async(event)=> {
             let updateImageRes=await axiosPost(updateImageUrl, updateEmpData);
         } 
         if(saveResult.error==null || uploadResult.error==null) {
-            Toast.fire( $fields.message.success, $fields.message.saveSuccess, 'success') 
+            Toast.fire( $fields.employee.message.success, $fields.employee.message.saveSuccess, 'success') 
             sapper.goto("../employee");
         }
         else {

@@ -1,6 +1,7 @@
 <script>
 import {createEventDispatcher} from "svelte";
-import { userEdit,user ,fields} from "../../stores/user/store";
+import { userEdit,user } from "../../stores/user/store";
+import { fields } from '../../store';
 const dispatch = createEventDispatcher();
 export let users;
 
@@ -17,20 +18,20 @@ let deleteUser = id => {
         <div class="table-wrapper card-list-mpm1">
             <div class="table-title">
                 <div class="row">
-                    <div class="col"><h3 class="float-left">{$fields.form.listTitle}</h3></div>
-                    <div class="col"><a class="btn btn-white float-right" href='user/create'><i class="fas fa-plus-circle"></i> {$fields.form.addUser}</a></div>
+                    <div class="col"><h3 class="float-left">{$fields.user.form.listTitle}</h3></div>
+                    <div class="col"><a class="btn btn-white float-right" href='user/create'><i class="fas fa-plus-circle"></i> {$fields.user.form.addUser}</a></div>
                 </div>
             </div>
             <table class="table table-hover table-responsive-sm">
                 <thead>
                     <tr>
-                        <th scope="col">{$fields.user.userId}</th>
-                        <th scope="col">{$fields.user.name}</th>
-                        <th scope="col">{$fields.user.userName}</th>
+                        <th scope="col">{$fields.user.user.userId}</th>
+                        <th scope="col">{$fields.user.user.name}</th>
+                        <th scope="col">{$fields.user.user.userName}</th>
                         <!-- <th scope="col">User Password</th> -->
-                        <th scope="col">{$fields.user.empName}</th>
-                        <th scope="col">{$fields.user.roleName}</th>
-                        <th scope="col">{$fields.form.action}</th>
+                        <th scope="col">{$fields.user.user.empName}</th>
+                        <th scope="col">{$fields.user.user.roleName}</th>
+                        <th scope="col">{$fields.user.form.action}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,8 +48,8 @@ let deleteUser = id => {
                             <td>{user.Role['name']}</td>
                             <td>
                                 <!-- <a class="btn btn-info" href='user/edit'>Edit</a> -->
-                                <button  class="btn btn-blue"on:click={editUser(user)} title={$fields.title.editBtnTitle}><i class="fas fa-pen"></i></button>
-                                <button class="btn btn-danger" on:click={deleteUser(user.id)} title={$fields.title.deleteBtnTitle}><i class="far fa-trash-alt"></i></button>
+                                <button  class="btn btn-blue"on:click={editUser(user)} title={$fields.user.title.editBtnTitle}><i class="fas fa-pen"></i></button>
+                                <button class="btn btn-danger" on:click={deleteUser(user.id)} title={$fields.user.title.deleteBtnTitle}><i class="far fa-trash-alt"></i></button>
                             </td>
                         </tr>
                     {/each}

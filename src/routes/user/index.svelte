@@ -5,8 +5,7 @@
     import { Toast, CfmDelete } from '../../util/salert';
     import SearchUser from '../../components/user/SearchUser.svelte';
     // import { user} from '../../store.js';
-    import { apiInfo } from '../../store.js';
-    import { fields } from '../../stores/user/store';
+    import { apiInfo, fields } from '../../store';
     import {stores, goto } from '@sapper/app';
     import enFields from '../../languages/en/user.json';
     import jpFields from'../../languages/jp/user.json';
@@ -14,7 +13,6 @@
     import axios from 'axios';
     const method = 'get';
     const { session } = stores();
-    $: $fields = $session.lan == 'en' ? enFields : jpFields;
     let apiInstance;
     const deleteUserData = async(event) => {
         let id = event.detail.id;

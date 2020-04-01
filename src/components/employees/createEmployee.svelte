@@ -71,8 +71,16 @@ let files;
             </div>
             <div class="form-group">
                <label class="card-title">{$fields.employee.employee.maritalStatus} </label><br/>
-               <label><input type=radio bind:group={employee.maritalStatus} value="Single" /> {$fields.employee.radiobtn.single}</label>
-               <label><input type=radio bind:group={employee.maritalStatus} value="Married" /> {$fields.employee.radiobtn.married}</label>
+                <label class="customradio">
+                  <span class="radiotext">{$fields.employee.radiobtn.single}</span>
+                  <input type=radio bind:group={employee.maritalStatus} value="Single" />                                    
+                  <span class="checkmark"></span>
+               </label> 
+                <label class="customradio">
+                  <span class="radiotext">{$fields.employee.radiobtn.married}</span>
+                  <input type=radio bind:group={employee.maritalStatus} value="Married" />                                    
+                  <span class="checkmark"></span>
+               </label> 
             </div>
             <div class="form-group">
                <label class="card-title">{$fields.employee.employee.position} </label>
@@ -106,15 +114,30 @@ let files;
             </div>
             <div class="form-group mt-4">
                <label class="card-title">{$fields.employee.employee.gender} </label><br/>
-               <!-- <input type="text" class="form-control" id="text" placeholder="Enter Gender" bind:value={employee.gender} /> -->
-               <label><input type=radio bind:group={employee.gender} value="Male" /> {$fields.employee.radiobtn.male}</label>
-               <label><input type=radio bind:group={employee.gender} value="Female" /> {$fields.employee.radiobtn.female}</label>
+               <label class="customradio">
+                  <span class="radiotext">{$fields.employee.radiobtn.male}</span>
+                  <input type="radio" bind:group={employee.gender} value="Male" />                   
+                <span class="checkmark"></span>
+               </label> 
+               <label class="customradio">
+                  <span class="radiotext">{$fields.employee.radiobtn.female}</span>
+                  <input type=radio bind:group={employee.gender} value="Female" />                  
+                  <span class="checkmark"></span>
+               </label> 
+
             </div>
             <div class="form-group">
                <label class="card-title">{$fields.employee.employee.employeeStatus} </label><br/>
-               <!-- <input type="text" class="form-control" id="text" placeholder="Enter EmpStatus" bind:value={employee.employeeStatus}  /> -->
-               <label><input type=radio bind:group={employee.employeeStatus} value="Active" /> {$fields.employee.radiobtn.active}</label>
-               <label><input type=radio bind:group={employee.employeeStatus} value="Inactive" /> {$fields.employee.radiobtn.inactive}</label>
+              <label class="customradio">
+                  <span class="radiotext"> {$fields.employee.radiobtn.active}</span>
+                  <input type=radio bind:group={employee.employeeStatus} value="Active" />
+                  <span class="checkmark"></span>
+               </label>
+               <label class="customradio">
+                  <span class="radiotext">{$fields.employee.radiobtn.inactive}</span>
+                  <input type=radio bind:group={employee.employeeStatus} value="Inactive" />
+                  <span class="checkmark"></span>
+               </label>
             </div>
             <div class="form-group">
                <label class="card-title">{$fields.employee.employee.basicSalary} </label>

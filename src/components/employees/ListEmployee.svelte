@@ -82,8 +82,8 @@ table.table td a {
                             <td>{employee.officialEmail}</td>
                             <td>{employee.address}</td>
                             <td>
-                                <button class="btn btn-blue"  on:click={editbtn(employee)} title="Edit"><i class="fas fa-pen"></i></button>
-                                <button class="btn btn-danger" on:click={deletebtn(employee.id)} title="Delete"><i class="far fa-trash-alt"></i></button>
+                                <button class="btn btn-blue"  on:click={editbtn(employee)} title={$fields.employee.title.editBtnTitle}><i class="fas fa-pen"></i></button>
+                                <button class="btn btn-danger" on:click={deletebtn(employee.id)} title={$fields.employee.title.deleteBtnTitle}><i class="far fa-trash-alt"></i></button>
                             </td>
                             </tr>
                         {/each}                                                 

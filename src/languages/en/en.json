@@ -108,6 +108,10 @@
             "saveFail" : "Fail to create Employee.",
             "updateFail" : "Fail to update Employee.",
             "deleteFail" : "Fail to delete Employee."
+        },
+        "title":{
+            "editBtnTitle":"Edit",
+            "deleteBtnTitle":"Delete"
         }
     },
     "notice" : {

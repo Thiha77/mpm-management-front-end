@@ -108,6 +108,10 @@
             "saveFail" : "通知を作成できませんでした.",
             "updateFail" : "通知を更新できませんでした.",
             "deleteFail" : "通知を削除できませんでした."
+        },
+        "title":{
+            "editBtnTitle":"編集",
+            "deleteBtnTitle":"削除"
         }
     },
     "notice" : {

@@ -10,7 +10,7 @@
     let url = $apiInfo.basePath + '/attendances';
     const method = 'get';
     const { session } = stores();
-
+    
     const deleteAttendance = async(event) => {
         let id = event.detail.id;
         CfmDelete.fire().then((result) => {
@@ -36,12 +36,12 @@
         goto(`attendance/edit/${id}`);
     }
 </script>
-
+<svelte:head><title>Attendance</title></svelte:head>
 <div class="container">
 {#if $session.lan && $fields}
     <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
         {#if data}
-            <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance} {fields}></List>
+            <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
         {/if}
     </Api>
     {/if}

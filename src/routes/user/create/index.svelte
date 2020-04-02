@@ -3,14 +3,13 @@
     import Api from '../../../components/util/Api.svelte';
     import CreateUser from '../../../components/user/CreateUser.svelte';
     import { axiosGet,axiosPost } from '../../../util/api.js';
-    import { user ,fields} from '../../../stores/user/store.js';
+    import { user} from '../../../stores/user/store.js';
     import { stores, goto } from '@sapper/app';
-    import { apiInfo } from '../../../store.js';
+    import { apiInfo, fields } from '../../../store';
     import { Toast } from '../../../util/salert.js';
     import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
-    import enFields from '../../../languages/en/user.json';
-    import jpFields from'../../../languages/jp/user.json';
+
     let url = $apiInfo.basePath + '/users';
     let urlEmpData = $apiInfo.basePath + '/users/getEmpData';
     let urlRoleData = $apiInfo.basePath + '/roles/';
@@ -21,7 +20,6 @@
 		roles = roleResult.data;
     });
     const { session } = stores();
-     $: $fields = $session.lan == 'en' ? enFields : jpFields;
     
     let vErrors;
     let constraints = {

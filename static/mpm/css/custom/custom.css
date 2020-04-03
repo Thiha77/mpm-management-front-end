@@ -167,6 +167,25 @@ a.article:hover {
     background: #0689CE !important;
     color: #fff !important;
 }
+.sidebar-fixed{
+    position:fixed;
+    top: 0%;
+    height: calc(100% - 0rem);
+    z-index:1040;
+}
+#menu-toggle {
+    display: none;
+}
+.menu-icon {
+    position: absolute;
+    top: 14px;
+    left: 25px;
+    z-index: 1;
+    transition: all 300ms ease-in-out;
+}
+#menu-toggle:checked + .menu-icon {
+    left: 270px;
+}
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -184,6 +203,9 @@ a.article:hover {
 }
 .pt-mpm-10{
     padding-top:6rem !important;
+}
+.mt-mpm-6{
+    margin-top: 6.1rem;
 }
 .bg-org-mpm{
     background: #F9762B;
@@ -722,7 +744,6 @@ a.article:hover {
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-
 @media (max-width: 768px) {
     #sidebar {
         min-width: 90px;

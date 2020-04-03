@@ -22,7 +22,7 @@
 <Nav {segment}/>
 {/if}
 
-<div id="content">
+<div id="content" class="mt-mpm-6">
 	{#if $session.user}
 		<Navbar></Navbar>
 	{/if}

@@ -17,7 +17,7 @@ export let segment;
 	}
 </style>
 {#if $nav.showSideBar}
-    <nav id="sidebar" in:fly="{{ x:-250 , duration: 500 }}" out:fly="{{ x:-250 , duration: 500 }}">
+    <nav id="sidebar" in:fly="{{ x:-250 , duration: 500 }}" out:fly="{{ x:-250 , duration: 500 }}" class="sidebar-fixed">
         <div class="sidebar-header">
         <!-- <a href="."><img class="img-fluid" src="favicon.png" alt="MPM Logo"></a> -->
         <a href="." class="font-weight-bold">Management Partners Myanmar</a>

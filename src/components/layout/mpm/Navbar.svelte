@@ -21,12 +21,16 @@ const changeLan = (lan) => {
 $: $fields = ($session.lan == 'en') ? enFields : jpFields;
 
 </script>
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-        <button on:click={() => $nav.showSideBar = !$nav.showSideBar} id="sidebarCollapse" class="btn btn-blue">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" on:click={() => $nav.showSideBar = !$nav.showSideBar} id="sidebarCollapse" class="btn btn-blue menu-icon"><i class="fas fa-align-left"></i>
+            <span></span>
+        </label>
+        <!-- <button on:click={() => $nav.showSideBar = !$nav.showSideBar} id="sidebarCollapse" class="btn btn-blue">
             <i class="fas fa-align-left"></i>
             <span></span>
-        </button>
+        </button> -->
         <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-align-justify"></i>
         </button> -->

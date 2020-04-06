@@ -24,7 +24,7 @@ $: $fields = ($session.lan == 'en') ? enFields : jpFields;
  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" on:click={() => $nav.showSideBar = !$nav.showSideBar} id="sidebarCollapse" class="btn btn-blue menu-icon"><i class="fas fa-align-left"></i>
+        <label for="menu-toggle" on:click={() => $nav.showSideBar = !$nav.showSideBar}  id="sidebarCollapse" class="btn btn-blue menu-icon"><i class="fas fa-align-left"></i>
             <span></span>
         </label>
         <!-- <button on:click={() => $nav.showSideBar = !$nav.showSideBar} id="sidebarCollapse" class="btn btn-blue">

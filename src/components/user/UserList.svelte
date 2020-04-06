@@ -1,7 +1,7 @@
 <script>
 import {createEventDispatcher} from "svelte";
 import { userEdit,user } from "../../stores/user/store";
-import { fields } from '../../store';
+import { nav,fields } from '../../store';
 const dispatch = createEventDispatcher();
 export let users;
 

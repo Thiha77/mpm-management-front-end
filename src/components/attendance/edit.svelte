@@ -12,20 +12,8 @@
     export let attendance;
     let urlEmpData = $apiInfo.basePath + '/employees';
     
-
-    let empid = attendance.employeeId;
-    console.log("empid",empid);
      let rdatetime = attendance.recordedDateTime;
      console.log("rdatetime",rdatetime);
-    let momenttime = moment.utc(rdatetime).toDate();
-    console.log("momentTime",momenttime);
-
-    attendance = {
-        id : attendance.id,
-        employeeId: attendance.employeeId,
-        recordedDateTime: momenttime
-    }
-    
     const getChangedEmployeeId = (event) => {
         attendance.employeeId = event.detail.selectedEmployee;
         console.log(event.detail.selectedEmployee);
@@ -65,6 +53,7 @@
         let selectedhr = time.selectedhr.toString().length == 1 ? `0${time.selectedhr}` : time.selectedhr;
         let selectedmin = time.selectedmin.toString().length == 1 ? `0${time.selectedmin}` : time.selectedmin;
         let datetime = date.slice(0,10)+" "+selectedhr+":"+selectedmin+ ":00";
+        datetime = moment(datetime).toDate();
         console.log("datetime",datetime);
         attendance = {
             id : attendance.id,
@@ -72,10 +61,7 @@
             recordedDateTime : datetime
         }
         console.log("Uatt",attendance);
-        if(empid != attendance.employeeId || rdatetime != attendance.recordedDateTime)
-        {
         dispatch('update', { attendance: attendance})
-        }
     }
 
     const flatpickrOptions = {

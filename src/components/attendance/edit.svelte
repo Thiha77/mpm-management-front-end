@@ -29,39 +29,7 @@
     const dispatch = createEventDispatcher();
     
     const updateAttendance = () => {
-        if(attendance.employeeId == 0 && document.getElementById("recordeddate").value == "")
-        {
-            alert($fields.attendance.message.valEmpIDRecDate);
-            document.getElementById("recordeddate").text = "";  
-            return false;
-                      
-        }
-        if(attendance.employeeId == 0)
-        {
-            alert($fields.attendance.message.valEmpID);
-            return false;
-        }
-        if(document.getElementById("recordeddate").value == "")
-        {
-            alert($fields.attendance.message.valRecDate);
-            document.getElementById("recordeddate").text = "";
-            return false;
-            
-        }
-        console.log("attendance.recordeddatetime",attendance.recordedDateTime);
-        let date = moment(attendance.recordedDateTime).format('YYYY-MM-DD HH:mm:ss');
-        let selectedhr = time.selectedhr.toString().length == 1 ? `0${time.selectedhr}` : time.selectedhr;
-        let selectedmin = time.selectedmin.toString().length == 1 ? `0${time.selectedmin}` : time.selectedmin;
-        let datetime = date.slice(0,10)+" "+selectedhr+":"+selectedmin+ ":00";
-        datetime = moment(datetime).toDate();
-        console.log("datetime",datetime);
-        attendance = {
-            id : attendance.id,
-            employeeId : attendance.employeeId,
-            recordedDateTime : datetime
-        }
-        console.log("Uatt",attendance);
-        dispatch('update', { attendance: attendance})
+        dispatch('update', { attendance: attendance, time : time})
     }
 
     const flatpickrOptions = {

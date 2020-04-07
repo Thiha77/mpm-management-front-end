@@ -20,11 +20,17 @@ const collapse = writable({
 const apiInfo = readable({
     basePath: "http://localhost:5000"
 });
-
+// const sidebarWidth = writable({
+//     width : 0,
+    
+// });
+// const contentMg =writable({
+//     marginLeft:0
+// });
 // const system = writable({
 //     len : (typeof window !== "undefined")? writable(localStorage.getItem('len') || 'en') : writable(null)
 // });
 
 const fields = (config.system.lan == 'en') ? writable(enFields) : writable(jpFields);
 
-export { user, nav, apiInfo, subNav, collapse, fields }
+export { user, nav, apiInfo, subNav, collapse, fields}

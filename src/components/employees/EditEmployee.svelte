@@ -58,6 +58,21 @@ const dispatch = createEventDispatcher();
                         <input type="date" class="form-control"  bind:value={employee.dob}>
                      </div>
                      <div class="form-group">
+                        <label class="card-title">{$fields.employee.employee.maritalStatus} </label><br/>
+                        <label class="customradio">
+                           <span class="radiotext">{$fields.employee.radiobtn.single}</span>
+                           <input type=radio bind:group={employee.maritalStatus} value="single" />
+                           <span class="checkmark"></span>
+                        </label>
+                        <label class="customradio">
+                           <span class="radiotext">{$fields.employee.radiobtn.married}</span>
+                           <input type=radio bind:group={employee.maritalStatus} value="married" />
+                           <span class="checkmark"></span>
+                        </label>
+                        <!-- <label><input type=radio bind:group={employee.maritalStatus} value="single" />{$fields.employee.radiobtn.single}</label> -->
+                        <!-- <label><input type=radio bind:group={employee.maritalStatus} value="married" />{$fields.employee.radiobtn.married}</label> -->
+                     </div>
+                     <div class="form-group">
                         <label class="card-title">{$fields.employee.employee.position} </label>
                         <input type="text" class="form-control" id="text" placeholder="{$fields.employee.placeholder.position}" bind:value={employee.position} />
                      </div>
@@ -87,10 +102,8 @@ const dispatch = createEventDispatcher();
                         <label class="card-title">{$fields.employee.employee.postalCode} </label>
                         <input type="text" class="form-control" id="text" placeholder="{$fields.employee.placeholder.postalCode}" bind:value={employee.postalCode} />
                      </div>
-                     <div class="row form-group clearfix mt-4">
-                        <div class="col-4">
+                     <div class="form-group mt-mpm-2">
                            <label class="card-title">{$fields.employee.employee.gender} </label><br/>
-
                            <label class="customradio">
                               <span class="radiotext">{$fields.employee.radiobtn.male}</span>
                               <input type=radio bind:group={employee.gender} value="male" />
@@ -104,38 +117,21 @@ const dispatch = createEventDispatcher();
                            <!-- <label><input type=radio bind:group={employee.gender} value="male" />{$fields.employee.radiobtn.male}</label> -->
                            <!-- <label><input type=radio bind:group={employee.gender} value="female" />{$fields.employee.radiobtn.female}</label> -->
                         </div>
-                        <div class="col-4">
-                              <label class="card-title">{$fields.employee.employee.maritalStatus} </label><br/>
-                              <label class="customradio">
-                                 <span class="radiotext">{$fields.employee.radiobtn.single}</span>
-                                 <input type=radio bind:group={employee.maritalStatus} value="single" />
-                                 <span class="checkmark"></span>
-                              </label>
-                              <label class="customradio">
-                                 <span class="radiotext">{$fields.employee.radiobtn.married}</span>
-                                 <input type=radio bind:group={employee.maritalStatus} value="married" />
-                                 <span class="checkmark"></span>
-                              </label>
-
-                              <!-- <label><input type=radio bind:group={employee.maritalStatus} value="single" />{$fields.employee.radiobtn.single}</label> -->
-                              <!-- <label><input type=radio bind:group={employee.maritalStatus} value="married" />{$fields.employee.radiobtn.married}</label> -->
-                        </div>
-                        <div class="col-4">
-                              <label class="card-title">{$fields.employee.employee.employeeStatus} </label><br/>
-                            <label class="customradio">
-                              <span class="radiotext">{$fields.employee.radiobtn.active}</span>
-                              <input type=radio bind:group={employee.employeeStatus} value="active" />
+                        <div class="form-group">
+                           <label class="card-title">{$fields.employee.employee.employeeStatus} </label><br/>
+                           <label class="customradio">
+                           <span class="radiotext">{$fields.employee.radiobtn.active}</span>
+                           <input type=radio bind:group={employee.employeeStatus} value="active" />
+                           <span class="checkmark"></span>
+                           </label>
+                           
+                           <label class="customradio">
+                              <span class="radiotext">{$fields.employee.radiobtn.inactive}</span>
+                              <input type=radio bind:group={employee.employeeStatus}  value="inactive" />
                               <span class="checkmark"></span>
-                            </label>
-                              
-                              <label class="customradio">
-                                 <span class="radiotext">{$fields.employee.radiobtn.inactive}</span>
-                                 <input type=radio bind:group={employee.employeeStatus}  value="inactive" />
-                                 <span class="checkmark"></span>
-                              </label>
+                           </label>
 
-                              <!-- <label><input type=radio bind:group={employee.employeeStatus} value="inactive" />{$fields.employee.radiobtn.inactive}</label> -->
-                        </div>
+                           <!-- <label><input type=radio bind:group={employee.employeeStatus} value="inactive" />{$fields.employee.radiobtn.inactive}</label> -->
                      </div>
                      <div class="form-group">
                         <label class="card-title">{$fields.employee.employee.basicSalary} </label>
@@ -168,7 +164,7 @@ const dispatch = createEventDispatcher();
                      {/if}
                      
                   </div>
-                   <div class="col-md-12">
+                  <div class="col-md-12">
                       <button type="button" class="btn btn-blue" on:click|preventDefault={updatebtn} >{$fields.employee.form.save}</button>
                      <a href="employee" class="btn btn-outline-orange">{$fields.employee.form.cancel}</a> 
                   </div> 

@@ -5,7 +5,7 @@ import { nav,subNav } from '../../../store';
 // import { quintOut } from 'svelte/easing';
 // let sidebarCollapse = "show";
 export let segment;
-$: width = $nav.showSideBar ? 'min-width' : '0px' ;
+$: width = $nav.showSideBar ? '0px' : '-250px' ;
 </script>
 
 <style>
@@ -17,7 +17,7 @@ $: width = $nav.showSideBar ? 'min-width' : '0px' ;
     color:#fff;
 	}
 </style>
-    <nav id="sidebar" min-width='{width}' class="sidebar-fixed">
+    <nav id="sidebar" style="margin-left:{width};" class="sidebar-fixed">
         <div class="sidebar-header">
         <!-- <a href="."><img class="img-fluid" src="favicon.png" alt="MPM Logo"></a> -->
         <a href="." class="font-weight-bold">Management Partners Myanmar</a>

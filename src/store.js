@@ -9,7 +9,7 @@ const user = writable({
 });
 
 const nav = writable({
-    showSideBar: false 
+    showSideBar: true 
 });
 const subNav = writable({
     subNav: false 

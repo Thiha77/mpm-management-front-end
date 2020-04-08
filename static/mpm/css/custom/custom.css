@@ -57,7 +57,7 @@ span {
 ----------------------------------------------------- */
 .wrapper {
     display: flex;
-    align-items: stretch;
+    /* align-items: stretch; */
 }
 #sidebar {
     /* min-width: 250px;
@@ -65,6 +65,7 @@ span {
     background: #222d32;
     color: #fff;
     transition: all 0.3s;
+    width: 250px;
 }
 #sidebar.active {
     min-width: 80px;
@@ -172,6 +173,8 @@ a.article:hover {
     top: 0%;
     height: calc(100% - 0rem);
     z-index:1040;
+    overflow: hidden;
+    margin-left: -250px;
 }
 #menu-toggle {
     display: none;

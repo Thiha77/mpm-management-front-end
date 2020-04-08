@@ -1,5 +1,5 @@
 <script>
-import { nav, fields } from '../../../store';
+import { nav , fields } from '../../../store';
 import enFields from '../../../languages/en/en.json';
 import jpFields from '../../../languages/jp/jp.json';
 import { stores, goto } from '@sapper/app';

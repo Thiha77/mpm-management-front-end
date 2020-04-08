@@ -17,7 +17,7 @@ $: width = $nav.showSideBar ? 'min-width' : '0px' ;
     color:#fff;
 	}
 </style>
-    <nav id="sidebar" min-width='{width}' class="sidebar-fixed">
+    <nav id="sidebar" style="min-width='{width}'" class="sidebar-fixed">
         <div class="sidebar-header">
         <!-- <a href="."><img class="img-fluid" src="favicon.png" alt="MPM Logo"></a> -->
         <a href="." class="font-weight-bold">Management Partners Myanmar</a>

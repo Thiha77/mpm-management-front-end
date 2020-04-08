@@ -6,6 +6,8 @@
     import { attendanceMessages } from '../../../stores/attendance/store';
     import { apiInfo,fields } from '../../../store.js';
     import { Toast, Err } from '../../../util/salert.js';
+    import { validate } from '../../../util/validator';
+    import ValidationBox from '../../../components/util/ValidationBox.svelte';
     import moment from 'moment';
     let urlEmpData = $apiInfo.basePath + '/employees';
     let employees;
@@ -15,7 +17,16 @@
         console.log("employees",employees);
     });
     const { session } = stores();
-
+    let vErrors;
+    
+    let constraints = {
+        employeeId: {
+            presence: { allowEmpty: false }
+        },
+        recordedDateTime: {
+            datetime: true
+        }
+    };
     const saveAttendance = async(event) => {
         let attendance = event.detail.attendance;
         let time = event.detail.time;
@@ -25,15 +36,30 @@
         let selectedhr = time.selectedhr;
         let selectedmin = time.selectedmin.toString().length == 1 ? `0${time.selectedmin}` : time.selectedmin;
         console.log("selectedmin",selectedmin);
+        let datetime;
+        if(date.length != 0)
+        {
         let dateformatchange=moment(date).format('YYYY-MM-DD HH:mm:ss');
         console.log("dateformatchange",dateformatchange);
-        let datetime = dateformatchange.slice(0,10)+" "+selectedhr+":"+selectedmin+ ":00";
+            datetime = dateformatchange.slice(0,10)+" "+selectedhr+":"+selectedmin+ ":00";
         console.log("datetime",datetime);
+        }
+        else{
+            datetime = "";
+        }
+        if(empId == 0)
+        {
+            empId = null;
+        }
         let att = {
             employeeId : empId,
             recordedDateTime : datetime
         }
         console.log("att",att);
+         vErrors = validate(att, constraints);
+        if(vErrors){
+            return;
+        }  
         const url = $apiInfo.basePath + '/attendances/create';
         let result = await axiosPost(url, att);
         if(result.error == null){
@@ -58,6 +84,11 @@
         <div class="col-lg-9">
             {#if $session.lan && $fields}
             <CreateAttendance {employees} on:save={saveAttendance} {fields}></CreateAttendance>
+            {/if}
+        </div>
+        <div class="col-lg-3" >
+            {#if vErrors}
+                <ValidationBox {vErrors}></ValidationBox>
             {/if}
         </div>
     </div>

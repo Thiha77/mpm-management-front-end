@@ -179,7 +179,7 @@ a.article:hover {
 .menu-icon {
     position: absolute;
     top: 14px;
-    left: 270px;
+    left: 290px;
     z-index: 1;
     transition: all 300ms ease-in-out;
 }

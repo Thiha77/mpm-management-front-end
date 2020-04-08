@@ -22,22 +22,6 @@
         console.log(event.detail.selectedEmployee);
     };
     const saveAttendance = () => {
-        if(attendance.employeeId == null && attendance.recordedDateTime == "" || attendance.employeeId == 0 && attendance.recordedDateTime == "")
-        {
-            alert($fields.attendance.message.valEmpIDRecDate);
-            return false;
-            
-        }
-        if(attendance.employeeId == 0 || attendance.employeeId == null)
-        {
-            alert($fields.attendance.message.valEmpID);
-            return false;
-        } 
-        if(attendance.recordedDateTime == "")
-        {
-            alert($fields.attendance.message.valRecDate);
-            return false;
-        }
         dispatch('save', { attendance: attendance, time : time})
     }
     let date = null

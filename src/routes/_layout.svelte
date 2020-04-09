@@ -14,6 +14,7 @@
 		}
 	})
 	$: marginLeft = $nav.showSideBar ? '250px' : '0px' ;
+	
 	export let segment;
 </script>
 
@@ -24,7 +25,7 @@
 <Nav {segment}/>
 {/if}
 
-<div id="content" style="margin-left:{marginLeft};" class="mt-mpm-6">
+<div id="content" style="margin-left:{marginLeft};" class="mt-mpm-6" >
 	{#if $session.user}
 		<Navbar></Navbar>
 	{/if}

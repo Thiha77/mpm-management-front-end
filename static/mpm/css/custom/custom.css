@@ -57,6 +57,7 @@ span {
 ----------------------------------------------------- */
 .wrapper {
     display: flex;
+    overflow: hidden;
     /* align-items: stretch; */
 }
 #sidebar {
@@ -182,7 +183,7 @@ a.article:hover {
 .menu-icon {
     position: absolute;
     top: 14px;
-    left: 290px;
+    left: 275px;
     z-index: 1;
     transition: all 300ms ease-in-out;
 }
@@ -339,13 +340,13 @@ a.article:hover {
     Dropdown
 ----------------------------------------------------- */
 .dropdown {
-    display: inline-block;
+    display: block;
     position: relative;
     overflow: hidden;
     height: 35px;
-    width: 25%;
-    margin: 0 20px;
-    vertical-align: top;
+    /* width: 5%; */
+    /* margin: 0 20px; */
+    /* vertical-align: top; */
     background: #f2f2f2;
     border: 1px solid;
     border-color: white #f7f7f7 whitesmoke;
@@ -832,6 +833,9 @@ a.article:hover {
     .navbar-nav{
         flex-direction: row !important;
     }
+    .menu-icon{
+        left:110px;
+    }
 }
 @media (min-width: 320px) and (max-width: 480px) {
     .collapse:not(.show) {
@@ -845,5 +849,8 @@ a.article:hover {
     }
     .navbar-nav{
         flex-direction: row !important;
+    }
+    .menu-icon{
+        left:110px;
     }
 }

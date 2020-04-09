@@ -6,6 +6,7 @@ const dispatch = createEventDispatcher();
 //     text: ""
 // }
 // export let fields;
+
 let search;
 const searchUser = () => {
     dispatch('searchUserData',{search:search});

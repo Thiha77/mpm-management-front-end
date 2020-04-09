@@ -37,12 +37,14 @@
     }
 </script>
 <svelte:head><title>Attendance</title></svelte:head>
-<div class="container">
-{#if $session.lan && $fields}
-    <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-        {#if data}
-            <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
+<section class="pr-2 pl-2">
+    <div class="container-fluid">
+        {#if $session.lan && $fields}
+        <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+            {#if data}
+                <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
+            {/if}
+        </Api>
         {/if}
-    </Api>
-    {/if}
-</div>
+    </div>
+</section>

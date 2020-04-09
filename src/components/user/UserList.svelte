@@ -1,7 +1,7 @@
 <script>
 import {createEventDispatcher} from "svelte";
 import { userEdit,user } from "../../stores/user/store";
-import { fields } from '../../store';
+import { nav,fields } from '../../store';
 const dispatch = createEventDispatcher();
 export let users;
 
@@ -12,7 +12,7 @@ let deleteUser = id => {
         dispatch('deleteUser',{id:id});
     };
 </script>
-<div class="row">
+<div class="row" >
     <div class="col">
         <h1>{$user.message}</h1>
         <div class="table-wrapper card-list-mpm1">

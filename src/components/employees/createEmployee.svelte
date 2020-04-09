@@ -112,7 +112,7 @@ let files;
                <label class="card-title">{$fields.employee.employee.postalCode} </label>
                <input type="text" class="form-control" id="text" placeholder="{$fields.employee.placeholder.postalCode}" bind:value={employee.postalCode} />
             </div>
-            <div class="form-group mt-4">
+            <div class="form-group mt-mpm-2">
                <label class="card-title">{$fields.employee.employee.gender} </label><br/>
                <label class="customradio">
                   <span class="radiotext">{$fields.employee.radiobtn.male}</span>

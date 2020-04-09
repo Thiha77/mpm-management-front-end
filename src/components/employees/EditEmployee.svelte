@@ -7,18 +7,22 @@ const dispatch = createEventDispatcher();
     export let employee;
     let files; 
     let src =employee.photo;
+    let delImamge=false;
     const updatebtn = () => {
+        employee = { ...employee,  delImamge: delImamge};
         dispatch('update', { emp: employee,files: files})
     }
   
-  const deleteImage = (src) => {    
+  const deleteImage = () => {    
       // var image_x = document.getElementById('x_image');    
       // image_x.parentNode.removeChild(image_x);
-      document.getElementById("imgPreview").src = "";
+      var image_x = document.getElementById("imgPreview").src = "";
+      delImamge =true;
 
   }
   const uploadImage= (e)=>{ 
       src =URL.createObjectURL(e.target.files[0]);
+      delImamge=false;
    }
  
 

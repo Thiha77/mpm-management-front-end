@@ -91,35 +91,36 @@ let updateResult;
         const url = $apiInfo.basePath + '/employees/update';       
         const urlImage =$apiInfo.basePath + '/upload/save';
         const updateImageUrl = $apiInfo.basePath + '/employees/updateImage';
-        let result = await axiosPost(url, employee);
+        let result = await axiosPost(url, employee);   
         let photo= employee.photo;
         const urlUploadDelete = $apiInfo.basePath + '/upload/delete';               
         if(event.detail.files != undefined){
-        let myImage = event.detail.files[0];        
+        let myImage = event.detail.files[0];       
         let dataImage = new FormData();
             dataImage.append('path', 'employee/images');
             dataImage.append('Image', myImage);                     
-            updateResult= await  axiosPost(urlImage,dataImage)  ; 
-        let path =updateResult.data.path;
-        let updateEmpData = {
-                id: employee.id,
-                photo: path
+            updateResult= await  axiosPost(urlImage,dataImage); 
+            let path =updateResult.data.path;
+                 let updateEmpData = {
+                    id:employee.id,
+                    photo:path
             };
             let updateImageRes = await axiosPost(updateImageUrl,updateEmpData);
+                   
             let uploadPhotoDel = await axiosPost(urlUploadDelete, {photo:photo})
         };
         if(result.error == null || updateResult.error==null){
             Toast.fire(
                 $fields.employee.message.success,
-                 $fields.employee.message.updateSuccess,
+                $fields.employee.message.updateSuccess,
                 'success'
             )
         sapper.goto("../employee");
         }else{
             $employeeMessages = {
-                    message: '',
-                    error: result.error
-                }
+                message: '',
+                error: result.error
+            }
         }
     }
 </script>

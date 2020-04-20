@@ -6,7 +6,6 @@
 	import { stores } from '@sapper/app';
 	const { session } = stores();
 	import { onMount } from 'svelte';
-	
 	onMount( () => {
 		if(window && window.localStorage){
 			$session.user = JSON.parse(localStorage.getItem('user'));

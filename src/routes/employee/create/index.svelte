@@ -92,7 +92,8 @@ const CreateData=async(event)=> {
             let id=saveResult.data.id;
             let photo=uploadResult.data.path;
             let updateEmpData= {
-                id: id, photo: photo
+                id: id,    
+                photo:photo
             };
             let updateImageRes=await axiosPost(updateImageUrl, updateEmpData);
         } 

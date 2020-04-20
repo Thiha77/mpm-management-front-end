@@ -45,6 +45,7 @@
     }
 </script>
 <svelte:head><title>Attendance</title></svelte:head>
+<section class="pr-2 pl-2">
 <div class="container">
 {#if $session.lan && $fields}
     <Search on:search={search}></Search>
@@ -53,5 +54,6 @@
             <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
         {/if}
     </Api>
-    {/if}
+{/if}
 </div>
+</section>

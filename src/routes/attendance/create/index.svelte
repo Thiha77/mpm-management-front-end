@@ -21,12 +21,15 @@
     
     let constraints = {
         employeeId: {
-            presence: { allowEmpty: false }
+            presence: { allowEmpty: false
+            // message: 'you should select employee!' 
+            }
         },
         recordedDateTime: {
             datetime: true
         }
     };
+    
     const saveAttendance = async(event) => {
         let attendance = event.detail.attendance;
         let time = event.detail.time;
@@ -56,6 +59,7 @@
             recordedDateTime : datetime
         }
         console.log("att",att);
+        // vErrors = validate(att, constraints, {fullMessages: false});
          vErrors = validate(att, constraints);
         if(vErrors){
             return;

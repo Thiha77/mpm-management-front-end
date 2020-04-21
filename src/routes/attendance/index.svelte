@@ -7,6 +7,7 @@
     import { apiInfo, fields } from '../../store.js';
     import { Toast, CfmDelete } from '../../util/salert';
     import { stores,goto } from '@sapper/app';
+    import moment from 'moment';
     let apiInstance;
     let url = $apiInfo.basePath + '/attendances';
     const method = 'get';
@@ -43,12 +44,30 @@
         apiInstance.loadExternal(exUrl);
         console.log('refreshed');
     }
+    const searchadvance = async(event) => {
+        let searchdata = event.detail.searchdata;
+        console.log("searchdata",searchdata);
+        console.log("search");
+        let fromdate = moment(searchdata.fromDate).format('YYYY-MM-DD');
+        console.log("fromdate",fromdate);
+        let todate = moment(searchdata.toDate).format('YYYY-MM-DD');
+        console.log("todate",todate);
+        searchdata = {
+            employeeId : searchdata.employeeId,
+            employeeName : searchdata.employeeName,
+            fromDate : fromdate,
+            toDate : todate
+        }
+        console.log("sdata",searchdata);
+        let url = $apiInfo.basePath + '/attendances/searchadvance';
+        let result = await axiosPost(url, searchdata);
+    }
 </script>
 <svelte:head><title>Attendance</title></svelte:head>
 <section class="pr-2 pl-2">
 <div class="container">
 {#if $session.lan && $fields}
-    <Search on:search={search}></Search>
+    <Search on:search={search} on:searchadvance = {searchadvance}></Search>
     <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
         {#if data}
             <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>

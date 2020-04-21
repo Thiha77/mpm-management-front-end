@@ -34,11 +34,38 @@
 		return groupedItems
 	}
 	
+	const showPermission = (e) => {
+
+        let coll = document.getElementsByClassName("collapsible");
+		
+		let className = "content "+e;
+		let content = document.getElementsByClassName(className);
+		for (let i = 0; i < content.length; i++) {
+			if (content[i].style.display === "block") {
+				content[i].style.display = "none";
+			} else {
+				content[i].style.display = "block";
+			}
+			
+		}
+    }
 </script>
 
-{#each groupedItems as groupedItem}
+
+<!-- {#each groupedItems as groupedItem}
     <slot name='group' group={groupedItem.group}/>
     {#each groupedItem.rolePermissions as rolePermission}
-        <slot name='rolePermission' rolePermission={rolePermission.Permission['name']}/>
+		<div class={rolePermission.Role['name']}>
+			<slot name='rolePermission' rolePermission={rolePermission.Permission['name']} roleName={rolePermission.Role['name']}/>
+		</div>
     {/each}
+{/each} -->
+
+{#each groupedItems as groupedItem}
+	<button type="button" class="collapsible" on:click={showPermission(groupedItem.group)}>{groupedItem.group}</button>
+	{#each groupedItem.rolePermissions as rolePermission}
+		<div class="content {rolePermission.Role['name']}">
+			<p>{rolePermission.Permission['name']}</p>
+		</div>	
+	{/each}
 {/each}

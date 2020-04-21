@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-md-8"></div>
             <div class="col-md-4 float-right">
-                <SearchUser on:searchUserData={searchUserData} {$fields}></SearchUser>
+                <SearchUser on:searchUserData={searchUserData}></SearchUser>
             </div>
         </div>
         <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>

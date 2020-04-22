@@ -54,7 +54,7 @@
 <svelte:head><title>Swipe</title></svelte:head>
 <div class="container">
     <div class="row">
-        <div class="col-4 mx-auto pt-mpm-20">
+        <div class="col-md-4 mx-auto pt-mpm-20">
             <div class="card swipe-form">
                 <div class="avatar">
                     <img src="favicon.png" alt="Avatar">

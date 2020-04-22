@@ -10,8 +10,10 @@
 		if(window && window.localStorage){
 			$session.user = JSON.parse(localStorage.getItem('user'));
 			$session.lan = localStorage.getItem('lan');
+	
 		}
 	})
+	  
 	$: marginLeft = $nav.showSideBar ? '250px' : '0px' ;
 	
 	export let segment;
@@ -30,3 +32,4 @@
 	{/if}
 	<slot>zzz</slot>
 </div>
+

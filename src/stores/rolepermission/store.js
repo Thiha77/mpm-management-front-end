@@ -11,4 +11,8 @@ const editRolePermission = writable({
     permissionId: ""
 });
 
-export { rolePermission, editRolePermission }
+const fields = writable({
+
+});
+
+export { rolePermission, editRolePermission, fields }

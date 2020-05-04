@@ -4,11 +4,13 @@
 	import { axiosGet, axiosPost} from '../../../util/api';
 	import { stores, goto } from '@sapper/app';
 	import { rolePermission } from '../../../stores/rolepermission/store';
-	import { apiInfo } from '../../../store.js';
+	import { apiInfo, fields } from '../../../store.js';
 	import { Toast } from '../../../util/salert.js';
 	import { validate } from '../../../util/validator';
     import ValidationBox from '../../../components/util/ValidationBox.svelte';
 	
+	const { session } = stores();
+
 	const roleUrl =  $apiInfo.basePath + "/roles";
 	const permissionUrl = $apiInfo.basePath + "/permissions";
 	let roles;
@@ -43,7 +45,7 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                'New RolePermission is successfully created.',
+                $fields.rolepermission.message.saveSuccess,
                 'success'
             )
             goto('../rolepermission');

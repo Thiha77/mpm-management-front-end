@@ -1,0 +1,30 @@
+{
+    "rolepermission" : {
+        "id": "",
+        "roleId": "",
+        "permissionId": ""
+    },
+    "form" : {
+        "listTitle": "役割許可一覧",
+        "createTitle" : "役割許可作成",
+        "save" : "保存",
+        "update": "更新",
+        "cancel" : "キャンセル",
+        "back" : "バック",
+        "addNew": "役割許可新規作成"
+    },
+    "placeholder" : {
+        "search": "検索"
+    },
+    "message" : {
+        "success" : "成功",
+        "fail" : "失敗",
+        "saveSuccess" : "新しい役割許可が作成されました.",
+        "updateSuccess" : "役割許可が正常に更新されました.",
+        "deleteSuccess" : "役割許可が正常に削除されました.",
+        "saveFail" : "役割許可を作成できませんでした.",
+        "updateFail" : "役割許可を更新できませんでした.",
+        "deleteFail" : "役割許可を削除できませんでした."
+    }
+
+}

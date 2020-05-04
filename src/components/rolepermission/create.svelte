@@ -3,6 +3,7 @@
     const dispatch = createEventDispatcher();
     import RoleSelect from '../role/roleSelect.svelte';
     import PermissionSelect from '../permission/permissionSelect.svelte';
+    import { fields } from '../../store';
     export let roles;
     export let permissions;
 
@@ -38,7 +39,7 @@
         <div class="col mx-auto">
             <div class="card card-mpm1">
                 <div class="card-heading bg-blue-mpm p-3">
-                    <h3 class="text-white text-uppercase text-center">Role Form</h3>
+                    <h3 class="text-white text-uppercase text-center">{$fields.rolepermission.form.createTitle}</h3>
                 </div>
                 <div class="card-body p-5">
                     <div class="form-group">
@@ -51,11 +52,11 @@
                     </div>
                     <div class="mt-4">
                          {#if selectedRole == 0 || selectedPermission == 0}
-                            <button type="button" on:click={save} class="btn btn-primary" disabled>Save</button>
+                            <button type="button" on:click={save} class="btn btn-primary" disabled>{$fields.rolepermission.form.save}</button>
                         {:else}
-                            <button type="button" on:click={save} class="btn btn-primary">Save</button>
+                            <button type="button" on:click={save} class="btn btn-primary">{$fields.rolepermission.form.save}</button>
                         {/if}
-                        <a href="rolepermission" class="btn btn-outline-orange">Cancel</a>     
+                        <a href="rolepermission" class="btn btn-outline-orange">{$fields.rolepermission.form.cancel}</a>     
                     </div>
                 </div><!-- .card-body -->
             </div><!-- .card -->

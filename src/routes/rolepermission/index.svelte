@@ -3,8 +3,12 @@
 	import RolePermissionIndex from '../../components/rolepermission/index.svelte';
 	import { axiosGet, axiosPost} from '../../util/api';
 	import { rolePermission } from '../../stores/rolepermission/store';
-	import { apiInfo } from '../../store.js';
-	import { Toast, CfmDelete } from '../../util/salert';
+	import { apiInfo, fields } from '../../store';
+	import { stores, goto } from '@sapper/app';
+    import Swal from 'sweetalert2';
+    import { Toast, CfmDelete } from '../../util/salert';
+
+	const { session } = stores();
 
 	let url = $apiInfo.basePath + '/rolepermissions';
 	const method = 'get';
@@ -39,7 +43,7 @@
 						updateTable();
 						Toast.fire(
 							'Deleted!',
-							'RolePermission has been deleted.',
+							$fields.rolepermission.message.deleteSuccess,
 							'success'
 						);
 					}
@@ -66,5 +70,7 @@
 	<h1>{$rolePermission.message}</h1>
 {/if}
 {#if rolePermissions}
-<RolePermissionIndex {rolePermissions} on:deleteRolePermission={deleteRolePermission} on:searchRolePermissionData={searchRolePermissionData}></RolePermissionIndex>
+	{#if $session.lan && $fields}
+		<RolePermissionIndex {rolePermissions} on:deleteRolePermission={deleteRolePermission} on:searchRolePermissionData={searchRolePermissionData}></RolePermissionIndex>
+	{/if}
 {/if}

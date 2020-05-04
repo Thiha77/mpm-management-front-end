@@ -1,0 +1,30 @@
+{
+    "rolepermission" : {
+        "id": "",
+        "roleId": "",
+        "permissionId": ""
+    },
+    "form" : {
+        "listTitle": "Role Permission List",
+        "createTitle" : "Role Permission Create",
+        "save" : "Save",
+        "update": "Update",
+        "cancel" : "Cancel",
+        "back" : "Back",
+        "addNew": "Add New Role Permission"
+    },
+    "placeholder" : {
+        "search": "Search"
+    },
+    "message" : {
+        "success" : "Success",
+        "fail" : "Fail",
+        "saveSuccess" : "Role Permission is successfully created.",
+        "updateSuccess" : "Role Permission is successfully updated.",
+        "deleteSuccess" : "Role Permission is deleted successfully.",
+        "saveFail" : "Fail to create role permission.",
+        "updateFail" : "Fail to update role permission.",
+        "deleteFail" : "Fail to delete role permission."
+    }
+
+}

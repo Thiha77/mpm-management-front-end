@@ -8,11 +8,32 @@
     import { Toast, CfmDelete } from '../../util/salert';
     import { stores,goto } from '@sapper/app';
     import moment from 'moment';
+    import { validate } from '../../util/validator';
+    import ValidationBox from '../../components/util/ValidationBox.svelte';
     let apiInstance;
+    let result;
+    let fromdate;
+    let todate;
     let url = $apiInfo.basePath + '/attendances';
     const method = 'get';
     const { session } = stores();
-    
+    let vErrors;
+    let constraints = {
+        employeeId: {
+            presence: { allowEmpty: false
+            }
+        },
+        employeeName: {
+            presence: { allowEmpty: false
+            }
+        },
+        fromDate: {
+            datetime: true
+        },
+        toDate: {
+            datetime: true
+        }
+    };
     const deleteAttendance = async(event) => {
         let id = event.detail.id;
         CfmDelete.fire().then((result) => {
@@ -40,39 +61,57 @@
     const search = async(event) => {
         let textSearch = event.detail.textSearch;
         let exUrl = (textSearch)? $apiInfo.basePath + '/attendances/search/' + textSearch : $apiInfo.basePath + '/attendances';
-        // console.log(url);
         apiInstance.loadExternal(exUrl);
-        console.log('refreshed');
     }
     const searchadvance = async(event) => {
         let searchdata = event.detail.searchdata;
-        console.log("searchdata",searchdata);
-        console.log("search");
-        let fromdate = moment(searchdata.fromDate).format('YYYY-MM-DD');
-        console.log("fromdate",fromdate);
-        let todate = moment(searchdata.toDate).format('YYYY-MM-DD');
-        console.log("todate",todate);
+            if(searchdata.fromDate.length != 0)
+            {
+                fromdate = moment(searchdata.fromDate).format('YYYY-MM-DD');
+            }
+            else{
+                fromdate = "";
+            }
+            if(searchdata.toDate.length != 0)
+            {
+                todate = moment(searchdata.toDate).format('YYYY-MM-DD');
+            }
+            else{
+                todate = "";
+            }
         searchdata = {
             employeeId : searchdata.employeeId,
             employeeName : searchdata.employeeName,
             fromDate : fromdate,
             toDate : todate
-        }
-        console.log("sdata",searchdata);
-        let url = $apiInfo.basePath + '/attendances/searchadvance';
-        let result = await axiosPost(url, searchdata);
+        }             
+         vErrors = validate(searchdata, constraints);
+        if(vErrors){
+            return;
+        }  
+        let posturl = $apiInfo.basePath + '/attendances/searchadvance';
+        apiInstance.postExternal(posturl,searchdata);
     }
 </script>
 <svelte:head><title>Attendance</title></svelte:head>
 <section class="pr-2 pl-2">
 <div class="container">
-{#if $session.lan && $fields}
-    <Search on:search={search} on:searchadvance = {searchadvance}></Search>
-    <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-        {#if data}
-            <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
-        {/if}
-    </Api>
-{/if}
+<div class="row">
+    <div class="col-lg-9">
+    {#if $session.lan && $fields}
+        <Search on:search={search} on:searchadvance = {searchadvance}></Search>
+        <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+            {#if data}
+                <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
+            {/if}
+        </Api>
+    {/if}
+    </div>
+    <div class="col-lg-3" >
+            {#if vErrors}
+                <ValidationBox {vErrors}></ValidationBox>
+            {/if}
+    </div>
+</div>
 </div>
 </section>

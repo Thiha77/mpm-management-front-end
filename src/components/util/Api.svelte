@@ -48,6 +48,20 @@
             error = e
         }
     }
+    export const postExternal = async(exUrl,body) => {
+        try {
+            loading = true
+            let result = await axios.post(exUrl,body)
+            
+            data = result.data
+            loading = false
+        } catch (e) {
+            console.log(e)
+            data = null
+            loading = false
+            error = e
+        }
+    }
 </script>
 
 <slot {data} {loading} {error}/>

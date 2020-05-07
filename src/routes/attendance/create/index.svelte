@@ -14,7 +14,6 @@
     onMount( async() => {
 		let employeeResult = await axiosGet(urlEmpData);
         employees = employeeResult.data;
-        console.log("employees",employees);
     });
     const { session } = stores();
     let vErrors;
@@ -22,7 +21,6 @@
     let constraints = {
         employeeId: {
             presence: { allowEmpty: false
-            // message: 'you should select employee!' 
             }
         },
         recordedDateTime: {
@@ -35,17 +33,13 @@
         let time = event.detail.time;
         let empId = attendance.employeeId;
         let date = attendance.recordedDateTime;
-        console.log("date", date);
         let selectedhr = time.selectedhr;
         let selectedmin = time.selectedmin.toString().length == 1 ? `0${time.selectedmin}` : time.selectedmin;
-        console.log("selectedmin",selectedmin);
         let datetime;
         if(date.length != 0)
         {
         let dateformatchange=moment(date).format('YYYY-MM-DD HH:mm:ss');
-        console.log("dateformatchange",dateformatchange);
             datetime = dateformatchange.slice(0,10)+" "+selectedhr+":"+selectedmin+ ":00";
-        console.log("datetime",datetime);
         }
         else{
             datetime = "";
@@ -58,8 +52,6 @@
             employeeId : empId,
             recordedDateTime : datetime
         }
-        console.log("att",att);
-        // vErrors = validate(att, constraints, {fullMessages: false});
          vErrors = validate(att, constraints);
         if(vErrors){
             return;
@@ -87,7 +79,7 @@
     <div class="row">
         <div class="col-lg-9">
             {#if $session.lan && $fields}
-            <CreateAttendance {employees} on:save={saveAttendance} {fields}></CreateAttendance>
+            <CreateAttendance {employees} on:save={saveAttendance}></CreateAttendance>
             {/if}
         </div>
         <div class="col-lg-3" >

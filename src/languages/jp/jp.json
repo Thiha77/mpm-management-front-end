@@ -8,7 +8,10 @@
             "recordeddate" : "記録日",
             "recordedtime" : "記録時間",
             "hours" : "時間",
-            "minutes" : "議事録"
+            "minutes" : "議事録",
+            "fromdate" : "開始日",
+            "todate" : "終了日",
+            "advancesearch" : "事前検索"
         },
         "form" : {
             "title" : "出席リスト",
@@ -23,7 +26,9 @@
         },
         "placeholder" : {
             "employeename" : "従業員名を入力してください",
-            "recordeddate" : "記録日を入力してください"
+            "recordeddate" : "記録日を入力してください",
+            "selectdate" : "日付を選択..",
+            "search":"検索"
         },
         "message" : {
             "success" : "成功",

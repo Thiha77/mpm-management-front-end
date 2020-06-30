@@ -43,7 +43,7 @@
             document.getElementById("employeeName").value="";
             document.getElementById("recordeddatetime").value="";
             if($session.user["roleId"] != 1){
-                goto("login");
+                goto("home");
             }
             else{
                 goto("/");

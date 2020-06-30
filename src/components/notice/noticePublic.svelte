@@ -1,24 +1,30 @@
 <script>
-    import {fade,slide,fly} from "svelte/transition";
+    import {fade,slide, fly} from "svelte/transition";
+    import { quintOut } from 'svelte/easing';
     export let notice;
-    let show = false;
-    let showMore = false;
+    let show = true;
+    // let showMore = false;
     function toggle() {
-		show? showMore = false : show = true
+        // show? showMore = false : show = true
+        show = !show;
 	}
 </script>
     <div class="row">
         <div class="notice notice-info col-md-12">
             <strong>{notice.title}</strong><span class="float-right txt-org readMore"  on:click={toggle}>{show? 'Hide' : 'Read'}</span>
             {#if show}
-            <div class="desc" transition:slide on:introend={()=> showMore = true}>
+                <div transition:slide="{{duration: 20, easing: quintOut }}" >
+                        <p>{notice.description}</p>
+                        <p>{notice.summary}</p>
+                </div>
+            <!-- <div class="desc" transition:slide on:introend={()=> showMore = true}>
                 {#if showMore}
-                    <div transition:slide="{{ y: 150, duration: 700 }}" on:outroend={()=> show = false} class="pt-3">
+                    <div transition:slide="{{ y: 150, duration: 100 }}" on:outroend={()=> show = false} class="pt-3">
                         <p>{notice.description}</p>
                         <p>{notice.summary}</p>
                     </div>
                 {/if}
-            </div>
+            </div> -->
             {/if}
         </div>
     </div>

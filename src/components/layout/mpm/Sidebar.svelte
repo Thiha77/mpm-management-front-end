@@ -16,6 +16,7 @@ $: width = $nav.showSideBar ? '0px' : '-250px' ;
     <!-- <a href="."><img class="img-fluid" src="favicon.png" alt="MPM Logo"></a> -->
     <a href="." class="font-weight-bold">Management Partners Myanmar</a>
     </div><!-- .sidebar-header -->
+    {#if Object.keys($session.user.permissions).length }
     <span class="tag">Management</span>
     <ul class="list-unstyled components">
         <li >
@@ -55,13 +56,6 @@ $: width = $nav.showSideBar ? '0px' : '-250px' ;
             </a>
         </li>
         {/if}
-
-        <li>
-            <a href="about"  class:selected={segment === 'about'}>
-                <i class="fas fa-address-card"></i>
-                About
-            </a>
-        </li>
 
         {#if $session.user.permissions.role && $session.user.permissions.role != 'none'}
         <li>
@@ -104,6 +98,7 @@ $: width = $nav.showSideBar ? '0px' : '-250px' ;
         </li>
         {/if}
     </ul><!-- .components -->
+    {/if}
     <!-- <ul class="list-unstyled CTAs">
         <li>
             <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
@@ -126,6 +121,12 @@ $: width = $nav.showSideBar ? '0px' : '-250px' ;
                     Swipe
                 </a>
             </li>
+            <li>
+            <a href="about"  class:selected={segment === 'about'}>
+                <i class="fas fa-address-card"></i>
+                About
+            </a>
+        </li>
         </ul>
 </nav>
 

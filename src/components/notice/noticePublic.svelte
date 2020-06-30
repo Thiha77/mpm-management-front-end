@@ -1,5 +1,4 @@
 <script>
-
     import {fade,slide,fly} from "svelte/transition";
     export let notice;
     let show = false;

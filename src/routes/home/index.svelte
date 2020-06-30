@@ -3,7 +3,7 @@
 	import { apiInfo, fields } from '../../store';
 	import Api from '../../components/util/Api.svelte';
 	import NoticeDetail from '../../components/notice/detail.svelte';
-	import Notice from './notice.svelte';
+	import NoticePublic from '../../components/notice/noticePublic.svelte';
 	let url = $apiInfo.basePath + '/notices';
 	const method = 'get';
 	let apiInstance;
@@ -24,7 +24,7 @@
 		<div class="container">
 			{#if data}
 				{#each data as notice}
-					<Notice {notice}></Notice>
+					<NoticePublic {notice}></NoticePublic>
 				{/each}
 			{/if}
 		</div>

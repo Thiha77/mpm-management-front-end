@@ -3,6 +3,7 @@
 	import { apiInfo, fields } from '../../store';
 	import Api from '../../components/util/Api.svelte';
 	import NoticeDetail from '../../components/notice/detail.svelte';
+	import Notice from './notice.svelte';
 	let url = $apiInfo.basePath + '/notices';
 	const method = 'get';
 	let apiInstance;
@@ -13,45 +14,43 @@
 	<title>Home</title>
 </svelte:head>
 
-<h1>Welcome From Management Partners Myanmar!</h1>
-{#if $session.user}
-	<h2>Hello {$session.user.name}</h2>
-{/if}
+<h2 class="mb-4">Welcome From Management Partners Myanmar!</h2>
 
 <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-	{#if data}
-		{#each data as notice}
-		<NoticeDetail {notice}></NoticeDetail>
-		{/each}
-	{/if}
+	<div class="notice-card mb-2">
+		{#if $session.user}
+			<h3 class="m-4 pl-5">Hello {$session.user.name}</h3>
+		{/if}
+		<div class="container">
+			{#if data}
+				{#each data as notice}
+					<Notice {notice}></Notice>
+				{/each}
+			{/if}
+		</div>
+	</div>
 </Api>
 
 <style>
-	h1 {
-		text-align: center;
-		margin: 0 auto;
-	}
 
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
+.notice-card{
+    width: 1250px;
+    margin: 40px auto 0 auto;
+    background: #ececec;
+    box-shadow: 0px 0px 15px rgba(0,0,0,.33) !important;
+    /* border: unset !important; */
+    border-radius: 0.45rem;
+    border-top: 8px solid #45ABCD;
+	padding-bottom:30px;
+	height:85vh;
+}
+h2 {
+	text-align: center;
+	margin: 0 auto;
+}
 
-	h2 {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	img {
+	/* img {
 		height: 400px;
 		width: 100px;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
+	} */
 </style>

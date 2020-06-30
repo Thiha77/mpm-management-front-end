@@ -59,16 +59,16 @@ const search = () => {
     <div>
         <label>{$fields.attendance.attendance.fromdate}:</label>
         <Flatpickr id="flatfromdate" options="{ flatpickrOptionsFromDate }" bind:value={searchdata.fromDate} element="#my-picker_fromdate"> 
-                    <div class="flatpickr" id="my-picker_fromdate" data-date-format="d/m/Y" style="display:inline-block">
-                        <input type="text" id="fromdate" placeholder="{$fields.attendance.placeholder.selectdate}" data-input >
-                    </div>
+            <div class="flatpickr" id="my-picker_fromdate" data-date-format="d/m/Y" style="display:inline-block">
+                <input type="text" id="fromdate" placeholder="{$fields.attendance.placeholder.selectdate}" data-input >
+            </div>
         </Flatpickr>
         <br>
         <label>{$fields.attendance.attendance.todate}:</label>
         <Flatpickr id="flattodate"  options="{ flatpickrOptionsToDate }" bind:value={searchdata.toDate} element="#my-picker_todate"> 
-                    <div class="flatpickr" id="my-picker_todate" data-date-format="d/m/Y" style="display:inline-block">
-                        <input type="text" id="todate" placeholder="{$fields.attendance.placeholder.selectdate}" data-input >
-                    </div>
+            <div class="flatpickr" id="my-picker_todate" data-date-format="d/m/Y" style="display:inline-block">
+                <input type="text" id="todate" placeholder="{$fields.attendance.placeholder.selectdate}" data-input >
+            </div>
         </Flatpickr>
     </div>
     <br>
@@ -85,8 +85,5 @@ const search = () => {
     label{
         text-align: left;
         width : 150px;
-    }
-    input{
-        margin-right: 40px;
     }
 </style>

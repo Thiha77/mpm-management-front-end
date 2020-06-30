@@ -100,25 +100,32 @@
 
 {#if $session.user && $session.user.permissions.attendance && $session.user.permissions.attendance != 'none'}
 <section class="pr-2 pl-2">
-<div class="container">
-<div class="row">
-    <div class="col-lg-9">
-    {#if $session.lan && $fields}
-        <Search on:search={search} on:searchadvance = {searchadvance}></Search>
-        <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
-            {#if data}
-                <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
-            {/if}
-        </Api>
+    <div class="container-fluid">
+        {#if $session.lan && $fields}
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <Search on:search={search} on:searchadvance = {searchadvance}></Search>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                <Api {url} {method} let:data let:loading let:error bind:this={apiInstance}>
+                    {#if data}
+                        <List attendances={data} on:delete={deleteAttendance} on:edit={editAttendance}></List>
+                    {/if}
+                </Api>
+            
+            </div>
+        </div>
     {/if}
+            <!-- <div class="col-lg-3" >
+                {#if vErrors}
+                    <ValidationBox {vErrors}></ValidationBox>
+                {/if}
+            </div> -->
+        
     </div>
-    <div class="col-lg-3" >
-            {#if vErrors}
-                <ValidationBox {vErrors}></ValidationBox>
-            {/if}
-    </div>
-</div>
-</div>
 </section>
 {:else}
 <NoAccess></NoAccess>

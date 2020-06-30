@@ -15,9 +15,6 @@
     let constraints = {
         title: {
             presence: { allowEmpty: false }
-        },
-        description: {
-            datetime: true
         }
     };
 
@@ -35,7 +32,7 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                fields.message.saveSuccess,
+                $fields.notice.message.saveSuccess,
                 'success'
             )
             goto('../notice');

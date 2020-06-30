@@ -11,6 +11,8 @@
     import jpFields from'../../languages/jp/user.json';
     let url = $apiInfo.basePath + '/users';
     import axios from 'axios';
+    import NoAccess from '../../components/util/NoAccess.svelte';
+    
     const method = 'get';
     const { session } = stores();
     let apiInstance;
@@ -52,6 +54,8 @@
 <svelte:head>
     <title>User</title>
 </svelte:head>
+
+{#if $session.user && $session.user.permissions.user && $session.user.permissions.user != 'none'}
 <section class="pr-2 pl-2">
     <div class="container-fluid">
     {#if $session.lan && $fields}
@@ -69,3 +73,6 @@
     {/if}
     </div>
 </section>
+{:else}
+<NoAccess></NoAccess>
+{/if}

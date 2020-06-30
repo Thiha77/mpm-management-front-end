@@ -6,6 +6,7 @@ import { stores, goto } from '@sapper/app';
 const { session } = stores();
 
 const logout = () => {
+    $nav.showSideBar = false;
     $session.user = null;
     if(window && window.localStorage){
         localStorage.clear();

@@ -42,6 +42,7 @@
     },
     "employee" : {
         "employee" : {
+            "employeeId" : "従業員ID",
             "name" : "名前 ",
             "alias" : "略語 ",
             "phoneNo" : "電話番号 ",
@@ -75,6 +76,7 @@
             "back" : "帰る"
         },
         "placeholder" :{
+            "employeeId" : "従業員ID",
             "name" : "入ってください 名前 ",
             "alias" : "入ってください 略語 ",
             "phoneNo" : "入ってください 電話番号 ",

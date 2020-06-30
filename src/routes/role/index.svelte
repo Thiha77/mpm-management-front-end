@@ -1,15 +1,18 @@
 <script>
 	import RoleIndex from '../../components/role/index.svelte';
 	import RoleSearch from '../../components/role/search.svelte';
+	import NoAccess from '../../components/util/NoAccess.svelte';
 	// import Pagination from '../../components/role/pagination.svelte';
 	import ApiGet from '../../components/util/Api.svelte';
 	import { roleMessages } from '../../stores/role/store';
 	import { axiosGet,axiosPost } from '../../util/api.js'
 	import { apiInfo, fields } from '../../store.js';
-	import { stores,goto } from '@sapper/app';
+	import { stores, goto } from '@sapper/app';
 	import { Toast, CfmDelete } from '../../util/salert';
+	import { onMount } from 'svelte';
 
-    const { session } = stores();
+	const { session } = stores();
+	
 	
 	let url = $apiInfo.basePath + '/roles';
 	const method = 'get';
@@ -54,6 +57,7 @@
 	<title>Role</title>
 </svelte:head>
 
+{#if $session.user && $session.user.permissions.role && $session.user.permissions.role != 'none'}
 <section class="pr-2 pl-2">
 	<div class="container-fluid">
 		<h1>{$roleMessages.message}</h1>
@@ -67,3 +71,6 @@
 		</ApiGet>
 	</div>
 </section>
+{:else}
+<NoAccess></NoAccess>
+{/if}

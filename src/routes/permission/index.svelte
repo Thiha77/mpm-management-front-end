@@ -5,7 +5,8 @@
 	import { axiosPost } from '../../util/api.js';
 	import { apiInfo, fields } from '../../store.js';
 	import { stores,goto } from '@sapper/app';
-    import { Toast, CfmDelete } from '../../util/salert';
+	import { Toast, CfmDelete } from '../../util/salert';
+	import NoAccess from '../../components/util/NoAccess.svelte';
 
     const { session } = stores();
 	
@@ -51,6 +52,7 @@
 	<title>Permission</title>
 </svelte:head>
 
+{#if $session.user && $session.user.permissions.permission && $session.user.permissions.permission != 'none'}
 <section class="pr-2 pl-2">
 	<div class="container-fluid">
 		<h1>{$permissionMessages.message}</h1>
@@ -63,3 +65,6 @@
 		</ApiGet>
 	</div>
 </section>
+{:else}
+<NoAccess></NoAccess>
+{/if}

@@ -38,6 +38,10 @@ const dispatch = createEventDispatcher();
                <div class="row">
                   <div class="col-6">
                      <div class="form-group">
+                        <label class="card-title">{$fields.employee.employee.employeeId}</label>
+                        <input type="text" class="form-control" id="text" placeholder="{$fields.employee.placeholder.employeeId}" bind:value={employee.employeeId} />
+                     </div>
+                     <div class="form-group">
                         <label class="card-title">{$fields.employee.employee.name}</label>
                         <input type="text" class="form-control" id="text" placeholder="{$fields.employee.placeholder.name}" bind:value={employee.name} />
                      </div>

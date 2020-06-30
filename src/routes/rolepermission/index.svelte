@@ -6,7 +6,8 @@
 	import { apiInfo, fields } from '../../store';
 	import { stores, goto } from '@sapper/app';
     import Swal from 'sweetalert2';
-    import { Toast, CfmDelete } from '../../util/salert';
+	import { Toast, CfmDelete } from '../../util/salert';
+	import NoAccess from '../../components/util/NoAccess.svelte';
 
 	const { session } = stores();
 
@@ -66,6 +67,7 @@
 	<title>RolePermission</title>
 </svelte:head>
 
+{#if $session.user && $session.user.permissions.rolepermission && $session.user.permissions.rolepermission != 'none'}
 {#if $rolePermission.message}
 	<h1>{$rolePermission.message}</h1>
 {/if}
@@ -73,4 +75,7 @@
 	{#if $session.lan && $fields}
 		<RolePermissionIndex {rolePermissions} on:deleteRolePermission={deleteRolePermission} on:searchRolePermissionData={searchRolePermissionData}></RolePermissionIndex>
 	{/if}
+{/if}
+{:else}
+<NoAccess></NoAccess>
 {/if}

@@ -18,6 +18,7 @@ const collapse = writable({
     collapse: false 
 });
 const apiInfo = readable({
+    // basePath: "http://192.168.10.124:5000",
     basePath: "http://localhost:5000"
 });
 // const sidebarWidth = writable({

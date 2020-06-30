@@ -1,6 +1,9 @@
 <script>
 	export let segment;
 	import Sidebar from '../layout/mpm/Sidebar.svelte';
+	import { stores } from '@sapper/app';
+
+	const { session } = stores();
 	// let sidebar_show = true;
 </script>
 
@@ -63,4 +66,6 @@
 		<li><a href="notice" class:selected={segment === 'notice'}>Notice</a></li>
 	</ul>
 </nav> -->
+{#if $session.user.permissions}
 <Sidebar {segment}></Sidebar>
+{/if}

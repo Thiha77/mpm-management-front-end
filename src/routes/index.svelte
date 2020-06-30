@@ -1,23 +1,19 @@
 <script>
 import { stores } from '@sapper/app';
+import Dashboard from '../components/dashboard/main.svelte';
 const { session } = stores();
 </script>
 <svelte:head>
 	<title>Sapper project template</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<h1>Dashboard</h1>
 {#if $session.user}
-	<h2>{$session.user.name}</h2>
+	<h2>Hello {$session.user.name}</h2>
 {/if}
 
+<Dashboard></Dashboard>
 
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
 <style>
 	h1, figure, p {
 		text-align: center;
@@ -29,6 +25,11 @@ const { session } = stores();
 		text-transform: uppercase;
 		font-weight: 700;
 		margin: 0 0 0.5em 0;
+	}
+
+	h2 {
+		text-align: center;
+		margin: 0 auto;
 	}
 
 	figure {

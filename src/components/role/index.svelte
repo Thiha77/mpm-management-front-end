@@ -1,9 +1,11 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher} from 'svelte';
     import RoleSearch from './search.svelte';
     import { fields } from '../../store';
-
+    import { stores, goto } from '@sapper/app';
+    
     export let roles;
+    const { session } = stores();
     const dispatch = createEventDispatcher();
 
     let deleteRole = id => {

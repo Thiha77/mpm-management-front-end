@@ -7,6 +7,7 @@
     import { stores, goto } from '@sapper/app';
     import Swal from 'sweetalert2';
     import { Toast, CfmDelete } from '../../util/salert';
+    import NoAccess from '../../components/util/NoAccess.svelte';
     const { session } = stores();
 
     let url = $apiInfo.basePath + '/notices';
@@ -52,7 +53,11 @@
 
 </script>
 
-<svelte:head><title>Notice</title></svelte:head>
+<svelte:head>
+    <title>Notice</title>
+</svelte:head>
+
+{#if $session.user && $session.user.permissions.notice && $session.user.permissions.notice != 'none'}
 <section class="pr-2 pl-2">
     <div class="container-fluid">
     {#if $session.lan && $fields}
@@ -68,3 +73,6 @@
     {/if}
     </div>
 </section>
+{:else}
+<NoAccess></NoAccess>
+{/if}

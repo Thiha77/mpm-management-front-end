@@ -10,6 +10,7 @@
     import moment from 'moment';
     import { validate } from '../../util/validator';
     import ValidationBox from '../../components/util/ValidationBox.svelte';
+    import NoAccess from '../../components/util/NoAccess.svelte';
     let apiInstance;
     let result;
     let fromdate;
@@ -93,7 +94,11 @@
         apiInstance.postExternal(posturl,searchdata);
     }
 </script>
-<svelte:head><title>Attendance</title></svelte:head>
+<svelte:head>
+    <title>Attendance</title>
+</svelte:head>
+
+{#if $session.user && $session.user.permissions.attendance && $session.user.permissions.attendance != 'none'}
 <section class="pr-2 pl-2">
 <div class="container">
 <div class="row">
@@ -115,3 +120,6 @@
 </div>
 </div>
 </section>
+{:else}
+<NoAccess></NoAccess>
+{/if}

@@ -10,7 +10,9 @@
     import { Toast, CfmDelete } from '../../util/salert';
     import enFields from '../../languages/en/employee.json';
     import jpFields from'../../languages/jp/employee.json';
-        const { session } = stores();
+    import NoAccess from '../../components/util/NoAccess.svelte';
+
+    const { session } = stores();
     //$: $fields =$session.lan =='en' ? enFields :jpFields; 
 
     let url = $apiInfo.basePath + '/employees';
@@ -62,6 +64,8 @@
     <title>Employee</title>
 </svelte:head>
 
+
+{#if $session.user && $session.user.permissions.employee && $session.user.permissions.employee != 'none'}
 <section class="pr-2 pl-2">
     <div class="container-fluid">   
         {#if $session.lan && $fields}
@@ -79,6 +83,8 @@
         {/if}
     </div>
 </section>
-
+{:else}
+<NoAccess></NoAccess>
+{/if}
 
   

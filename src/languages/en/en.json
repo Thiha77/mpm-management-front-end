@@ -42,6 +42,7 @@
     },
     "employee" : {
         "employee" : {
+            "employeeId" : "Employee Id",
             "name" : "Name ",
             "alias" : "Alias ",
             "phoneNo" : "PhoneNo ",
@@ -75,6 +76,7 @@
             "back" : "Back"
         },
         "placeholder" :{
+            "employeeId" : "Employee Id",
             "name" :"Please Enter Name",
             "alias" : "Please Enter Alias ",
             "phoneNo" :"Please Enter PhoneNo ",

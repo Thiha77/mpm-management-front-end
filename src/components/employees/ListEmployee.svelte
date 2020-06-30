@@ -59,6 +59,7 @@ table.table td a {
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>{$fields.employee.employee.employeeId}</th>
                         <th>{$fields.employee.employee.photo}</th>						
                         <th>{$fields.employee.employee.phoneNo}</th>
                         <th>{$fields.employee.employee.officialEmail}</th>
@@ -72,6 +73,7 @@ table.table td a {
                     {:else}
                     {#each employees as employee}   
                         <tr>
+                            <td>{employee.employeeId}</td>
                             {#if employee.photo}
                                 <td><a href={'employee/view/' + employee.id} ><img src={employee.photo} class="avatar img-thumbnail employee-photo" alt=""/>{employee.name}</td>
                             {:else}

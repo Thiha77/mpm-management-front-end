@@ -1,72 +1,91 @@
 <script>
-    import { axiosPost } from '../../util/api.js';
+    import { axiosGet, axiosPost } from '../../util/api.js';
     import { stores,goto } from '@sapper/app';
     import { onMount } from 'svelte';
     import { apiInfo } from '../../store.js';
     import config from '../../config';
     import { Toast, Err } from '../../util/salert';
+    import { nav } from '../../store'
+
     const { session } = stores();
-    let url = $apiInfo.basePath + '/users/searchuser';
+    let url = config.apiInfo.basePath + '/users/searchuser';
     let userName = "";
     let password = "";
-onMount(() => {
-  setTimeout(() => {
-    username.focus()
-  }, 5)
-})
-function validate(){
-const data = {
-    userName : userName,
-    password : password
-}
-if(userName == "" && password == "")
-{
-    alert("Please fill up user name and password!");
-    document.getElementById("username").focus();
-    return false;
     
-}
-if(userName == "")
-{
-    alert("Please fill up user name!");
-    document.getElementById("username").focus();
-    return false;
-}
-if(password == "")
-{
-    alert("Please fill up password!");
-    document.getElementById("password").focus();
-    return false;
-}
-if(username != "" && password != ""){
-axiosPost(url,data).then(result=>{
-    if(result.data)
+    onMount(() => {
+    setTimeout(() => {
+        username.focus()
+    }, 5)
+    })
+function validate(){
+    console.log(config.apiInfo.basePath);
+    const data = {
+        userName : userName,
+        password : password
+    }
+    if(userName == "" && password == "")
     {
-        localStorage.setItem('user', JSON.stringify(result.data));
-        localStorage.setItem('lan', config.system.lan);
-        $session.user = result.data;
-        $session.lan = config.system.lan;
-    if(result.data["roleId"]==1)
+        alert("Please fill up user name and password!");
+        document.getElementById("username").focus();
+        return false;
+        
+    }
+    if(userName == "")
     {
-        goto("/");
+        alert("Please fill up user name!");
+        document.getElementById("username").focus();
+        return false;
     }
-    else
+    if(password == "")
     {
-        goto("swipe");
+        alert("Please fill up password!");
+        document.getElementById("password").focus();
+        return false;
     }
-    if(result.error == null){
-            Toast.fire(
-                'Success!',
-                'Login Successfully.',
-                'success'
-            );
-        }
+    if(username != "" && password != "")
+    {
+        axiosPost(url,data).then( result => {
+            if(result.data)
+            {
+                let user = result.data;
+                let perUrl = `${config.apiInfo.basePath}/rolepermissions/permissionNameByRoleId/${user.roleId}`;
+                axiosGet(perUrl).then( (r) => {
+
+                    let permissions = {};
+                    for(let i=0; i < r.data.length; i++){
+                        let per = r.data[i].Permission.name;
+                        let splitted = per.split("-");
+                        permissions[splitted[0]] = splitted[1];
+                    }
+                    user.permissions = permissions;
+                    localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('lan', config.system.lan);
+                    $session.user = user;
+                    $session.lan = config.system.lan;
+                    $nav.showSideBar = true;
+                });
+
+                if(result.data["roleId"]==1)
+                {
+                    goto("/");
+                }
+                else
+                {
+                    goto("swipe");
+                }
+                if(result.error == null){
+                        Toast.fire(
+                            'Success!',
+                            'Login Successfully.',
+                            'success'
+                        );
+                }
+            }
+            else{
+                alert("User name or password is wrong!")
+            }
+        });
     }
-    else{
-        alert("User name or password is wrong!")
-    }
-})
-}
 }
 </script>
 <div class="container">

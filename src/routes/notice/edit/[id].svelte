@@ -15,7 +15,7 @@
 </script>
 <script>
     import EditNotice from '../../../components/notice/edit.svelte';
-    import { apiInfo, fields } from '../../../store.js';
+    import { apiInfo, fields } from '../../../store';
     import { axiosPost }from '../../../util/api.js';
     import { stores, goto } from '@sapper/app';
     import { Toast, Err } from '../../../util/salert';
@@ -30,14 +30,14 @@
         if(result.error == null){
             Toast.fire(
                 'Success!',
-                'Notice is successfully updated.',
+                 $fields.notice.message.updateSuccess,
                 'success'
             );
             goto('../notice');
         }else{
             Toast.fire(
                 'Fail!',
-                'Notice is not updated.',
+                 $fields.notice.message.updateFail,
                 'error'
             );
         }

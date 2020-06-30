@@ -24,6 +24,7 @@ export let employee;
                         <div class="profile-preword mb-4"><span>{$fields.employee.form.hello}</span></div>
                         <h2 class="profile-title"><span class="font-weight-normal">{$fields.employee.form.intro}</span> {employee.name}</h2>
                         <h3 class="profile-position">{employee.position}</h3>
+                        <h3 class="profile-position">{$fields.employee.employee.employeeId + '-' + employee.employeeId}</h3>
                      </div>
                   </div>
                </div>
